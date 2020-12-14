@@ -62,7 +62,7 @@
                     android:padding="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/iconmonstr_schoo_blue"
+                    android:src="@drawable/iconmonstr_blue_grey"
                     android:layout_gravity="center"/>
 
                 <TextView
@@ -92,7 +92,7 @@
             android:clipChildren="false"
             app:cardElevation="3dp"
             app:cardPreventCornerOverlap="false"
-            android:backgroundTint="white"
+            android:backgroundTint="@color/white"
             android:foreground="@color/blue_grey"
             android:clickable="true"
             android:focusable="true"
@@ -146,7 +146,7 @@
             android:clipChildren="false"
             app:cardElevation="3dp"
             app:cardPreventCornerOverlap="false"
-            android:backgroundTint="white"
+            android:backgroundTint="@color/white"
             android:foreground="@color/blue_grey"
             android:clickable="true"
             android:focusable="true"
@@ -190,7 +190,7 @@
             android:clipChildren="false"
             app:cardElevation="3dp"
             app:cardPreventCornerOverlap="false"
-            android:backgroundTint="white"
+            android:backgroundTint="@color/white"
             android:foreground="@color/blue_grey"
             android:clickable="true"
             android:focusable="true"

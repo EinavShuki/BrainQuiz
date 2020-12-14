@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "149996656729",
+    "project_id": "brainquiz-bf904",
+    "storage_bucket": "brainquiz-bf904.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:149996656729:android:2797aa41ac62abfaafb948",
+        "android_client_info": {
+          "package_name": "com.example.brainquiz"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "149996656729-s5k6vn399qr38997skoa7ca8p5ai021b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDPLKgGTlYgPaAWX_-sQqQR5wsISv9jqis"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "149996656729-s5k6vn399qr38997skoa7ca8p5ai021b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
