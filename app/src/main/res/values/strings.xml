@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">BrainQuiz</string>
+    <string name="sub_title">Measure your brain abilities</string>
 </resources>
