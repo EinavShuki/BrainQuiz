@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">BrainQuiz</string>
     <string name="sub_title">Measure your brain abilities</string>
+    <string name="math_riddles">Math Riddles</string>
+    <string name="what_was_the_number">What was the number?</string>
+    <string name="submit">Submit</string>
 </resources>

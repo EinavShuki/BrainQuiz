@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="18dp"
+    android:background="@color/blue_500">
+
+    <TextView
+        android:layout_marginTop="150dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/what_was_the_number"
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        android:gravity="center"
+        />
+    <EditText
+        android:inputType="number"
+        android:id="@+id/num_input"
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/txt_editor_shape"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:padding="10dp"
+        />
+    <Button
+        android:id="@+id/submit_btn"
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@drawable/submit_btn_style"
+        android:textColor="@color/black"
+        android:text="@string/submit"
+        android:textSize="25sp"
+        android:padding="15dp"
+        />
+
+
+</LinearLayout>
