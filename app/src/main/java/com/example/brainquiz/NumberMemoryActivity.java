@@ -27,7 +27,9 @@ public class NumberMemoryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_number_memory);
 
-        numberToShow = getIntent().getIntExtra("number", 5);
+        numberToShow = getIntent().getIntExtra("number", 5);//from NumberMemorySecActivity
+        int lastNumberToShow=getIntent().getIntExtra("num",0);//from LastState
+        numberToShow= Math.max(numberToShow, lastNumberToShow);
         TextView numTv = findViewById(R.id.numtv);
         numTv.setText(numberToShow + "");
         progressBar = findViewById(R.id.progress_bar);
