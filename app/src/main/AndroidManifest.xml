@@ -9,8 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BrainQuiz">
+        <activity android:name=".LastStateActivity" android:launchMode="singleInstance"/>
         <activity android:name=".NumberMemoryActivity" />
-        <activity android:name=".NumberMemorySecActivity" android:launchMode="singleInstance" />
+        <activity
+            android:name=".NumberMemorySecActivity"
+            android:launchMode="singleInstance" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
