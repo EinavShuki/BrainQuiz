@@ -9,5 +9,11 @@
     <string name="visual_memory">Visual Memory</string>
     <string name="number_memory">Number Memory</string>
     <string name="sequence">Sequence Memory</string>
+    <string name="try_again">Try again</string>
+    <string name="save_score">Save score</string>
+    <string name="number">Shown number</string>
+    <string name="your_ans">Your answer</string>
+    <string name="advice_to_save">Save your score to see how you compare</string>
+    <string name="level">Level</string>
     <string name="finish">Finish</string>
 </resources>

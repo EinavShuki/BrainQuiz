@@ -10,5 +10,11 @@
     <string name="visual_memory">זיכרון ויזואלי</string>
     <string name="number_memory">זכירת מספרים</string>
     <string name="sequence">זכירת רצף</string>
+    <string name="try_again">נסו שוב</string>
+    <string name="save_score">שמרו ניקוד</string>
+    <string name="number">המספר שהופיע</string>
+    <string name="your_ans">התשובה שלכם</string>
+    <string name="advice_to_save">"שמרו תוצאה כדי להשוות "</string>
+    <string name="level">שלב</string>
     <string name="finish">סיים</string>
 </resources>
