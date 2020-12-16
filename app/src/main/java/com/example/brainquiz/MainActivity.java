@@ -34,8 +34,7 @@ public class MainActivity extends AppCompatActivity {
         btnLeaderboards.setOnClickListener(view ->
                 startActivity(new Intent(MainActivity.this, LeaderboardActivity.class)));
 
-        numMemory.setOnClickListener(v ->
-            startActivity(new Intent(MainActivity.this, LastStateActivity.class)));
+        numMemory.setOnClickListener(v ->{
             Intent intent=new Intent(MainActivity.this, LastStateNumMemoryActivity.class);
             startActivity(intent);
         });
