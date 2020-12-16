@@ -14,6 +14,9 @@ public class MainActivity extends AppCompatActivity {
 
     Button btnLeaderboards;
     MaterialCardView numMemory;
+    MaterialCardView visualMemoryCard;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +30,9 @@ public class MainActivity extends AppCompatActivity {
     private void initUi() {
         btnLeaderboards = findViewById(R.id.btn_leaderboards);
         numMemory = findViewById(R.id.num_memory);
+        visualMemoryCard = findViewById(R.id.visual_memory_card);
+
+
     }
 
 
@@ -35,10 +41,9 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, LeaderboardActivity.class)));
 
         numMemory.setOnClickListener(v ->
-            startActivity(new Intent(MainActivity.this, LastStateActivity.class)));
-            Intent intent=new Intent(MainActivity.this, LastStateNumMemoryActivity.class);
-            startActivity(intent);
-        });
+            startActivity(new Intent(MainActivity.this, LastStateNumMemoryActivity.class)));
+        visualMemoryCard.setOnClickListener(v ->
+                startActivity(new Intent(MainActivity.this, MathRiddlesActivity.class)));
 
     }
 }

@@ -10,4 +10,5 @@
     <string name="visual_memory">זיכרון ויזואלי</string>
     <string name="number_memory">זכירת מספרים</string>
     <string name="sequence">זכירת רצף</string>
+    <string name="finish">סיים</string>
 </resources>
