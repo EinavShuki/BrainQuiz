@@ -7,4 +7,7 @@
     <string name="submit">אישור</string>
     <string name="start_new">התחילו משחק חדש</string>
     <string name="continue_btn">המשיכו מהנקודה האחרונה</string>
+    <string name="visual_memory">זיכרון ויזואלי</string>
+    <string name="number_memory">זכירת מספרים</string>
+    <string name="sequence">זכירת רצף</string>
 </resources>

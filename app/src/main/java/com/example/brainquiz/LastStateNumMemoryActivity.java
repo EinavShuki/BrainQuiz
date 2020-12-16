@@ -7,7 +7,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Button;
 
-public class LastStateActivity extends AppCompatActivity {
+public class LastStateNumMemoryActivity extends AppCompatActivity {
     Intent intent;
     SharedPreferences sp;
     @Override
@@ -18,7 +18,7 @@ public class LastStateActivity extends AppCompatActivity {
         sp=getSharedPreferences("numToRemember",MODE_PRIVATE);
         Button newGameBtn=findViewById(R.id.new_game_btn);
         Button lastPointBtn=findViewById(R.id.continue_btn);
-        intent=new Intent(LastStateActivity.this,NumberMemoryActivity.class);
+        intent=new Intent(LastStateNumMemoryActivity.this,NumberMemoryActivity.class);
         if(sp.contains("num"))//got it from NumberMemorySecActivity
             lastPointBtn.setEnabled(true);
 

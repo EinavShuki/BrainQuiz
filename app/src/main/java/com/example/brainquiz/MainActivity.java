@@ -17,9 +17,11 @@ public class MainActivity extends AppCompatActivity {
         MaterialCardView numMemory=findViewById(R.id.num_memory);
         numMemory.setOnClickListener(v->{
 
-            Intent intent=new Intent(MainActivity.this,LastStateActivity.class);
+            Intent intent=new Intent(MainActivity.this, LastStateNumMemoryActivity.class);
             startActivity(intent);
         });
+
+
 
     }
 }
