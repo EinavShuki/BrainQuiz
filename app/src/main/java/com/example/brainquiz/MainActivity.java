@@ -29,11 +29,16 @@ public class MainActivity extends AppCompatActivity {
         numMemory = findViewById(R.id.num_memory);
     }
 
+
     private void setListeners() {
         btnLeaderboards.setOnClickListener(view ->
                 startActivity(new Intent(MainActivity.this, LeaderboardActivity.class)));
 
         numMemory.setOnClickListener(v ->
             startActivity(new Intent(MainActivity.this, LastStateActivity.class)));
+            Intent intent=new Intent(MainActivity.this, LastStateNumMemoryActivity.class);
+            startActivity(intent);
+        });
+
     }
 }

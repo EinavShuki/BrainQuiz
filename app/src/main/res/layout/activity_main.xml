@@ -81,8 +81,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="12dp"
                         android:gravity="center"
-                        android:text="Visual Memory"
-                        android:textColor="#6f6f6f"
+                        android:text="@string/visual_memory"
+                        android:textColor="@color/hard_grey"
                         android:textSize="18sp" />
 
                 </LinearLayout>
@@ -121,8 +121,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="12dp"
                         android:gravity="center"
-                        android:text="Number Memory"
-                        android:textColor="#6f6f6f"
+                        android:text="@string/number_memory"
+                        android:textColor="@color/hard_grey"
                         android:textSize="18sp" />
 
                 </LinearLayout>
@@ -138,7 +138,7 @@
             android:rowCount="1">
 
             <com.google.android.material.card.MaterialCardView
-                android:id="@+id/math_card"
+                android:id="@+id/math_riddle"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_rowWeight="1"
@@ -170,8 +170,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="12dp"
                         android:gravity="center"
-                        android:text="Math Riddles"
-                        android:textColor="#6f6f6f"
+                        android:text="@string/math_riddles"
+                        android:textColor="@color/hard_grey"
                         android:textSize="18sp" />
 
                 </LinearLayout>
@@ -210,7 +210,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="12dp"
                         android:gravity="center"
-                        android:text="Sequence"
+                        android:text="@string/sequence"
                         android:textColor="#6f6f6f"
                         android:textSize="18sp" />
 
