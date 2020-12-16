@@ -7,6 +7,7 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.ObjectAnimator;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.TestLooperManager;
 import android.view.animation.LinearInterpolator;
@@ -20,16 +21,20 @@ public class NumberMemoryActivity extends AppCompatActivity {
     final int NUMBER_REQUEST = 1;
     ProgressBar progressBar;
     Intent intent;
-    int numberToShow;
-
+    int numberToShow, lev;
+    SharedPreferences sp;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_number_memory);
 
+        lev = getIntent().getIntExtra("level", 1);//from itself
         numberToShow = getIntent().getIntExtra("number", 5);//from NumberMemorySecActivity
-        int lastNumberToShow=getIntent().getIntExtra("num",0);//from LastState
-        numberToShow= Math.max(numberToShow, lastNumberToShow);
+        int lastNumberToShow = getIntent().getIntExtra("num", 0);//from LastState
+        int lastLevelToShow = getIntent().getIntExtra("lev", 0);//from LastState
+        numberToShow = Math.max(numberToShow, lastNumberToShow);
+        lev = Math.max(lev, lastLevelToShow);
+
         TextView numTv = findViewById(R.id.numtv);
         numTv.setText(numberToShow + "");
         progressBar = findViewById(R.id.progress_bar);
@@ -42,6 +47,7 @@ public class NumberMemoryActivity extends AppCompatActivity {
         progressAnimator.start();
         intent = new Intent(this, NumberMemorySecActivity.class);
         intent.putExtra("number", numberToShow);
+        intent.putExtra("level", lev);
         progressAnimator.addListener(new AnimatorListenerAdapter() {
             @Override
             public void onAnimationEnd(Animator animation) {
@@ -59,10 +65,10 @@ public class NumberMemoryActivity extends AppCompatActivity {
             if (resultCode == RESULT_OK) {
                 Intent intent = new Intent(NumberMemoryActivity.this, NumberMemoryActivity.class);
                 intent.putExtra("number", numberToShow * 2 + 1);
+                intent.putExtra("level", lev + 1);
                 startActivity(intent);
-                finish();
-            } else if (resultCode == RESULT_CANCELED)
-                Toast.makeText(this, "Looser", Toast.LENGTH_SHORT).show();
+            }
+            finish();
         }
     }
 }
