@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -28,16 +29,17 @@ public class SaveScoreDialog extends AppCompatDialogFragment {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         LayoutInflater inflater = getActivity().getLayoutInflater();
         View view = inflater.inflate(R.layout.save_score_dialog, null);
-        int score = getArguments().getInt("SCORE");
-        builder.setView(view)
-                .setTitle(R.string.save_score)
-                .setNegativeButton(R.string.cancel, (dialogInterface, i) -> {
-                })
-                .setPositiveButton(R.string.ok, (dialogInterface, i) -> {
-                    String username = editTextUsername.getText().toString();
-                    boolean success =  FirebaseManager.getInstance().SaveScore(username, score, "numberMemoryScore");
-                });
+        String score = String.valueOf(getArguments().getInt("SCORE"));
+        Log.i("score:", score);
 
+        builder.setView(view)
+                .setTitle(getString(R.string.save_score))
+                .setNegativeButton(getString(R.string.cancel), (dialogInterface, i) -> {
+                })
+                .setPositiveButton(getString(R.string.ok), (dialogInterface, i) -> {
+                    String username = editTextUsername.getText().toString();
+                    boolean success =  FirebaseManager.getInstance().SaveScore(username, Integer.parseInt(score), "numberMemoryScore");
+                });
 
         tvScore = view.findViewById(R.id.tv_score);
         tvScore.setText(score);

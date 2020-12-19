@@ -9,6 +9,8 @@ import android.widget.TextView;
 
 public class FailScreenNumberMemoryActivity extends AppCompatActivity {
 
+    int level;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -16,7 +18,7 @@ public class FailScreenNumberMemoryActivity extends AppCompatActivity {
 
         int wrongNumber=getIntent().getIntExtra("wrong number",0);
         int rightNumber=getIntent().getIntExtra("right number",0);
-        int level=getIntent().getIntExtra("level",1);
+        level=getIntent().getIntExtra("level",1);
 
         Button tryAgain=findViewById(R.id.try_again_btn);
         Button btnSaveScore = findViewById(R.id.save_score_btn);
