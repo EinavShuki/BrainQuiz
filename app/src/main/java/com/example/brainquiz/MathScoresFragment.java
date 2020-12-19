@@ -35,7 +35,10 @@ public class MathScoresFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         tableLayout = view.findViewById(R.id.math_score_table);
         tableLayout.setVisibility(View.INVISIBLE);
+        progressBar = view.findViewById(R.id.progress_bar);
         fetchScores();
+        progressBar.setVisibility(View.INVISIBLE);
+        tableLayout.setVisibility(View.VISIBLE);
     }
 
     private void fetchScores() {
