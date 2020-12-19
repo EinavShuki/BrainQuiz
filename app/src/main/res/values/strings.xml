@@ -16,4 +16,6 @@
     <string name="advice_to_save">Save your score to see how you compare</string>
     <string name="level">Level</string>
     <string name="finish">Finish</string>
+    <string name="name_col">Name</string>
+    <string name="score_col">Score</string>
 </resources>

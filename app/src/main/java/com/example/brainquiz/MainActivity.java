@@ -17,7 +17,6 @@ public class MainActivity extends AppCompatActivity {
     MaterialCardView visualMemoryCard;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

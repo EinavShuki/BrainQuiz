@@ -17,4 +17,6 @@
     <string name="advice_to_save">"שמרו תוצאה כדי להשוות "</string>
     <string name="level">שלב</string>
     <string name="finish">סיים</string>
+    <string name="name_col">שם</string>
+    <string name="score_col">תוצאה</string>
 </resources>
