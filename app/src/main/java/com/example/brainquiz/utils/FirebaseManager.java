@@ -54,7 +54,7 @@ public class FirebaseManager {
     public boolean SaveScore(String username, int score, String tableName){
         Map<String, Long> value = new HashMap<>();
         value.put(username, (long) score);
-        databaseReference.child(tableName).push().setValue(value);
+        databaseReference.child(tableName).child(username).setValue(score);
 
         return true;
     }
