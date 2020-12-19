@@ -19,4 +19,8 @@
     <string name="finish">סיים</string>
     <string name="name_col">שם</string>
     <string name="score_col">תוצאה</string>
+    <string name="save">שמור</string>
+    <string name="cancel">בטל</string>
+    <string name="ok">אישור</string>
+    <string name="your_score">התוצאה שלך:</string>
 </resources>

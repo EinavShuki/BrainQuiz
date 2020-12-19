@@ -10,7 +10,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import androidx.annotation.NonNull;
 
@@ -47,5 +49,13 @@ public class FirebaseManager {
 
             }
         });
+    }
+
+    public boolean SaveScore(String username, int score, String tableName){
+        Map<String, Long> value = new HashMap<>();
+        value.put(username, (long) score);
+        databaseReference.child(tableName).setValue(value);
+
+        return true;
     }
 }

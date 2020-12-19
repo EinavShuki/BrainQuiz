@@ -17,7 +17,9 @@ public class FailScreenNumberMemoryActivity extends AppCompatActivity {
         int wrongNumber=getIntent().getIntExtra("wrong number",0);
         int rightNumber=getIntent().getIntExtra("right number",0);
         int level=getIntent().getIntExtra("level",1);
+
         Button tryAgain=findViewById(R.id.try_again_btn);
+        Button btnSaveScore = findViewById(R.id.save_score_btn);
 
         TextView wrongNumTv=findViewById(R.id.wrong_num);
         TextView rightNumTv=findViewById(R.id.right_num);
@@ -28,11 +30,18 @@ public class FailScreenNumberMemoryActivity extends AppCompatActivity {
         String lev=getString(R.string.level);
         levelTv.setText(lev+" "+level);
 
-        tryAgain.setOnClickListener(v->{
+        tryAgain.setOnClickListener(v -> {
             Intent intent=new Intent(FailScreenNumberMemoryActivity.this,LastStateNumMemoryActivity.class);
             startActivity(intent);
             finish();
         });
 
+        btnSaveScore.setOnClickListener(v -> {
+            SaveScoreDialog saveScoreDialog = new SaveScoreDialog();
+            Bundle args = new Bundle();
+            args.putInt("SCORE", level);
+            saveScoreDialog.setArguments(args);
+            saveScoreDialog.show(getSupportFragmentManager(), "save score dialog");
+        });
     }
 }

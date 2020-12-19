@@ -5,6 +5,10 @@ import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
 
+import com.example.brainquiz.fragments.MathScoresFragment;
+import com.example.brainquiz.fragments.NumbersMemoryScoresFragment;
+import com.example.brainquiz.fragments.SequenceScoreFragment;
+import com.example.brainquiz.fragments.VisualMemoryScoreFragment;
 import com.google.android.material.tabs.TabLayout;
 
 public class LeaderboardActivity extends AppCompatActivity {
