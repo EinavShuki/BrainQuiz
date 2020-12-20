@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class MathRiddlesActivity extends AppCompatActivity {
-    int clickcount=0;
+    int clickcount=1;
     Random rand = new Random();
     int num1=rand.nextInt(10);
     int num2=rand.nextInt(10);
@@ -111,6 +111,7 @@ public class MathRiddlesActivity extends AppCompatActivity {
                 String str_num = (num1 + action + num2 + "=");
                 num_riddles.setText(str_num);
                 ans_riddles.setText("");
+                long start = System.currentTimeMillis();
 
 
             }

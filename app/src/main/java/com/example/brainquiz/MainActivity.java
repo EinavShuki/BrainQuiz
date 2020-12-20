@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
     private void initUi() {
         btnLeaderboards = findViewById(R.id.btn_leaderboards);
         numMemory = findViewById(R.id.num_memory);
-        visualMemoryCard = findViewById(R.id.visual_memory_card);
+        visualMemoryCard = findViewById(R.id.math_riddle);
 
 
     }

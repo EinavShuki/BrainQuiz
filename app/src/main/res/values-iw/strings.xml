@@ -23,4 +23,5 @@
     <string name="cancel">בטל</string>
     <string name="ok">אישור</string>
     <string name="your_score">התוצאה שלך:</string>
+    <string name="time">:זמן</string>
 </resources>
