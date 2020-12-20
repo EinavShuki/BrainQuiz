@@ -1,4 +1,4 @@
-package com.example.brainquiz;
+package com.example.brainquiz.utils;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.brainquiz.R;
 import com.example.brainquiz.utils.FirebaseManager;
 
 import androidx.annotation.NonNull;

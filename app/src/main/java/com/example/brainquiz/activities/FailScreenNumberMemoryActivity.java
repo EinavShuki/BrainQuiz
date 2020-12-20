@@ -1,4 +1,4 @@
-package com.example.brainquiz;
+package com.example.brainquiz.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,6 +6,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
+
+import com.example.brainquiz.R;
+import com.example.brainquiz.utils.SaveScoreDialog;
 
 public class FailScreenNumberMemoryActivity extends AppCompatActivity {
 
@@ -33,7 +36,7 @@ public class FailScreenNumberMemoryActivity extends AppCompatActivity {
         levelTv.setText(lev+" "+level);
 
         tryAgain.setOnClickListener(v -> {
-            Intent intent=new Intent(FailScreenNumberMemoryActivity.this,LastStateNumMemoryActivity.class);
+            Intent intent=new Intent(FailScreenNumberMemoryActivity.this, LastStateNumMemoryActivity.class);
             startActivity(intent);
             finish();
         });

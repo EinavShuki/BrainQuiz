@@ -1,4 +1,4 @@
-package com.example.brainquiz;
+package com.example.brainquiz.utils;
 
 import java.util.ArrayList;
 import java.util.List;

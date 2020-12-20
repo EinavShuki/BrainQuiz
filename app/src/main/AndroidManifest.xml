@@ -9,17 +9,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BrainQuiz">
-        <activity android:name=".MathRiddlesActivity"/>
-        <activity android:name=".FailScreenNumberMemoryActivity"  />
-        <activity android:name=".LeaderboardActivity" />
+        <activity android:name=".activities.MathRiddlesActivity"/>
+        <activity android:name=".activities.FailScreenNumberMemoryActivity"  />
+        <activity android:name=".activities.LeaderboardActivity" />
         <activity
-            android:name=".LastStateNumMemoryActivity"
+            android:name=".activities.LastStateNumMemoryActivity"
             android:launchMode="singleInstance" />
-        <activity android:name=".NumberMemoryActivity" />
+        <activity android:name=".activities.NumberMemoryActivity" />
         <activity
-            android:name=".NumberMemorySecActivity"
+            android:name=".activities.NumberMemorySecActivity"
             android:launchMode="singleInstance" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

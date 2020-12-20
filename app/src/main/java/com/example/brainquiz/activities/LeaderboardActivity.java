@@ -1,10 +1,12 @@
-package com.example.brainquiz;
+package com.example.brainquiz.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
 
+import com.example.brainquiz.R;
+import com.example.brainquiz.utils.TabAdapter;
 import com.example.brainquiz.fragments.MathScoresFragment;
 import com.example.brainquiz.fragments.NumbersMemoryScoresFragment;
 import com.example.brainquiz.fragments.SequenceScoreFragment;
