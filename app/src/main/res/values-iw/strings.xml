@@ -24,4 +24,5 @@
     <string name="ok">אישור</string>
     <string name="your_score">התוצאה שלך:</string>
     <string name="time">:זמן</string>
+    <string name="exists">שם משתמש בשימוש!</string>
 </resources>

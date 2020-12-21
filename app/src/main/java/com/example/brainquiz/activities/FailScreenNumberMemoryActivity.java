@@ -8,7 +8,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.brainquiz.R;
-import com.example.brainquiz.utils.SaveScoreDialog;
+import com.example.brainquiz.fragments.SaveScoreDialog;
 
 public class FailScreenNumberMemoryActivity extends AppCompatActivity {
 

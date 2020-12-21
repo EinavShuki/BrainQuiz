@@ -38,4 +38,24 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Username" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_error"
+        android:textSize="18sp"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/red"
+        android:textStyle=""
+        android:gravity="center"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        android:id="@+id/btn_save"
+        android:textColor="@color/white"
+        android:text="@string/save_score"
+        android:background="@color/orange_200"/>
 </LinearLayout>

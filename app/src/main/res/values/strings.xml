@@ -23,4 +23,5 @@
     <string name="ok">Ok</string>
     <string name="your_score">Your Score:</string>
     <string name="time">time:</string>
+    <string name="exists">username already exsists!</string>
 </resources>
