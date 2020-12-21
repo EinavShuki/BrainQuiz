@@ -16,9 +16,12 @@ public class LastStateNumMemoryActivity extends AppCompatActivity {
         setContentView(R.layout.activity_last_state);
 
         sp=getSharedPreferences("RememberDetails",MODE_PRIVATE);//got it from NumberMemorySec
+
         Button newGameBtn=findViewById(R.id.new_game_btn);
         Button lastPointBtn=findViewById(R.id.continue_btn);
+
         intent=new Intent(LastStateNumMemoryActivity.this,NumberMemoryActivity.class);
+
         if(sp.contains("num"))//got it from NumberMemorySecActivity
             lastPointBtn.setEnabled(true);
 

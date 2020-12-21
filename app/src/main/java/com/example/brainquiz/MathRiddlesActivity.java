@@ -32,9 +32,6 @@ public class MathRiddlesActivity extends AppCompatActivity {
         EditText ans_riddles = findViewById(R.id.answer_riddles);
         Button finished = findViewById(R.id.finish);
 
-
-
-
         String str_num =(num1 + "+" + num2 + "=" );
         num_riddles.setText(str_num);
 
@@ -81,26 +78,26 @@ public class MathRiddlesActivity extends AppCompatActivity {
                      num2 = rand.nextInt(10)+1;
                     action = signs[rand.nextInt(signs.length)];
                 }
-                else if (clickcount > 5 && clickcount <= 10) {
+                else if (clickcount <= 10) {
                     num1 = rand.nextInt(90) + 10;
                     num2 = rand.nextInt(90) + 10;
                     action = signs1[rand.nextInt(signs.length)];
 
 
                 }
-                else if (clickcount > 10 && clickcount <= 15) {
+                else if (clickcount <= 15) {
                     num1 = rand.nextInt(900) + 100;
                     num2 = rand.nextInt(900) + 100;
                     action = signs1[rand.nextInt(signs.length)];
 
                 }
-                else if (clickcount > 15 && clickcount <= 20) {
+                else if (clickcount <= 20) {
                     num1 = rand.nextInt(9000) + 1000;
                     num2 = rand.nextInt(900) + 100;
                     action = signs1[rand.nextInt(signs.length)];
 
                 }
-                else if (clickcount > 20 && clickcount <= 25) {
+                else if (clickcount <= 25) {
                     num1 = rand.nextInt(9000) + 1000;
                     num2 = rand.nextInt(9000) + 1000;
                     action = signs1[rand.nextInt(signs.length)];

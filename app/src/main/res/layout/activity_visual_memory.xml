@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/grid_lo"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/blue_500"
+    android:columnCount="4"
+    android:orientation="horizontal"
+    android:padding="18dp"
+    android:rowCount="10">
+
+
+
+</GridLayout>
