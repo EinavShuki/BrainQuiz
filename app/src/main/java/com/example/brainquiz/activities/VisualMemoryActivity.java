@@ -1,4 +1,4 @@
-package com.example.brainquiz;
+package com.example.brainquiz.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,6 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.GridLayout;
+
+import com.example.brainquiz.R;
 
 import java.util.ArrayList;
 import java.util.HashMap;

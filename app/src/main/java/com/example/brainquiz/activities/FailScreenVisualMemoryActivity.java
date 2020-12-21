@@ -1,8 +1,10 @@
-package com.example.brainquiz;
+package com.example.brainquiz.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.example.brainquiz.R;
 
 public class FailScreenVisualMemoryActivity extends AppCompatActivity {
 

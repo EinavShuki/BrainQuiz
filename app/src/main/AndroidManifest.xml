@@ -9,6 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BrainQuiz">
+        <activity android:name=".activities.IntermediateVisualMemoryActivity"/>
+        <activity android:name=".activities.FailScreenVisualMemoryActivity" />
+        <activity android:name=".activities.VisualMemoryActivity" />
         <activity android:name=".activities.MathRiddlesActivity"/>
         <activity android:name=".activities.FailScreenNumberMemoryActivity"  />
         <activity android:name=".activities.LeaderboardActivity" />
