@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">בוחן חדות למוח</string>
+    <string name="app_name">BrainQuiz</string>
     <string name="sub_title">בחנו את יכולות המח שלכם</string>
     <string name="math_riddles">חידות מתמטיקה</string>
     <string name="what_was_the_number">מה היה המספר?</string>
@@ -28,4 +28,5 @@
     <string name="strikes">נסיונות</string>
     <string name="score">ניקוד</string>
     <string name="continue_visual_memory">המשיכו</string>
+    <string name="exists">שם משתמש בשימוש!</string>
 </resources>

@@ -1,4 +1,4 @@
-package com.example.brainquiz;
+package com.example.brainquiz.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Button;
+
+import com.example.brainquiz.R;
 
 public class LastStateNumMemoryActivity extends AppCompatActivity {
     Intent intent;

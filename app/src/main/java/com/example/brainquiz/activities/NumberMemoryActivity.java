@@ -1,4 +1,4 @@
-package com.example.brainquiz;
+package com.example.brainquiz.activities;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,13 +9,11 @@ import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.TestLooperManager;
 import android.view.animation.LinearInterpolator;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import java.util.ArrayList;
+import com.example.brainquiz.R;
 
 public class NumberMemoryActivity extends AppCompatActivity {
     final int NUMBER_REQUEST = 1;

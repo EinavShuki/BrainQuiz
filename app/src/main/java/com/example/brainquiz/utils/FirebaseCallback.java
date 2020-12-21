@@ -1,4 +1,4 @@
-package com.example.brainquiz;
+package com.example.brainquiz.utils;
 
 import android.util.Pair;
 

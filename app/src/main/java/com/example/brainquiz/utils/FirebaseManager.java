@@ -2,7 +2,6 @@ package com.example.brainquiz.utils;
 
 import android.util.Pair;
 
-import com.example.brainquiz.FirebaseCallback;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;

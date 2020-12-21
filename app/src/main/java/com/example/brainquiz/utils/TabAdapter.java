@@ -1,4 +1,4 @@
-package com.example.brainquiz;
+package com.example.brainquiz.utils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +11,7 @@ public class TabAdapter extends FragmentStatePagerAdapter {
     private final List<Fragment> mFragmentList = new ArrayList<>();
     private final List<String> mFragmentTitleList = new ArrayList<>();
 
-    TabAdapter(FragmentManager fm) {
+    public TabAdapter(FragmentManager fm) {
         super(fm);
     }
 

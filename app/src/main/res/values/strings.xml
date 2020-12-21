@@ -27,4 +27,5 @@
     <string name="strikes">Strikes</string>
     <string name="score">Score</string>
     <string name="continue_visual_memory">Counitue</string>
+    <string name="exists">username already exsists!</string>
 </resources>

@@ -50,7 +50,8 @@
             android:layout_height="60dp"
             android:background="@drawable/edittext_right"
             android:textColor="@color/black"
-            android:inputType="number">
+            android:inputType="number"
+            android:gravity="center">
 
         </EditText>
     </LinearLayout>
