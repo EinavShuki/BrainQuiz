@@ -41,7 +41,7 @@ public class SaveScoreDialog extends AppCompatDialogFragment {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         LayoutInflater inflater = getActivity().getLayoutInflater();
         View view = inflater.inflate(R.layout.save_score_dialog, null);
-        String score = String.valueOf(getArguments().getInt("SCORE"));
+        String score = String.valueOf(getArguments().getInt(Constants.SCORE_KEY));
         Log.i("score:", score);
 
         builder.setView(view).setTitle(getString(R.string.save_score));
@@ -55,7 +55,7 @@ public class SaveScoreDialog extends AppCompatDialogFragment {
         btnSave = view.findViewById(R.id.btn_save);
 
 
-        String username = preferences.getString("UserName", "");
+        String username = preferences.getString(Constants.USERNAME_PREFS, "");
         Log.e("SAVED NAME: ", username);
         // no username saved
         if (username.equals("")) {
@@ -73,10 +73,10 @@ public class SaveScoreDialog extends AppCompatDialogFragment {
                         }
 
                         SharedPreferences.Editor editor = preferences.edit();
-                        editor.putString("UserName", name);
+                        editor.putString(Constants.USERNAME_PREFS, name);
                         editor.apply();
 
-                        boolean success = FirebaseManager.getInstance().SaveScore(name, Integer.parseInt(score), "numberMemoryScore");
+                        boolean success = FirebaseManager.getInstance().SaveScore(name, Integer.parseInt(score), Constants.NUMBERS_MEMORY_TABLE);
                         dismiss();
                     }
 
@@ -90,7 +90,7 @@ public class SaveScoreDialog extends AppCompatDialogFragment {
             editTextUsername.setVisibility(View.INVISIBLE);
             btnSave.setOnClickListener(view1 -> {
                 tvError.setText("");
-                boolean success = FirebaseManager.getInstance().SaveScore(username, Integer.parseInt(score), "numberMemoryScore");
+                boolean success = FirebaseManager.getInstance().SaveScore(username, Integer.parseInt(score), Constants.NUMBERS_MEMORY_TABLE);
                 dismiss();
             });
 

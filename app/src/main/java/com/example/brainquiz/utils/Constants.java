@@ -11,5 +11,6 @@ public class Constants {
     public static final String SEQUENCE_KEY = "sequenceKey";
     public static final String SCORE_KEY = "SCORE";
     public static final String TABLE_KEY = "TABLE";
+    public static final String USERNAME_PREFS = "UserName";
 
 }
