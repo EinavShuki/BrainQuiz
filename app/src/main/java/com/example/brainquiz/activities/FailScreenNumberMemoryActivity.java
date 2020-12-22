@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import com.example.brainquiz.R;
 import com.example.brainquiz.fragments.SaveScoreDialog;
+import com.example.brainquiz.utils.Constants;
 
 public class FailScreenNumberMemoryActivity extends AppCompatActivity {
 
@@ -44,7 +45,7 @@ public class FailScreenNumberMemoryActivity extends AppCompatActivity {
         btnSaveScore.setOnClickListener(v -> {
             SaveScoreDialog saveScoreDialog = new SaveScoreDialog();
             Bundle args = new Bundle();
-            args.putInt("SCORE", level);
+            args.putInt(Constants.SCORE_KEY, level);
             saveScoreDialog.setArguments(args);
             saveScoreDialog.show(getSupportFragmentManager(), "save score dialog");
         });
