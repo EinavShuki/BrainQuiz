@@ -32,6 +32,7 @@ public class SaveScoreDialog extends AppCompatDialogFragment {
     private EditText editTextUsername;
     private TextView tvScore;
     private TextView tvError;
+    private TextView tvUsername;
     private Button btnSave;
     SharedPreferences preferences;
 
@@ -51,6 +52,7 @@ public class SaveScoreDialog extends AppCompatDialogFragment {
         tvScore = view.findViewById(R.id.tv_score);
         tvError = view.findViewById(R.id.tv_error);
         tvScore.setText(score);
+        tvUsername = view.findViewById(R.id.tv_username);
         editTextUsername = view.findViewById(R.id.edit_username);
         btnSave = view.findViewById(R.id.btn_save);
 
@@ -59,6 +61,7 @@ public class SaveScoreDialog extends AppCompatDialogFragment {
         Log.e("SAVED NAME: ", username);
         // no username saved
         if (username.equals("")) {
+            tvUsername.setVisibility(View.INVISIBLE);
             btnSave.setOnClickListener(view1 -> {
                 String name = editTextUsername.getText().toString();
                 tvError.setText("");
@@ -88,6 +91,8 @@ public class SaveScoreDialog extends AppCompatDialogFragment {
             });
         } else {
             editTextUsername.setVisibility(View.INVISIBLE);
+            tvUsername.setVisibility(View.INVISIBLE);
+            tvUsername.setText(username);
             btnSave.setOnClickListener(view1 -> {
                 tvError.setText("");
                 boolean success = FirebaseManager.getInstance().SaveScore(username, Integer.parseInt(score), Constants.NUMBERS_MEMORY_TABLE);
