@@ -23,7 +23,8 @@ public class IntermediateVisualMemoryActivity extends AppCompatActivity {
         TextView strikesTv=findViewById(R.id.strikes_tv);
         TextView numbersTv=findViewById(R.id.numbers_tv);
         numbersTv.setText(numbers+"");
-        strikesTv.setText(strike+" of 3");
+        String of=getString(R.string.of);
+        strikesTv.setText(strike+" "+of+" 3");
 
         Button continueBtn=findViewById(R.id.continue_btn);
         continueBtn.setOnClickListener(v->{

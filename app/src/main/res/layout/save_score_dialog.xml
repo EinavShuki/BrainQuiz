@@ -18,7 +18,7 @@
             android:textSize="24sp"
             android:textStyle="bold"
             android:gravity="center"
-            android:text="@string/your_score"
+            android:text="@string/your_record"
             />
 
         <TextView
@@ -56,6 +56,6 @@
         android:layout_marginTop="18dp"
         android:id="@+id/btn_save"
         android:textColor="@color/white"
-        android:text="@string/save_score"
+        android:text="@string/save_record"
         android:background="@color/orange_200"/>
 </LinearLayout>

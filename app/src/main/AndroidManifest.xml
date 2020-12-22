@@ -9,11 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BrainQuiz">
-        <activity android:name=".activities.IntermediateVisualMemoryActivity"/>
+        <activity android:name=".WinScreenVisualMemory" />
+        <activity android:name=".activities.IntermediateVisualMemoryActivity" />
         <activity android:name=".activities.FailScreenVisualMemoryActivity" />
         <activity android:name=".activities.VisualMemoryActivity" />
-        <activity android:name=".activities.MathRiddlesActivity"/>
-        <activity android:name=".activities.FailScreenNumberMemoryActivity"  />
+        <activity android:name=".activities.MathRiddlesActivity" />
+        <activity android:name=".activities.FailScreenNumberMemoryActivity" />
         <activity android:name=".activities.LeaderboardActivity" />
         <activity
             android:name=".activities.LastStateNumMemoryActivity"
@@ -22,10 +23,10 @@
         <activity
             android:name=".activities.NumberMemorySecActivity"
             android:launchMode="singleInstance" />
-        <activity android:name=".activities.MainActivity">
+        <activity
+            android:name=".activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

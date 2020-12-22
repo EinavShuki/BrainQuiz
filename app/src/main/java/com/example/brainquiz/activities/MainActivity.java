@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         btnLeaderboards = findViewById(R.id.btn_leaderboards);
         numMemory = findViewById(R.id.num_memory);
         visualMemoryCard = findViewById(R.id.visual_memory_card);
-        mathRiddle=findViewById(R.id.math_riddle);
+        mathRiddle = findViewById(R.id.math_riddle);
     }
 
 
@@ -38,12 +38,14 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, LeaderboardActivity.class)));
         numMemory.setOnClickListener(v ->
                 startActivity(new Intent(MainActivity.this, LastStateNumMemoryActivity.class)));
-        visualMemoryCard.setOnClickListener(v ->
-                startActivity(new Intent(MainActivity.this, VisualMemoryActivity.class)));
+        visualMemoryCard.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, VisualMemoryActivity.class);
+            intent.putExtra("level", 1);
+            intent.putExtra("strike", 1);
+            startActivity(intent);
+        });
         mathRiddle.setOnClickListener(v ->
                 startActivity(new Intent(MainActivity.this, MathRiddlesActivity.class)));
-
-
     }
 
 }

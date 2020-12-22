@@ -54,7 +54,7 @@ public abstract class BaseScoreFragment extends Fragment {
                 rankCol.setText(String.valueOf(++i));
                 TextView nameCol = row.findViewById(R.id.name_col);
                 nameCol.setText(score.first);
-                TextView scoreCol = row.findViewById(R.id.score_col);
+                TextView scoreCol = row.findViewById(R.id.record);
                 scoreCol.setText(score.second.toString());
                 tableLayout.addView(row);
             }

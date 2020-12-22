@@ -1,8 +1,6 @@
 package com.example.brainquiz.fragments;
 
 import android.app.Dialog;
-import android.content.Context;
-import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -12,14 +10,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.brainquiz.R;
 import com.example.brainquiz.utils.Constants;
 import com.example.brainquiz.utils.FirebaseManager;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
@@ -44,7 +40,7 @@ public class SaveScoreDialog extends AppCompatDialogFragment {
         String score = String.valueOf(getArguments().getInt("SCORE"));
         Log.i("score:", score);
 
-        builder.setView(view).setTitle(getString(R.string.save_score));
+        builder.setView(view).setTitle(getString(R.string.save_record));
 
         preferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
 
