@@ -6,6 +6,7 @@ import androidx.viewpager.widget.ViewPager;
 import android.os.Bundle;
 
 import com.example.brainquiz.R;
+import com.example.brainquiz.utils.Constants;
 import com.example.brainquiz.utils.TabAdapter;
 import com.example.brainquiz.fragments.MathScoresFragment;
 import com.example.brainquiz.fragments.NumbersMemoryScoresFragment;
@@ -28,10 +29,10 @@ public class LeaderboardActivity extends AppCompatActivity {
         tabLayout = findViewById(R.id.tabLayout);
 
         adapter = new TabAdapter(getSupportFragmentManager());
-        adapter.addFragment(new MathScoresFragment(), "Math");
-        adapter.addFragment(new NumbersMemoryScoresFragment(), "Numbers Memory");
-        adapter.addFragment(new VisualMemoryScoreFragment(), "Visual Memory");
-        adapter.addFragment(new SequenceScoreFragment(), "Sequence");
+        adapter.addFragment(new MathScoresFragment(), Constants.MATH_TITLE);
+        adapter.addFragment(new NumbersMemoryScoresFragment(), Constants.NUMBERS_MEMORY_TITLE);
+        adapter.addFragment(new VisualMemoryScoreFragment(), Constants.VISUAL_MEMORY_TITLE);
+        adapter.addFragment(new SequenceScoreFragment(), Constants.SEQUENCE_TITLE);
 
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);

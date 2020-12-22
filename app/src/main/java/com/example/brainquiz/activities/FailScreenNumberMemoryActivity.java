@@ -47,7 +47,7 @@ public class FailScreenNumberMemoryActivity extends AppCompatActivity {
             Bundle args = new Bundle();
             args.putInt(Constants.SCORE_KEY, level);
             saveScoreDialog.setArguments(args);
-            saveScoreDialog.show(getSupportFragmentManager(), "save score dialog");
+            saveScoreDialog.show(getSupportFragmentManager(), Constants.DIALOG_SAVE_SCORE);
         });
     }
 }
