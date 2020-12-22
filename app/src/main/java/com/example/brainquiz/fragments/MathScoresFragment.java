@@ -1,6 +1,7 @@
 package com.example.brainquiz.fragments;
 
 import com.example.brainquiz.R;
+import com.example.brainquiz.utils.Constants;
 
 public class MathScoresFragment extends BaseScoreFragment {
 
@@ -16,7 +17,7 @@ public class MathScoresFragment extends BaseScoreFragment {
 
     @Override
     protected String getTableName() {
-        return "mathScores";
+        return Constants.MATH_TABLE;
     }
 
 }
