@@ -91,7 +91,7 @@ public class SaveScoreDialog extends AppCompatDialogFragment {
             });
         } else {
             editTextUsername.setVisibility(View.INVISIBLE);
-            tvUsername.setVisibility(View.INVISIBLE);
+            tvUsername.setVisibility(View.VISIBLE);
             tvUsername.setText(username);
             btnSave.setOnClickListener(view1 -> {
                 tvError.setText("");
