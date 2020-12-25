@@ -6,14 +6,14 @@
 
             <gradient
                 android:startColor="@color/blue_500"
-                android:endColor="@color/hard_blue"
+                android:endColor="#AB673AB7"
                 android:angle="270"
                 />
 
         </shape>
     </item>
 
-    <item android:top="220dp" >
+    <item android:top="250dp" >
         <shape android:shape="rectangle" >
             <corners
                 android:bottomLeftRadius="8dip"

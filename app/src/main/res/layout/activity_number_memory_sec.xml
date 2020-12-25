@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="18dp"
-    android:background="@color/blue_500">
+    android:background="@drawable/full_screen_gradient">
 
     <TextView
         android:focusable = "true"
@@ -14,6 +14,7 @@
         android:layout_height="wrap_content"
         android:text="@string/what_was_the_number"
         android:textColor="@color/white"
+        android:textStyle="bold"
         android:textSize="30sp"
         android:gravity="center"
         />
@@ -39,7 +40,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:background="@drawable/submit_btn_style"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:text="@string/submit"
         android:textSize="25sp"
         android:padding="15dp"

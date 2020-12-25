@@ -10,7 +10,7 @@
     <string name="number_memory">Number Memory</string>
     <string name="sequence">Sequence Memory</string>
     <string name="try_again">Try again</string>
-    <string name="save_record">Save record</string>
+    <string name="save_record">Save score</string>
     <string name="number">Shown number</string>
     <string name="your_ans">Your answer</string>
     <string name="advice_to_save">Save your record to see how you compare</string>
@@ -20,7 +20,7 @@
     <string name="save">Save</string>
     <string name="cancel">Cancel</string>
     <string name="ok">Ok</string>
-    <string name="your_record">Your record:</string>
+    <string name="your_record">Your score:</string>
     <string name="time">time:</string>
     <string name="numbers">Numbers</string>
     <string name="strikes">Strikes</string>

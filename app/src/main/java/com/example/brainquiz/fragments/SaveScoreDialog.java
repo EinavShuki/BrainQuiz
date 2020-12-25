@@ -1,6 +1,8 @@
 package com.example.brainquiz.fragments;
 
 import android.app.Dialog;
+import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -12,6 +14,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.brainquiz.R;
+import com.example.brainquiz.activities.LeaderboardActivity;
 import com.example.brainquiz.utils.Constants;
 import com.example.brainquiz.utils.FirebaseManager;
 import com.google.firebase.database.DataSnapshot;
@@ -20,6 +23,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatDialogFragment;
 
@@ -31,6 +35,13 @@ public class SaveScoreDialog extends AppCompatDialogFragment {
     private TextView tvUsername;
     private Button btnSave;
     SharedPreferences preferences;
+    private Context context;
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        context = getContext();
+    }
 
     @NonNull
     @Override
@@ -76,7 +87,7 @@ public class SaveScoreDialog extends AppCompatDialogFragment {
                         editor.apply();
 
                         boolean success = FirebaseManager.getInstance().SaveScore(name, Integer.parseInt(score), Constants.NUMBERS_MEMORY_TABLE);
-                        dismiss();
+                        navigateToScoresScreen();
                     }
 
                     @Override
@@ -92,11 +103,15 @@ public class SaveScoreDialog extends AppCompatDialogFragment {
             btnSave.setOnClickListener(view1 -> {
                 tvError.setText("");
                 boolean success = FirebaseManager.getInstance().SaveScore(username, Integer.parseInt(score), Constants.NUMBERS_MEMORY_TABLE);
-                dismiss();
+                navigateToScoresScreen();
             });
 
         }
 
         return builder.create();
+    }
+
+    private void navigateToScoresScreen(){
+        context.startActivity(new Intent(context,LeaderboardActivity.class));
     }
 }

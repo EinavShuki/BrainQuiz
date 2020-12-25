@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="18dp"
-    android:background="@color/blue_500">
+    android:background="@drawable/full_screen_gradient">
 
     <TextView
         android:id="@+id/numtv"
@@ -13,6 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="@color/white"
+        android:textStyle="bold"
         android:textSize="65sp"
         android:gravity="center"
         />

@@ -11,7 +11,7 @@
     <string name="number_memory">זכירת מספרים</string>
     <string name="sequence">זכירת רצף</string>
     <string name="try_again">נסו שוב</string>
-    <string name="save_record">שמרו שיא</string>
+    <string name="save_record">שמור תוצאה</string>
     <string name="number">המספר שהופיע</string>
     <string name="your_ans">התשובה שלכם</string>
     <string name="advice_to_save">שמרו את השיא כדי להשוות</string>
@@ -21,7 +21,7 @@
     <string name="save">שמור</string>
     <string name="cancel">בטל</string>
     <string name="ok">אישור</string>
-    <string name="your_record">השיא שלכם:</string>
+    <string name="your_record">התוצאה שלך:</string>
     <string name="time">זמן:</string>
     <string name="numbers">מספרים</string>
     <string name="strikes">נסיונות</string>
