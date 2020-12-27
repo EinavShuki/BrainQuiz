@@ -18,4 +18,9 @@ public class SequenceScoreFragment  extends BaseScoreFragment {
     protected String getTableName() {
         return Constants.SEQUENCE_TABLE;
     }
+
+    @Override
+    protected int getProgressBarId() {
+        return R.id.progress_bar_seq_mem;
+    }
 }

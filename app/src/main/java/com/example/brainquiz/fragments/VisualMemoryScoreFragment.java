@@ -19,4 +19,9 @@ public class VisualMemoryScoreFragment extends BaseScoreFragment{
     protected String getTableName() {
         return Constants.VISUAL_MEMORY_TABLE;
     }
+
+    @Override
+    protected int getProgressBarId() {
+        return R.id.progress_bar_vis_mem;
+    }
 }

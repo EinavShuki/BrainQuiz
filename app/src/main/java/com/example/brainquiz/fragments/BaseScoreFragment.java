@@ -26,20 +26,24 @@ public abstract class BaseScoreFragment extends Fragment {
 
     protected abstract String getTableName();
 
+    protected abstract int getProgressBarId();
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(getLayoutId(), container, false);
+        View view =  inflater.inflate(getLayoutId(), container, false);
+        progressBar = view.findViewById(getProgressBarId());
+
+        tableLayout = view.findViewById(getTableId());
+        tableLayout.setVisibility(View.GONE);
+
+        return view;
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-        tableLayout = view.findViewById(getTableId());
-        tableLayout.setVisibility(View.INVISIBLE);
-        progressBar = view.findViewById(R.id.progress_bar);
         fetchScores();
-        progressBar.setVisibility(View.INVISIBLE);
+        progressBar.setVisibility(View.GONE);
         tableLayout.setVisibility(View.VISIBLE);
     }
 

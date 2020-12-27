@@ -22,4 +22,10 @@ public class NumbersMemoryScoresFragment extends BaseScoreFragment {
         return Constants.NUMBERS_MEMORY_TABLE;
     }
 
+    @Override
+    protected int getProgressBarId() {
+        return R.id.progress_bar_num_mem;
+    }
+
+
 }

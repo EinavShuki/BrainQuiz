@@ -8,11 +8,11 @@
     tools:context=".activities.MainActivity">
 
     <ProgressBar
-        android:id="@+id/progress_bar"
+        android:id="@+id/progress_bar_math"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:indeterminateTint="@color/blue_500" />
+        android:indeterminateTint="@color/white" />
 
     <TableLayout
         android:id="@+id/math_score_table"
