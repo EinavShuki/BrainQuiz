@@ -2,14 +2,16 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/blue_500"
     android:orientation="vertical"
     android:padding="18dp">
 
     <TextView
+        android:textStyle="bold"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="110dp"
+        android:layout_marginTop="60dp"
         android:gravity="center"
         android:text="@string/well_done"
         android:textColor="@color/white"
@@ -63,5 +65,15 @@
             android:textColor="@color/black"
             android:textSize="25sp" />
     </LinearLayout>
+
+
+        <ImageView
+            android:alpha="0.78"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/mind"
+            android:id="@+id/dish_image"
+            android:layout_width="370dp"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true" />
 
 </LinearLayout>
