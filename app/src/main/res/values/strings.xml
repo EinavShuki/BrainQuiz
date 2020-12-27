@@ -30,4 +30,6 @@
     <string name="of">of</string>
     <string name="well_done">Well Done!! You finshed all levels</string>
     <string name="home">Home</string>
+    <string name="username">User Name</string>
+    <string name="leaderboards">Leaderboards</string>
 </resources>

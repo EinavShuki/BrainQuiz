@@ -4,7 +4,7 @@
     android:id="@+id/grid_lo"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/blue_500"
+    android:background="@drawable/full_screen_gradient"
     android:columnCount="4"
     android:orientation="horizontal"
     android:padding="18dp"

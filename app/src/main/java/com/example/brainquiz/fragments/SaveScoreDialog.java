@@ -99,7 +99,7 @@ public class SaveScoreDialog extends AppCompatDialogFragment {
         } else {
             editTextUsername.setVisibility(View.INVISIBLE);
             tvUsername.setVisibility(View.VISIBLE);
-            tvUsername.setText(username+", ");
+            tvUsername.setText(username);
             btnSave.setOnClickListener(view1 -> {
                 tvError.setText("");
                 boolean success = FirebaseManager.getInstance().SaveScore(username, Integer.parseInt(score), Constants.NUMBERS_MEMORY_TABLE);

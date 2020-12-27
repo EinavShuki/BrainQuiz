@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/blue_500"
+    android:background="@drawable/full_screen_gradient"
     android:orientation="vertical"
     android:padding="18dp">
 
@@ -55,7 +55,7 @@
         android:paddingBottom="15dp"
         android:text="@string/continue_visual_memory"
         android:textAllCaps="false"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textSize="25sp" />
 
 

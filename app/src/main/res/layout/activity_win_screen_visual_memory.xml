@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/blue_500"
+    android:background="@drawable/full_screen_gradient"
     android:orientation="vertical"
     android:padding="18dp">
 
@@ -15,7 +15,7 @@
         android:gravity="center"
         android:text="@string/well_done"
         android:textColor="@color/white"
-        android:textSize="50sp" />
+        android:textSize="42sp" />
 
     <TextView
         android:textColor="@color/white"
@@ -46,7 +46,7 @@
             android:paddingBottom="15dp"
             android:text="@string/save_record"
             android:textAllCaps="false"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="25sp" />
 
         <Button
@@ -55,14 +55,14 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginStart="20dp"
-            android:background="@drawable/try_again_btn"
+            android:background="@drawable/submit_btn_style"
             android:paddingStart="20dp"
             android:paddingTop="15dp"
             android:paddingEnd="20dp"
             android:paddingBottom="15dp"
             android:text="@string/home"
             android:textAllCaps="false"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="25sp" />
     </LinearLayout>
 

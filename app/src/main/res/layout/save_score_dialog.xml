@@ -7,20 +7,20 @@
     android:background="@color/white"
     android:padding="18dp">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_username"
+        android:textSize="21sp"
+        android:textStyle="bold"
+        android:layout_gravity="center"
+        />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/tv_username"
-            android:textSize="21sp"
-            android:textStyle="bold"
-            android:layout_gravity="center"
-            />
 
         <TextView
             android:layout_width="wrap_content"
@@ -43,14 +43,12 @@
 
     </LinearLayout>
 
-
     <EditText
         android:id="@+id/edit_username"
         android:layout_marginTop="18dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Username"
-        android:gravity="center"/>
+        android:hint="@string/username" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -66,7 +64,6 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
         android:id="@+id/btn_save"
         android:textColor="@color/white"
         android:text="@string/save_record"

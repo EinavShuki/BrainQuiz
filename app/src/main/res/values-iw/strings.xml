@@ -31,4 +31,6 @@
     <string name="of">מתוך</string>
     <string name="well_done">כל הכבוד!!סיימתם את כל השלבים</string>
     <string name="home">מסך הבית</string>
+    <string name="username">שם משתמש</string>
+    <string name="leaderboards">טבלאות שיאים</string>
 </resources>
