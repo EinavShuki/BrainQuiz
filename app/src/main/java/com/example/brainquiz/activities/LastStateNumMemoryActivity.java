@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.brainquiz.R;
 
@@ -31,11 +32,13 @@ public class LastStateNumMemoryActivity extends AppCompatActivity {
             intent.putExtra("num",0);
             intent.putExtra("lev",0);
             startActivity(intent);
+            finish();
         });
         lastPointBtn.setOnClickListener(v->{
             intent.putExtra("num",sp.getInt("num",5));
             intent.putExtra("lev",sp.getInt("lev",1));
             startActivity(intent);
+            finish();
         });
 
     }

@@ -12,7 +12,6 @@ import android.widget.Button;
 import android.widget.GridLayout;
 
 import com.example.brainquiz.R;
-import com.example.brainquiz.WinScreenVisualMemory;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -95,7 +94,7 @@ public class VisualMemoryActivity extends AppCompatActivity {
                     if (currentBtnNum == numOfBtns) {
                         Intent intent;
                         if(level==30) {
-                            intent = new Intent(VisualMemoryActivity.this, WinScreenVisualMemory.class);
+                            intent = new Intent(VisualMemoryActivity.this, WinScreenVisualMemoryActivity.class);
                         }
                         else {
                             intent = new Intent(VisualMemoryActivity.this, VisualMemoryActivity.class);

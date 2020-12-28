@@ -1,18 +1,15 @@
-package com.example.brainquiz;
+package com.example.brainquiz.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.os.CountDownTimer;
 import android.widget.Button;
 
-import com.example.brainquiz.activities.MainActivity;
+import com.example.brainquiz.R;
 
-import java.io.BufferedReader;
-
-public class WinScreenVisualMemory extends AppCompatActivity {
+public class WinScreenVisualMemoryActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +23,7 @@ public class WinScreenVisualMemory extends AppCompatActivity {
         Button saveBtn=findViewById(R.id.save_score_btn);
 
         homeBtn.setOnClickListener(v->{
-            Intent intent=new Intent(WinScreenVisualMemory.this, MainActivity.class);
+            Intent intent=new Intent(WinScreenVisualMemoryActivity.this, MainActivity.class);
             applause.stop();
             startActivity(intent);
             finish();
