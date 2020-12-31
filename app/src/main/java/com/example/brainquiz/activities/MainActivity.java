@@ -46,6 +46,10 @@ public class MainActivity extends AppCompatActivity {
         });
         mathRiddle.setOnClickListener(v ->
                 startActivity(new Intent(MainActivity.this, MathRiddlesActivity.class)));
+            startActivity(new Intent(MainActivity.this, LastStateNumMemoryActivity.class));
+        visualMemoryCard.setOnClickListener(v ->
+                startActivity(new Intent(MainActivity.this, LastStateRiddlesActivity.class)));
+
     }
 
 }

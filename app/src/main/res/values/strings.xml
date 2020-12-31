@@ -32,4 +32,8 @@
     <string name="home">Home</string>
     <string name="username">User Name</string>
     <string name="leaderboards">Leaderboards</string>
+    <string name="Shown">The right answer</string>
+    <string name="answer">Answer</string>
+    <string name="your_score">Your Score</string>
+    <string name="enter_btn">Enter</string>
 </resources>

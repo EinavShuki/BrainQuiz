@@ -1,5 +1,10 @@
 package com.example.brainquiz.utils;
 
+import android.util.Pair;
+
+import java.util.Arrays;
+import java.util.List;
+
 public class Constants {
     public static final String MATH_TITLE = "Math";
     public static final String NUMBERS_MEMORY_TITLE = "Numbers Memory";
@@ -18,4 +23,40 @@ public class Constants {
     public static final String USERNAME_PREFS = "UserName";
     public static final String DIALOG_SAVE_SCORE = "save score dialog";
 
+    public static List<Pair<String, String>> riddlesLevelStart = Arrays.asList(
+            new Pair<>("5+2", "7"),
+            new Pair<>("3", "4"),
+            new Pair<>("3", "4"),
+            new Pair<>("3", "4"),
+            new Pair<>("3", "4"),
+            new Pair<>("3", "4"),
+            new Pair<>("3", "4"),
+            new Pair<>("3", "4"),
+            new Pair<>("3", "4"),
+            new Pair<>("3", "4")
+    );
+    public static List<Pair<String, String>> riddlesLevelMiddle = Arrays.asList(
+            new Pair<>("5+2", "7"),
+            new Pair<>("3", "4"),
+            new Pair<>("3", "4"),
+            new Pair<>("3", "4"),
+            new Pair<>("3", "4"),
+            new Pair<>("3", "4"),
+            new Pair<>("3", "4"),
+            new Pair<>("3", "4"),
+            new Pair<>("3", "4"),
+            new Pair<>("3", "4")
+    );
+    public static List<Pair<String, String>> riddlesLevelHigh = Arrays.asList(
+            new Pair<>("5+2", "7"),
+            new Pair<>("3", "4"),
+            new Pair<>("3", "4"),
+            new Pair<>("3", "4"),
+            new Pair<>("3", "4"),
+            new Pair<>("3", "4"),
+            new Pair<>("3", "4"),
+            new Pair<>("3", "4"),
+            new Pair<>("3", "4"),
+            new Pair<>("3", "4")
+    );
 }

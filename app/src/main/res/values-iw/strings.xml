@@ -22,7 +22,6 @@
     <string name="cancel">בטל</string>
     <string name="ok">אישור</string>
     <string name="your_record">התוצאה שלך:</string>
-    <string name="time">זמן:</string>
     <string name="numbers">מספרים</string>
     <string name="strikes">נסיונות</string>
     <string name="Record">שיא</string>
@@ -33,4 +32,9 @@
     <string name="home">מסך הבית</string>
     <string name="username">שם משתמש</string>
     <string name="leaderboards">טבלאות שיאים</string>
+    <string name="your_score">התוצאה שלך:</string>
+    <string name="time">:זמן</string>
+    <string name="Shown">התשובה הנכונה</string>
+    <string name="answer">תשובה</string>
+    <string name="enter_btn">הכנס</string>
 </resources>
