@@ -5,19 +5,67 @@
     android:background="@drawable/full_screen_gradient"
     android:orientation="vertical"
     android:padding="18dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.3"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1.7"
+            android:text="@string/score"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:textSize="25sp" />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="0"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:textSize="25sp"
+            android:id="@+id/count"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="4"
+            android:textStyle="bold"
+            android:text="1:00"
+            android:gravity="end"
+            android:textColor="@color/white"
+            android:textSize="25sp"
+            android:id="@+id/timer"/>
+<!--        <ImageView-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_weight="1"-->
+<!--            android:background="@drawable/clock"/>-->
+
+
+
+
+
+
+    </LinearLayout>
+
 
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="2"
+        android:layout_weight="1.7"
         android:focusable="true"
         android:focusableInTouchMode="true"
         android:gravity="center"
-        android:text="5 + 5 * 6 = ?"
+        android:text="dfsdfsfs"
         android:textColor="@color/white"
-        android:textSize="30sp"
-        android:textStyle="bold" />
+        android:textSize="42sp"
+        android:textStyle="bold"
+        android:id="@+id/calculate"
+        android:layoutDirection="ltr"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -33,12 +81,14 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:orientation="horizontal"
-            android:padding="5dp">
+            android:padding="5dp"
+            android:layoutDirection="ltr">
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/submit_btn_style"
                 android:layout_margin="3dp"
+                android:layoutDirection="ltr"
                 android:layout_weight="1">
             <TextView
                 android:id="@+id/answer"
@@ -46,19 +96,21 @@
                 android:layout_height="match_parent"
                 android:layout_weight="2"
                 android:hint="@string/answer"
+                android:gravity="center"
                 android:textColorHint ="@color/white"
                 android:textSize="25sp"
                 />
+
                 <TextView
+                    android:id="@+id/tv_x"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:gravity="center"
                     android:layout_marginLeft="30sp"
                     android:layout_weight="1"
-                    android:textColor="@color/white"
+                    android:gravity="center"
                     android:text="X"
-                    android:textSize="25sp"
-                    android:id="@+id/tv_x"/>
+                    android:textColor="@color/white"
+                    android:textSize="25sp" />
             </LinearLayout>
 
 
@@ -82,7 +134,8 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:orientation="horizontal"
-            android:padding="5dp">
+            android:padding="5dp"
+            android:layoutDirection="ltr">
 
             <Button
                 android:id="@+id/btn_1"
@@ -162,7 +215,8 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:orientation="horizontal"
-            android:padding="5dp">
+            android:padding="5dp"
+            android:layoutDirection="ltr">
 
             <Button
                 android:id="@+id/btn_6"

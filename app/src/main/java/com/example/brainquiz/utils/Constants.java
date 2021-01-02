@@ -24,16 +24,16 @@ public class Constants {
     public static final String DIALOG_SAVE_SCORE = "save score dialog";
 
     public static List<Pair<String, String>> riddlesLevelStart = Arrays.asList(
-            new Pair<>("5+2", "7"),
+            new Pair<>("5+2=", "7"),
+            new Pair<>("5+3=", "8"),
+            new Pair<>("10+5=", "15"),
+            new Pair<>("9/3", "3"),
             new Pair<>("3", "4"),
-            new Pair<>("3", "4"),
-            new Pair<>("3", "4"),
-            new Pair<>("3", "4"),
-            new Pair<>("3", "4"),
-            new Pair<>("3", "4"),
-            new Pair<>("3", "4"),
-            new Pair<>("3", "4"),
-            new Pair<>("3", "4")
+            new Pair<>("4", "4"),
+            new Pair<>("5", "4"),
+            new Pair<>("6", "4"),
+            new Pair<>("7", "4"),
+            new Pair<>("38", "4")
     );
     public static List<Pair<String, String>> riddlesLevelMiddle = Arrays.asList(
             new Pair<>("5+2", "7"),

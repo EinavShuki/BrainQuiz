@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.util.Pair;
 import android.view.View;
 import android.widget.Button;
@@ -13,6 +14,7 @@ import android.widget.TextView;
 
 
 import com.example.brainquiz.R;
+import com.example.brainquiz.utils.Constants;
 
 import java.util.Arrays;
 import java.util.List;
@@ -21,9 +23,15 @@ import java.util.Random;
 
 public class MathRiddlesActivity extends AppCompatActivity implements View.OnClickListener {
     SharedPreferences sp;
-    int level;
-    Random rand = new Random();
+    List<Pair<String, String>> levelStart = Constants.riddlesLevelStart;
+    List<Pair<String, String>> levelMiddle = Constants.riddlesLevelMiddle;
+    List<Pair<String, String>> levelHigh = Constants.riddlesLevelHigh;
 
+    int random_num = new Random().nextInt(levelStart.size());
+
+
+    int level=0;
+    Random rand = new Random();
     Button btnOne;
     Button btnTwo;
     Button btnThree;
@@ -37,16 +45,29 @@ public class MathRiddlesActivity extends AppCompatActivity implements View.OnCli
     TextView tvDelete;
     TextView tvAnswer;
     Button Enter;
-
-
+    TextView Calculate;
+    TextView Count;
+    TextView Timer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_math_riddles);
-
         initUi();
         setListeners();
+        Calculate.setText(levelStart.get(random_num).first);
+        new CountDownTimer(61000, 1000) {
+
+            public void onTick(long millisUntilFinished) {
+                Timer.setText(String.format("%02d:%02d", millisUntilFinished/1000/ 60, millisUntilFinished /1000% 60));
+            }
+
+            public void onFinish() {
+                Timer.setText("done!");
+            }
+        }.start();
+
+
     }
 
     private void initUi() {
@@ -61,9 +82,11 @@ public class MathRiddlesActivity extends AppCompatActivity implements View.OnCli
         btnNine = findViewById(R.id.btn_9);
         btnZero = findViewById(R.id.btn_0);
         tvDelete = findViewById(R.id.tv_x);
-
+        Calculate = findViewById(R.id.calculate);
+        Count = findViewById(R.id.count);
         Enter = findViewById(R.id.enter);
         tvAnswer = findViewById(R.id.answer);
+        Timer = findViewById(R.id.timer);
 
     }
 
@@ -78,6 +101,20 @@ public class MathRiddlesActivity extends AppCompatActivity implements View.OnCli
         btnEight.setOnClickListener(this);
         btnNine.setOnClickListener(this);
         btnZero.setOnClickListener(this);
+        tvDelete.setOnClickListener(this);
+
+        Enter.setOnClickListener(v -> {
+            if(!tvAnswer.getText().toString().equals("")){
+                if(tvAnswer.getText().toString().equals(levelStart.get(random_num).second)){
+                    Count.setText( String.valueOf(Integer.parseInt(Count.getText().toString())+1));
+                    random_num = new Random().nextInt(levelStart.size());
+                    Calculate.setText(levelStart.get(random_num).first);
+                    tvAnswer.setText("");
+
+                }
+            }
+
+        });
 
 
     }
