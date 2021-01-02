@@ -4,8 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.brainquiz.R;
 import com.example.brainquiz.fragments.SaveScoreDialog;
@@ -20,24 +22,25 @@ public class FailScreenNumberMemoryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fail_screen_number_memory);
 
-        int wrongNumber=getIntent().getIntExtra("wrong number",0);
-        int rightNumber=getIntent().getIntExtra("right number",0);
-        level=getIntent().getIntExtra("level",1);
 
-        Button tryAgain=findViewById(R.id.try_again_btn);
+        int wrongNumber = getIntent().getIntExtra("wrong number", 0);
+        int rightNumber = getIntent().getIntExtra("right number", 0);
+        level = getIntent().getIntExtra("level", 1);
+
+        Button tryAgain = findViewById(R.id.try_again_btn);
         Button btnSaveScore = findViewById(R.id.save_score_btn);
 
-        TextView wrongNumTv=findViewById(R.id.wrong_num);
-        TextView rightNumTv=findViewById(R.id.right_num);
-        TextView levelTv=findViewById(R.id.level_tv);
+        TextView wrongNumTv = findViewById(R.id.wrong_num);
+        TextView rightNumTv = findViewById(R.id.right_num);
+        TextView levelTv = findViewById(R.id.level_tv);
 
-        wrongNumTv.setText(wrongNumber+"");
-        rightNumTv.setText(rightNumber+"");
-        String lev=getString(R.string.level);
-        levelTv.setText(lev+" "+level);
+        wrongNumTv.setText(wrongNumber + "");
+        rightNumTv.setText(rightNumber + "");
+        String lev = getString(R.string.level);
+        levelTv.setText(lev + " " + level);
 
         tryAgain.setOnClickListener(v -> {
-            Intent intent=new Intent(FailScreenNumberMemoryActivity.this, LastStateNumMemoryActivity.class);
+            Intent intent = new Intent(FailScreenNumberMemoryActivity.this, LastStateNumMemoryActivity.class);
             startActivity(intent);
             finish();
         });
@@ -50,4 +53,5 @@ public class FailScreenNumberMemoryActivity extends AppCompatActivity {
             saveScoreDialog.show(getSupportFragmentManager(), Constants.DIALOG_SAVE_SCORE);
         });
     }
+
 }

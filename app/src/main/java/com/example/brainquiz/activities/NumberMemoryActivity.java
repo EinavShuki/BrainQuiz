@@ -6,12 +6,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.ObjectAnimator;
+import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.animation.LinearInterpolator;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.brainquiz.R;
 
@@ -26,19 +28,19 @@ public class NumberMemoryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_number_memory);
 
-        lev = getIntent().getIntExtra("level", 1);//from itself
-        numberToShow = getIntent().getIntExtra("number", 5);//from NumberMemorySecActivity
-        int lastNumberToShow = getIntent().getIntExtra("num", 0);//from LastState
-        int lastLevelToShow = getIntent().getIntExtra("lev", 0);//from LastState
-        numberToShow = Math.max(numberToShow, lastNumberToShow);
-        lev = Math.max(lev, lastLevelToShow);
+        lev = getIntent().getIntExtra("level", 1);//from itself  or LastState
+        numberToShow = getIntent().getIntExtra("number", 5);//from NumberMemorySecActivity or LastState
+//        int lastNumberToShow = getIntent().getIntExtra("num", 0);//from LastState
+//        int lastLevelToShow = getIntent().getIntExtra("lev", 0);//from LastState
+//        numberToShow = Math.max(numberToShow, lastNumberToShow);
+//        lev = Math.max(lev, lastLevelToShow);
 
         TextView numTv = findViewById(R.id.numtv);
         numTv.setText(numberToShow + "");
         progressBar = findViewById(R.id.progress_bar);
         ObjectAnimator progressAnimator = ObjectAnimator.ofInt(progressBar, "progress", 100, 0);
         if (numTv.length() > 6)
-            progressAnimator.setDuration(1500);
+            progressAnimator.setDuration(2000);
         else
             progressAnimator.setDuration(1000);
         progressAnimator.setInterpolator(new LinearInterpolator());
@@ -46,6 +48,7 @@ public class NumberMemoryActivity extends AppCompatActivity {
         intent = new Intent(this, NumberMemorySecActivity.class);
         intent.putExtra("number", numberToShow);
         intent.putExtra("level", lev);
+
         progressAnimator.addListener(new AnimatorListenerAdapter() {
             @Override
             public void onAnimationEnd(Animator animation) {
@@ -66,6 +69,7 @@ public class NumberMemoryActivity extends AppCompatActivity {
                 intent.putExtra("level", lev + 1);
                 startActivity(intent);
             }
+
             finish();
         }
     }

@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -29,17 +30,18 @@ public class LastStateNumMemoryActivity extends AppCompatActivity {
             lastPointBtn.setEnabled(true);
 
         newGameBtn.setOnClickListener(v->{
-            intent.putExtra("num",0);
-            intent.putExtra("lev",0);
+            intent.putExtra("number",5);
+            intent.putExtra("level",1);
             startActivity(intent);
             finish();
         });
         lastPointBtn.setOnClickListener(v->{
-            intent.putExtra("num",sp.getInt("num",5));
-            intent.putExtra("lev",sp.getInt("lev",1));
+            intent.putExtra("number",sp.getInt("num",5));
+            intent.putExtra("level",sp.getInt("lev",1));
             startActivity(intent);
             finish();
         });
 
     }
+
 }
