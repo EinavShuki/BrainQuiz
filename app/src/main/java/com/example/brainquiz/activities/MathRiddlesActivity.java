@@ -66,7 +66,7 @@ MathRiddlesActivity extends AppCompatActivity implements View.OnClickListener {
 
 
 
-        new CountDownTimer(61000, 1000) {
+        new CountDownTimer(11000, 1000) {
 
             public void onTick(long millisUntilFinished) {
                 Timer.setText(String.format("%02d:%02d", millisUntilFinished/1000/ 60, millisUntilFinished /1000% 60));
@@ -74,8 +74,9 @@ MathRiddlesActivity extends AppCompatActivity implements View.OnClickListener {
             }
 
             public void onFinish() {
-                Intent intent = new Intent(MathRiddlesActivity.this, FailScreenRiddlesActivity.class);
-                intent.putExtra("score", Count.getText().toString());
+                Intent intent = new Intent(MathRiddlesActivity.this, FailScreenVisualMemoryActivity.class);
+                intent.putExtra("level", Integer.parseInt(Count.getText().toString()));
+                intent.putExtra("nameActivity","MathRiddlesActivity");
                 startActivity(intent);
                 Timer.setText("done!");
             }

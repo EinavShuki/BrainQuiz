@@ -114,6 +114,7 @@ public class VisualMemoryActivity extends AppCompatActivity {
                     } else {
                         Intent intent = new Intent(VisualMemoryActivity.this, FailScreenVisualMemoryActivity.class);
                         intent.putExtra("level", level);
+                        intent.putExtra("nameActivity","VisualMemoryActivity");
                         startActivity(intent);
                     }
                     finish();

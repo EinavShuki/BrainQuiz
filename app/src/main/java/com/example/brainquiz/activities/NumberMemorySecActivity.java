@@ -6,10 +6,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.example.brainquiz.R;
 
@@ -37,10 +35,11 @@ public class NumberMemorySecActivity extends AppCompatActivity {
                     setResult(RESULT_OK);
                     finish();
                 } else {
-                    Intent intent = new Intent(NumberMemorySecActivity.this, FailScreenNumberMemoryActivity.class);
+                    Intent intent = new Intent(NumberMemorySecActivity.this, FailScreenActivity.class);
                     intent.putExtra("wrong number", num);
                     intent.putExtra("right number", number);
                     intent.putExtra("level", lev);
+                    intent.putExtra("nameActivity","NumberMemorySecActivity");
                     startActivity(intent);
                     finish();
                 }
