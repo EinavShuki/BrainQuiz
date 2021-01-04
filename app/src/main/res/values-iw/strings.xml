@@ -38,4 +38,5 @@
     <string name="answer">תשובה</string>
     <string name="enter_btn">הכנס</string>
     <string name="score">תוצאה:</string>
+    <string name="new_game">משחק חדש</string>
 </resources>

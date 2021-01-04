@@ -36,27 +36,14 @@ public class Constants {
             new Pair<>("38", "4")
     );
     public static List<Pair<String, String>> riddlesLevelMiddle = Arrays.asList(
-            new Pair<>("5+2", "7"),
-            new Pair<>("3", "4"),
-            new Pair<>("3", "4"),
-            new Pair<>("3", "4"),
-            new Pair<>("3", "4"),
-            new Pair<>("3", "4"),
-            new Pair<>("3", "4"),
-            new Pair<>("3", "4"),
-            new Pair<>("3", "4"),
-            new Pair<>("3", "4")
+            new Pair<>("20", "4"),
+            new Pair<>("20", "4"),
+            new Pair<>("20", "4")
+
     );
     public static List<Pair<String, String>> riddlesLevelHigh = Arrays.asList(
-            new Pair<>("5+2", "7"),
-            new Pair<>("3", "4"),
-            new Pair<>("3", "4"),
-            new Pair<>("3", "4"),
-            new Pair<>("3", "4"),
-            new Pair<>("3", "4"),
-            new Pair<>("3", "4"),
-            new Pair<>("3", "4"),
-            new Pair<>("3", "4"),
-            new Pair<>("3", "4")
+            new Pair<>("30", "4"),
+            new Pair<>("30", "4"),
+            new Pair<>("30", "4")
     );
 }

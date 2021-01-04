@@ -17,15 +17,20 @@ import com.example.brainquiz.R;
 import com.example.brainquiz.utils.Constants;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
-public class MathRiddlesActivity extends AppCompatActivity implements View.OnClickListener {
+public class
+MathRiddlesActivity extends AppCompatActivity implements View.OnClickListener {
     SharedPreferences sp;
     List<Pair<String, String>> levelStart = Constants.riddlesLevelStart;
     List<Pair<String, String>> levelMiddle = Constants.riddlesLevelMiddle;
     List<Pair<String, String>> levelHigh = Constants.riddlesLevelHigh;
+    String[] ecersice = {"", ""};
+
+    long time;
 
     int random_num = new Random().nextInt(levelStart.size());
 
@@ -55,14 +60,23 @@ public class MathRiddlesActivity extends AppCompatActivity implements View.OnCli
         setContentView(R.layout.activity_math_riddles);
         initUi();
         setListeners();
-        Calculate.setText(levelStart.get(random_num).first);
+        ecersice[0] =levelStart.get(random_num).first;
+        ecersice[1] =levelStart.get(random_num).second;
+        Calculate.setText(ecersice[0]);
+
+
+
         new CountDownTimer(61000, 1000) {
 
             public void onTick(long millisUntilFinished) {
                 Timer.setText(String.format("%02d:%02d", millisUntilFinished/1000/ 60, millisUntilFinished /1000% 60));
+                time = millisUntilFinished /1000% 60;
             }
 
             public void onFinish() {
+                Intent intent = new Intent(MathRiddlesActivity.this, FailScreenRiddlesActivity.class);
+                intent.putExtra("score", Count.getText().toString());
+                startActivity(intent);
                 Timer.setText("done!");
             }
         }.start();
@@ -105,10 +119,25 @@ public class MathRiddlesActivity extends AppCompatActivity implements View.OnCli
 
         Enter.setOnClickListener(v -> {
             if(!tvAnswer.getText().toString().equals("")){
-                if(tvAnswer.getText().toString().equals(levelStart.get(random_num).second)){
+                if(tvAnswer.getText().toString().equals(ecersice[1])){
                     Count.setText( String.valueOf(Integer.parseInt(Count.getText().toString())+1));
-                    random_num = new Random().nextInt(levelStart.size());
-                    Calculate.setText(levelStart.get(random_num).first);
+                    if( time>40) {
+                        random_num = new Random().nextInt(levelStart.size());
+                        ecersice[0] = levelStart.get(random_num).first;
+                        ecersice[1] = levelStart.get(random_num).second;
+
+                    }
+                    else if(time<=40 && time>20) {
+                        random_num = new Random().nextInt(levelMiddle.size());
+                        ecersice[0] = levelMiddle.get(random_num).first;
+                        ecersice[1] = levelMiddle.get(random_num).second;
+                    }
+                    else{
+                        random_num = new Random().nextInt(levelHigh.size());
+                        ecersice[0] = levelHigh.get(random_num).first;
+                        ecersice[1] = levelHigh.get(random_num).second;
+                    }
+                    Calculate.setText(ecersice[0]);
                     tvAnswer.setText("");
 
                 }
@@ -118,14 +147,13 @@ public class MathRiddlesActivity extends AppCompatActivity implements View.OnCli
 
 
     }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        SharedPreferences.Editor editor = sp.edit();
-        editor.putInt("lev", level);
-        editor.apply();
-    }
+//
+//    @Override
+//    protected void onPause() {
+//        super.onPause();
+//        SharedPreferences.Editor editor = sp.edit();
+//        editor.apply();
+//    }
 
     private void appendNumber(String num) {
         if (tvAnswer.getText().length() == 6) {
