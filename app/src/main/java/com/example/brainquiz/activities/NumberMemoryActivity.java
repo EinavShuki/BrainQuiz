@@ -2,6 +2,8 @@ package com.example.brainquiz.activities;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.appcompat.widget.ToolbarWidgetWrapper;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -10,6 +12,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.View;
 import android.view.animation.LinearInterpolator;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -30,13 +33,13 @@ public class NumberMemoryActivity extends AppCompatActivity {
 
         lev = getIntent().getIntExtra("level", 1);//from itself  or LastState
         numberToShow = getIntent().getIntExtra("number", 5);//from NumberMemorySecActivity or LastState
-//        int lastNumberToShow = getIntent().getIntExtra("num", 0);//from LastState
-//        int lastLevelToShow = getIntent().getIntExtra("lev", 0);//from LastState
-//        numberToShow = Math.max(numberToShow, lastNumberToShow);
-//        lev = Math.max(lev, lastLevelToShow);
+
+        Toolbar toolbar=findViewById(R.id.level_toolbar);
+        toolbar.setTitle(toolbar.getTitle()+" "+lev);
 
         TextView numTv = findViewById(R.id.numtv);
         numTv.setText(numberToShow + "");
+
         progressBar = findViewById(R.id.progress_bar);
         ObjectAnimator progressAnimator = ObjectAnimator.ofInt(progressBar, "progress", 100, 0);
         if (numTv.length() > 6)
@@ -45,6 +48,7 @@ public class NumberMemoryActivity extends AppCompatActivity {
             progressAnimator.setDuration(1000);
         progressAnimator.setInterpolator(new LinearInterpolator());
         progressAnimator.start();
+
         intent = new Intent(this, NumberMemorySecActivity.class);
         intent.putExtra("number", numberToShow);
         intent.putExtra("level", lev);

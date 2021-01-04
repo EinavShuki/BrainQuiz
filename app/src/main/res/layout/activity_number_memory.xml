@@ -7,6 +7,20 @@
     android:padding="18dp"
     android:background="@drawable/full_screen_gradient">
 
+    <androidx.appcompat.widget.Toolbar
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/level_toolbar"
+        android:layout_width="match_parent"
+        app:titleTextColor="@color/white"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@drawable/toolbar_level"
+        android:gravity="center_vertical"
+        app:layout_collapseMode="pin"
+        android:fitsSystemWindows="true"
+        app:layout_scrollFlags="scroll|enterAlways"
+        app:theme="@style/ThemeOverlay.MaterialComponents.Toolbar.Primary"
+        app:title="@string/level"/>
+
     <TextView
         android:id="@+id/numtv"
         android:layout_marginTop="150dp"

@@ -1,6 +1,7 @@
 package com.example.brainquiz.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 
 import android.content.Intent;
@@ -29,13 +30,17 @@ public class VisualMemoryActivity extends AppCompatActivity {
         setContentView(R.layout.activity_visual_memory);
         int level = getIntent().getIntExtra("level", 1);//from itself or failScreen or Intermediate
         strike = getIntent().getIntExtra("strike", 1);//first from itself,latter from Intermediate or failScreen
+
+        Toolbar toolbar=findViewById(R.id.level_toolbar);
+        toolbar.setTitle(toolbar.getTitle()+" "+level);
+
         Levels(level);
     }
 
 
     private void Levels(int level) {
         ArrayList<Button> allBtn = new ArrayList<>();
-        if (level < 4)
+        if (level <= 4)
             numOfBtns = 5;
         else
             numOfBtns = level;
@@ -112,7 +117,7 @@ public class VisualMemoryActivity extends AppCompatActivity {
                         intent.putExtra("level", level);
                         startActivity(intent);
                     } else {
-                        Intent intent = new Intent(VisualMemoryActivity.this, FailScreenVisualMemoryActivity.class);
+                        Intent intent = new Intent(VisualMemoryActivity.this, FailScreenActivity.class);
                         intent.putExtra("level", level);
                         intent.putExtra("nameActivity","VisualMemoryActivity");
                         startActivity(intent);

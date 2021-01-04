@@ -1,6 +1,7 @@
 package com.example.brainquiz.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -22,6 +23,9 @@ public class NumberMemorySecActivity extends AppCompatActivity {
 
         lev = getIntent().getIntExtra("level", 1);
         number = getIntent().getIntExtra("number", 5);
+
+        Toolbar toolbar=findViewById(R.id.level_toolbar);
+        toolbar.setTitle(toolbar.getTitle()+" "+lev);
 
         sp = getSharedPreferences("RememberDetails", MODE_PRIVATE);
         EditText editText = findViewById(R.id.num_input);
