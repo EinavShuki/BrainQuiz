@@ -1,16 +1,31 @@
 package com.example.brainquiz.activities;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.transition.Transition;
+import androidx.transition.TransitionValues;
 
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.AnimatorSet;
+import android.animation.LayoutTransition;
+import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.GridLayout;
+import android.widget.ImageButton;
+import android.widget.LinearLayout;
+import android.widget.PopupWindow;
 
 import com.example.brainquiz.R;
 
@@ -23,20 +38,51 @@ import java.util.Random;
 public class VisualMemoryActivity extends AppCompatActivity {
     Map<Integer, ArrayList<Integer>> caughtPos = new HashMap<>();
     int strike, numOfBtns;
+    LinearLayout mainLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_visual_memory);
+
+        mainLayout = findViewById(R.id.main_layout);
+        LayoutTransition layoutTransition = new LayoutTransition();
+        layoutTransition.enableTransitionType(LayoutTransition.CHANGING);
+        mainLayout.setLayoutTransition(layoutTransition);
+
         int level = getIntent().getIntExtra("level", 1);//from itself or failScreen or Intermediate
         strike = getIntent().getIntExtra("strike", 1);//first from itself,latter from Intermediate or failScreen
 
-        Toolbar toolbar=findViewById(R.id.level_toolbar);
-        toolbar.setTitle(toolbar.getTitle()+" "+level);
+        Toolbar toolbar = findViewById(R.id.level_toolbar);
+        toolbar.setTitle(toolbar.getTitle() + " " + level);
+        ImageButton questionMarkBtn = findViewById(R.id.questionmark_btn);
+        if(level==1)
+            animatQuestion(questionMarkBtn);
+        questionMarkBtn.setOnClickListener(v -> explain(v));
 
         Levels(level);
     }
 
+    private void animatQuestion(View v){
+        v.animate().setStartDelay(1000).scaleX(2.3f).scaleY(2.3f).setDuration(1000).withEndAction(new Runnable() {
+            @Override
+            public void run() {
+                v.animate().setStartDelay(100).scaleX(1f).scaleY(1f).setDuration(1000);
+            }
+        }).start();
+    }
+    private void explain(View v) {
+        v.setPressed(true);
+        LayoutInflater inflater = (LayoutInflater)getSystemService(LAYOUT_INFLATER_SERVICE);
+        View popupView = inflater.inflate(R.layout.popup_view, null);
+        // create the popup window
+        int width = LinearLayout.LayoutParams.WRAP_CONTENT;
+        int height = LinearLayout.LayoutParams.WRAP_CONTENT;
+        PopupWindow popupWindow = new PopupWindow(popupView, width, height, true);
+        popupWindow.setAnimationStyle(R.style.popup_window_animation);
+        popupWindow.showAtLocation(v, Gravity.TOP, 0, 300);
+        popupWindow.update();
+    }
 
     private void Levels(int level) {
         ArrayList<Button> allBtn = new ArrayList<>();
@@ -59,7 +105,7 @@ public class VisualMemoryActivity extends AppCompatActivity {
                 y = random.nextInt(10);
             }
             //insert to the map to avoid duplicates
-            if(caughtPos.get(x)==null)
+            if (caughtPos.get(x) == null)
                 caughtPos.put(x, new ArrayList<>());
             Objects.requireNonNull(caughtPos.get(x)).add(y);
 
@@ -92,16 +138,16 @@ public class VisualMemoryActivity extends AppCompatActivity {
                     if (currentBtnNum == 1) {
                         if (level != 1) {
                             for (Button b : allBtn) {
-                                b.setBackgroundResource(R.drawable.visual_memory_num_after_1);;
+                                b.setBackgroundResource(R.drawable.visual_memory_num_after_1);
+                                ;
                             }
                         }
                     }
                     if (currentBtnNum == numOfBtns) {
                         Intent intent;
-                        if(level==30) {
+                        if (level == 30) {
                             intent = new Intent(VisualMemoryActivity.this, WinScreenVisualMemoryActivity.class);
-                        }
-                        else {
+                        } else {
                             intent = new Intent(VisualMemoryActivity.this, VisualMemoryActivity.class);
                             intent.putExtra("level", level + 1);
                         }
@@ -119,7 +165,7 @@ public class VisualMemoryActivity extends AppCompatActivity {
                     } else {
                         Intent intent = new Intent(VisualMemoryActivity.this, FailScreenActivity.class);
                         intent.putExtra("level", level);
-                        intent.putExtra("nameActivity","VisualMemoryActivity");
+                        intent.putExtra("nameActivity", "VisualMemoryActivity");
                         startActivity(intent);
                     }
                     finish();

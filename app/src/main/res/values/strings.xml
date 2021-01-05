@@ -38,4 +38,5 @@
     <string name="enter_btn">Enter</string>
     <string name="score">Score:</string>
     <string name="new_game">New game</string>
+    <string name="explanation">Remember positions and press in order</string>
 </resources>

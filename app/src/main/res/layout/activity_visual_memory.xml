@@ -5,6 +5,7 @@
     android:orientation="vertical"
     android:padding="18dp"
     android:background="@drawable/full_screen_gradient"
+    android:id="@+id/main_layout"
     >
 
     <RelativeLayout
@@ -23,7 +24,16 @@
             app:layout_scrollFlags="scroll|enterAlways"
             app:theme="@style/ThemeOverlay.MaterialComponents.Toolbar.Primary"
             app:title="@string/level"
-            app:titleTextColor="@color/white" />
+            app:titleTextColor="@color/white" >
+            <ImageButton
+                android:id="@+id/questionmark_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/explain_btn"
+                android:background="@null"
+                android:layout_marginStart="275dp"
+                />
+        </androidx.appcompat.widget.Toolbar>
 
     </RelativeLayout>
 

@@ -18,7 +18,9 @@
         android:fitsSystemWindows="true"
         app:layout_scrollFlags="scroll|enterAlways"
         app:theme="@style/ThemeOverlay.MaterialComponents.Toolbar.Primary"
-        app:title="@string/level"/>
+        app:title="@string/level">
+
+    </androidx.appcompat.widget.Toolbar>
 
     <TextView
         android:focusable = "true"

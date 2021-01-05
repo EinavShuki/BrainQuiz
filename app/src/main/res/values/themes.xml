@@ -14,9 +14,13 @@
         <!-- Customize your theme here. -->
     </style>
 
-    <style name="MyToolbarTheme"
-        parent="@style/ThemeOverlay.AppCompat.Dark">
+    <style name="MyToolbarTheme" parent="@style/ThemeOverlay.AppCompat.Dark">
         <item name="colorControlNormal">@color/white</item>
         <item name="titleTextColor">@color/white</item>
+    </style>
+
+    <style name="popup_window_animation" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/popup_anim_show</item>
+        <item name="android:windowExitAnimation">@anim/popup_anim_hide</item>
     </style>
 </resources>

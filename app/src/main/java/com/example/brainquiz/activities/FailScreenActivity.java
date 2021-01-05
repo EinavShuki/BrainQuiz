@@ -62,6 +62,9 @@ public class FailScreenActivity extends AppCompatActivity implements View.OnClic
         int rightNumber = getIntent().getIntExtra("right number", 0);
         titleShow.setText(R.string.number);
         subTileShow.setText(R.string.your_ans);
+        subTileShow.setVisibility(View.VISIBLE);
+        subTilte.setVisibility(View.VISIBLE);
+        levelTv.setVisibility(View.VISIBLE);
         subTilte.setText(wrongNumber + "");
         title.setText(rightNumber + "");
         lev = getString(R.string.level);
@@ -73,14 +76,13 @@ public class FailScreenActivity extends AppCompatActivity implements View.OnClic
         int level = getIntent().getIntExtra("level", 1);
         title.setText(level + "");
         titleShow.setText(R.string.score);
-        subTileShow.setText(R.string.your_record);
     }
 
     private void renderVisualMemory() {
         int level = getIntent().getIntExtra("level", 1);
-        title.setText(level + "");
         titleShow.setText(R.string.score);
-        subTileShow.setText(R.string.your_record);
+        title.setText(level + "");
+
     }
 
     @Override
