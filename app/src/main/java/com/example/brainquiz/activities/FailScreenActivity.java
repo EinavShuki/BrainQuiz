@@ -25,15 +25,15 @@ public class FailScreenActivity extends AppCompatActivity implements View.OnClic
         init();
         name_activity = getIntent().getStringExtra("nameActivity");
         switch (name_activity) {
-            case "MathRiddlesActivity":
+            case Constants.MATH_TITLE:
                 table = Constants.MATH_TABLE;
                 renderMathRiddle();
                 break;
-            case "NumberMemorySecActivity":
+            case Constants.NUMBERS_MEMORY_TITLE:
                 table = Constants.NUMBERS_MEMORY_TABLE;
                 renderNumMemory();
                 break;
-            case "VisualMemoryActivity":
+            case Constants.VISUAL_MEMORY_TITLE:
                 table = Constants.VISUAL_MEMORY_TABLE;
                 renderVisualMemory();
                 break;
@@ -95,17 +95,17 @@ public class FailScreenActivity extends AppCompatActivity implements View.OnClic
     @Override
     public void onClick(View v) {
         switch (name_activity) {
-            case "NumberMemorySecActivity":
+            case Constants.NUMBERS_MEMORY_TITLE:
                 Intent intent = new Intent(FailScreenActivity.this, LastStateNumMemoryActivity.class);
                 startActivity(intent);
                 finish();
                 break;
-            case "MathRiddlesActivity":
+            case  Constants.MATH_TITLE :
                 Intent intent2 = new Intent(FailScreenActivity.this, MathRiddlesActivity.class);
                 startActivity(intent2);
                 finish();
                 break;
-            case "VisualMemoryActivity":
+            case Constants.VISUAL_MEMORY_TITLE:
                 Intent intent3 = new Intent(FailScreenActivity.this, VisualMemoryActivity.class);
                 intent3.putExtra("level", 1);
                 intent3.putExtra("strike", 1);
