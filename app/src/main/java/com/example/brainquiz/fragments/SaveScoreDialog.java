@@ -53,7 +53,6 @@ public class SaveScoreDialog extends AppCompatDialogFragment {
 
         String score = String.valueOf(getArguments().getInt(Constants.SCORE_KEY));
         table = getArguments().getString(Constants.SCREEN_KEY);
-        Log.i("score:", score);
 
         builder.setView(view).setTitle(getString(R.string.save_record));
 
@@ -68,7 +67,6 @@ public class SaveScoreDialog extends AppCompatDialogFragment {
 
 
         String username = preferences.getString(Constants.USERNAME_PREFS, "");
-        Log.e("SAVED NAME: ", username);
         // no username saved
         if (username.equals("")) {
             tvUsername.setVisibility(View.INVISIBLE);
