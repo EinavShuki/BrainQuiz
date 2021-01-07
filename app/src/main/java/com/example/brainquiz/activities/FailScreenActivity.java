@@ -9,11 +9,13 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.brainquiz.R;
+import com.example.brainquiz.fragments.SaveScoreDialog;
+import com.example.brainquiz.utils.Constants;
 
 public class FailScreenActivity extends AppCompatActivity implements View.OnClickListener {
     TextView subTilte, title, levelTv, titleShow, subTileShow;
     Button tryAgain, btnSaveScore;
-    String name_activity, lev;
+    String name_activity, lev, table;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,12 +26,15 @@ public class FailScreenActivity extends AppCompatActivity implements View.OnClic
         name_activity = getIntent().getStringExtra("nameActivity");
         switch (name_activity) {
             case "MathRiddlesActivity":
+                table = Constants.MATH_TABLE;
                 renderMathRiddle();
                 break;
             case "NumberMemorySecActivity":
+                table = Constants.NUMBERS_MEMORY_TABLE;
                 renderNumMemory();
                 break;
             case "VisualMemoryActivity":
+                table = Constants.VISUAL_MEMORY_TABLE;
                 renderVisualMemory();
                 break;
         }
@@ -37,13 +42,15 @@ public class FailScreenActivity extends AppCompatActivity implements View.OnClic
 
         tryAgain.setOnClickListener(this);
 
-//        btnSaveScore.setOnClickListener(v -> {
-//            SaveScoreDialog saveScoreDialog = new SaveScoreDialog();
-//            Bundle args = new Bundle();
-//            args.putInt(Constants.SCORE_KEY, level);
-//            saveScoreDialog.setArguments(args);
-//            saveScoreDialog.show(getSupportFragmentManager(), Constants.DIALOG_SAVE_SCORE);
-//        });
+        btnSaveScore.setOnClickListener(v -> {
+            SaveScoreDialog saveScoreDialog = new SaveScoreDialog();
+            Bundle args = new Bundle();
+            int level = getIntent().getIntExtra("level", 1);
+            args.putInt(Constants.SCORE_KEY, level);
+            args.putString(Constants.SCREEN_KEY, table);
+            saveScoreDialog.setArguments(args);
+            saveScoreDialog.show(getSupportFragmentManager(), Constants.DIALOG_SAVE_SCORE);
+        });
     }
 
     private void init() {

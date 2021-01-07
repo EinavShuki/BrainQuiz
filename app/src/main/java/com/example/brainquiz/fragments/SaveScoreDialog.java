@@ -35,6 +35,7 @@ public class SaveScoreDialog extends AppCompatDialogFragment {
     private TextView tvUsername;
     private Button btnSave;
     SharedPreferences preferences;
+    private String table;
     private Context context;
 
     @Override
@@ -49,7 +50,9 @@ public class SaveScoreDialog extends AppCompatDialogFragment {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         LayoutInflater inflater = getActivity().getLayoutInflater();
         View view = inflater.inflate(R.layout.save_score_dialog, null);
+
         String score = String.valueOf(getArguments().getInt(Constants.SCORE_KEY));
+        table = getArguments().getString(Constants.SCREEN_KEY);
         Log.i("score:", score);
 
         builder.setView(view).setTitle(getString(R.string.save_record));
@@ -86,7 +89,7 @@ public class SaveScoreDialog extends AppCompatDialogFragment {
                         editor.putString(Constants.USERNAME_PREFS, name);
                         editor.apply();
 
-                        boolean success = FirebaseManager.getInstance().SaveScore(name, Integer.parseInt(score), Constants.NUMBERS_MEMORY_TABLE);
+                        boolean success = FirebaseManager.getInstance().SaveScore(name, Integer.parseInt(score), table);
                         navigateToScoresScreen();
                     }
 
@@ -102,7 +105,7 @@ public class SaveScoreDialog extends AppCompatDialogFragment {
             tvUsername.setText(username);
             btnSave.setOnClickListener(view1 -> {
                 tvError.setText("");
-                boolean success = FirebaseManager.getInstance().SaveScore(username, Integer.parseInt(score), Constants.NUMBERS_MEMORY_TABLE);
+                boolean success = FirebaseManager.getInstance().SaveScore(username, Integer.parseInt(score), table);
                 navigateToScoresScreen();
             });
 
