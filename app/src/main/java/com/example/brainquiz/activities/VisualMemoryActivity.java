@@ -166,7 +166,7 @@ public class VisualMemoryActivity extends AppCompatActivity {
                     } else {
                         Intent intent = new Intent(VisualMemoryActivity.this, FailScreenActivity.class);
                         intent.putExtra("level", level);
-                        intent.putExtra("nameActivity", Constants.VISUAL_MEMORY_TITLE);
+                        intent.putExtra(Constants.ACTIVITY_NAME_KEY, Constants.VISUAL_MEMORY_TITLE);
                         startActivity(intent);
                     }
                     finish();

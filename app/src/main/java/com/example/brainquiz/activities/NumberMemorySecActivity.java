@@ -44,7 +44,7 @@ public class NumberMemorySecActivity extends AppCompatActivity {
                     intent.putExtra("wrong number", num);
                     intent.putExtra("right number", number);
                     intent.putExtra("level", lev);
-                    intent.putExtra("nameActivity", Constants.NUMBERS_MEMORY_TITLE);
+                    intent.putExtra(Constants.ACTIVITY_NAME_KEY, Constants.NUMBERS_MEMORY_TITLE);
                     startActivity(intent);
                     finish();
                 }

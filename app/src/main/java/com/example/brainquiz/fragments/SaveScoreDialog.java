@@ -34,7 +34,7 @@ public class SaveScoreDialog extends AppCompatDialogFragment {
     private TextView tvError;
     private TextView tvUsername;
     private Button btnSave;
-    SharedPreferences preferences;
+    private SharedPreferences preferences;
     private String table;
     private Context context;
 

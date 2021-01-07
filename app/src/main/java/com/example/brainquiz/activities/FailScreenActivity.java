@@ -23,7 +23,7 @@ public class FailScreenActivity extends AppCompatActivity implements View.OnClic
         setContentView(R.layout.activity_fail_screen);
 
         init();
-        name_activity = getIntent().getStringExtra("nameActivity");
+        name_activity = getIntent().getStringExtra(Constants.ACTIVITY_NAME_KEY);
         switch (name_activity) {
             case Constants.MATH_TITLE:
                 table = Constants.MATH_TABLE;
