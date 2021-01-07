@@ -84,7 +84,7 @@ MathRiddlesActivity extends AppCompatActivity implements View.OnClickListener {
             public void onFinish() {
                 Intent intent = new Intent(MathRiddlesActivity.this, FailScreenActivity.class);
                 intent.putExtra("level", Integer.parseInt(Count.getText().toString()));
-                intent.putExtra("nameActivity","MathRiddlesActivity");
+                intent.putExtra("nameActivity",Constants.MATH_TITLE);
                 startActivity(intent);
                 Timer.setText("done!");
             }

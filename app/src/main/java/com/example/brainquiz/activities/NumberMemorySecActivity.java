@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.brainquiz.R;
+import com.example.brainquiz.utils.Constants;
 
 public class NumberMemorySecActivity extends AppCompatActivity {
     SharedPreferences sp;
@@ -43,7 +44,7 @@ public class NumberMemorySecActivity extends AppCompatActivity {
                     intent.putExtra("wrong number", num);
                     intent.putExtra("right number", number);
                     intent.putExtra("level", lev);
-                    intent.putExtra("nameActivity","NumberMemorySecActivity");
+                    intent.putExtra("nameActivity", Constants.NUMBERS_MEMORY_TITLE);
                     startActivity(intent);
                     finish();
                 }

@@ -28,6 +28,7 @@ import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 
 import com.example.brainquiz.R;
+import com.example.brainquiz.utils.Constants;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -165,7 +166,7 @@ public class VisualMemoryActivity extends AppCompatActivity {
                     } else {
                         Intent intent = new Intent(VisualMemoryActivity.this, FailScreenActivity.class);
                         intent.putExtra("level", level);
-                        intent.putExtra("nameActivity", "VisualMemoryActivity");
+                        intent.putExtra("nameActivity", Constants.VISUAL_MEMORY_TITLE);
                         startActivity(intent);
                     }
                     finish();
