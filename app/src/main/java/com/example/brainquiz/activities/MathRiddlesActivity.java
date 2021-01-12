@@ -7,6 +7,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.drawable.AnimationDrawable;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.util.Log;
@@ -55,7 +56,7 @@ MathRiddlesActivity extends AppCompatActivity implements View.OnClickListener {
     TextView tvDelete;
     TextView tvAnswer;
     Button Enter;
-    TextView Calculate;
+    TextView riddle;
     TextView Count;
     TextView Timer;
 
@@ -75,20 +76,16 @@ MathRiddlesActivity extends AppCompatActivity implements View.OnClickListener {
         LinearLayout stripes = findViewById(R.id.stripes);
         stripes.startAnimation(animation);
 
-
-//        val animDrawable = root_layout.background as AnimationDrawable
-//        animDrawable.setEnterFadeDuration(10)
-//        animDrawable.setExitFadeDuration(5000)
-//        animDrawable.start()
-//        val anim = AnimationUtils.loadAnimation(this, R.anim.stripe_anim)
-//        stripes.startAnimation(anim)
-
-
         initUi();
         setListeners();
         ecersice[0] =levelStart.get(random_num).first;
         ecersice[1] =levelStart.get(random_num).second;
-        Calculate.setText(ecersice[0]);
+
+//        Animation tvAnimation = AnimationUtils.loadAnimation(getApplicationContext(),
+//                R.anim.fade_in);
+//        riddle.setText(ecersice[0]);
+//        riddle.startAnimation(tvAnimation);
+        showRiddle(ecersice[0]);
 
 
 
@@ -126,7 +123,7 @@ MathRiddlesActivity extends AppCompatActivity implements View.OnClickListener {
         btnNine = findViewById(R.id.btn_9);
         btnZero = findViewById(R.id.btn_0);
         tvDelete = findViewById(R.id.tv_x);
-        Calculate = findViewById(R.id.calculate);
+        riddle = findViewById(R.id.calculate);
         Count = findViewById(R.id.count);
         Enter = findViewById(R.id.enter);
         tvAnswer = findViewById(R.id.answer);
@@ -150,6 +147,7 @@ MathRiddlesActivity extends AppCompatActivity implements View.OnClickListener {
         Enter.setOnClickListener(v -> {
             if(!tvAnswer.getText().toString().equals("")){
                 if(tvAnswer.getText().toString().equals(ecersice[1])){
+                    playSuccess();
                     Count.setText( String.valueOf(Integer.parseInt(Count.getText().toString())+1));
                     if( time>40 && Integer.parseInt(Count.getText().toString())<5){
                         random_num = new Random().nextInt(levelStart.size());
@@ -171,9 +169,11 @@ MathRiddlesActivity extends AppCompatActivity implements View.OnClickListener {
                         ecersice[1] = levelHigh.get(random_num).second;
                         levelHigh.remove(random_num);
                     }
-                    Calculate.setText(ecersice[0]);
+                    showRiddle(ecersice[0]);
                     tvAnswer.setText("");
 
+                } else {
+                    playFailure();
                 }
             }
 
@@ -189,6 +189,21 @@ MathRiddlesActivity extends AppCompatActivity implements View.OnClickListener {
 //
 //        editor.apply();
 //    }
+
+    private void playSuccess(){
+        MediaPlayer mp = MediaPlayer.create(this, R.raw.correct_choice);
+        mp.start();
+    }
+    private void playFailure(){
+        MediaPlayer mp = MediaPlayer.create(this, R.raw.wrong);
+        mp.start();
+    }
+    private void showRiddle(String text){
+        Animation tvAnimation = AnimationUtils.loadAnimation(getApplicationContext(),
+                R.anim.fade_in);
+        riddle.setText(text);
+        riddle.startAnimation(tvAnimation);
+    }
 
     private void appendNumber(String num) {
         if (tvAnswer.getText().length() == 6) {
