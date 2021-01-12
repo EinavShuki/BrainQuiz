@@ -2,14 +2,20 @@ package com.example.brainquiz.activities;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
+
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.util.Log;
 import android.util.Pair;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 
@@ -57,6 +63,27 @@ MathRiddlesActivity extends AppCompatActivity implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_math_riddles);
+
+        ConstraintLayout root = findViewById(R.id.math_root_layout);
+
+        AnimationDrawable animationDrawable = (AnimationDrawable) root.getBackground();
+        animationDrawable.setEnterFadeDuration(10);
+        animationDrawable.setExitFadeDuration(5000);
+        animationDrawable.start();
+
+        Animation animation = AnimationUtils.loadAnimation(this, R.anim.stripe_anim);
+        LinearLayout stripes = findViewById(R.id.stripes);
+        stripes.startAnimation(animation);
+
+
+//        val animDrawable = root_layout.background as AnimationDrawable
+//        animDrawable.setEnterFadeDuration(10)
+//        animDrawable.setExitFadeDuration(5000)
+//        animDrawable.start()
+//        val anim = AnimationUtils.loadAnimation(this, R.anim.stripe_anim)
+//        stripes.startAnimation(anim)
+
+
         initUi();
         setListeners();
         ecersice[0] =levelStart.get(random_num).first;
