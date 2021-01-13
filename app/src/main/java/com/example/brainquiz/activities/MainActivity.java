@@ -3,8 +3,10 @@ package com.example.brainquiz.activities;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.brainquiz.R;
 import com.google.android.material.card.MaterialCardView;
@@ -30,6 +32,10 @@ public class MainActivity extends AppCompatActivity {
         numMemory = findViewById(R.id.num_memory);
         visualMemoryCard = findViewById(R.id.visual_memory_card);
         mathRiddle = findViewById(R.id.math_riddle);
+
+//        Typeface typeface = Typeface.createFromAsset(getAssets(), "fonts/FredokaOne-Regular.ttf");
+//        TextView mainTitle = findViewById(R.id.main_title);
+//        mainTitle.setTypeface(typeface);
     }
 
 
