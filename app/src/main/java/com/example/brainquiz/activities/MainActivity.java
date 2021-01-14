@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         });
         mathRiddle.setOnClickListener(v ->
-                startActivity(new Intent(MainActivity.this, CountDownActivity.class))
+                startActivity(new Intent(MainActivity.this, MathRiddlesActivity.class))
         );
 
 

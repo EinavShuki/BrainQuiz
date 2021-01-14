@@ -36,15 +36,10 @@ MathRiddlesActivity extends AppCompatActivity implements View.OnClickListener, A
     List<Pair<String, String>> levelStart = new ArrayList<>(Constants.riddlesLevelStart);
     List<Pair<String, String>> levelMiddle = new ArrayList<>(Constants.riddlesLevelMiddle);
     List<Pair<String, String>> levelHigh = new ArrayList<>(Constants.riddlesLevelHigh);
-
     String[] ecersice = {"", ""};
-
     long time;
-
     int random_num = new Random().nextInt(levelStart.size());
-
-
-    int level=0;
+    int level, asked = 0;
     Random rand = new Random();
     Button btnOne;
     Button btnTwo;
@@ -98,7 +93,7 @@ MathRiddlesActivity extends AppCompatActivity implements View.OnClickListener, A
             }
 
             public void onFinish() {
-                Intent intent = new Intent(MathRiddlesActivity.this, FailScreenActivity.class);
+                Intent intent = new Intent(MathRiddlesActivity.this, MathRiddlesResultsActivity.class);
                 intent.putExtra("level", Integer.parseInt(Count.getText().toString()));
                 intent.putExtra(Constants.ACTIVITY_NAME_KEY,Constants.MATH_TITLE);
                 startActivity(intent);
