@@ -4,8 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.widget.TextView;
 
 import com.example.brainquiz.R;
+import com.example.brainquiz.utils.Constants;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.AxisBase;
 import com.github.mikephil.charting.components.LimitLine;
@@ -24,11 +26,16 @@ import java.util.Map;
 public class MathRiddlesResultsActivity extends AppCompatActivity {
 
     LineChart lineChart;
+    TextView tvAccuracy;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_math_riddles_results);
+
+        tvAccuracy = findViewById(R.id.tv_accuracy);
+        String accuracy =  getIntent().getStringExtra(Constants.ACCURACY_KEY) + " %";
+        tvAccuracy.setText(accuracy);
 
         lineChart = findViewById(R.id.line_chart);
 

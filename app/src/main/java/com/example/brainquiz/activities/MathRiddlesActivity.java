@@ -57,7 +57,8 @@ MathRiddlesActivity extends AppCompatActivity implements View.OnClickListener, A
     TextView riddle;
     TextView Count;
     TextView Timer;
-    LottieAnimationView animationView;
+    LottieAnimationView correctAnimView;
+    LottieAnimationView wrongAnimView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -79,8 +80,11 @@ MathRiddlesActivity extends AppCompatActivity implements View.OnClickListener, A
         ecersice[0] =levelStart.get(random_num).first;
         ecersice[1] =levelStart.get(random_num).second;
 
-        showRiddle(ecersice[0]);
-
+        ++asked;
+        Animation tvAnimation = AnimationUtils.loadAnimation(getApplicationContext(),
+                R.anim.fade_in);
+        riddle.setText(ecersice[0]);
+        riddle.startAnimation(tvAnimation);
 
         new CountDownTimer(61000, 1000) {
 
@@ -94,8 +98,10 @@ MathRiddlesActivity extends AppCompatActivity implements View.OnClickListener, A
 
             public void onFinish() {
                 Intent intent = new Intent(MathRiddlesActivity.this, MathRiddlesResultsActivity.class);
-                intent.putExtra("level", Integer.parseInt(Count.getText().toString()));
-                intent.putExtra(Constants.ACTIVITY_NAME_KEY,Constants.MATH_TITLE);
+//                intent.putExtra("level", Integer.parseInt(Count.getText().toString()));
+//                intent.putExtra(Constants.ACTIVITY_NAME_KEY,Constants.MATH_TITLE);
+                float accuracy =  (Float.parseFloat(Count.getText().toString()) / asked) * 100;
+                intent.putExtra(Constants.ACCURACY_KEY, String.valueOf((int)accuracy));
                 startActivity(intent);
                 Timer.setText("done!");
             }
@@ -121,7 +127,8 @@ MathRiddlesActivity extends AppCompatActivity implements View.OnClickListener, A
         Enter = findViewById(R.id.enter);
         tvAnswer = findViewById(R.id.answer);
         Timer = findViewById(R.id.timer);
-        animationView = findViewById(R.id.correct_anim);
+        correctAnimView = findViewById(R.id.correct_anim);
+        wrongAnimView = findViewById(R.id.wrong_anim);
         Typeface typeface = Typeface.createFromAsset(getAssets(), "fonts/FredokaOne-Regular.ttf");
         riddle.setTypeface(typeface);
     }
@@ -144,31 +151,10 @@ MathRiddlesActivity extends AppCompatActivity implements View.OnClickListener, A
                     playSuccess();
                     tvAnswer.setText("");
                     Count.setText( String.valueOf(Integer.parseInt(Count.getText().toString())+1));
-                    if( time>40 && Integer.parseInt(Count.getText().toString())<5){
-                        random_num = new Random().nextInt(levelStart.size());
-                        ecersice[0] = levelStart.get(random_num).first;
-                        ecersice[1] = levelStart.get(random_num).second;
-                        levelStart.remove(random_num);
-                        Log.i("sssiiizzeee", String.valueOf(levelStart.size()));
-
-                    }
-                    else if((time<=40 && time>20 || (Integer.parseInt(Count.getText().toString())>=5)) && Integer.parseInt(Count.getText().toString())<10) {
-                        random_num = new Random().nextInt(levelMiddle.size());
-                        ecersice[0] = levelMiddle.get(random_num).first;
-                        ecersice[1] = levelMiddle.get(random_num).second;
-                        levelMiddle.remove(random_num);
-                    }
-                    else{
-                        random_num = new Random().nextInt(levelHigh.size());
-                        ecersice[0] = levelHigh.get(random_num).first;
-                        ecersice[1] = levelHigh.get(random_num).second;
-                        levelHigh.remove(random_num);
-                    }
-                    showRiddle(ecersice[0]);
-
-
+                    showRiddle();
                 } else {
                     playFailure();
+                    showRiddle();
                 }
                 tvAnswer.setText("");
             }
@@ -187,22 +173,68 @@ MathRiddlesActivity extends AppCompatActivity implements View.OnClickListener, A
 //    }
 
     private void playSuccess(){
-        animationView.setVisibility(View.VISIBLE);
-        animationView.playAnimation();
-        animationView.addAnimatorListener(this);
+        correctAnimView.setVisibility(View.VISIBLE);
+        correctAnimView.playAnimation();
+        correctAnimView.addAnimatorListener(this);
     }
     private void playFailure(){
-        MediaPlayer mp = MediaPlayer.create(this, R.raw.wrong);
-        mp.start();
+        wrongAnimView.setVisibility(View.VISIBLE);
+        wrongAnimView.playAnimation();
+        wrongAnimView.addAnimatorListener(new Animator.AnimatorListener() {
+            @Override
+            public void onAnimationStart(Animator animator) {
+                wrongAnimView.setVisibility(View.VISIBLE);
+                MediaPlayer mp = MediaPlayer.create(getBaseContext(), R.raw.wrong);
+                mp.start();
+            }
+
+            @Override
+            public void onAnimationEnd(Animator animator) {
+                wrongAnimView.setVisibility(View.GONE);
+            }
+
+            @Override
+            public void onAnimationCancel(Animator animator) {
+
+            }
+
+            @Override
+            public void onAnimationRepeat(Animator animator) {
+
+            }
+        });
+
     }
     private void playTap(){
         MediaPlayer mp = MediaPlayer.create(this, R.raw.tap);
         mp.start();
     }
-    private void showRiddle(String text){
+    private void showRiddle(){
+        if( time>40 && Integer.parseInt(Count.getText().toString())<5){
+            random_num = new Random().nextInt(levelStart.size());
+            ecersice[0] = levelStart.get(random_num).first;
+            ecersice[1] = levelStart.get(random_num).second;
+            levelStart.remove(random_num);
+            Log.i("sssiiizzeee", String.valueOf(levelStart.size()));
+
+        }
+        else if((time<=40 && time>20 || (Integer.parseInt(Count.getText().toString())>=5)) && Integer.parseInt(Count.getText().toString())<10) {
+            random_num = new Random().nextInt(levelMiddle.size());
+            ecersice[0] = levelMiddle.get(random_num).first;
+            ecersice[1] = levelMiddle.get(random_num).second;
+            levelMiddle.remove(random_num);
+        }
+        else{
+            random_num = new Random().nextInt(levelHigh.size());
+            ecersice[0] = levelHigh.get(random_num).first;
+            ecersice[1] = levelHigh.get(random_num).second;
+            levelHigh.remove(random_num);
+        }
+
+        ++asked;
         Animation tvAnimation = AnimationUtils.loadAnimation(getApplicationContext(),
                 R.anim.fade_in);
-        riddle.setText(text);
+        riddle.setText(ecersice[0]);
         riddle.startAnimation(tvAnimation);
     }
 
@@ -222,7 +254,6 @@ MathRiddlesActivity extends AppCompatActivity implements View.OnClickListener, A
     @Override
     public void onBackPressed() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-
         builder.setTitle("Confirm shutdown").setMessage("are you yiyuihj").setPositiveButton("yes,get out", (dialog, which) -> MathRiddlesActivity.super.onBackPressed()).setNegativeButton("stay..",null).show();
     }
 
@@ -270,14 +301,15 @@ MathRiddlesActivity extends AppCompatActivity implements View.OnClickListener, A
 
     @Override
     public void onAnimationStart(Animator animator) {
-        animationView.setVisibility(View.VISIBLE);
+
+        correctAnimView.setVisibility(View.VISIBLE);
         MediaPlayer mp = MediaPlayer.create(this, R.raw.correct_choice);
         mp.start();
     }
 
     @Override
     public void onAnimationEnd(Animator animator) {
-        animationView.setVisibility(View.GONE);
+        correctAnimView.setVisibility(View.GONE);
     }
 
     @Override
