@@ -40,4 +40,8 @@
     <string name="score">תוצאה:</string>
     <string name="new_game">משחק חדש</string>
     <string name="explanation">זכרו מיקומים ולחצו לפי הסדר</string>
+    <string name="confirm_exit">אישור יציאה..!!</string>
+    <string name="you_sure">"אתה בטוח רוצה לצאת "</string>
+    <string name="yes_get_out">"כן תצא "</string>
+    <string name="stay">תישאר</string>
 </resources>

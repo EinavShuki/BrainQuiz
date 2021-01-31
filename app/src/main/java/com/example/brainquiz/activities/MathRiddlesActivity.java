@@ -86,7 +86,7 @@ MathRiddlesActivity extends AppCompatActivity implements View.OnClickListener, A
         riddle.setText(ecersice[0]);
         riddle.startAnimation(tvAnimation);
 
-        new CountDownTimer(61000, 1000) {
+        new CountDownTimer(31000, 1000) {
 
             public void onTick(long millisUntilFinished) {
                 Timer.setText(String.format("%02d:%02d", millisUntilFinished/1000/ 60, millisUntilFinished /1000% 60));
@@ -254,8 +254,10 @@ MathRiddlesActivity extends AppCompatActivity implements View.OnClickListener, A
     @Override
     public void onBackPressed() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Confirm shutdown").setMessage("are you yiyuihj").setPositiveButton("yes,get out", (dialog, which) -> MathRiddlesActivity.super.onBackPressed()).setNegativeButton("stay..",null).show();
-    }
+        builder.setTitle(R.string.confirm_exit);
+        builder.setIcon(R.drawable.question);
+        builder.setMessage(R.string.you_sure);
+        builder.setPositiveButton(R.string.yes_get_out, (dialog, which) -> MathRiddlesActivity.super.onBackPressed()).setNegativeButton(R.string.stay,null).show(); }
 
     @Override
     public void onClick(View v) {

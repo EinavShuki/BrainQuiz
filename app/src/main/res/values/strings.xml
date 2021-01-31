@@ -39,4 +39,8 @@
     <string name="score">Score:</string>
     <string name="new_game">New game</string>
     <string name="explanation">Remember positions and press in order</string>
+    <string name="confirm_exit">Confirm Exit..!!</string>
+    <string name="you_sure">Are you sure, you want to exit</string>
+    <string name="yes_get_out">yes, get out</string>
+    <string name="stay">stay</string>
 </resources>
