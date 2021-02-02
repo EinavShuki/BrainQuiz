@@ -32,7 +32,7 @@ import java.util.List;
 import java.util.Random;
 
 public class
-MathRiddlesActivity extends AppCompatActivity implements View.OnClickListener, Animator.AnimatorListener {
+MathRiddlesActivity extends AppCompatActivity implements View.OnClickListener {
     SharedPreferences sp;
     List<Pair<String, String>> levelStart = new ArrayList<>(Constants.riddlesLevelStart);
     List<Pair<String, String>> levelMiddle = new ArrayList<>(Constants.riddlesLevelMiddle);
@@ -159,18 +159,17 @@ MathRiddlesActivity extends AppCompatActivity implements View.OnClickListener, A
             if(!tvAnswer.getText().toString().equals("")){
                 if(tvAnswer.getText().toString().equals(ecersice[1])){
                     timeWhenUserReacted = Float.parseFloat(Timer.getText().toString().substring(3));
-                    Log.i("timeWhenUserReacted", String.valueOf(timeWhenUserReacted));
                     float reactionTime = timeWhenQuestionShowed - timeWhenUserReacted;
-                    Log.i("REACTION TIME", String.valueOf(reactionTime));
                     totalReactionTime += reactionTime;
+
                     playSuccess();
+
                     tvAnswer.setText("");
                     Count.setText( String.valueOf(Integer.parseInt(Count.getText().toString())+1));
-                    showRiddle();
                 } else {
                     playFailure();
-                    showRiddle();
                 }
+                showRiddle();
                 tvAnswer.setText("");
             }
 
@@ -178,29 +177,44 @@ MathRiddlesActivity extends AppCompatActivity implements View.OnClickListener, A
 
 
     }
-//
-//    @Override
-//    protected void onPause() {
-//        super.onPause();
-//        SharedPreferences.Editor editor = sp.edit();
-//
-//        editor.apply();
-//    }
 
     private void playSuccess(){
         correctAnimView.setVisibility(View.VISIBLE);
         correctAnimView.playAnimation();
-        correctAnimView.addAnimatorListener(this);
+        MediaPlayer mp = MediaPlayer.create(getBaseContext(), R.raw.correct_choice);
+        mp.start();
+        correctAnimView.addAnimatorListener(new Animator.AnimatorListener() {
+            @Override
+            public void onAnimationStart(Animator animator) {
+                correctAnimView.setVisibility(View.VISIBLE);
+            }
+
+            @Override
+            public void onAnimationEnd(Animator animator) {
+                correctAnimView.setVisibility(View.GONE);
+            }
+
+            @Override
+            public void onAnimationCancel(Animator animator) {
+
+            }
+
+            @Override
+            public void onAnimationRepeat(Animator animator) {
+
+            }
+        });
     }
     private void playFailure(){
         wrongAnimView.setVisibility(View.VISIBLE);
         wrongAnimView.playAnimation();
+        MediaPlayer mp = MediaPlayer.create(getBaseContext(), R.raw.wrong);
+        mp.start();
         wrongAnimView.addAnimatorListener(new Animator.AnimatorListener() {
             @Override
             public void onAnimationStart(Animator animator) {
                 wrongAnimView.setVisibility(View.VISIBLE);
-                MediaPlayer mp = MediaPlayer.create(getBaseContext(), R.raw.wrong);
-                mp.start();
+
             }
 
             @Override
@@ -254,7 +268,6 @@ MathRiddlesActivity extends AppCompatActivity implements View.OnClickListener, A
         riddle.startAnimation(tvAnimation);
 
         timeWhenQuestionShowed = Float.parseFloat(Timer.getText().toString().substring(3));
-        Log.i("timeWhenQuestionShowed", String.valueOf(timeWhenQuestionShowed));
     }
 
     private void appendNumber(String num) {
@@ -263,11 +276,6 @@ MathRiddlesActivity extends AppCompatActivity implements View.OnClickListener, A
         }
         playTap();
         tvAnswer.append(num);
-    }
-
-    private void checkAnswer() {
-        String ans = tvAnswer.getText().toString();
-
     }
 
     @Override
@@ -317,29 +325,6 @@ MathRiddlesActivity extends AppCompatActivity implements View.OnClickListener, A
 
 
         }
-
-    }
-
-    @Override
-    public void onAnimationStart(Animator animator) {
-
-        correctAnimView.setVisibility(View.VISIBLE);
-        MediaPlayer mp = MediaPlayer.create(this, R.raw.correct_choice);
-        mp.start();
-    }
-
-    @Override
-    public void onAnimationEnd(Animator animator) {
-        correctAnimView.setVisibility(View.GONE);
-    }
-
-    @Override
-    public void onAnimationCancel(Animator animator) {
-
-    }
-
-    @Override
-    public void onAnimationRepeat(Animator animator) {
 
     }
 }
