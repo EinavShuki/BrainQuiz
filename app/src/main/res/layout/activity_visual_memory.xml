@@ -4,9 +4,10 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="18dp"
-    android:background="@drawable/full_screen_gradient"
+    android:background="@drawable/bubbles"
     android:id="@+id/main_layout"
     >
+
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -25,27 +26,34 @@
             app:theme="@style/ThemeOverlay.MaterialComponents.Toolbar.Primary"
             app:title="@string/level"
             app:titleTextColor="@color/white" >
-            <ImageButton
-                android:id="@+id/questionmark_btn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/explain_btn"
-                android:background="@null"
-                android:layout_marginStart="275dp"
-                />
         </androidx.appcompat.widget.Toolbar>
 
     </RelativeLayout>
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="10">
+
+    <ImageView
+        android:alpha="0.7"
+        android:layout_margin="20dp"
+        android:layout_width="350dp"
+        android:layout_height="300dp"
+        android:src="@drawable/count"
+        android:scaleType="fitXY"
+        android:background="@null"
+        android:id="@+id/animation_img_view"
+        android:translationY="90dp"
+        android:visibility="gone"
+        />
+
     <GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/grid_lo"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="10"
-        android:columnCount="4"
+        android:layout_height="match_parent"
         android:orientation="horizontal"
-        android:rowCount="10">
-
-
+        >
     </GridLayout>
+></RelativeLayout>
 </LinearLayout>

@@ -1,29 +1,33 @@
 package com.example.brainquiz.activities;
 
-import androidx.annotation.NonNull;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.transition.Transition;
-import androidx.transition.TransitionValues;
-
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
-import android.animation.AnimatorSet;
 import android.animation.LayoutTransition;
 import android.animation.ObjectAnimator;
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.AnimationDrawable;
+import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.Handler;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
+
 import android.view.View;
 import android.view.ViewGroup;
+
+import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.GridLayout;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 
@@ -40,12 +44,13 @@ public class VisualMemoryActivity extends AppCompatActivity {
     Map<Integer, ArrayList<Integer>> caughtPos = new HashMap<>();
     int strike, numOfBtns;
     LinearLayout mainLayout;
-
+    ImageView imageView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_visual_memory);
 
+        imageView=findViewById(R.id.animation_img_view);
         mainLayout = findViewById(R.id.main_layout);
         LayoutTransition layoutTransition = new LayoutTransition();
         layoutTransition.enableTransitionType(LayoutTransition.CHANGING);
@@ -56,24 +61,12 @@ public class VisualMemoryActivity extends AppCompatActivity {
 
         Toolbar toolbar = findViewById(R.id.level_toolbar);
         toolbar.setTitle(toolbar.getTitle() + " " + level);
-        ImageButton questionMarkBtn = findViewById(R.id.questionmark_btn);
         if(level==1)
-            animatQuestion(questionMarkBtn);
-        questionMarkBtn.setOnClickListener(v -> explain(v));
-
+            explain();
         Levels(level);
     }
 
-    private void animatQuestion(View v){
-        v.animate().setStartDelay(1000).scaleX(2.3f).scaleY(2.3f).setDuration(1000).withEndAction(new Runnable() {
-            @Override
-            public void run() {
-                v.animate().setStartDelay(100).scaleX(1f).scaleY(1f).setDuration(1000);
-            }
-        }).start();
-    }
-    private void explain(View v) {
-        v.setPressed(true);
+    private void explain() {
         LayoutInflater inflater = (LayoutInflater)getSystemService(LAYOUT_INFLATER_SERVICE);
         View popupView = inflater.inflate(R.layout.popup_view, null);
         // create the popup window
@@ -81,28 +74,39 @@ public class VisualMemoryActivity extends AppCompatActivity {
         int height = LinearLayout.LayoutParams.WRAP_CONTENT;
         PopupWindow popupWindow = new PopupWindow(popupView, width, height, true);
         popupWindow.setAnimationStyle(R.style.popup_window_animation);
-        popupWindow.showAtLocation(v, Gravity.TOP, 0, 300);
+        //prevents error
+        findViewById(R.id.main_layout).post(new Runnable() {
+            public void run() {
+                popupWindow.showAtLocation(findViewById(R.id.main_layout), Gravity.TOP, 0, 600);
+            }
+        });
         popupWindow.update();
     }
 
     private void Levels(int level) {
         ArrayList<Button> allBtn = new ArrayList<>();
-        if (level <= 4)
+        if(level==1)
+            numOfBtns = 5;
+        else if (level <= 3)
             numOfBtns = 5;
         else
-            numOfBtns = level;
+            numOfBtns = level+2;
+        switch (level)
+        {
+            case 1:mainLayout.setBackgroundResource(R.drawable.bubbles);
+        }
 
         GridLayout btnsLo = findViewById(R.id.grid_lo);
         Button lastPressed = new Button(VisualMemoryActivity.this);
         lastPressed.setText(0 + "");
         Random random = new Random();
 
-        int x = random.nextInt(3);
+        int x = random.nextInt(4);
         int y = random.nextInt(10);
         for (int i = 0; i < numOfBtns; i++) {
             //we don't want duplicates
             while ((caughtPos.containsKey(x) && Objects.requireNonNull(caughtPos.get(x)).contains(y))) {
-                x = random.nextInt(3);
+                x = random.nextInt(4);
                 y = random.nextInt(10);
             }
             //insert to the map to avoid duplicates
@@ -139,8 +143,22 @@ public class VisualMemoryActivity extends AppCompatActivity {
                     if (currentBtnNum == 1) {
                         if (level != 1) {
                             for (Button b : allBtn) {
-                                b.setBackgroundResource(R.drawable.visual_memory_num_after_1);
-                                ;
+                                MediaPlayer countSound=MediaPlayer.create(VisualMemoryActivity.this,R.raw.countdown);
+                                countSound.start();
+                                Animation count = AnimationUtils.loadAnimation(VisualMemoryActivity.this, R.anim.counting);
+                                imageView.setAnimation(count);
+                                imageView.setVisibility(View.VISIBLE);
+                                AnimationDrawable animationDrawable = (AnimationDrawable) imageView.getDrawable();
+                                animationDrawable.start();
+                                new Handler().postDelayed(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        countSound.stop();
+                                        imageView.setVisibility(View.GONE);
+                                        b.setBackgroundResource(R.drawable.visual_memory_num_after_1);
+                                    }
+                                },3300);
+
                             }
                         }
                     }
