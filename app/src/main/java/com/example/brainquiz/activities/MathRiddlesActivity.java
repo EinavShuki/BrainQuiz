@@ -25,6 +25,7 @@ import android.widget.TextView;
 import com.airbnb.lottie.LottieAnimationView;
 import com.example.brainquiz.R;
 import com.example.brainquiz.utils.Constants;
+import com.example.brainquiz.utils.SharedPrefsManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -102,6 +103,9 @@ MathRiddlesActivity extends AppCompatActivity implements View.OnClickListener, A
 //                intent.putExtra(Constants.ACTIVITY_NAME_KEY,Constants.MATH_TITLE);
                 float accuracy =  (Float.parseFloat(Count.getText().toString()) / asked) * 100;
                 intent.putExtra(Constants.ACCURACY_KEY, String.valueOf((int)accuracy));
+
+                SharedPrefsManager.saveInLastScores(Count.getText().toString(), MathRiddlesActivity.this);
+
                 startActivity(intent);
                 Timer.setText("done!");
             }

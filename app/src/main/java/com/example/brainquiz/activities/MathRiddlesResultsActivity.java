@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import com.example.brainquiz.R;
 import com.example.brainquiz.utils.Constants;
+import com.example.brainquiz.utils.SharedPrefsManager;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.AxisBase;
 import com.github.mikephil.charting.components.LimitLine;
@@ -21,6 +22,8 @@ import com.github.mikephil.charting.formatter.ValueFormatter;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Map;
 
 public class MathRiddlesResultsActivity extends AppCompatActivity {
@@ -59,10 +62,15 @@ public class MathRiddlesResultsActivity extends AppCompatActivity {
         lineChart.getXAxis().setDrawLimitLinesBehindData(false);
         lineChart.getLegend().setEnabled(false);
 
+        ArrayList<Integer> lastScores = SharedPrefsManager.readLastScores(MathRiddlesResultsActivity.this);
+        Collections.sort(lastScores);
+
         ArrayList<Entry> yValues = new ArrayList<>();
-        yValues.add(new Entry(1, 5));
-        yValues.add(new Entry(2, 8));
-        yValues.add(new Entry(3, 15));
+
+        for(int i = 0; i < lastScores.size(); i++){
+            yValues.add(new Entry(i + 1, lastScores.get(i)));
+        }
+
 
         LineDataSet set1 = new LineDataSet(yValues, "");
         set1.setFillColor(Color.RED);
