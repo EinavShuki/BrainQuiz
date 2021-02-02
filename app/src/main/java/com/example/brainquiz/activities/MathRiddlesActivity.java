@@ -60,6 +60,10 @@ MathRiddlesActivity extends AppCompatActivity implements View.OnClickListener, A
     TextView Timer;
     LottieAnimationView correctAnimView;
     LottieAnimationView wrongAnimView;
+    float timeWhenQuestionShowed = 30  ;
+    float timeWhenUserReacted;
+    float totalReactionTime = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -101,8 +105,10 @@ MathRiddlesActivity extends AppCompatActivity implements View.OnClickListener, A
                 Intent intent = new Intent(MathRiddlesActivity.this, MathRiddlesResultsActivity.class);
 //                intent.putExtra("level", Integer.parseInt(Count.getText().toString()));
 //                intent.putExtra(Constants.ACTIVITY_NAME_KEY,Constants.MATH_TITLE);
-                float accuracy =  (Float.parseFloat(Count.getText().toString()) / asked) * 100;
+                float accuracy =  (Float.parseFloat(Count.getText().toString()) / (asked - 1) ) * 100;
+
                 intent.putExtra(Constants.ACCURACY_KEY, String.valueOf((int)accuracy));
+                intent.putExtra(Constants.REACTION_TIME_KEY,  String.format("%.2f", (totalReactionTime / asked)));
 
                 SharedPrefsManager.saveInLastScores(Count.getText().toString(), MathRiddlesActivity.this);
 
@@ -152,6 +158,11 @@ MathRiddlesActivity extends AppCompatActivity implements View.OnClickListener, A
         Enter.setOnClickListener(v -> {
             if(!tvAnswer.getText().toString().equals("")){
                 if(tvAnswer.getText().toString().equals(ecersice[1])){
+                    timeWhenUserReacted = Float.parseFloat(Timer.getText().toString().substring(3));
+                    Log.i("timeWhenUserReacted", String.valueOf(timeWhenUserReacted));
+                    float reactionTime = timeWhenQuestionShowed - timeWhenUserReacted;
+                    Log.i("REACTION TIME", String.valueOf(reactionTime));
+                    totalReactionTime += reactionTime;
                     playSuccess();
                     tvAnswer.setText("");
                     Count.setText( String.valueOf(Integer.parseInt(Count.getText().toString())+1));
@@ -214,6 +225,7 @@ MathRiddlesActivity extends AppCompatActivity implements View.OnClickListener, A
         mp.start();
     }
     private void showRiddle(){
+
         if( time>40 && Integer.parseInt(Count.getText().toString())<5){
             random_num = new Random().nextInt(levelStart.size());
             ecersice[0] = levelStart.get(random_num).first;
@@ -240,6 +252,9 @@ MathRiddlesActivity extends AppCompatActivity implements View.OnClickListener, A
                 R.anim.fade_in);
         riddle.setText(ecersice[0]);
         riddle.startAnimation(tvAnimation);
+
+        timeWhenQuestionShowed = Float.parseFloat(Timer.getText().toString().substring(3));
+        Log.i("timeWhenQuestionShowed", String.valueOf(timeWhenQuestionShowed));
     }
 
     private void appendNumber(String num) {

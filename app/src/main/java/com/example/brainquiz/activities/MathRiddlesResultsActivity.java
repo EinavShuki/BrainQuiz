@@ -30,6 +30,7 @@ public class MathRiddlesResultsActivity extends AppCompatActivity {
 
     LineChart lineChart;
     TextView tvAccuracy;
+    TextView tvReactionTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,8 +38,13 @@ public class MathRiddlesResultsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_math_riddles_results);
 
         tvAccuracy = findViewById(R.id.tv_accuracy);
+        tvReactionTime = findViewById(R.id.tv_reaction);
+
         String accuracy =  getIntent().getStringExtra(Constants.ACCURACY_KEY) + " %";
+        String reaction = getIntent().getStringExtra(Constants.REACTION_TIME_KEY) + "sec";
+
         tvAccuracy.setText(accuracy);
+        tvReactionTime.setText(reaction);
 
         lineChart = findViewById(R.id.line_chart);
 
@@ -85,6 +91,12 @@ public class MathRiddlesResultsActivity extends AppCompatActivity {
         dataSets.add(set1);
 
         LineData data = new LineData(dataSets);
+        data.setValueFormatter(new ValueFormatter() {
+            @Override
+            public String getFormattedValue(float value) {
+                return "" + ((int) value);
+            }
+        });
 
         lineChart.setData(data);
     }
