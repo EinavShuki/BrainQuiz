@@ -16,19 +16,29 @@ public class LastStateRiddlesActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_last_state_riddles);
-        Button newGameBtn=findViewById(R.id.new_game_btn);
-        Button lastPointBtn=findViewById(R.id.continue_btn);
-        intent=new Intent(LastStateRiddlesActivity.this,MathRiddlesActivity.class);
-        sp = getSharedPreferences("RememberDetails1",MODE_PRIVATE);
+        Button newGameBtn = findViewById(R.id.new_game_btn);
+        Button lastPointBtn = findViewById(R.id.continue_btn);
+        intent = new Intent(LastStateRiddlesActivity.this, MathRiddlesActivity.class);
+        sp = getSharedPreferences("RememberDetails1", MODE_PRIVATE);
 
-        newGameBtn.setOnClickListener(v->{
-            intent.putExtra("lev_riddles",1);
+        newGameBtn.setOnClickListener(v -> {
+            intent.putExtra("lev_riddles", 1);
             startActivity(intent);
         });
-        lastPointBtn.setOnClickListener(v->{
-            intent.putExtra("lev_riddles",sp.getInt("lev",1));
+        lastPointBtn.setOnClickListener(v -> {
+            intent.putExtra("lev_riddles", sp.getInt("lev", 1));
             startActivity(intent);
         });
+    }
+
+    public void onBackPressed() {
+        finish();
+            intent=new Intent(LastStateRiddlesActivity.this,MainActivity.class);
+            startActivity(intent);
 
     }
+
+
+
+
 }
