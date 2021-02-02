@@ -102,12 +102,11 @@ MathRiddlesActivity extends AppCompatActivity implements View.OnClickListener {
 
             public void onFinish() {
                 Intent intent = new Intent(MathRiddlesActivity.this, MathRiddlesResultsActivity.class);
-//                intent.putExtra("level", Integer.parseInt(Count.getText().toString()));
-//                intent.putExtra(Constants.ACTIVITY_NAME_KEY,Constants.MATH_TITLE);
                 float accuracy =  (Float.parseFloat(Count.getText().toString()) / (asked - 1) ) * 100;
 
                 intent.putExtra(Constants.ACCURACY_KEY, String.valueOf((int)accuracy));
                 intent.putExtra(Constants.REACTION_TIME_KEY,  String.format("%.2f", (totalReactionTime / asked)));
+                intent.putExtra(Constants.MATH_SCORE_KEY, Count.getText().toString());
 
                 SharedPrefsManager.saveInLastScores(Count.getText().toString(), MathRiddlesActivity.this);
 

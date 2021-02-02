@@ -18,6 +18,7 @@ public class Constants {
     public static final String MATH_SCORES_KEY = "mathScoresKey";
     public static final String MATH_SCORES_PREFS = "mathScoresPrefs";
     public static final String MATH_KEY = "mathKey";
+    public static final String MATH_SCORE_KEY = "mathScoreKey";
     public static final String ACTIVITY_NAME_KEY = "nameActivity";
     public static final String ACCURACY_KEY = "accuracy";
     public static final String REACTION_TIME_KEY = "reactionTime";

@@ -2,11 +2,14 @@ package com.example.brainquiz.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.brainquiz.R;
+import com.example.brainquiz.fragments.SaveScoreDialog;
 import com.example.brainquiz.utils.Constants;
 import com.example.brainquiz.utils.SharedPrefsManager;
 import com.github.mikephil.charting.charts.LineChart;
@@ -29,8 +32,8 @@ import java.util.Map;
 public class MathRiddlesResultsActivity extends AppCompatActivity {
 
     LineChart lineChart;
-    TextView tvAccuracy;
-    TextView tvReactionTime;
+    TextView tvAccuracy, tvReactionTime, tvScore;
+    Button btnTryAgain, btnSaveScore;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,13 +41,33 @@ public class MathRiddlesResultsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_math_riddles_results);
 
         tvAccuracy = findViewById(R.id.tv_accuracy);
+        tvScore = findViewById(R.id.tv_math_score);
         tvReactionTime = findViewById(R.id.tv_reaction);
+        btnTryAgain = findViewById(R.id.try_again_math_btn);
+        btnSaveScore = findViewById(R.id.save_math_score_btn);
 
         String accuracy =  getIntent().getStringExtra(Constants.ACCURACY_KEY) + " %";
         String reaction = getIntent().getStringExtra(Constants.REACTION_TIME_KEY) + "sec";
+        String score = getIntent().getStringExtra(Constants.MATH_SCORE_KEY);
 
+        tvScore.setText(score);
         tvAccuracy.setText(accuracy);
         tvReactionTime.setText(reaction);
+
+        btnSaveScore.setOnClickListener(v -> {
+            SaveScoreDialog saveScoreDialog = new SaveScoreDialog();
+            Bundle args = new Bundle();
+            args.putInt(Constants.SCORE_KEY, Integer.parseInt(score));
+            args.putString(Constants.SCREEN_KEY, Constants.MATH_TABLE);
+            saveScoreDialog.setArguments(args);
+            saveScoreDialog.show(getSupportFragmentManager(), Constants.DIALOG_SAVE_SCORE);
+        });
+
+        btnTryAgain.setOnClickListener(v -> {
+            Intent intent = new Intent(MathRiddlesResultsActivity.this, MathRiddlesActivity.class);
+            startActivity(intent);
+            finish();
+        });
 
         lineChart = findViewById(R.id.line_chart);
 
