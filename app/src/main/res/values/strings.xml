@@ -43,4 +43,5 @@
     <string name="you_sure">Are you sure, you want to exit</string>
     <string name="yes_get_out">yes, get out</string>
     <string name="stay">stay</string>
+    <string name="color_matcher">Color Matcher</string>
 </resources>

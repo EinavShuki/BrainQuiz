@@ -16,5 +16,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:lottie_autoPlay="true"
-        app:lottie_rawRes="@raw/countdown"/>
+        app:lottie_rawRes="@raw/countdown_anim"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

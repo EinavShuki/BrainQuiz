@@ -1,8 +1,7 @@
 package com.example.brainquiz.activities;
 
-
-
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -18,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
     MaterialCardView numMemory;
     MaterialCardView visualMemoryCard;
     MaterialCardView mathRiddle;
+    MaterialCardView colorMatcherCard;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,18 +33,17 @@ public class MainActivity extends AppCompatActivity {
         numMemory = findViewById(R.id.num_memory);
         visualMemoryCard = findViewById(R.id.visual_memory_card);
         mathRiddle = findViewById(R.id.math_riddle);
-
-//        Typeface typeface = Typeface.createFromAsset(getAssets(), "fonts/FredokaOne-Regular.ttf");
-//        TextView mainTitle = findViewById(R.id.main_title);
-//        mainTitle.setTypeface(typeface);
+        colorMatcherCard = findViewById(R.id.color_matcher_card);
     }
 
 
     private void setListeners() {
         btnLeaderboards.setOnClickListener(view ->
                 startActivity(new Intent(MainActivity.this, LeaderboardActivity.class)));
+
         numMemory.setOnClickListener(v ->
                 startActivity(new Intent(MainActivity.this, LastStateNumMemoryActivity.class)));
+
         visualMemoryCard.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, VisualMemoryActivity.class);
             intent.putExtra("level", 1);
@@ -55,7 +54,9 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, MathRiddlesActivity.class))
         );
 
-
+        colorMatcherCard.setOnClickListener(v -> {
+            startActivity(new Intent(MainActivity.this, ColorMatcherActivity.class));
+        });
 
     }
 

@@ -228,7 +228,7 @@ MathRiddlesActivity extends AppCompatActivity implements View.OnClickListener {
 
     }
     private void playTap(){
-        MediaPlayer mp = MediaPlayer.create(this, R.raw.tap);
+        MediaPlayer mp = MediaPlayer.create(MathRiddlesActivity.this, R.raw.tap);
         mp.start();
     }
     private void showRiddle(){
