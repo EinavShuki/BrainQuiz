@@ -15,9 +15,13 @@ public class Constants {
     public static final String VISUAL_MEMORY_TABLE = "visualMemoryScore";
     public static final String SEQUENCE_TABLE = "sequenceScore";
     public static final String SCREEN_KEY = "screenKey";
+    public static final String MATH_SCORES_KEY = "mathScoresKey";
+    public static final String MATH_SCORES_PREFS = "mathScoresPrefs";
     public static final String MATH_KEY = "mathKey";
+    public static final String MATH_SCORE_KEY = "mathScoreKey";
     public static final String ACTIVITY_NAME_KEY = "nameActivity";
     public static final String ACCURACY_KEY = "accuracy";
+    public static final String REACTION_TIME_KEY = "reactionTime";
     public static final String NUMBERS_MEMORY_KEY = "numberMemoryKey";
     public static final String VISUAL_MEMORY_KEY = "visualMemoryKey";
     public static final String SEQUENCE_KEY = "sequenceKey";

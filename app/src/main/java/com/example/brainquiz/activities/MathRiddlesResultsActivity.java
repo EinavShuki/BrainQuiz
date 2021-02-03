@@ -2,12 +2,16 @@ package com.example.brainquiz.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.brainquiz.R;
+import com.example.brainquiz.fragments.SaveScoreDialog;
 import com.example.brainquiz.utils.Constants;
+import com.example.brainquiz.utils.SharedPrefsManager;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.AxisBase;
 import com.github.mikephil.charting.components.LimitLine;
@@ -21,12 +25,15 @@ import com.github.mikephil.charting.formatter.ValueFormatter;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Map;
 
 public class MathRiddlesResultsActivity extends AppCompatActivity {
 
     LineChart lineChart;
-    TextView tvAccuracy;
+    TextView tvAccuracy, tvReactionTime, tvScore;
+    Button btnTryAgain, btnSaveScore;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,8 +41,33 @@ public class MathRiddlesResultsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_math_riddles_results);
 
         tvAccuracy = findViewById(R.id.tv_accuracy);
+        tvScore = findViewById(R.id.tv_math_score);
+        tvReactionTime = findViewById(R.id.tv_reaction);
+        btnTryAgain = findViewById(R.id.try_again_math_btn);
+        btnSaveScore = findViewById(R.id.save_math_score_btn);
+
         String accuracy =  getIntent().getStringExtra(Constants.ACCURACY_KEY) + " %";
+        String reaction = getIntent().getStringExtra(Constants.REACTION_TIME_KEY) + "sec";
+        String score = getIntent().getStringExtra(Constants.MATH_SCORE_KEY);
+
+        tvScore.setText(score);
         tvAccuracy.setText(accuracy);
+        tvReactionTime.setText(reaction);
+
+        btnSaveScore.setOnClickListener(v -> {
+            SaveScoreDialog saveScoreDialog = new SaveScoreDialog();
+            Bundle args = new Bundle();
+            args.putInt(Constants.SCORE_KEY, Integer.parseInt(score));
+            args.putString(Constants.SCREEN_KEY, Constants.MATH_TABLE);
+            saveScoreDialog.setArguments(args);
+            saveScoreDialog.show(getSupportFragmentManager(), Constants.DIALOG_SAVE_SCORE);
+        });
+
+        btnTryAgain.setOnClickListener(v -> {
+            Intent intent = new Intent(MathRiddlesResultsActivity.this, MathRiddlesActivity.class);
+            startActivity(intent);
+            finish();
+        });
 
         lineChart = findViewById(R.id.line_chart);
 
@@ -59,10 +91,15 @@ public class MathRiddlesResultsActivity extends AppCompatActivity {
         lineChart.getXAxis().setDrawLimitLinesBehindData(false);
         lineChart.getLegend().setEnabled(false);
 
+        ArrayList<Integer> lastScores = SharedPrefsManager.readLastScores(MathRiddlesResultsActivity.this);
+        Collections.sort(lastScores);
+
         ArrayList<Entry> yValues = new ArrayList<>();
-        yValues.add(new Entry(1, 5));
-        yValues.add(new Entry(2, 8));
-        yValues.add(new Entry(3, 15));
+
+        for(int i = 0; i < lastScores.size(); i++){
+            yValues.add(new Entry(i + 1, lastScores.get(i)));
+        }
+
 
         LineDataSet set1 = new LineDataSet(yValues, "");
         set1.setFillColor(Color.RED);
@@ -77,6 +114,12 @@ public class MathRiddlesResultsActivity extends AppCompatActivity {
         dataSets.add(set1);
 
         LineData data = new LineData(dataSets);
+        data.setValueFormatter(new ValueFormatter() {
+            @Override
+            public String getFormattedValue(float value) {
+                return "" + ((int) value);
+            }
+        });
 
         lineChart.setData(data);
     }
