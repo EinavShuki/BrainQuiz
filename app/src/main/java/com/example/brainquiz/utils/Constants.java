@@ -5,7 +5,6 @@ import android.util.Pair;
 import com.example.brainquiz.ColorPair;
 import com.example.brainquiz.R;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
