@@ -275,7 +275,12 @@ MathRiddlesActivity extends AppCompatActivity implements View.OnClickListener {
         builder.setTitle(R.string.confirm_exit);
         builder.setIcon(R.drawable.question);
         builder.setMessage(R.string.you_sure);
-        builder.setPositiveButton(R.string.yes_get_out, (dialog, which) -> MathRiddlesActivity.super.onBackPressed()).setNegativeButton(R.string.stay,null).show(); }
+        builder.setPositiveButton(R.string.yes_get_out, (dialog, which) -> {
+                MathRiddlesActivity.super.onBackPressed();
+                //blabla
+                //blasD
+        }).setNegativeButton(R.string.stay,null).show();
+    }
 
     @Override
     public void onClick(View v) {

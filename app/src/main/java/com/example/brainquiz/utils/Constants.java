@@ -74,35 +74,35 @@ public class Constants {
 
     public static List<ColorPair> colorPairs = Arrays.asList(
             //good
-            new ColorPair("Blue", R.color.pink, "Yellow", R.color.blue),
-            new ColorPair("Blue", R.color.red, "Green", R.color.blue),
-            new ColorPair("Blue", R.color.yellow, "Orange", R.color.blue),
-            new ColorPair("Blue", R.color.orange, "Purple", R.color.blue),
-            new ColorPair("Blue", R.color.purple, "Orange", R.color.blue),
-            new ColorPair("Blue", R.color.black, "black", R.color.blue),
+            new ColorPair("Blue", R.color.pink, "Yellow", R.color.blue, true),
+            new ColorPair("Blue", R.color.red, "Green", R.color.blue, true),
+            new ColorPair("Blue", R.color.yellow, "Orange", R.color.blue, true),
+            new ColorPair("Blue", R.color.orange, "Purple", R.color.blue, true),
+            new ColorPair("Blue", R.color.purple, "Orange", R.color.blue, true),
+            new ColorPair("Blue", R.color.black, "black", R.color.blue, true),
 
-            new ColorPair("Yellow", R.color.pink, "Orange", R.color.yellow),
-            new ColorPair("Yellow", R.color.purple, "Blue", R.color.yellow),
-            new ColorPair("Yellow", R.color.black, "Black", R.color.yellow),
-            new ColorPair("Yellow", R.color.red, "Green", R.color.yellow),
-            new ColorPair("Yellow", R.color.green, "Red", R.color.yellow),
-            new ColorPair("Yellow", R.color.orange, "Orange", R.color.yellow),
+            new ColorPair("Yellow", R.color.pink, "Orange", R.color.yellow, true),
+            new ColorPair("Yellow", R.color.purple, "Blue", R.color.yellow, true),
+            new ColorPair("Yellow", R.color.black, "Black", R.color.yellow, true),
+            new ColorPair("Yellow", R.color.red, "Green", R.color.yellow, true),
+            new ColorPair("Yellow", R.color.green, "Red", R.color.yellow, true),
+            new ColorPair("Yellow", R.color.orange, "Orange", R.color.yellow, true),
 
 
             // bad
-            new ColorPair("Blue", R.color.pink, "Yellow", R.color.red),
-            new ColorPair("Blue", R.color.red, "Green", R.color.yellow),
-            new ColorPair("Blue", R.color.yellow, "Orange", R.color.orange),
-            new ColorPair("Blue", R.color.orange, "Purple", R.color.purple),
-            new ColorPair("Blue", R.color.purple, "Orange", R.color.pink),
-            new ColorPair("Blue", R.color.black, "black", R.color.black),
+            new ColorPair("Blue", R.color.pink, "Yellow", R.color.red, false),
+            new ColorPair("Blue", R.color.red, "Green", R.color.yellow, false),
+            new ColorPair("Blue", R.color.yellow, "Orange", R.color.orange, false),
+            new ColorPair("Blue", R.color.orange, "Purple", R.color.purple, false),
+            new ColorPair("Blue", R.color.purple, "Orange", R.color.pink, false),
+            new ColorPair("Blue", R.color.black, "black", R.color.black, false),
 
-            new ColorPair("Yellow", R.color.pink, "Orange", R.color.red),
-            new ColorPair("Yellow", R.color.purple, "Blue", R.color.pink),
-            new ColorPair("Yellow", R.color.black, "Black", R.color.black),
-            new ColorPair("Yellow", R.color.red, "Green", R.color.blue),
-            new ColorPair("Yellow", R.color.green, "Red", R.color.green),
-            new ColorPair("Yellow", R.color.orange, "Orange", R.color.orange)
+            new ColorPair("Yellow", R.color.pink, "Orange", R.color.red, false),
+            new ColorPair("Yellow", R.color.purple, "Blue", R.color.pink, false),
+            new ColorPair("Yellow", R.color.black, "Black", R.color.black, false),
+            new ColorPair("Yellow", R.color.red, "Green", R.color.blue, false),
+            new ColorPair("Yellow", R.color.green, "Red", R.color.orange, false),
+            new ColorPair("Yellow", R.color.orange, "Orange", R.color.blue, false)
     );
 
 }

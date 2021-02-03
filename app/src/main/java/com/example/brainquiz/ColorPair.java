@@ -3,12 +3,23 @@ package com.example.brainquiz;
 public class ColorPair {
     String meaningText, actualText;
     int meaningColor, actualColor;
+    boolean correct;
 
-    public ColorPair(String meaningText, int meaningColor,String actualText, int actualColor) {
+    public ColorPair(String meaningText, int meaningColor, String actualText, int actualColor, boolean correct) {
         this.meaningText = meaningText;
         this.actualText = actualText;
         this.meaningColor = meaningColor;
         this.actualColor = actualColor;
+        this.correct = correct;
+    }
+
+
+    public boolean isCorrect() {
+        return correct;
+    }
+
+    public void setCorrect(boolean correct) {
+        this.correct = correct;
     }
 
     public String getMeaningText() {
