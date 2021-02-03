@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="18dp"
-    android:background="@drawable/bubbles"
+    android:background="@drawable/gradient_animation_visual_memory"
     android:id="@+id/main_layout"
     >
 

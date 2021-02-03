@@ -3,6 +3,7 @@ package com.example.brainquiz.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -16,6 +17,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 
 import android.view.View;
@@ -45,13 +47,22 @@ public class VisualMemoryActivity extends AppCompatActivity {
     int strike, numOfBtns;
     LinearLayout mainLayout;
     ImageView imageView;
+    MediaPlayer countSound;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_visual_memory);
 
-        imageView=findViewById(R.id.animation_img_view);
+        //loading dynamic background
         mainLayout = findViewById(R.id.main_layout);
+        AnimationDrawable animationDrawable = (AnimationDrawable) mainLayout.getBackground();
+        animationDrawable.setEnterFadeDuration(10);
+        animationDrawable.setExitFadeDuration(5000);
+        animationDrawable.start();
+
+        imageView = findViewById(R.id.animation_img_view);
+
         LayoutTransition layoutTransition = new LayoutTransition();
         layoutTransition.enableTransitionType(LayoutTransition.CHANGING);
         mainLayout.setLayoutTransition(layoutTransition);
@@ -61,13 +72,13 @@ public class VisualMemoryActivity extends AppCompatActivity {
 
         Toolbar toolbar = findViewById(R.id.level_toolbar);
         toolbar.setTitle(toolbar.getTitle() + " " + level);
-        if(level==1)
+        if (level == 1)
             explain();
         Levels(level);
     }
 
     private void explain() {
-        LayoutInflater inflater = (LayoutInflater)getSystemService(LAYOUT_INFLATER_SERVICE);
+        LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
         View popupView = inflater.inflate(R.layout.popup_view, null);
         // create the popup window
         int width = LinearLayout.LayoutParams.WRAP_CONTENT;
@@ -83,18 +94,24 @@ public class VisualMemoryActivity extends AppCompatActivity {
         popupWindow.update();
     }
 
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            if (countSound.isPlaying())
+                countSound.stop();
+            return true;
+        }
+
+        return super.onKeyDown(keyCode, event);
+    }
+
     private void Levels(int level) {
         ArrayList<Button> allBtn = new ArrayList<>();
-        if(level==1)
+        if (level == 1)
             numOfBtns = 5;
         else if (level <= 3)
             numOfBtns = 5;
         else
-            numOfBtns = level+2;
-        switch (level)
-        {
-            case 1:mainLayout.setBackgroundResource(R.drawable.bubbles);
-        }
+            numOfBtns = level + 2;
 
         GridLayout btnsLo = findViewById(R.id.grid_lo);
         Button lastPressed = new Button(VisualMemoryActivity.this);
@@ -134,6 +151,9 @@ public class VisualMemoryActivity extends AppCompatActivity {
                 allBtn.add(btn);
 
             btn.setOnClickListener(v -> {
+                MediaPlayer popSound = MediaPlayer.create(VisualMemoryActivity.this, R.raw.pop);
+                popSound.setVolume(0.3f, 0.3f);
+                popSound.start();
                 ((Button) v).setVisibility(View.INVISIBLE);
                 int currentBtnNum = Integer.parseInt(((Button) v).getText().toString().substring(0, 1));
                 int lastPressedBtnNum = Integer.parseInt((lastPressed.getText().toString().substring(0, 1)));
@@ -143,7 +163,8 @@ public class VisualMemoryActivity extends AppCompatActivity {
                     if (currentBtnNum == 1) {
                         if (level != 1) {
                             for (Button b : allBtn) {
-                                MediaPlayer countSound=MediaPlayer.create(VisualMemoryActivity.this,R.raw.countdown);
+                                b.setClickable(false);
+                                countSound = MediaPlayer.create(VisualMemoryActivity.this, R.raw.countdown);
                                 countSound.start();
                                 Animation count = AnimationUtils.loadAnimation(VisualMemoryActivity.this, R.anim.counting);
                                 imageView.setAnimation(count);
@@ -155,9 +176,17 @@ public class VisualMemoryActivity extends AppCompatActivity {
                                     public void run() {
                                         countSound.stop();
                                         imageView.setVisibility(View.GONE);
-                                        b.setBackgroundResource(R.drawable.visual_memory_num_after_1);
+                                        //turn the number like turning cards
+                                        b.animate().rotationY(180f).setDuration(1000).start();
+                                        new Handler().postDelayed(new Runnable() {
+                                            @Override
+                                            public void run() {
+                                                b.setBackgroundResource(R.drawable.visual_memory_num_after_1);
+                                            }
+                                        }, 500);
+                                        b.setClickable(true);
                                     }
-                                },3300);
+                                }, 3000);
 
                             }
                         }
