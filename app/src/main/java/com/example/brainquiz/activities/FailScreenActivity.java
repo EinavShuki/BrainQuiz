@@ -70,6 +70,8 @@ public class FailScreenActivity extends AppCompatActivity implements View.OnClic
         spc=findViewById(R.id.spc);
     }
 
+
+
     private void renderNumMemory() {
         int level = getIntent().getIntExtra("level", 1);
         int wrongNumber = getIntent().getIntExtra("wrong number", 0);
