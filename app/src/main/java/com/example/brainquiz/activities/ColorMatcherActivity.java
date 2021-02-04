@@ -3,13 +3,16 @@ package com.example.brainquiz.activities;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.ObjectAnimator;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.Button;
+import android.view.animation.LinearInterpolator;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.airbnb.lottie.LottieAnimationView;
@@ -24,14 +27,15 @@ import java.util.Random;
 
 public class ColorMatcherActivity extends AppCompatActivity implements View.OnClickListener {
 
-    TextView tvMeaning, tvActual, tvScore, tvTimer;
-    Button btnYes, btnNo;
-    MaterialCardView cvFirstCard, cvSecondCard;
+    TextView tvFirst, tvSecond, tvThird, tvFourth, tvScore, tvTimer, textTimer;
+    MaterialCardView cvFirstCard, cvSecondCard, cvThirdCard, cvFourthCard;
     LottieAnimationView correctAnimView;
     LottieAnimationView wrongAnimView;
     List<ColorPair> colorPairs = new ArrayList<>(Constants.colorPairs);
     int random_num = new Random().nextInt(colorPairs.size());
     ColorPair colorPair = colorPairs.get(random_num);
+    CountDownTimer countDownTimer;
+    ProgressBar barTimer;
     long time;
 
     @Override
@@ -42,40 +46,50 @@ public class ColorMatcherActivity extends AppCompatActivity implements View.OnCl
         initUi();
         setListeners();
         showCards();
-
-        new CountDownTimer(31000, 1000) {
-            public void onTick(long millisUntilFinished) {
-                tvTimer.setText(String.format("%02d:%02d", millisUntilFinished / 1000 / 60, millisUntilFinished / 1000 % 60));
-                if (millisUntilFinished / 1000 % 60 == 10) {
-                    tvTimer.setTextColor(getColor(R.color.red));
-                }
-                time = millisUntilFinished / 1000 % 60;
-            }
-
-            public void onFinish() {
-                tvTimer.setText("Done!");
-            }
-        }.start();
+        startTimer();
+//        new CountDownTimer(31000, 1000) {
+//            public void onTick(long millisUntilFinished) {
+//                tvTimer.setText(String.format("%02d:%02d", millisUntilFinished / 1000 / 60, millisUntilFinished / 1000 % 60));
+//                if (millisUntilFinished / 1000 % 60 == 10) {
+//                    tvTimer.setTextColor(getColor(R.color.red));
+//                }
+//                time = millisUntilFinished / 1000 % 60;
+//            }
+//
+//            public void onFinish() {
+//                tvTimer.setText("Done!");
+//            }
+//        }.start();
     }
 
     private void initUi() {
-        tvMeaning = findViewById(R.id.tv_meaning);
-        tvActual = findViewById(R.id.tv_actual);
-        btnYes = findViewById(R.id.btn_yes);
-        btnNo = findViewById(R.id.btn_no);
+        tvFirst = findViewById(R.id.tv_first);
+        tvSecond = findViewById(R.id.tv_second);
+        tvThird = findViewById(R.id.tv_third);
+        tvFourth = findViewById(R.id.tv_fourth);
         cvFirstCard = findViewById(R.id.first_card);
         cvSecondCard = findViewById(R.id.second_card);
-        tvTimer = findViewById(R.id.tv_color_timer);
-        tvScore = findViewById(R.id.tv_color_score);
+        cvThirdCard = findViewById(R.id.third_card);
+        cvFourthCard = findViewById(R.id.fourth_card);
+        textTimer = findViewById(R.id.textTimer);
         correctAnimView = findViewById(R.id.correct_answer_anim);
         wrongAnimView = findViewById(R.id.wrong_answer_anim);
+        barTimer = findViewById(R.id.bar_timer);
     }
 
     private void setListeners() {
-        btnYes.setTag("yes");
-        btnNo.setTag("no");
-        btnYes.setOnClickListener(this);
-        btnNo.setOnClickListener(this);
+    }
+
+    private void startTimer(){
+        ObjectAnimator progressAnimator = ObjectAnimator.ofInt(barTimer, "progress", 100, 0);
+        progressAnimator.setDuration(10000);
+        progressAnimator.start();
+        progressAnimator.addListener(new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                super.onAnimationEnd(animation);
+            }
+        });
     }
 
     private void showCards() {
@@ -91,13 +105,19 @@ public class ColorMatcherActivity extends AppCompatActivity implements View.OnCl
 
         // Show second
         cvSecondCard.startAnimation(secondAnimation);
-        tvActual.setText(colorPair.getActualText());
-        tvActual.setTextColor(getColor(colorPair.getActualColor()));
+        tvSecond.setText(colorPair.getActualText());
 
         // Show first
         cvFirstCard.startAnimation(firstAnimation);
-        tvMeaning.setText(colorPair.getMeaningText());
-        tvMeaning.setTextColor(getColor(colorPair.getMeaningColor()));
+        tvFirst.setText(colorPair.getMeaningText());
+
+        // Show third
+        cvThirdCard.startAnimation(secondAnimation);
+        tvThird.setText(colorPair.getActualText());
+
+        // Show first
+        cvFourthCard.startAnimation(firstAnimation);
+        tvFourth.setText(colorPair.getMeaningText());
     }
 
     private void playCorrect() {
