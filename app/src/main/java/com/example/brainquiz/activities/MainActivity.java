@@ -5,6 +5,7 @@ package com.example.brainquiz.activities;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
@@ -23,6 +24,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+//        MediaPlayer backMusic = MediaPlayer.create(MainActivity.this, R.raw.background_visual_memory);
+//        backMusic.setVolume(0.1f, 0.1f);
+//        backMusic.setLooping(true);
+//        backMusic.start();
 
         initUi();
         setListeners();

@@ -26,7 +26,18 @@
             app:layout_scrollFlags="scroll|enterAlways"
             app:theme="@style/ThemeOverlay.MaterialComponents.Toolbar.Primary"
             app:title="@string/level"
-            app:titleTextColor="@color/white" >
+            app:titleTextColor="@color/white"
+            android:padding="10dp"
+            >
+            <ImageButton
+                android:id="@+id/volume_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/volume_off"
+                android:background="@null"
+                android:layout_marginStart="255dp"
+                />
+
         </androidx.appcompat.widget.Toolbar>
 
     </RelativeLayout>
@@ -35,6 +46,19 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="10">
+
+        <Button
+            android:id="@+id/go"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/got_it_btn"
+            android:layout_centerInParent="true"
+            android:padding="20dp"
+            android:text="@string/go"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            />
 
     <ImageView
         android:alpha="0.7"
@@ -49,12 +73,115 @@
         android:visibility="gone"
         />
 
-    <GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <GridLayout
         android:id="@+id/grid_lo"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
+        android:columnCount="4"
         >
+        <ImageButton
+            android:visibility="gone"
+            android:id="@+id/zero_card"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@drawable/zero"
+            android:scaleType="fitXY"
+            android:background="@null"
+            android:layout_margin="8dp"
+            />
+        <ImageButton
+            android:visibility="gone"
+            android:id="@+id/one_card"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@drawable/one_min"
+            android:scaleType="fitXY"
+            android:background="@null"
+            android:layout_margin="8dp"
+            />
+        <ImageButton
+            android:visibility="gone"
+            android:id="@+id/two_card"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@drawable/ttwo"
+            android:scaleType="fitXY"
+            android:background="@null"
+            android:layout_margin="8dp"
+            />
+        <ImageButton
+            android:visibility="gone"
+            android:id="@+id/three_card"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@drawable/tthree"
+            android:scaleType="fitXY"
+            android:background="@null"
+            android:layout_margin="8dp"
+            />
+        <ImageButton
+            android:visibility="gone"
+            android:id="@+id/four_card"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@drawable/four"
+            android:scaleType="fitXY"
+            android:background="@null"
+            android:layout_margin="8dp"
+            />
+        <ImageButton
+            android:visibility="gone"
+            android:id="@+id/five_card"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@drawable/five"
+            android:scaleType="fitXY"
+            android:background="@null"
+            android:layout_margin="8dp"
+            />
+        <ImageButton
+            android:visibility="gone"
+            android:id="@+id/six_card"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@drawable/six"
+            android:scaleType="fitXY"
+            android:background="@null"
+            android:layout_margin="8dp"
+            />
+        <ImageButton
+            android:visibility="gone"
+            android:id="@+id/seven_card"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@drawable/seven"
+            android:scaleType="fitXY"
+            android:background="@null"
+            android:layout_margin="8dp"
+            />
+        <ImageButton
+            android:visibility="gone"
+            android:id="@+id/eight_card"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@drawable/eight"
+            android:scaleType="fitXY"
+            android:background="@null"
+            android:layout_margin="8dp"
+            />
+
+        <ImageButton
+            android:visibility="gone"
+            android:id="@+id/nine_card"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@drawable/nine"
+            android:scaleType="fitXY"
+            android:background="@null"
+            android:layout_margin="8dp"
+            />
+
     </GridLayout>
 ></RelativeLayout>
 </LinearLayout>

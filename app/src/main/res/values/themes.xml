@@ -19,9 +19,10 @@
         <item name="titleTextColor">@color/white</item>
     </style>
 
-    <style name="popup_window_animation" parent="android:Animation">
+    <style name="popup_window_open" parent="android:Animation">
         <item name="android:windowEnterAnimation">@anim/popup_anim_show</item>
         <item name="android:windowExitAnimation">@anim/popup_anim_hide</item>
     </style>
+
 
 </resources>

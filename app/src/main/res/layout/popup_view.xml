@@ -8,7 +8,17 @@
     android:layout_margin="20dp"
     >
 
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/exclamation_mark"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        />
+
     <TextView
+        android:paddingTop="20dp"
+        android:id="@+id/text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
@@ -17,4 +27,18 @@
         android:textStyle="bold"
         android:textColor="@color/black"
         android:text="@string/explanation"/>
+
+<!--    <Button-->
+<!--        android:id="@+id/got_it_btn"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_below="@+id/text"-->
+<!--        android:layout_margin="10dp"-->
+<!--        android:layout_centerHorizontal="true"-->
+<!--        android:textSize="20sp"-->
+<!--        android:background="@drawable/got_it_btn"-->
+<!--        android:text="@string/got_it"-->
+<!--        android:textStyle="bold"-->
+<!--        android:padding="5dp"-->
+<!--        />-->
 </RelativeLayout>
