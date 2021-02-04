@@ -73,36 +73,42 @@ public class Constants {
     );
 
     public static List<ColorPair> colorPairs = Arrays.asList(
-            //good
-            new ColorPair("Blue", R.color.pink, "Yellow", R.color.blue, true),
-            new ColorPair("Blue", R.color.red, "Green", R.color.blue, true),
-            new ColorPair("Blue", R.color.yellow, "Orange", R.color.blue, true),
-            new ColorPair("Blue", R.color.orange, "Purple", R.color.blue, true),
-            new ColorPair("Blue", R.color.purple, "Orange", R.color.blue, true),
-            new ColorPair("Blue", R.color.black, "black", R.color.blue, true),
+            new ColorPair("Text Green","one","Green", R.color.blue, "Yellow", R.color.orange, "black", R.color.green,"Orange", R.color.yellow),
+            new ColorPair("Text Green","two","Blue", R.color.green, "Green", R.color.blue, "black", R.color.orange,"Yellow", R.color.red),
+            new ColorPair("Text Green","three","Blue", R.color.blue, "Black", R.color.green, "Green", R.color.orange,"Orange", R.color.red),
+            new ColorPair("Text Green","four","Blue", R.color.green, "Black", R.color.blue, "Yellow", R.color.orange,"Green", R.color.red),
+            new ColorPair("Color Green","one","Blue", R.color.green, "Black", R.color.blue, "Yellow", R.color.orange,"Green", R.color.red),
+            new ColorPair("Color Green","two","Blue", R.color.blue, "Black", R.color.green, "Yellow", R.color.orange,"Green", R.color.red),
+            new ColorPair("Color Green","three","Blue", R.color.blue, "Black", R.color.purple, "Yellow", R.color.green,"Green", R.color.red),
+            new ColorPair("Color Green","four","Blue", R.color.blue, "Black", R.color.purple, "Yellow", R.color.red,"Red", R.color.green),
 
-            new ColorPair("Yellow", R.color.pink, "Orange", R.color.yellow, true),
-            new ColorPair("Yellow", R.color.purple, "Blue", R.color.yellow, true),
-            new ColorPair("Yellow", R.color.black, "Black", R.color.yellow, true),
-            new ColorPair("Yellow", R.color.red, "Green", R.color.yellow, true),
-            new ColorPair("Yellow", R.color.green, "Red", R.color.yellow, true),
-            new ColorPair("Yellow", R.color.orange, "Orange", R.color.yellow, true),
+            new ColorPair("Text Blue","one","Blue", R.color.yellow, "Yellow", R.color.orange, "black", R.color.green,"Orange", R.color.red),
+            new ColorPair("Text Blue","two","Green", R.color.blue, "Blue", R.color.green, "black", R.color.orange,"Yellow", R.color.red),
+            new ColorPair("Text Blue","three","Yellow", R.color.blue, "Black", R.color.green, "Blue", R.color.orange,"Orange", R.color.red),
+            new ColorPair("Text Blue","four","Green", R.color.green, "Black", R.color.blue, "Yellow", R.color.orange,"Blue", R.color.red),
+            new ColorPair("Color Blue","one","Red", R.color.blue, "Black", R.color.red, "Yellow", R.color.orange,"Green", R.color.yellow),
+            new ColorPair("Color Blue","two","Blue", R.color.green, "Red", R.color.blue, "Yellow", R.color.orange,"Green", R.color.red),
+            new ColorPair("Color Blue","three","Blue", R.color.green, "Red", R.color.purple, "Yellow", R.color.blue,"Green", R.color.yellow),
+            new ColorPair("Color Blue","four","Blue", R.color.black, "Black", R.color.purple, "Yellow", R.color.red,"Red", R.color.blue),
 
+            new ColorPair("Text Red","one","Red", R.color.yellow, "Yellow", R.color.orange, "black", R.color.green,"Orange", R.color.red),
+            new ColorPair("Text Red","two","Green", R.color.blue, "Red", R.color.yellow, "black", R.color.orange,"Yellow", R.color.red),
+            new ColorPair("Text Red","three","Yellow", R.color.blue, "Black", R.color.green, "Red", R.color.orange,"Orange", R.color.red),
+            new ColorPair("Text Red","four","Green", R.color.green, "Black", R.color.blue, "Yellow", R.color.orange,"Red", R.color.yellow),
+            new ColorPair("Color Red","one","Blue", R.color.red, "Black", R.color.green, "Yellow", R.color.orange,"Green", R.color.yellow),
+            new ColorPair("Color Red","two","Red", R.color.green, "Blue", R.color.red, "Yellow", R.color.orange,"Green", R.color.blue),
+            new ColorPair("Color Red","three","Blue", R.color.green, "Red", R.color.purple, "Yellow", R.color.red,"Green", R.color.yellow),
+            new ColorPair("Color Red","four","Red", R.color.black, "Black", R.color.purple, "Yellow", R.color.yellow,"Blue", R.color.red),
 
-            // bad
-            new ColorPair("Blue", R.color.pink, "Yellow", R.color.red, false),
-            new ColorPair("Blue", R.color.red, "Green", R.color.yellow, false),
-            new ColorPair("Blue", R.color.yellow, "Orange", R.color.orange, false),
-            new ColorPair("Blue", R.color.orange, "Purple", R.color.purple, false),
-            new ColorPair("Blue", R.color.purple, "Orange", R.color.pink, false),
-            new ColorPair("Blue", R.color.black, "black", R.color.black, false),
+            new ColorPair("Text Yellow","one","Yellow", R.color.red, "Blue", R.color.orange, "black", R.color.green,"Orange", R.color.blue),
+            new ColorPair("Text Yellow","two","Green", R.color.blue, "Yellow", R.color.red, "Yellow", R.color.orange,"Red", R.color.green),
+            new ColorPair("Text Yellow","three","Red", R.color.blue, "Black", R.color.green, "Yellow", R.color.orange,"Orange", R.color.yellow),
+            new ColorPair("Text Yellow","four","Green", R.color.yellow, "Black", R.color.green, "Red", R.color.orange,"Yellow", R.color.blue),
+            new ColorPair("Color Yellow","one","Blue", R.color.yellow, "Black", R.color.green, "Yellow", R.color.orange,"Green", R.color.red),
+            new ColorPair("Color Yellow","two","Yellow", R.color.green, "Blue", R.color.yellow, "Orange", R.color.orange,"Green", R.color.blue),
+            new ColorPair("Color Yellow","three","Blue", R.color.green, "Red", R.color.purple, "Orange", R.color.yellow,"Yellow", R.color.orange),
+            new ColorPair("Color Yellow","four","Red", R.color.black, "Black", R.color.purple, "Yellow", R.color.red,"Blue", R.color.yellow)
 
-            new ColorPair("Yellow", R.color.pink, "Orange", R.color.red, false),
-            new ColorPair("Yellow", R.color.purple, "Blue", R.color.pink, false),
-            new ColorPair("Yellow", R.color.black, "Black", R.color.black, false),
-            new ColorPair("Yellow", R.color.red, "Green", R.color.blue, false),
-            new ColorPair("Yellow", R.color.green, "Red", R.color.orange, false),
-            new ColorPair("Yellow", R.color.orange, "Orange", R.color.blue, false)
     );
 
 }

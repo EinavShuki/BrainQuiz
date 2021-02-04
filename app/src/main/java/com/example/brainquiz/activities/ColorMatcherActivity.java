@@ -8,10 +8,12 @@ import android.animation.ObjectAnimator;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.animation.LinearInterpolator;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -29,37 +31,25 @@ public class ColorMatcherActivity extends AppCompatActivity implements View.OnCl
 
     TextView tvFirst, tvSecond, tvThird, tvFourth, tvScore, tvTimer, textTimer;
     MaterialCardView cvFirstCard, cvSecondCard, cvThirdCard, cvFourthCard;
+    ImageView ivLifeOne, ivLifeTwo, ivLifeThree;
     LottieAnimationView correctAnimView;
     LottieAnimationView wrongAnimView;
+    ObjectAnimator progressAnimator;
     List<ColorPair> colorPairs = new ArrayList<>(Constants.colorPairs);
     int random_num = new Random().nextInt(colorPairs.size());
+    String answer;
     ColorPair colorPair = colorPairs.get(random_num);
     CountDownTimer countDownTimer;
     ProgressBar barTimer;
-    long time;
+    int life = 3, score = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_color_matcher);
-
         initUi();
         setListeners();
         showCards();
-        startTimer();
-//        new CountDownTimer(31000, 1000) {
-//            public void onTick(long millisUntilFinished) {
-//                tvTimer.setText(String.format("%02d:%02d", millisUntilFinished / 1000 / 60, millisUntilFinished / 1000 % 60));
-//                if (millisUntilFinished / 1000 % 60 == 10) {
-//                    tvTimer.setTextColor(getColor(R.color.red));
-//                }
-//                time = millisUntilFinished / 1000 % 60;
-//            }
-//
-//            public void onFinish() {
-//                tvTimer.setText("Done!");
-//            }
-//        }.start();
     }
 
     private void initUi() {
@@ -75,21 +65,29 @@ public class ColorMatcherActivity extends AppCompatActivity implements View.OnCl
         correctAnimView = findViewById(R.id.correct_answer_anim);
         wrongAnimView = findViewById(R.id.wrong_answer_anim);
         barTimer = findViewById(R.id.bar_timer);
+        ivLifeOne = findViewById(R.id.life_one);
+        ivLifeTwo = findViewById(R.id.life_two);
+        ivLifeThree = findViewById(R.id.life_three);
+        tvScore = findViewById(R.id.tv_colors_score);
     }
 
     private void setListeners() {
+        cvFirstCard.setOnClickListener(this);
+        cvSecondCard.setOnClickListener(this);
+        cvThirdCard.setOnClickListener(this);
+        cvFourthCard.setOnClickListener(this);
     }
 
-    private void startTimer(){
-        ObjectAnimator progressAnimator = ObjectAnimator.ofInt(barTimer, "progress", 100, 0);
-        progressAnimator.setDuration(10000);
-        progressAnimator.start();
-        progressAnimator.addListener(new AnimatorListenerAdapter() {
-            @Override
-            public void onAnimationEnd(Animator animation) {
-                super.onAnimationEnd(animation);
-            }
-        });
+    @Override
+    public void onBackPressed() {
+        progressAnimator.removeAllListeners();
+        super.onBackPressed();
+    }
+
+    @Override
+    protected void onPause() {
+        progressAnimator.pause();
+        super.onPause();
     }
 
     private void showCards() {
@@ -98,26 +96,48 @@ public class ColorMatcherActivity extends AppCompatActivity implements View.OnCl
         colorPair = colorPairs.get(random_num);
         colorPairs.remove(random_num);
 
+        answer = colorPair.getAnswer();
+
         Animation firstAnimation = AnimationUtils.loadAnimation(getApplicationContext(),
                 R.anim.left_to_right);
         Animation secondAnimation = AnimationUtils.loadAnimation(getApplicationContext(),
                 R.anim.right_to_left);
 
-        // Show second
-        cvSecondCard.startAnimation(secondAnimation);
-        tvSecond.setText(colorPair.getActualText());
-
         // Show first
-        cvFirstCard.startAnimation(firstAnimation);
-        tvFirst.setText(colorPair.getMeaningText());
+        cvFirstCard.setCardBackgroundColor(getColor(colorPair.getFirstColor()));
+        cvFirstCard.startAnimation(secondAnimation);
+        tvFirst.setText(colorPair.getFirst());
+
+        // Show second
+        cvSecondCard.setBackgroundColor(getColor(colorPair.getSecondColor()));
+        cvSecondCard.startAnimation(secondAnimation);
+        tvSecond.setText(colorPair.getSecond());
+
 
         // Show third
-        cvThirdCard.startAnimation(secondAnimation);
-        tvThird.setText(colorPair.getActualText());
+        cvThirdCard.setBackgroundColor(getColor(colorPair.getThirdColor()));
+        cvThirdCard.startAnimation(firstAnimation);
+        tvThird.setText(colorPair.getThird());
 
         // Show first
+        cvFourthCard.setBackgroundColor(getColor(colorPair.getFourthColor()));
         cvFourthCard.startAnimation(firstAnimation);
-        tvFourth.setText(colorPair.getMeaningText());
+        tvFourth.setText(colorPair.getFourth());
+
+        textTimer.setText(colorPair.getQuery());
+
+        progressAnimator = ObjectAnimator.ofInt(barTimer, "progress", 100, 0);
+        progressAnimator.setDuration(10000);
+        progressAnimator.start();
+        progressAnimator.addListener(new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                if (!animation.isPaused()){
+                    playWrong();
+                    showCards();
+                }
+            }
+        });
     }
 
     private void playCorrect() {
@@ -146,6 +166,7 @@ public class ColorMatcherActivity extends AppCompatActivity implements View.OnCl
 
             }
         });
+        tvScore.setText(String.valueOf(Integer.parseInt(tvScore.getText().toString())+1));
     }
 
     private void playWrong() {
@@ -174,25 +195,49 @@ public class ColorMatcherActivity extends AppCompatActivity implements View.OnCl
 
             }
         });
+        if (life == 3){
+            ivLifeThree.setVisibility(View.GONE);
+        } else if(life == 2){
+            ivLifeTwo.setVisibility(View.GONE);
+        } else if(life == 1) {
+            ivLifeOne.setVisibility(View.GONE);
+        }
+        --life;
+
     }
 
     @Override
     public void onClick(View view) {
+        progressAnimator.pause();
         Object tag = view.getTag();
-        if ("yes".equals(tag)) {
-            if (colorPair.isCorrect()) {
-                playCorrect();
-            } else {
+
+        Log.i("PRESSED OBJECT TAG", tag.toString());
+
+        if ("one".equals(tag)) {
+            if(!answer.equals("one")){
                 playWrong();
+            } else {
+                playCorrect();
             }
 
-        } else if ("no".equals(tag)) {
-            if (!colorPair.isCorrect()) {
-                playCorrect();
-            } else {
+        } else if ("two".equals(tag)) {
+            if(!answer.equals("two")){
                 playWrong();
+            } else {
+                playCorrect();
             }
-
+        } else if ("three".equals(tag)) {
+            if(!answer.equals("three")){
+                playWrong();
+            } else {
+                playCorrect();
+            }
+        } else if ("four".equals(tag)) {
+            if(!answer.equals("four")){
+                playWrong();
+            } else {
+                playCorrect();
+            }
         }
         showCards();
     }
