@@ -1,23 +1,26 @@
 package com.example.brainquiz.activities;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.animation.Animator;
 import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.graphics.drawable.AnimationDrawable;
+import android.graphics.drawable.ColorDrawable;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.util.Log;
 import android.util.Pair;
 import android.view.View;
+import android.view.Window;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -271,12 +274,45 @@ MathRiddlesActivity extends AppCompatActivity implements View.OnClickListener {
 
     @Override
     public void onBackPressed() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle(R.string.confirm_exit);
-        builder.setIcon(R.drawable.question);
-        builder.setMessage(R.string.you_sure);
-        builder.setPositiveButton(R.string.yes_get_out, (dialog, which) -> MathRiddlesActivity.super.onBackPressed()).setNegativeButton(R.string.stay,null).show(); }
+            final Dialog dialog = new Dialog(this);
+            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+            dialog.setCancelable(false);
+            dialog.setContentView(R.layout.exit_fragment);
+            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+            dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
 
+            FrameLayout mDialogNo = dialog.findViewById(R.id.game);
+            mDialogNo.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    dialog.dismiss();
+                }
+            });
+
+            FrameLayout mDialogExit = dialog.findViewById(R.id.exit);
+            mDialogExit.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    dialog.cancel();
+                    MathRiddlesActivity.super.onBackPressed();
+                    finish();
+                }
+            });
+
+            dialog.show();
+//        ViewDialogActivity alert = new ViewDialogActivity();
+//        alert.showDialog(this);
+
+
+
+//        ExitFragment exitFragment = new ExitFragment();
+//        exitFragment.show(getSupportFragmentManager(),"bialog");
+//        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+//        builder.setTitle(R.string.confirm_exit);
+//        builder.setIcon(R.drawable.question);
+//        builder.setMessage(R.string.you_sure);
+//        builder.setPositiveButton(R.string.yes_get_out, (dialog, which) -> MathRiddlesActivity.super.onBackPressed()).setNegativeButton(R.string.stay,null).show(); }
+    }
     @Override
     public void onClick(View v) {
         switch (v.getId()) {

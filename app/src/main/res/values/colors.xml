@@ -18,6 +18,8 @@
     <color name="red">#F44336</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+w    <color name="ch">@color/cardview_shadow_start_color</color>
+
 
     <color name="white_lite">#E1CFCF</color>
 

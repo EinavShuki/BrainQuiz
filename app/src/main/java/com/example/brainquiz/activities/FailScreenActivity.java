@@ -87,6 +87,7 @@ public class FailScreenActivity extends AppCompatActivity implements View.OnClic
 
     }
 
+
     private void renderMathRiddle() {
         int level = getIntent().getIntExtra("level", 1);
         title.setText(level + "");
