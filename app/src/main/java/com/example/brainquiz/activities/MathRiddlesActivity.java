@@ -60,11 +60,40 @@ MathRiddlesActivity extends AppCompatActivity implements View.OnClickListener {
     LottieAnimationView correctAnimView;
     LottieAnimationView wrongAnimView;
     long time;
+    long mTimeleft=31000;
     int random_num = new Random().nextInt(levelStart.size());
     int asked = 0;
     float timeWhenQuestionShowed = 30;
     float timeWhenUserReacted;
     float totalReactionTime = 0;
+    CountDownTimer countDownTimer;
+    private void startTimer() {
+        countDownTimer = new CountDownTimer(mTimeleft, 1000) {
+            public void onTick(long millisUntilFinished) {
+                mTimeleft = millisUntilFinished;
+                Timer.setText(String.format("%02d:%02d", millisUntilFinished / 1000 / 60, millisUntilFinished / 1000 % 60));
+                if (millisUntilFinished / 1000 % 60 == 10) {
+                    Timer.setTextColor(getColor(R.color.red));
+                }
+                time = millisUntilFinished / 1000 % 60;
+            }
+
+
+            public void onFinish() {
+                Intent intent = new Intent(MathRiddlesActivity.this, MathRiddlesResultsActivity.class);
+                float accuracy = (Float.parseFloat(Count.getText().toString()) / (asked - 1)) * 100;
+
+                intent.putExtra(Constants.ACCURACY_KEY, String.valueOf((int) accuracy));
+                intent.putExtra(Constants.REACTION_TIME_KEY, String.format("%.2f", (totalReactionTime / asked)));
+                intent.putExtra(Constants.MATH_SCORE_KEY, Count.getText().toString());
+
+                SharedPrefsManager.saveInLastScores(Count.getText().toString(), MathRiddlesActivity.this);
+
+                startActivity(intent);
+                Timer.setText("Done!");
+            }
+        }.start();
+    }
 
     @Override
     @SuppressLint("DefaultLocale")
@@ -89,36 +118,15 @@ MathRiddlesActivity extends AppCompatActivity implements View.OnClickListener {
         exercise[1] =levelStart.get(random_num).second;
 
         ++asked;
-        Animation tvAnimation = AnimationUtils.loadAnimation(getApplicationContext(),
-                R.anim.fade_in);
+        Animation tvAnimation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_in);
         riddle.setText(exercise[0]);
         riddle.startAnimation(tvAnimation);
+        startTimer();
 
-        new CountDownTimer(31000, 1000) {
-            public void onTick(long millisUntilFinished) {
-                Timer.setText(String.format("%02d:%02d", millisUntilFinished/1000/ 60, millisUntilFinished /1000% 60));
-                if(millisUntilFinished/1000% 60==10){
-                    Timer.setTextColor(getColor(R.color.red));
-                }
-                time = millisUntilFinished /1000% 60;
-            }
 
-            public void onFinish() {
-                Intent intent = new Intent(MathRiddlesActivity.this, MathRiddlesResultsActivity.class);
-                float accuracy =  (Float.parseFloat(Count.getText().toString()) / (asked - 1) ) * 100;
+        };
 
-                intent.putExtra(Constants.ACCURACY_KEY, String.valueOf((int)accuracy));
-                intent.putExtra(Constants.REACTION_TIME_KEY,  String.format("%.2f", (totalReactionTime / asked)));
-                intent.putExtra(Constants.MATH_SCORE_KEY, Count.getText().toString());
 
-                SharedPrefsManager.saveInLastScores(Count.getText().toString(), MathRiddlesActivity.this);
-
-                startActivity(intent);
-                Timer.setText("Done!");
-            }
-        }.start();
-
-    }
 
     private void initUi() {
         btnOne = findViewById(R.id.btn_1);
@@ -274,6 +282,9 @@ MathRiddlesActivity extends AppCompatActivity implements View.OnClickListener {
 
     @Override
     public void onBackPressed() {
+        if(countDownTimer  != null) {
+            countDownTimer.cancel();
+        }
             final Dialog dialog = new Dialog(this);
             dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
             dialog.setCancelable(false);
@@ -286,6 +297,7 @@ MathRiddlesActivity extends AppCompatActivity implements View.OnClickListener {
                 @Override
                 public void onClick(View v) {
                     dialog.dismiss();
+                    startTimer();
                 }
             });
 
