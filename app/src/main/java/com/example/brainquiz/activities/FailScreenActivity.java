@@ -7,6 +7,7 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Space;
 import android.widget.TextView;
 
 import com.example.brainquiz.R;
@@ -17,6 +18,7 @@ public class FailScreenActivity extends AppCompatActivity implements View.OnClic
     TextView subTilte, title, levelTv, titleShow, subTileShow;
     Button tryAgain, btnSaveScore;
     String name_activity, lev, table;
+    Space spc;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,12 +67,14 @@ public class FailScreenActivity extends AppCompatActivity implements View.OnClic
         btnSaveScore = findViewById(R.id.save_score_btn);
         titleShow = findViewById(R.id.title_to_show);
         subTileShow = findViewById(R.id.sub_title_to_show);
+        spc=findViewById(R.id.spc);
     }
 
     private void renderNumMemory() {
         int level = getIntent().getIntExtra("level", 1);
         int wrongNumber = getIntent().getIntExtra("wrong number", 0);
         int rightNumber = getIntent().getIntExtra("right number", 0);
+        spc.setVisibility(View.GONE);
         titleShow.setText(R.string.number);
         subTileShow.setText(R.string.your_ans);
         subTileShow.setVisibility(View.VISIBLE);

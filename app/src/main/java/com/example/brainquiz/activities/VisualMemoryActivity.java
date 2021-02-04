@@ -5,6 +5,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.content.ContextCompat;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -66,12 +67,6 @@ public class VisualMemoryActivity extends AppCompatActivity implements View.OnCl
 
         init();
 
-        //loading dynamic background
-        AnimationDrawable animationDrawable = (AnimationDrawable) mainLayout.getBackground();
-        animationDrawable.setEnterFadeDuration(10);
-        animationDrawable.setExitFadeDuration(5000);
-        animationDrawable.start();
-
         go.setOnClickListener(this);
         volume.setOnClickListener(this);
 
@@ -82,6 +77,34 @@ public class VisualMemoryActivity extends AppCompatActivity implements View.OnCl
         level = getIntent().getIntExtra("level", 1);//from itself or failScreen or Intermediate
         strike = getIntent().getIntExtra("strike", 1);//first from itself,latter from Intermediate or failScreen
 
+        switch (level) {
+            case 1:
+                mainLayout.setBackground(ContextCompat.getDrawable(VisualMemoryActivity.this, R.drawable.back));
+                break;
+            case 2:
+            case 6:
+                mainLayout.setBackgroundResource(R.drawable.back2);
+                break;
+            case 3:
+                mainLayout.setBackgroundResource(R.drawable.back3);
+                break;
+            case 4:
+            case 9:
+                mainLayout.setBackgroundResource(R.drawable.back4);
+                break;
+            case 5:
+                mainLayout.setBackgroundResource(R.drawable.back5);
+                break;
+            case 7:
+                mainLayout.setBackgroundResource(R.drawable.back7);
+                break;
+            case 8:
+                mainLayout.setBackgroundResource(R.drawable.back8);
+                break;
+            case 10:
+                mainLayout.setBackgroundResource(R.drawable.back10);
+                break;
+        }
         Toolbar toolbar = findViewById(R.id.level_toolbar);
         toolbar.setTitle(toolbar.getTitle() + " " + level);
         if (level == 1)
@@ -268,7 +291,6 @@ public class VisualMemoryActivity extends AppCompatActivity implements View.OnCl
                 int lastPressedBtnNum = Integer.parseInt((lastPressed.getText().toString().substring(0, 1)));
 
                 //pop sound with pushing on a button
-
                 popSound = MediaPlayer.create(VisualMemoryActivity.this, R.raw.pop);
                 if (vol)
                     popSound.setVolume(0.3f, 0.3f);
@@ -286,9 +308,7 @@ public class VisualMemoryActivity extends AppCompatActivity implements View.OnCl
 
                 if (currentBtnNum == lastPressedBtnNum + 1) {
                     lastPressed.setText(currentBtnNum + "");
-//                    if (currentBtnNum == 1) {
-//
-//                    }
+
                     if (currentBtnNum == numOfBtns) {
                         Intent intent;
                         if (level == 10) {

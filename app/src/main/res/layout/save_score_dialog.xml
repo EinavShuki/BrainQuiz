@@ -29,7 +29,7 @@
             android:layout_marginLeft="3sp"
             android:textStyle="bold"
             android:gravity="center"
-            android:text="@string/your_record"
+            android:text="@string/your_score"
             />
 
         <TextView

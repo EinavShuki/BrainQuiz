@@ -8,16 +8,18 @@
     android:padding="18dp">
 
     <TextView
+        android:fontFamily="@font/varela_round_regular"
         android:textStyle="bold"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="100dp"
         android:gravity="center"
         android:text="@string/well_done"
         android:textColor="@color/white"
         android:textSize="42sp" />
 
     <TextView
+        android:fontFamily="@font/varela_round_regular"
         android:textColor="@color/white"
         android:gravity="center"
         android:layout_marginTop="20dp"
@@ -35,6 +37,7 @@
         android:gravity="center">
 
         <Button
+            android:fontFamily="@font/varela_round_regular"
             android:id="@+id/save_score_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -50,6 +53,7 @@
             android:textSize="25sp" />
 
         <Button
+            android:fontFamily="@font/varela_round_regular"
             android:id="@+id/home_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -65,15 +69,5 @@
             android:textColor="@color/white"
             android:textSize="25sp" />
     </LinearLayout>
-
-
-        <ImageView
-            android:alpha="0.78"
-            android:layout_marginTop="20dp"
-            android:src="@drawable/mind"
-            android:id="@+id/dish_image"
-            android:layout_width="370dp"
-            android:layout_height="wrap_content"
-            android:adjustViewBounds="true" />
 
 </LinearLayout>

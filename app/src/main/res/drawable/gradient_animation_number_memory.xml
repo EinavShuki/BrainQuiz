@@ -2,12 +2,12 @@
 <animation-list xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item android:duration="5000"
-        android:drawable="@drawable/gradient_start_visual_memory"/>
+        android:drawable="@drawable/gradient_start_number_memory"/>
 
     <item android:duration="5000"
-        android:drawable="@drawable/gradient_center_visual_memory"/>
+        android:drawable="@drawable/gradient_center_number_memory"/>
 
     <item android:duration="5000"
-        android:drawable="@drawable/gradient_end_visual_memory"/>
+        android:drawable="@drawable/gradient_end_number_memory"/>
 
 </animation-list>

@@ -12,8 +12,8 @@
     <string name="sequence">זכירת רצף</string>
     <string name="try_again">נסו שוב</string>
     <string name="save_record">שמור תוצאה</string>
-    <string name="number">המספר שהופיע</string>
-    <string name="your_ans">התשובה שלכם</string>
+    <string name="number">המספר שהופיע היה:</string>
+    <string name="your_ans">התשובה שלכם הייתה:</string>
     <string name="advice_to_save">שמרו את השיא כדי להשוות</string>
     <string name="level">שלב</string>
     <string name="finish">סיים</string>
@@ -21,9 +21,8 @@
     <string name="save">שמור</string>
     <string name="cancel">בטל</string>
     <string name="ok">אישור</string>
-    <string name="your_record">התוצאה שלך:</string>
-    <string name="numbers">מספרים</string>
-    <string name="strikes">נסיונות</string>
+    <string name="numbers">כמות המספרים שהופיעו:</string>
+    <string name="strikes">מספר הנסיונות:</string>
     <string name="Record">שיא</string>
     <string name="continue_visual_memory">המשיכו</string>
     <string name="exists">שם משתמש בשימוש!</string>
@@ -34,7 +33,7 @@
     <string name="leaderboards">טבלאות שיאים</string>
     <string name="your_score">התוצאה שלך:</string>
     <string name="time">:זמן</string>
-    <string name="Shown">התשובה הנכונה</string>
+    <string name="right_ans">התשובה הנכונה היא:</string>
     <string name="answer">תשובה</string>
     <string name="enter_btn">הכנס</string>
     <string name="score">תוצאה:</string>
@@ -46,4 +45,5 @@
     <string name="stay">תישאר</string>
     <string name="got_it">הבנתי</string>
     <string name="go">התחל</string>
+    <string name="remember_num">זכרו את המספר שמופיע על המסך בזמן קצוב</string>
 </resources>

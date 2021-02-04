@@ -5,9 +5,11 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="18dp"
-    android:background="@drawable/full_screen_gradient">
+    android:background="@drawable/gradient_animation_number_memory"
+    android:id="@+id/main_layout">
 
     <androidx.appcompat.widget.Toolbar
+        android:fontFamily="@font/varela_round_regular"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/level_toolbar"
         android:layout_width="match_parent"
@@ -22,6 +24,7 @@
         app:title="@string/level"/>
 
     <TextView
+        android:fontFamily="@font/varela_round_regular"
         android:id="@+id/numtv"
         android:layout_marginTop="150dp"
         android:layout_width="match_parent"

@@ -11,10 +11,12 @@ import android.animation.ObjectAnimator;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.LinearInterpolator;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,6 +25,7 @@ import com.example.brainquiz.R;
 
 public class NumberMemoryActivity extends AppCompatActivity {
     final int NUMBER_REQUEST = 1;
+    LinearLayout mainLayout;
     ProgressBar progressBar;
     Intent intent;
     int numberToShow, lev;
@@ -31,6 +34,13 @@ public class NumberMemoryActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_number_memory);
+
+        mainLayout=findViewById(R.id.main_layout);
+        //loading dynamic background
+        AnimationDrawable animationDrawable = (AnimationDrawable) mainLayout.getBackground();
+        animationDrawable.setEnterFadeDuration(10);
+        animationDrawable.setExitFadeDuration(5000);
+        animationDrawable.start();
 
         lev = getIntent().getIntExtra("level", 1);//from itself  or LastState
         numberToShow = getIntent().getIntExtra("number", 5);//from NumberMemorySecActivity or LastState

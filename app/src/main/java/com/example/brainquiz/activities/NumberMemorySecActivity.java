@@ -5,22 +5,31 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 
 import com.example.brainquiz.R;
 import com.example.brainquiz.utils.Constants;
 
 public class NumberMemorySecActivity extends AppCompatActivity {
     SharedPreferences sp;
+    LinearLayout mainLayout;
     int number, lev;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_number_memory_sec);
 
+        mainLayout=findViewById(R.id.main_layout);
+        //loading dynamic background
+        AnimationDrawable animationDrawable = (AnimationDrawable) mainLayout.getBackground();
+        animationDrawable.setEnterFadeDuration(10);
+        animationDrawable.setExitFadeDuration(5000);
+        animationDrawable.start();
 
         lev = getIntent().getIntExtra("level", 1);
         number = getIntent().getIntExtra("number", 5);

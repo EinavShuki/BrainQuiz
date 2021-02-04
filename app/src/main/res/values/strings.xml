@@ -11,8 +11,8 @@
     <string name="sequence">Sequence Memory</string>
     <string name="try_again">Try again</string>
     <string name="save_record">Save score</string>
-    <string name="number">Shown number</string>
-    <string name="your_ans">Your answer</string>
+    <string name="number">number displayed was:</string>
+    <string name="your_ans">Your answer was:</string>
     <string name="advice_to_save">Save your record to see how you compare</string>
     <string name="level">Level</string>
     <string name="finish">Finish</string>
@@ -20,10 +20,9 @@
     <string name="save">Save</string>
     <string name="cancel">Cancel</string>
     <string name="ok">Ok</string>
-    <string name="your_record">Your score:</string>
     <string name="time">time:</string>
-    <string name="numbers">Numbers</string>
-    <string name="strikes">Strikes</string>
+    <string name="numbers">Amount of numbers that appeared:</string>
+    <string name="strikes">Number of srikes:</string>
     <string name="Record">Record</string>
     <string name="continue_visual_memory">Counitue</string>
     <string name="exists">username already exsists!</string>
@@ -32,13 +31,13 @@
     <string name="home">Home</string>
     <string name="username">User Name</string>
     <string name="leaderboards">Leaderboards</string>
-    <string name="Shown">The right answer</string>
+    <string name="right_ans">The right answer was:</string>
     <string name="answer">Answer</string>
     <string name="your_score">Your Score</string>
     <string name="enter_btn">Enter</string>
     <string name="score">Score:</string>
     <string name="new_game">New game</string>
-    <string name="explanation">Remember positions and press in order</string>
+    <string name="explanation">Remember the positions of the digits on screen and press on them in order</string>
     <string name="confirm_exit">Confirm Exit..!!</string>
     <string name="you_sure">Are you sure, you want to exit</string>
     <string name="yes_get_out">yes, get out</string>
@@ -46,4 +45,5 @@
     <string name="got_it">Got it!</string>
     <string name="go">Go</string>
     <string name="color_matcher" translatable="false">Color Matcher</string>
+    <string name="remember_num">Remember the number on the screen in a limited time</string>
 </resources>
