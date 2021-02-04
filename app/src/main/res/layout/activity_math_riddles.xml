@@ -158,16 +158,16 @@
                 android:layout_margin="3dp"
                 android:layoutDirection="ltr"
                 android:layout_weight="1">
-            <TextView
-                android:id="@+id/answer"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="2"
-                android:hint="@string/answer"
-                android:gravity="center"
-                android:textColorHint ="@color/white"
-                android:textSize="24sp"
-                />
+                <TextView
+                    android:id="@+id/answer"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:hint="@string/answer"
+                    android:gravity="center"
+                    android:textColorHint ="@color/white"
+                    android:textSize="24sp"
+                    />
 
                 <TextView
                     android:id="@+id/tv_x"
@@ -358,6 +358,6 @@
 
         </LinearLayout>
 
-     </LinearLayout>
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

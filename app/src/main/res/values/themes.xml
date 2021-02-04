@@ -1,5 +1,4 @@
-<resources xmlns:tools="http://schemas.android.com/tools"
-    xmlns:circular="http://schemas.android.com/apk/res-auto">
+<resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Theme.BrainQuiz" parent="Theme.AppCompat.DayNight.NoActionBar">
         <!-- Primary brand color. -->
@@ -20,10 +19,10 @@
         <item name="titleTextColor">@color/white</item>
     </style>
 
-    <style name="popup_window_animation" parent="android:Animation">
+    <style name="popup_window_open" parent="android:Animation">
         <item name="android:windowEnterAnimation">@anim/popup_anim_show</item>
         <item name="android:windowExitAnimation">@anim/popup_anim_hide</item>
     </style>
 
-</resources>
 
+</resources>

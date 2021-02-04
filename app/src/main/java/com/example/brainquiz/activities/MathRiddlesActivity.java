@@ -1,23 +1,26 @@
 package com.example.brainquiz.activities;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.animation.Animator;
 import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.graphics.drawable.AnimationDrawable;
+import android.graphics.drawable.ColorDrawable;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.util.Log;
 import android.util.Pair;
 import android.view.View;
+import android.view.Window;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -57,11 +60,40 @@ MathRiddlesActivity extends AppCompatActivity implements View.OnClickListener {
     LottieAnimationView correctAnimView;
     LottieAnimationView wrongAnimView;
     long time;
+    long mTimeleft=31000;
     int random_num = new Random().nextInt(levelStart.size());
     int asked = 0;
     float timeWhenQuestionShowed = 30;
     float timeWhenUserReacted;
     float totalReactionTime = 0;
+    CountDownTimer countDownTimer;
+    private void startTimer() {
+        countDownTimer = new CountDownTimer(mTimeleft, 1000) {
+            public void onTick(long millisUntilFinished) {
+                mTimeleft = millisUntilFinished;
+                Timer.setText(String.format("%02d:%02d", millisUntilFinished / 1000 / 60, millisUntilFinished / 1000 % 60));
+                if (millisUntilFinished / 1000 % 60 == 10) {
+                    Timer.setTextColor(getColor(R.color.red));
+                }
+                time = millisUntilFinished / 1000 % 60;
+            }
+
+
+            public void onFinish() {
+                Intent intent = new Intent(MathRiddlesActivity.this, MathRiddlesResultsActivity.class);
+                float accuracy = (Float.parseFloat(Count.getText().toString()) / (asked - 1)) * 100;
+
+                intent.putExtra(Constants.ACCURACY_KEY, String.valueOf((int) accuracy));
+                intent.putExtra(Constants.REACTION_TIME_KEY, String.format("%.2f", (totalReactionTime / asked)));
+                intent.putExtra(Constants.MATH_SCORE_KEY, Count.getText().toString());
+
+                SharedPrefsManager.saveInLastScores(Count.getText().toString(), MathRiddlesActivity.this);
+
+                startActivity(intent);
+                Timer.setText("Done!");
+            }
+        }.start();
+    }
 
     @Override
     @SuppressLint("DefaultLocale")
@@ -86,36 +118,15 @@ MathRiddlesActivity extends AppCompatActivity implements View.OnClickListener {
         exercise[1] =levelStart.get(random_num).second;
 
         ++asked;
-        Animation tvAnimation = AnimationUtils.loadAnimation(getApplicationContext(),
-                R.anim.fade_in);
+        Animation tvAnimation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_in);
         riddle.setText(exercise[0]);
         riddle.startAnimation(tvAnimation);
+        startTimer();
 
-        new CountDownTimer(31000, 1000) {
-            public void onTick(long millisUntilFinished) {
-                Timer.setText(String.format("%02d:%02d", millisUntilFinished/1000/ 60, millisUntilFinished /1000% 60));
-                if(millisUntilFinished/1000% 60==10){
-                    Timer.setTextColor(getColor(R.color.red));
-                }
-                time = millisUntilFinished /1000% 60;
-            }
 
-            public void onFinish() {
-                Intent intent = new Intent(MathRiddlesActivity.this, MathRiddlesResultsActivity.class);
-                float accuracy =  (Float.parseFloat(Count.getText().toString()) / (asked - 1) ) * 100;
+    };
 
-                intent.putExtra(Constants.ACCURACY_KEY, String.valueOf((int)accuracy));
-                intent.putExtra(Constants.REACTION_TIME_KEY,  String.format("%.2f", (totalReactionTime / asked)));
-                intent.putExtra(Constants.MATH_SCORE_KEY, Count.getText().toString());
 
-                SharedPrefsManager.saveInLastScores(Count.getText().toString(), MathRiddlesActivity.this);
-
-                startActivity(intent);
-                Timer.setText("Done!");
-            }
-        }.start();
-
-    }
 
     private void initUi() {
         btnOne = findViewById(R.id.btn_1);
@@ -271,17 +282,49 @@ MathRiddlesActivity extends AppCompatActivity implements View.OnClickListener {
 
     @Override
     public void onBackPressed() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle(R.string.confirm_exit);
-        builder.setIcon(R.drawable.question);
-        builder.setMessage(R.string.you_sure);
-        builder.setPositiveButton(R.string.yes_get_out, (dialog, which) -> {
-                MathRiddlesActivity.super.onBackPressed();
-                //blabla
-                //blasD
-        }).setNegativeButton(R.string.stay,null).show();
-    }
+        if(countDownTimer  != null) {
+            countDownTimer.cancel();
+        }
+        final Dialog dialog = new Dialog(this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setCancelable(false);
+        dialog.setContentView(R.layout.exit_fragment);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+        dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
 
+        FrameLayout mDialogNo = dialog.findViewById(R.id.game);
+        mDialogNo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+                startTimer();
+            }
+        });
+
+        FrameLayout mDialogExit = dialog.findViewById(R.id.exit);
+        mDialogExit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.cancel();
+                MathRiddlesActivity.super.onBackPressed();
+                finish();
+            }
+        });
+
+        dialog.show();
+//        ViewDialogActivity alert = new ViewDialogActivity();
+//        alert.showDialog(this);
+
+
+
+//        ExitFragment exitFragment = new ExitFragment();
+//        exitFragment.show(getSupportFragmentManager(),"bialog");
+//        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+//        builder.setTitle(R.string.confirm_exit);
+//        builder.setIcon(R.drawable.question);
+//        builder.setMessage(R.string.you_sure);
+//        builder.setPositiveButton(R.string.yes_get_out, (dialog, which) -> MathRiddlesActivity.super.onBackPressed()).setNegativeButton(R.string.stay,null).show(); }
+    }
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
