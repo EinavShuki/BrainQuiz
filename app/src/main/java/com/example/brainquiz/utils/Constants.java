@@ -2,6 +2,9 @@ package com.example.brainquiz.utils;
 
 import android.util.Pair;
 
+import com.example.brainquiz.ColorPair;
+import com.example.brainquiz.R;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -67,6 +70,39 @@ public class Constants {
             new Pair<>("(3" + pow_2 + " - " + "2" + pow_3 +  ")" + pow_9 + " =", "1"),
             new Pair<>("2,3,5,8,13,?", "21")
 
+    );
+
+    public static List<ColorPair> colorPairs = Arrays.asList(
+            //good
+            new ColorPair("Blue", R.color.pink, "Yellow", R.color.blue),
+            new ColorPair("Blue", R.color.red, "Green", R.color.blue),
+            new ColorPair("Blue", R.color.yellow, "Orange", R.color.blue),
+            new ColorPair("Blue", R.color.orange, "Purple", R.color.blue),
+            new ColorPair("Blue", R.color.purple, "Orange", R.color.blue),
+            new ColorPair("Blue", R.color.black, "black", R.color.blue),
+
+            new ColorPair("Yellow", R.color.pink, "Orange", R.color.yellow),
+            new ColorPair("Yellow", R.color.purple, "Blue", R.color.yellow),
+            new ColorPair("Yellow", R.color.black, "Black", R.color.yellow),
+            new ColorPair("Yellow", R.color.red, "Green", R.color.yellow),
+            new ColorPair("Yellow", R.color.green, "Red", R.color.yellow),
+            new ColorPair("Yellow", R.color.orange, "Orange", R.color.yellow),
+
+
+            // bad
+            new ColorPair("Blue", R.color.pink, "Yellow", R.color.red),
+            new ColorPair("Blue", R.color.red, "Green", R.color.yellow),
+            new ColorPair("Blue", R.color.yellow, "Orange", R.color.orange),
+            new ColorPair("Blue", R.color.orange, "Purple", R.color.purple),
+            new ColorPair("Blue", R.color.purple, "Orange", R.color.pink),
+            new ColorPair("Blue", R.color.black, "black", R.color.black),
+
+            new ColorPair("Yellow", R.color.pink, "Orange", R.color.red),
+            new ColorPair("Yellow", R.color.purple, "Blue", R.color.pink),
+            new ColorPair("Yellow", R.color.black, "Black", R.color.black),
+            new ColorPair("Yellow", R.color.red, "Green", R.color.blue),
+            new ColorPair("Yellow", R.color.green, "Red", R.color.green),
+            new ColorPair("Yellow", R.color.orange, "Orange", R.color.orange)
     );
 
 }

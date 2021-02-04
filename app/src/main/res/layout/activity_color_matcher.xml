@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/wood_background"
+    tools:context=".activities.ColorMatcherActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        android:background="@drawable/curve_toolbar_bg"
+        app:layout_constraintTop_toTopOf="parent"
+        android:padding="10dp"
+        app:layout_constraintStart_toStartOf="parent">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="@string/score"
+            android:textStyle="bold"
+            android:textColor="@color/hard_grey"
+            android:textSize="21sp" />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="0"
+            android:textStyle="bold"
+            android:textColor="@color/hard_grey"
+            android:textSize="21sp"
+            android:id="@+id/count"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="4"
+            android:textStyle="bold"
+            android:text="1:00"
+            android:textColor="@color/hard_grey"
+            android:gravity="end"
+            android:textSize="21sp"
+            android:id="@+id/timer"/>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:layout_gravity="center"
+        android:text="Does the meaning match the text color?"
+        android:textSize="22sp"
+        android:textColor="@color/white"
+        android:textStyle="bold"/>
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="80dp"
+        android:paddingLeft="40dp"
+        android:paddingRight="40dp"
+        android:layout_weight="3"
+        android:columnCount="1"
+        android:rowCount="2">
+
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/first_card"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_rowWeight="10"
+            android:layout_columnWeight="1"
+            android:layout_margin="15dp"
+            android:backgroundTint="@color/white"
+            android:elevation="8dp"
+            android:focusable="true"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="6dp"
+            >
+                <TextView
+                    android:id="@+id/tv_meaning"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Red"
+                    android:fontFamily="@font/app_font"
+                    android:textStyle="bold"
+                    android:textColor="@color/green"
+                    android:textSize="34sp" />
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/second_card"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_rowWeight="10"
+            android:layout_columnWeight="1"
+            android:layout_margin="15dp"
+            android:backgroundTint="@color/white"
+            android:elevation="8dp"
+            android:focusable="true"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="6dp">
+
+                <TextView
+                    android:id="@+id/tv_actual"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/app_font"
+                    android:textStyle="bold"
+                    android:layout_gravity="center"
+                    android:text="Black"
+                    android:textColor="@color/yellow"
+                    android:textSize="34sp" />
+
+        </com.google.android.material.card.MaterialCardView>
+    </GridLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="bottom"
+        android:layout_weight="2"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_no"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="No"
+            android:alpha="0.7"
+            android:textColor="@color/blue_500"
+            android:background="@color/black"
+            android:textSize="32sp"
+            android:padding="18dp"
+            android:layout_marginRight="5dp" />
+
+        <Button
+            android:id="@+id/btn_yes"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:alpha="0.7"
+            android:text="Yes"
+            android:textSize="32sp"
+            android:padding="18dp"
+            android:textColor="@color/blue_500"
+            android:background="@color/black"/>
+    </LinearLayout>
+
+</LinearLayout>
