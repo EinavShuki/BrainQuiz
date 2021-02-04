@@ -124,7 +124,7 @@ MathRiddlesActivity extends AppCompatActivity implements View.OnClickListener {
         startTimer();
 
 
-        };
+    };
 
 
 
@@ -285,33 +285,33 @@ MathRiddlesActivity extends AppCompatActivity implements View.OnClickListener {
         if(countDownTimer  != null) {
             countDownTimer.cancel();
         }
-            final Dialog dialog = new Dialog(this);
-            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-            dialog.setCancelable(false);
-            dialog.setContentView(R.layout.exit_fragment);
-            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
-            dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+        final Dialog dialog = new Dialog(this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setCancelable(false);
+        dialog.setContentView(R.layout.exit_fragment);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+        dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
 
-            FrameLayout mDialogNo = dialog.findViewById(R.id.game);
-            mDialogNo.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    dialog.dismiss();
-                    startTimer();
-                }
-            });
+        FrameLayout mDialogNo = dialog.findViewById(R.id.game);
+        mDialogNo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+                startTimer();
+            }
+        });
 
-            FrameLayout mDialogExit = dialog.findViewById(R.id.exit);
-            mDialogExit.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    dialog.cancel();
-                    MathRiddlesActivity.super.onBackPressed();
-                    finish();
-                }
-            });
+        FrameLayout mDialogExit = dialog.findViewById(R.id.exit);
+        mDialogExit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.cancel();
+                MathRiddlesActivity.super.onBackPressed();
+                finish();
+            }
+        });
 
-            dialog.show();
+        dialog.show();
 //        ViewDialogActivity alert = new ViewDialogActivity();
 //        alert.showDialog(this);
 
