@@ -4,32 +4,20 @@ package com.example.brainquiz.activities;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
 
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
 import android.animation.LayoutTransition;
-import android.animation.ObjectAnimator;
 import android.annotation.SuppressLint;
-import android.app.Dialog;
-import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
-import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
 import android.view.Gravity;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 
 import android.view.View;
-import android.view.ViewGroup;
 
-import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
@@ -183,7 +171,7 @@ public class VisualMemoryActivity extends AppCompatActivity implements View.OnCl
         int width = LinearLayout.LayoutParams.WRAP_CONTENT;
         int height = LinearLayout.LayoutParams.WRAP_CONTENT;
         PopupWindow popupWindow = new PopupWindow(popupView, width, height, true);
-        Animation show = AnimationUtils.loadAnimation(VisualMemoryActivity.this, R.anim.popup_anim_show);
+        Animation show = AnimationUtils.loadAnimation(VisualMemoryActivity.this, R.anim.slide_top_to_bottom);
         popupView.setAnimation(show);
         //prevents error
         findViewById(R.id.main_layout).post(new Runnable() {

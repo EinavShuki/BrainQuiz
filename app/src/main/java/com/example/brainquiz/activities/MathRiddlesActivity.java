@@ -5,11 +5,8 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.animation.Animator;
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
-import android.graphics.Typeface;
-import android.graphics.drawable.AnimationDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -21,7 +18,6 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.FrameLayout;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 
@@ -29,6 +25,7 @@ import com.airbnb.lottie.LottieAnimationView;
 import com.example.brainquiz.R;
 import com.example.brainquiz.utils.Constants;
 import com.example.brainquiz.utils.SharedPrefsManager;
+import com.google.android.material.card.MaterialCardView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -57,10 +54,11 @@ MathRiddlesActivity extends AppCompatActivity implements View.OnClickListener {
     TextView riddle;
     TextView Count;
     TextView Timer;
+    MaterialCardView cvRiddleCard;
     LottieAnimationView correctAnimView;
     LottieAnimationView wrongAnimView;
     long time;
-    long mTimeleft=11000;
+    long mTimeleft=30000;
     int random_num = new Random().nextInt(levelStart.size());
     int asked = 0;
     float timeWhenQuestionShowed = 30;
@@ -104,14 +102,14 @@ MathRiddlesActivity extends AppCompatActivity implements View.OnClickListener {
 
         ConstraintLayout root = findViewById(R.id.math_root_layout);
 
-        AnimationDrawable animationDrawable = (AnimationDrawable) root.getBackground();
-        animationDrawable.setEnterFadeDuration(10);
-        animationDrawable.setExitFadeDuration(5000);
-        animationDrawable.start();
+//        AnimationDrawable animationDrawable = (AnimationDrawable) root.getBackground();
+//        animationDrawable.setEnterFadeDuration(10);
+//        animationDrawable.setExitFadeDuration(5000);
+//        animationDrawable.start();
 
-        Animation animation = AnimationUtils.loadAnimation(this, R.anim.stripe_anim);
-        LinearLayout stripes = findViewById(R.id.stripes);
-        stripes.startAnimation(animation);
+//        Animation animation = AnimationUtils.loadAnimation(this, R.anim.stripe_anim);
+//        LinearLayout stripes = findViewById(R.id.stripes);
+//        stripes.startAnimation(animation);
 
         initUi();
         setListeners();
@@ -119,9 +117,9 @@ MathRiddlesActivity extends AppCompatActivity implements View.OnClickListener {
         exercise[1] =levelStart.get(random_num).second;
 
         ++asked;
-        Animation tvAnimation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_in);
+        Animation tvAnimation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.slide_top_to_bottom);
         riddle.setText(exercise[0]);
-        riddle.startAnimation(tvAnimation);
+        cvRiddleCard.startAnimation(tvAnimation);
         startTimer();
 
 
@@ -146,10 +144,9 @@ MathRiddlesActivity extends AppCompatActivity implements View.OnClickListener {
         Enter = findViewById(R.id.enter);
         tvAnswer = findViewById(R.id.answer);
         Timer = findViewById(R.id.timer);
+        cvRiddleCard = findViewById(R.id.card_riddle);
         correctAnimView = findViewById(R.id.correct_anim);
         wrongAnimView = findViewById(R.id.wrong_anim);
-        Typeface typeface = Typeface.createFromAsset(getAssets(), "fonts/FredokaOne-Regular.ttf");
-        riddle.setTypeface(typeface);
     }
 
     private void setListeners() {
@@ -266,9 +263,10 @@ MathRiddlesActivity extends AppCompatActivity implements View.OnClickListener {
 
         ++asked;
         Animation tvAnimation = AnimationUtils.loadAnimation(getApplicationContext(),
-                R.anim.fade_in);
+                R.anim.slide_top_to_bottom);
+
         riddle.setText(exercise[0]);
-        riddle.startAnimation(tvAnimation);
+        cvRiddleCard.startAnimation(tvAnimation);
 
         timeWhenQuestionShowed = Float.parseFloat(Timer.getText().toString().substring(3));
     }
