@@ -1,6 +1,7 @@
 package com.example.brainquiz.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -16,6 +17,7 @@ import android.view.animation.LinearInterpolator;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.airbnb.lottie.LottieAnimationView;
 import com.example.brainquiz.ColorPair;
@@ -30,18 +32,19 @@ import java.util.Random;
 public class ColorMatcherActivity extends AppCompatActivity implements View.OnClickListener {
 
     TextView tvFirst, tvSecond, tvThird, tvFourth, tvScore, tvTimer, textTimer;
-    MaterialCardView cvFirstCard, cvSecondCard, cvThirdCard, cvFourthCard;
+    CardView cvFirstCard, cvSecondCard, cvThirdCard, cvFourthCard;
     ImageView ivLifeOne, ivLifeTwo, ivLifeThree;
     LottieAnimationView correctAnimView;
     LottieAnimationView wrongAnimView;
+    LottieAnimationView levelUpAnimView;
     ObjectAnimator progressAnimator;
     List<ColorPair> colorPairs = new ArrayList<>(Constants.colorPairs);
     int random_num = new Random().nextInt(colorPairs.size());
     String answer;
     ColorPair colorPair = colorPairs.get(random_num);
-    CountDownTimer countDownTimer;
     ProgressBar barTimer;
-    int life = 3, score = 0;
+    int life = 3;
+    boolean levelUp = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +67,7 @@ public class ColorMatcherActivity extends AppCompatActivity implements View.OnCl
         textTimer = findViewById(R.id.textTimer);
         correctAnimView = findViewById(R.id.correct_answer_anim);
         wrongAnimView = findViewById(R.id.wrong_answer_anim);
+        levelUpAnimView = findViewById(R.id.level_up_anim);
         barTimer = findViewById(R.id.bar_timer);
         ivLifeOne = findViewById(R.id.life_one);
         ivLifeTwo = findViewById(R.id.life_two);
@@ -92,6 +96,9 @@ public class ColorMatcherActivity extends AppCompatActivity implements View.OnCl
 
     private void showCards() {
         // Get color pair to show
+        if(colorPairs.size() == 0){
+            colorPairs = new ArrayList<>(Constants.colorPairs);
+        }
         random_num = new Random().nextInt(colorPairs.size());
         colorPair = colorPairs.get(random_num);
         colorPairs.remove(random_num);
@@ -103,31 +110,44 @@ public class ColorMatcherActivity extends AppCompatActivity implements View.OnCl
         Animation secondAnimation = AnimationUtils.loadAnimation(getApplicationContext(),
                 R.anim.right_to_left);
 
+
         // Show first
         cvFirstCard.setCardBackgroundColor(getColor(colorPair.getFirstColor()));
+
         cvFirstCard.startAnimation(secondAnimation);
         tvFirst.setText(colorPair.getFirst());
 
         // Show second
-        cvSecondCard.setBackgroundColor(getColor(colorPair.getSecondColor()));
+        cvSecondCard.setCardBackgroundColor(getColor(colorPair.getSecondColor()));
         cvSecondCard.startAnimation(secondAnimation);
         tvSecond.setText(colorPair.getSecond());
 
 
         // Show third
-        cvThirdCard.setBackgroundColor(getColor(colorPair.getThirdColor()));
+        cvThirdCard.setCardBackgroundColor(getColor(colorPair.getThirdColor()));
         cvThirdCard.startAnimation(firstAnimation);
         tvThird.setText(colorPair.getThird());
 
         // Show first
-        cvFourthCard.setBackgroundColor(getColor(colorPair.getFourthColor()));
+        cvFourthCard.setCardBackgroundColor(getColor(colorPair.getFourthColor()));
         cvFourthCard.startAnimation(firstAnimation);
         tvFourth.setText(colorPair.getFourth());
 
         textTimer.setText(colorPair.getQuery());
 
         progressAnimator = ObjectAnimator.ofInt(barTimer, "progress", 100, 0);
-        progressAnimator.setDuration(10000);
+
+        int score = Integer.parseInt(tvScore.getText().toString());
+        if(score < 6){
+            progressAnimator.setDuration(Constants.EASY_DURATION);
+        } else if(score > 5 && score < 15){
+            progressAnimator.setDuration(Constants.INTERMEDIATE_DURATION);
+        } else if(score > 14 && score < 20){
+            progressAnimator.setDuration(Constants.MEDIUM_DURATION);
+        } else if (score > 19 && score <= 50){
+            progressAnimator.setDuration(Constants.HIGH_DURATION);
+        }
+
         progressAnimator.start();
         progressAnimator.addListener(new AnimatorListenerAdapter() {
             @Override
@@ -141,6 +161,13 @@ public class ColorMatcherActivity extends AppCompatActivity implements View.OnCl
     }
 
     private void playCorrect() {
+        int score = Integer.parseInt(tvScore.getText().toString());
+        if(score == 5 || score == 15){
+            playLevelUp();
+            tvScore.setText(String.valueOf(Integer.parseInt(tvScore.getText().toString())+1));
+            return;
+        }
+
         correctAnimView.setVisibility(View.VISIBLE);
         correctAnimView.playAnimation();
         MediaPlayer mp = MediaPlayer.create(getBaseContext(), R.raw.correct_choice);
@@ -167,6 +194,9 @@ public class ColorMatcherActivity extends AppCompatActivity implements View.OnCl
             }
         });
         tvScore.setText(String.valueOf(Integer.parseInt(tvScore.getText().toString())+1));
+        if(Integer.parseInt(tvScore.getText().toString()) == 50){
+            Toast.makeText(this, "You've won the game!", Toast.LENGTH_LONG).show();
+        }
     }
 
     private void playWrong() {
@@ -206,12 +236,36 @@ public class ColorMatcherActivity extends AppCompatActivity implements View.OnCl
 
     }
 
+    private void playLevelUp(){
+        levelUpAnimView.setVisibility(View.VISIBLE);
+        levelUpAnimView.playAnimation();
+        levelUpAnimView.addAnimatorListener(new Animator.AnimatorListener() {
+            @Override
+            public void onAnimationStart(Animator animator) {
+                levelUpAnimView.setVisibility(View.VISIBLE);
+            }
+
+            @Override
+            public void onAnimationEnd(Animator animator) {
+                levelUpAnimView.setVisibility(View.GONE);
+            }
+
+            @Override
+            public void onAnimationCancel(Animator animator) {
+
+            }
+
+            @Override
+            public void onAnimationRepeat(Animator animator) {
+
+            }
+        });
+    }
+
     @Override
     public void onClick(View view) {
         progressAnimator.pause();
         Object tag = view.getTag();
-
-        Log.i("PRESSED OBJECT TAG", tag.toString());
 
         if ("one".equals(tag)) {
             if(!answer.equals("one")){

@@ -102,6 +102,7 @@
                 android:text="Text Color"
                 android:textSize="24sp"
                 android:textStyle="bold"
+                android:fontFamily="@font/varela_round_regular"
                 android:textColor="@color/white"
                 android:id="@+id/textTimer"
                 android:layout_width="wrap_content"
@@ -120,7 +121,7 @@
             android:rowCount="2">
 
 
-            <com.google.android.material.card.MaterialCardView
+            <androidx.cardview.widget.CardView
                 android:id="@+id/first_card"
                 android:tag="one"
                 android:layout_width="0dp"
@@ -128,7 +129,6 @@
                 android:layout_rowWeight="8"
                 android:layout_columnWeight="1"
                 android:layout_margin="25dp"
-                android:backgroundTint="@color/blue"
                 android:elevation="8dp"
                 android:focusable="true"
                 app:cardCornerRadius="12dp"
@@ -142,11 +142,11 @@
                         android:text="Red"
                         android:fontFamily="@font/lato"
                         android:textStyle="bold"
-                        android:textColor="@color/white"
+                        android:textColor="@color/blue"
                         android:textSize="34sp" />
-            </com.google.android.material.card.MaterialCardView>
+            </androidx.cardview.widget.CardView>
 
-            <com.google.android.material.card.MaterialCardView
+            <androidx.cardview.widget.CardView
                 android:id="@+id/second_card"
                 android:tag="two"
                 android:layout_width="0dp"
@@ -154,7 +154,6 @@
                 android:layout_rowWeight="10"
                 android:layout_columnWeight="1"
                 android:layout_margin="25dp"
-                android:backgroundTint="@color/red"
                 android:elevation="8dp"
                 android:focusable="true"
                 app:cardCornerRadius="12dp"
@@ -171,8 +170,8 @@
                         android:textColor="@color/white"
                         android:textSize="34sp" />
 
-            </com.google.android.material.card.MaterialCardView>
-            <com.google.android.material.card.MaterialCardView
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
                 android:id="@+id/third_card"
                 android:layout_width="0dp"
                 android:tag="three"
@@ -180,7 +179,6 @@
                 android:layout_rowWeight="10"
                 android:layout_columnWeight="1"
                 android:layout_margin="25dp"
-                android:backgroundTint="@color/green"
                 android:elevation="8dp"
                 android:focusable="true"
                 app:cardCornerRadius="12dp"
@@ -196,9 +194,9 @@
                     android:textStyle="bold"
                     android:textColor="@color/white"
                     android:textSize="34sp" />
-            </com.google.android.material.card.MaterialCardView>
+            </androidx.cardview.widget.CardView>
 
-            <com.google.android.material.card.MaterialCardView
+            <androidx.cardview.widget.CardView
                 android:id="@+id/fourth_card"
                 android:tag="four"
                 android:layout_width="0dp"
@@ -206,7 +204,6 @@
                 android:layout_rowWeight="10"
                 android:layout_columnWeight="1"
                 android:layout_margin="25dp"
-                android:backgroundTint="@color/yellow"
                 android:elevation="8dp"
                 android:focusable="true"
                 app:cardCornerRadius="12dp"
@@ -223,7 +220,7 @@
                     android:textColor="@color/white"
                     android:textSize="34sp" />
 
-            </com.google.android.material.card.MaterialCardView>
+            </androidx.cardview.widget.CardView>
         </GridLayout>
 
 
@@ -252,5 +249,17 @@
         app:lottie_autoPlay="false"
         android:visibility="gone"
         app:lottie_rawRes="@raw/wrong_anim"/>
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/level_up_anim"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:lottie_autoPlay="false"
+        android:visibility="gone"
+        app:lottie_rawRes="@raw/level_up"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
