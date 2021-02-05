@@ -91,10 +91,10 @@
         <com.google.android.material.floatingactionbutton.FloatingActionButton
 
             android:layout_width="60dp"
-            android:layout_height="60dp"
-            app:backgroundTint="@color/green"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:src="@drawable/games"/>
+            android:src="@drawable/games"
+            app:backgroundTint="@color/green" />
 
 
 

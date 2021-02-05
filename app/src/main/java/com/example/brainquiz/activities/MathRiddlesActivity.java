@@ -60,7 +60,7 @@ MathRiddlesActivity extends AppCompatActivity implements View.OnClickListener {
     LottieAnimationView correctAnimView;
     LottieAnimationView wrongAnimView;
     long time;
-    long mTimeleft=31000;
+    long mTimeleft=11000;
     int random_num = new Random().nextInt(levelStart.size());
     int asked = 0;
     float timeWhenQuestionShowed = 30;
@@ -88,8 +88,9 @@ MathRiddlesActivity extends AppCompatActivity implements View.OnClickListener {
                 intent.putExtra(Constants.MATH_SCORE_KEY, Count.getText().toString());
 
                 SharedPrefsManager.saveInLastScores(Count.getText().toString(), MathRiddlesActivity.this);
-
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
+
                 Timer.setText("Done!");
             }
         }.start();
