@@ -1,70 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="18dp"
     android:background="@drawable/gradient_animation_number_memory"
-    android:id="@+id/main_layout">
+    android:orientation="vertical"
+    android:padding="18dp">
 
-    <androidx.appcompat.widget.Toolbar
-        android:fontFamily="@font/varela_round_regular"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+    <androidx.appcompat.widget.Toolbar xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/level_toolbar"
         android:layout_width="match_parent"
-        app:titleTextColor="@color/white"
         android:layout_height="?attr/actionBarSize"
+        android:background="@drawable/toolbar_level"
+        android:fitsSystemWindows="true"
+        android:fontFamily="@font/varela_round_regular"
         android:gravity="center_vertical"
         app:layout_collapseMode="pin"
-        android:fitsSystemWindows="true"
         app:layout_scrollFlags="scroll|enterAlways"
         app:theme="@style/ThemeOverlay.MaterialComponents.Toolbar.Primary"
-        app:title="@string/level">
+        app:title="@string/level"
+        app:titleTextColor="@color/white">
 
     </androidx.appcompat.widget.Toolbar>
 
     <TextView
-        android:fontFamily="@font/varela_round_regular"
-        android:focusable = "true"
-        android:focusableInTouchMode = "true"
-        android:layout_marginTop="150dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="150dp"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:fontFamily="@font/varela_round_regular"
+        android:gravity="center"
         android:text="@string/what_was_the_number"
         android:textColor="@color/white"
-        android:textStyle="bold"
         android:textSize="30sp"
-        android:gravity="center"
-        />
+        android:textStyle="bold" />
+
     <EditText
-        android:fontFamily="@font/varela_round_regular"
-        android:focusedByDefault="true"
-        android:inputType="number"
         android:id="@+id/num_input"
-        android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/txt_editor_shape"
-        android:textSize="20sp"
-        android:gravity="center"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        android:padding="10dp"
-        />
-    <Button
-        android:fontFamily="@font/varela_round_regular"
-        android:textAllCaps="false"
-        android:id="@+id/submit_btn"
         android:layout_marginTop="20dp"
+        android:background="@drawable/txt_editor_shape"
+        android:focusedByDefault="true"
+        android:fontFamily="@font/varela_round_regular"
+        android:gravity="center"
+        android:inputType="number"
+        android:padding="10dp"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/submit_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_marginTop="20dp"
         android:background="@drawable/submit_btn_style"
-        android:textColor="@color/white"
-        android:text="@string/submit"
-        android:textSize="25sp"
+        android:fontFamily="@font/varela_round_regular"
         android:padding="15dp"
-        />
+        android:text="@string/submit"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="25sp" />
 
 
 </LinearLayout>

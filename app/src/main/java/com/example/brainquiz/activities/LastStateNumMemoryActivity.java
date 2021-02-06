@@ -53,7 +53,7 @@ public class LastStateNumMemoryActivity extends AppCompatActivity {
         explain=findViewById(R.id.popup);
     }
     private void explain() {
-        Animation show=AnimationUtils.loadAnimation(LastStateNumMemoryActivity.this,R.anim.slide_top_to_bottom);
+        Animation show=AnimationUtils.loadAnimation(LastStateNumMemoryActivity.this,R.anim.popup_anim_show);
         explain.setAnimation(show);
         new Handler().postDelayed(new Runnable() {
             @Override
