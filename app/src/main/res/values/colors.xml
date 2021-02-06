@@ -11,11 +11,11 @@
     <color name="pink">#F06292</color>
     <color name="blue">#2196F3</color>
     <color name="green">#4CAF50</color>
-    <color name="orange">#FF5722</color>
+    <color name="orange">#F57C00</color>
+    <color name="red">#D32F2F</color>
     <color name="purple">#673AB7</color>
     <color name="brown">#6D4129</color>
     <color name="yellow">#FFC107</color>
-    <color name="red">#F44336</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="white_opacity">#5BBDBDBD</color>

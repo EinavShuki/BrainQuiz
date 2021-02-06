@@ -29,6 +29,7 @@ public class Constants {
     public static final String VISUAL_MEMORY_KEY = "visualMemoryKey";
     public static final String SEQUENCE_KEY = "sequenceKey";
     public static final String SCORE_KEY = "SCORE";
+    public static final String LONGEST_RUN_KEY = "longestRun";
     public static final String TABLE_KEY = "TABLE";
     public static final String USERNAME_PREFS = "UserName";
     public static final String DIALOG_SAVE_SCORE = "save score dialog";

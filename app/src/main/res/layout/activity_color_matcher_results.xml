@@ -1,9 +1,218 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.ColorMatcherResultsActivity">
+    android:background="@drawable/gradient_animation_math_riddles"
+    android:orientation="vertical"
+    android:weightSum="12"
+    tools:context=".activities.MathRiddlesResultsActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3"
+        android:columnCount="2"
+        android:rowCount="1">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/longest_run_card"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:layout_margin="15dp"
+            android:backgroundTint="@color/white"
+            android:clickable="true"
+            android:elevation="8dp"
+            android:focusable="true"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="6dp"
+            app:cardPreventCornerOverlap="false">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:layout_gravity="center"
+                    android:padding="10dp"
+                    android:src="@drawable/running_man" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:fontFamily="@font/varela_round_regular"
+                    android:text="Longest run"
+                    android:textColor="@color/hard_grey"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/tv_longest_run"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_marginTop="5dp"
+                    android:textStyle="bold"
+                    android:text="12"
+                    android:fontFamily="@font/varela_round_regular"
+                    android:textColor="@color/hard_grey"
+                    android:textSize="21sp" />
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/reaction_time_card"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:layout_margin="15dp"
+            android:backgroundTint="@color/white"
+            android:clickable="true"
+            android:elevation="8dp"
+            android:focusable="true"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="6dp"
+            app:cardPreventCornerOverlap="false">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:layout_gravity="center"
+                    android:padding="10dp"
+                    android:src="@drawable/flash" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Reaction Time"
+                    android:fontFamily="@font/varela_round_regular"
+                    android:textColor="@color/hard_grey"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/tv_reaction"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/varela_round_regular"
+                    android:gravity="center"
+                    android:text="5.43s"
+                    android:textStyle="bold"
+                    android:layout_marginTop="5dp"
+                    android:textColor="@color/hard_grey"
+                    android:textSize="21sp" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+    </GridLayout>
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="4"
+        android:columnCount="1"
+        android:rowCount="1">
+
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/score_colors_card"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:layout_margin="15dp"
+            android:backgroundTint="@color/white"
+            android:clickable="true"
+            android:elevation="8dp"
+            android:focusable="true"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="6dp"
+            app:cardPreventCornerOverlap="false">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:textStyle="bold"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/varela_round_regular"
+
+                    android:text="Your Score"
+                    android:textColor="@color/hard_grey"
+                    android:textSize="21sp" />
+                <TextView
+                    android:id="@+id/tv_color_match_score"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:textStyle="bold"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/varela_round_regular"
+                    android:text="0"
+                    android:textColor="@color/hard_grey"
+                    android:textSize="32sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal"
+                    android:gravity="center">
+
+                    <Button
+                        android:id="@+id/save_math_score_btn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@color/blue_500"
+                        android:layout_gravity="center"
+                        android:paddingStart="20dp"
+                        android:paddingTop="15dp"
+                        android:fontFamily="@font/varela_round_regular"
+                        android:paddingEnd="20dp"
+                        android:paddingBottom="15dp"
+                        android:text="@string/save_record"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white"
+                        android:textSize="21sp" />
+
+                    <Button
+                        android:id="@+id/try_again_math_btn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="20dp"
+                        android:paddingStart="20dp"
+                        android:paddingTop="15dp"
+                        android:paddingEnd="20dp"
+                        android:fontFamily="@font/varela_round_regular"
+                        android:paddingBottom="15dp"
+                        android:text="@string/try_again"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white"
+                        android:background="@color/blue_500"
+                        android:textSize="21sp" />
+                </LinearLayout>
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+    </GridLayout>
+
+</LinearLayout>

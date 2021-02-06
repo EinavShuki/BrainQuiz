@@ -46,7 +46,7 @@ public class ColorMatcherActivity extends AppCompatActivity implements View.OnCl
     String answer;
     ColorPair colorPair = colorPairs.get(random_num);
     ProgressBar barTimer;
-    int life = 3;
+    int life = 3, longestRun = 0, run = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -208,6 +208,7 @@ public class ColorMatcherActivity extends AppCompatActivity implements View.OnCl
         if(Integer.parseInt(tvScore.getText().toString()) == 50){
             Toast.makeText(this, "You've won the game!", Toast.LENGTH_LONG).show();
         }
+
         showCards();
     }
 
@@ -249,9 +250,14 @@ public class ColorMatcherActivity extends AppCompatActivity implements View.OnCl
             return;
         }
         life--;
+        run = 0;
     }
 
     private void addScore(){
+        ++run;
+        if(run > longestRun){
+            longestRun = run;
+        }
         Animation tvAnimation = AnimationUtils.loadAnimation(getApplicationContext(),
                 R.anim.fade_in);
         tvScore.setText(String.valueOf(Integer.parseInt(tvScore.getText().toString())+1));
@@ -279,7 +285,10 @@ public class ColorMatcherActivity extends AppCompatActivity implements View.OnCl
             @Override
             public void onAnimationEnd(Animation animation) {
                 tvGameOver.setVisibility(View.GONE);
-                startActivity(new Intent(ColorMatcherActivity.this, ColorMatcherResultsActivity.class));
+                Intent intent = new Intent(ColorMatcherActivity.this, ColorMatcherResultsActivity.class);
+                intent.putExtra(Constants.LONGEST_RUN_KEY, longestRun);
+                intent.putExtra(Constants.SCORE_KEY, tvScore.getText().toString());
+                startActivity(intent);
             }
 
             @Override
@@ -293,6 +302,8 @@ public class ColorMatcherActivity extends AppCompatActivity implements View.OnCl
     private void playLevelUp(){
         levelUpAnimView.setVisibility(View.VISIBLE);
         levelUpAnimView.playAnimation();
+        MediaPlayer mp = MediaPlayer.create(getBaseContext(), R.raw.correct_choice);
+        mp.start();
         levelUpAnimView.addAnimatorListener(new Animator.AnimatorListener() {
             @Override
             public void onAnimationStart(Animator animator) {
