@@ -6,15 +6,18 @@ import androidx.cardview.widget.CardView;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.ObjectAnimator;
+import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.animation.LinearInterpolator;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -31,11 +34,11 @@ import java.util.Random;
 
 public class ColorMatcherActivity extends AppCompatActivity implements View.OnClickListener {
 
-    TextView tvFirst, tvSecond, tvThird, tvFourth, tvScore, tvTimer, textTimer;
+    TextView tvFirst, tvSecond, tvThird, tvFourth, tvScore, tvGameOver, textTimer;
     CardView cvFirstCard, cvSecondCard, cvThirdCard, cvFourthCard;
     ImageView ivLifeOne, ivLifeTwo, ivLifeThree;
-    LottieAnimationView correctAnimView;
-    LottieAnimationView wrongAnimView;
+    LinearLayout rootLayout;
+    LottieAnimationView correctAnimView, wrongAnimView, countdownAnimView;
     LottieAnimationView levelUpAnimView;
     ObjectAnimator progressAnimator;
     List<ColorPair> colorPairs = new ArrayList<>(Constants.colorPairs);
@@ -44,7 +47,6 @@ public class ColorMatcherActivity extends AppCompatActivity implements View.OnCl
     ColorPair colorPair = colorPairs.get(random_num);
     ProgressBar barTimer;
     int life = 3;
-    boolean levelUp = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,10 +54,16 @@ public class ColorMatcherActivity extends AppCompatActivity implements View.OnCl
         setContentView(R.layout.activity_color_matcher);
         initUi();
         setListeners();
-        showCards();
+        countdownAnimView = findViewById(R.id.countdown_anim);
+        new Handler().postDelayed(() -> {
+            rootLayout.setVisibility(View.VISIBLE);
+            showCards();
+        }, 3000);
     }
 
     private void initUi() {
+        rootLayout = findViewById(R.id.root_layout);
+        rootLayout.setVisibility(View.GONE);
         tvFirst = findViewById(R.id.tv_first);
         tvSecond = findViewById(R.id.tv_second);
         tvThird = findViewById(R.id.tv_third);
@@ -73,6 +81,7 @@ public class ColorMatcherActivity extends AppCompatActivity implements View.OnCl
         ivLifeTwo = findViewById(R.id.life_two);
         ivLifeThree = findViewById(R.id.life_three);
         tvScore = findViewById(R.id.tv_colors_score);
+        tvGameOver = findViewById(R.id.tv_game_over);
     }
 
     private void setListeners() {
@@ -144,7 +153,7 @@ public class ColorMatcherActivity extends AppCompatActivity implements View.OnCl
             progressAnimator.setDuration(Constants.INTERMEDIATE_DURATION);
         } else if(score > 14 && score < 20){
             progressAnimator.setDuration(Constants.MEDIUM_DURATION);
-        } else if (score > 19 && score <= 50){
+        } else if (score <= 50){
             progressAnimator.setDuration(Constants.HIGH_DURATION);
         }
 
@@ -164,7 +173,7 @@ public class ColorMatcherActivity extends AppCompatActivity implements View.OnCl
         int score = Integer.parseInt(tvScore.getText().toString());
         if(score == 5 || score == 15){
             playLevelUp();
-            tvScore.setText(String.valueOf(Integer.parseInt(tvScore.getText().toString())+1));
+            addScore();
             return;
         }
 
@@ -193,10 +202,13 @@ public class ColorMatcherActivity extends AppCompatActivity implements View.OnCl
 
             }
         });
-        tvScore.setText(String.valueOf(Integer.parseInt(tvScore.getText().toString())+1));
+
+        addScore();
+
         if(Integer.parseInt(tvScore.getText().toString()) == 50){
             Toast.makeText(this, "You've won the game!", Toast.LENGTH_LONG).show();
         }
+        showCards();
     }
 
     private void playWrong() {
@@ -227,13 +239,55 @@ public class ColorMatcherActivity extends AppCompatActivity implements View.OnCl
         });
         if (life == 3){
             ivLifeThree.setVisibility(View.GONE);
+            showCards();
         } else if(life == 2){
             ivLifeTwo.setVisibility(View.GONE);
+            showCards();
         } else if(life == 1) {
             ivLifeOne.setVisibility(View.GONE);
+            gameOver();
+            return;
         }
-        --life;
+        life--;
+    }
 
+    private void addScore(){
+        Animation tvAnimation = AnimationUtils.loadAnimation(getApplicationContext(),
+                R.anim.fade_in);
+        tvScore.setText(String.valueOf(Integer.parseInt(tvScore.getText().toString())+1));
+        tvScore.startAnimation(tvAnimation);
+    }
+
+    private void gameOver(){
+        progressAnimator.pause();
+        cvFirstCard.setVisibility(View.GONE);
+        cvSecondCard.setVisibility(View.GONE);
+        cvThirdCard.setVisibility(View.GONE);
+        cvFourthCard.setVisibility(View.GONE);
+        textTimer.setVisibility(View.GONE);
+        barTimer.setVisibility(View.GONE);
+        tvScore.setVisibility(View.GONE);
+        Animation tvAnimation = AnimationUtils.loadAnimation(getApplicationContext(),
+                R.anim.popup_anim_show);
+        tvGameOver.startAnimation(tvAnimation);
+        tvAnimation.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                tvGameOver.setVisibility(View.GONE);
+                startActivity(new Intent(ColorMatcherActivity.this, ColorMatcherResultsActivity.class));
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+
+            }
+        });
+        tvGameOver.setVisibility(View.VISIBLE);
     }
 
     private void playLevelUp(){
@@ -260,6 +314,7 @@ public class ColorMatcherActivity extends AppCompatActivity implements View.OnCl
 
             }
         });
+        showCards();
     }
 
     @Override
@@ -293,6 +348,5 @@ public class ColorMatcherActivity extends AppCompatActivity implements View.OnCl
                 playCorrect();
             }
         }
-        showCards();
     }
 }

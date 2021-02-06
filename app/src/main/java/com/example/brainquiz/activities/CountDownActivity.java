@@ -18,14 +18,11 @@ public class CountDownActivity extends AppCompatActivity {
 
         /* New Handler to start the Menu-Activity
          * and close this Splash-Screen after some seconds.*/
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                /* Create an Intent that will start the Menu-Activity. */
-                Intent mainIntent = new Intent(CountDownActivity.this, MathRiddlesActivity.class);
-                startActivity(mainIntent);
-                finish();
-            }
+        new Handler().postDelayed(() -> {
+            /* Create an Intent that will start the Menu-Activity. */
+            Intent mainIntent = new Intent(CountDownActivity.this, MathRiddlesActivity.class);
+            startActivity(mainIntent);
+            finish();
         }, 3000);
     }
 }
