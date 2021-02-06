@@ -188,7 +188,7 @@ public class VisualMemoryActivity extends AppCompatActivity implements View.OnCl
             public void run() {
                 popupWindow.dismiss();
             }
-        }, 5000);
+        }, 4000);
 
         // dismiss the popup window when touched
         popupView.setOnTouchListener(new View.OnTouchListener() {
@@ -324,7 +324,6 @@ public class VisualMemoryActivity extends AppCompatActivity implements View.OnCl
                     if (strike < 3) {
                         Intent intent = new Intent(VisualMemoryActivity.this, IntermediateVisualMemoryActivity.class);
                         intent.putExtra("strike", strike);
-                        intent.putExtra("numbers", numOfBtns);
                         intent.putExtra("level", level);
                         startActivity(intent);
                     } else {

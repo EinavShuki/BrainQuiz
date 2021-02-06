@@ -21,12 +21,10 @@
     <string name="save">שמור</string>
     <string name="cancel">בטל</string>
     <string name="ok">אישור</string>
-    <string name="numbers">כמות המספרים שהופיעו:</string>
     <string name="strikes">מספר הנסיונות:</string>
     <string name="Record">שיא</string>
     <string name="continue_visual_memory">המשיכו</string>
     <string name="exists">שם משתמש בשימוש!</string>
-    <string name="of">מתוך</string>
     <string name="well_done">כל הכבוד!!סיימתם את כל השלבים</string>
     <string name="home">מסך הבית</string>
     <string name="username">שם משתמש</string>
@@ -46,4 +44,5 @@
     <string name="got_it">הבנתי</string>
     <string name="go">התחל</string>
     <string name="remember_num">זכרו את המספר שמופיע על המסך בזמן קצוב</string>
+    <string name="strikes_left">מספר הנסיונות שנותרו:</string>
 </resources>

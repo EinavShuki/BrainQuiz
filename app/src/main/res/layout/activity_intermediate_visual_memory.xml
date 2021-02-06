@@ -6,37 +6,18 @@
     android:orientation="vertical"
     android:padding="18dp">
 
+
+
     <TextView
-        android:fontFamily="@font/varela_round_regular"
+        android:layout_marginTop="200dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
         android:gravity="center"
-        android:text="@string/numbers"
+        android:text="@string/strikes_left"
         android:textColor="@color/white"
         android:textSize="30sp" />
 
     <TextView
-        android:fontFamily="@font/varela_round_regular"
-        android:id="@+id/numbers_tv"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:gravity="center"
-        android:textColor="@color/white"
-        android:textSize="40sp" />
-    <TextView
-        android:fontFamily="@font/varela_round_regular"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:gravity="center"
-        android:text="@string/strikes"
-        android:textColor="@color/white"
-        android:textSize="30sp" />
-
-    <TextView
-        android:fontFamily="@font/varela_round_regular"
         android:id="@+id/strikes_tv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

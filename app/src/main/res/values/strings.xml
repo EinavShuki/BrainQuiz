@@ -21,12 +21,10 @@
     <string name="cancel">Cancel</string>
     <string name="ok">Ok</string>
     <string name="time">time:</string>
-    <string name="numbers">Amount of numbers that appeared:</string>
     <string name="strikes">Number of srikes:</string>
     <string name="Record">Record</string>
     <string name="continue_visual_memory">Counitue</string>
     <string name="exists">username already exsists!</string>
-    <string name="of">of</string>
     <string name="well_done">Well Done!! You finshed all levels</string>
     <string name="home">Home</string>
     <string name="username">User Name</string>
@@ -46,4 +44,5 @@
     <string name="go">Go</string>
     <string name="color_matcher" translatable="false">Color Matcher</string>
     <string name="remember_num">Remember the number on the screen in a limited time</string>
+    <string name="strikes_left">Number of attempts left:</string>
 </resources>

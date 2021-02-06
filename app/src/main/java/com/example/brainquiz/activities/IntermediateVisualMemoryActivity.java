@@ -17,14 +17,10 @@ public class IntermediateVisualMemoryActivity extends AppCompatActivity {
         setContentView(R.layout.activity_intermediate_visual_memory);
 
         int strike=getIntent().getIntExtra("strike",1);
-        int numbers=getIntent().getIntExtra("numbers",1);
         int level=getIntent().getIntExtra("level",1);
 
         TextView strikesTv=findViewById(R.id.strikes_tv);
-        TextView numbersTv=findViewById(R.id.numbers_tv);
-        numbersTv.setText(numbers+"");
-        String of=getString(R.string.of);
-        strikesTv.setText(strike+" "+of+" 3");
+        strikesTv.setText(" "+(3-strike));
 
         Button continueBtn=findViewById(R.id.continue_btn);
         continueBtn.setOnClickListener(v->{
