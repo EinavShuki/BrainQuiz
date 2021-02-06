@@ -1,45 +1,99 @@
 package com.example.brainquiz;
 
 public class ColorPair {
-    String meaningText, actualText;
-    int meaningColor, actualColor;
+    String first, second, third, fourth, query, answer;
+    int firstColor, secondColor, thirdColor, fourthColor;
 
-    public ColorPair(String meaningText, int meaningColor,String actualText, int actualColor) {
-        this.meaningText = meaningText;
-        this.actualText = actualText;
-        this.meaningColor = meaningColor;
-        this.actualColor = actualColor;
+    public ColorPair(String query, String answer, String first, int firstColor, String second, int secondColor, String third, int thirdColor, String fourth, int fourthColor) {
+        this.first = first;
+        this.second = second;
+        this.third = third;
+        this.fourth = fourth;
+        this.query = query;
+        this.answer = answer;
+        this.firstColor = firstColor;
+        this.secondColor = secondColor;
+        this.thirdColor = thirdColor;
+        this.fourthColor = fourthColor;
     }
 
-    public String getMeaningText() {
-        return meaningText;
+    public String getFirst() {
+        return first;
     }
 
-    public void setMeaningText(String meaningText) {
-        this.meaningText = meaningText;
+    public void setFirst(String first) {
+        this.first = first;
     }
 
-    public String getActualText() {
-        return actualText;
+    public String getSecond() {
+        return second;
     }
 
-    public void setActualText(String actualText) {
-        this.actualText = actualText;
+    public void setSecond(String second) {
+        this.second = second;
     }
 
-    public int getMeaningColor() {
-        return meaningColor;
+    public String getThird() {
+        return third;
     }
 
-    public void setMeaningColor(int meaningColor) {
-        this.meaningColor = meaningColor;
+    public void setThird(String third) {
+        this.third = third;
     }
 
-    public int getActualColor() {
-        return actualColor;
+    public String getFourth() {
+        return fourth;
     }
 
-    public void setActualColor(int actualColor) {
-        this.actualColor = actualColor;
+    public void setFourth(String fourth) {
+        this.fourth = fourth;
+    }
+
+    public String getQuery() {
+        return query;
+    }
+
+    public void setQuery(String query) {
+        this.query = query;
+    }
+
+    public String getAnswer() {
+        return answer;
+    }
+
+    public void setAnswer(String answer) {
+        this.answer = answer;
+    }
+
+    public int getFirstColor() {
+        return firstColor;
+    }
+
+    public void setFirstColor(int firstColor) {
+        this.firstColor = firstColor;
+    }
+
+    public int getSecondColor() {
+        return secondColor;
+    }
+
+    public void setSecondColor(int secondColor) {
+        this.secondColor = secondColor;
+    }
+
+    public int getThirdColor() {
+        return thirdColor;
+    }
+
+    public void setThirdColor(int thirdColor) {
+        this.thirdColor = thirdColor;
+    }
+
+    public int getFourthColor() {
+        return fourthColor;
+    }
+
+    public void setFourthColor(int fourthColor) {
+        this.fourthColor = fourthColor;
     }
 }

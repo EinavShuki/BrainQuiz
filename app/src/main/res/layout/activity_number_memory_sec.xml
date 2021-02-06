@@ -14,7 +14,6 @@
         android:layout_width="match_parent"
         app:titleTextColor="@color/white"
         android:layout_height="?attr/actionBarSize"
-        android:background="@drawable/toolbar_level"
         android:gravity="center_vertical"
         app:layout_collapseMode="pin"
         android:fitsSystemWindows="true"

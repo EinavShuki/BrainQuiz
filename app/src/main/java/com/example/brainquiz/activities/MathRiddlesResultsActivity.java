@@ -69,6 +69,7 @@ public class MathRiddlesResultsActivity extends AppCompatActivity {
             finish();
         });
 
+
         lineChart = findViewById(R.id.line_chart);
 
         lineChart.getXAxis().setDrawAxisLine(false);
@@ -122,5 +123,13 @@ public class MathRiddlesResultsActivity extends AppCompatActivity {
         });
 
         lineChart.setData(data);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent=new Intent(MathRiddlesResultsActivity.this,MainActivity.class);
+        startActivity(intent);
+        finish();
     }
 }

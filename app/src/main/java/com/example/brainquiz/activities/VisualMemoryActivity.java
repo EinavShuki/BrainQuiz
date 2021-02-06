@@ -4,6 +4,10 @@ package com.example.brainquiz.activities;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+<<<<<<< HEAD
+=======
+import androidx.core.content.ContextCompat;
+>>>>>>> 67f75af5d538897fd40fb1c4d23af1e152e930da
 
 import android.animation.LayoutTransition;
 import android.annotation.SuppressLint;
@@ -173,9 +177,14 @@ public class VisualMemoryActivity extends AppCompatActivity implements View.OnCl
         int width = LinearLayout.LayoutParams.WRAP_CONTENT;
         int height = LinearLayout.LayoutParams.WRAP_CONTENT;
         PopupWindow popupWindow = new PopupWindow(popupView, width, height, true);
+<<<<<<< HEAD
 //        Animation show = AnimationUtils.loadAnimation(VisualMemoryActivity.this, R.anim.popup_anim_show);
 //        popupView.setAnimation(show);
         popupWindow.setAnimationStyle(R.style.popup_window_open);
+=======
+        Animation show = AnimationUtils.loadAnimation(VisualMemoryActivity.this, R.anim.slide_top_to_bottom);
+        popupView.setAnimation(show);
+>>>>>>> 67f75af5d538897fd40fb1c4d23af1e152e930da
         //prevents error
         findViewById(R.id.main_layout).post(new Runnable() {
             public void run() {

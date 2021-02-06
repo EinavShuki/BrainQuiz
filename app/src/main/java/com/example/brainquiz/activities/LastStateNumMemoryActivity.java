@@ -6,17 +6,11 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
-import android.view.Gravity;
-import android.view.KeyEvent;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
 
 import com.example.brainquiz.R;
 
@@ -59,7 +53,7 @@ public class LastStateNumMemoryActivity extends AppCompatActivity {
         explain=findViewById(R.id.popup);
     }
     private void explain() {
-        Animation show=AnimationUtils.loadAnimation(LastStateNumMemoryActivity.this,R.anim.popup_anim_show);
+        Animation show=AnimationUtils.loadAnimation(LastStateNumMemoryActivity.this,R.anim.slide_top_to_bottom);
         explain.setAnimation(show);
         new Handler().postDelayed(new Runnable() {
             @Override

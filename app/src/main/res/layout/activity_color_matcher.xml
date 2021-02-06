@@ -1,156 +1,265 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@drawable/wood_background"
-    tools:context=".activities.ColorMatcherActivity">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/math_root_layout"
+    android:background="@drawable/gradient_animation_math_riddles">
 
     <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:orientation="horizontal"
-        android:background="@drawable/curve_toolbar_bg"
-        app:layout_constraintTop_toTopOf="parent"
-        android:padding="10dp"
-        app:layout_constraintStart_toStartOf="parent">
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="@string/score"
-            android:textStyle="bold"
-            android:textColor="@color/hard_grey"
-            android:textSize="21sp" />
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="0"
-            android:textStyle="bold"
-            android:textColor="@color/hard_grey"
-            android:textSize="21sp"
-            android:id="@+id/count"/>
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@drawable/wood_background"
+        tools:context=".activities.ColorMatcherActivity">
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="4"
-            android:textStyle="bold"
-            android:text="1:00"
-            android:textColor="@color/hard_grey"
-            android:gravity="end"
-            android:textSize="21sp"
-            android:id="@+id/timer"/>
-    </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:padding="8dp"
+            android:layout_height="80dp"
+            android:orientation="horizontal">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
-        android:layout_gravity="center"
-        android:text="Does the meaning match the text color?"
-        android:textSize="22sp"
-        android:textColor="@color/white"
-        android:textStyle="bold"/>
+            <LinearLayout
+                android:layout_marginStart="5dp"
+                android:id="@+id/game_life"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_width="0dp">
 
-    <GridLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="80dp"
-        android:paddingLeft="40dp"
-        android:paddingRight="40dp"
-        android:layout_weight="3"
-        android:columnCount="1"
-        android:rowCount="2">
+                <ImageView
+                    android:id="@+id/life_one"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/heart" />
 
+                <ImageView
+                    android:id="@+id/life_two"
+                    android:layout_marginStart="5dp"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/heart" />
 
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/first_card"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_rowWeight="10"
-            android:layout_columnWeight="1"
-            android:layout_margin="15dp"
-            android:backgroundTint="@color/white"
-            android:elevation="8dp"
-            android:focusable="true"
-            app:cardCornerRadius="12dp"
-            app:cardElevation="6dp"
-            >
+                <ImageView
+                    android:id="@+id/life_three"
+                    android:layout_marginStart="5dp"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/heart" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/game_score"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_width="0dp">
                 <TextView
-                    android:id="@+id/tv_meaning"
+                    android:gravity="end"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="5"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
+                    android:textSize="26sp" />
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="0"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
+                    android:textSize="26sp"
+                    android:id="@+id/tv_colors_score"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="220dp">
+        <ProgressBar
+            android:id="@+id/bar_timer"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="220dp"
+            android:layout_height="220dp"
+            android:layout_gravity="center"
+            android:indeterminate="false"
+            android:max="100"
+            android:progress="100"
+            android:progressDrawable="@drawable/circular_progress_bar"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:gravity="center">
+            <TextView
+                android:text="Text Color"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:fontFamily="@font/varela_round_regular"
+                android:textColor="@color/white"
+                android:id="@+id/textTimer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true" />
+            </RelativeLayout>
+        </FrameLayout>
+
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="80dp"
+            android:layout_gravity="bottom"
+            android:layout_weight="1"
+            android:columnCount="2"
+            android:rowCount="2">
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/first_card"
+                android:tag="one"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_rowWeight="8"
+                android:layout_columnWeight="1"
+                android:layout_margin="25dp"
+                android:elevation="8dp"
+                android:focusable="true"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="6dp"
+                >
+                    <TextView
+                        android:id="@+id/tv_first"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="Red"
+                        android:fontFamily="@font/lato"
+                        android:textStyle="bold"
+                        android:textColor="@color/blue"
+                        android:textSize="34sp" />
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/second_card"
+                android:tag="two"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_rowWeight="10"
+                android:layout_columnWeight="1"
+                android:layout_margin="25dp"
+                android:elevation="8dp"
+                android:focusable="true"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="6dp">
+
+                    <TextView
+                        android:id="@+id/tv_second"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/lato"
+                        android:textStyle="bold"
+                        android:layout_gravity="center"
+                        android:text="Black"
+                        android:textColor="@color/white"
+                        android:textSize="34sp" />
+
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:id="@+id/third_card"
+                android:layout_width="0dp"
+                android:tag="three"
+                android:layout_height="0dp"
+                android:layout_rowWeight="10"
+                android:layout_columnWeight="1"
+                android:layout_margin="25dp"
+                android:elevation="8dp"
+                android:focusable="true"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="6dp"
+                >
+                <TextView
+                    android:id="@+id/tv_third"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:text="Red"
-                    android:fontFamily="@font/app_font"
+                    android:fontFamily="@font/lato"
                     android:textStyle="bold"
-                    android:textColor="@color/green"
+                    android:textColor="@color/white"
                     android:textSize="34sp" />
-        </com.google.android.material.card.MaterialCardView>
+            </androidx.cardview.widget.CardView>
 
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/second_card"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_rowWeight="10"
-            android:layout_columnWeight="1"
-            android:layout_margin="15dp"
-            android:backgroundTint="@color/white"
-            android:elevation="8dp"
-            android:focusable="true"
-            app:cardCornerRadius="12dp"
-            app:cardElevation="6dp">
+            <androidx.cardview.widget.CardView
+                android:id="@+id/fourth_card"
+                android:tag="four"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_rowWeight="10"
+                android:layout_columnWeight="1"
+                android:layout_margin="25dp"
+                android:elevation="8dp"
+                android:focusable="true"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="6dp">
 
                 <TextView
-                    android:id="@+id/tv_actual"
+                    android:id="@+id/tv_fourth"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/app_font"
+                    android:fontFamily="@font/lato"
                     android:textStyle="bold"
                     android:layout_gravity="center"
                     android:text="Black"
-                    android:textColor="@color/yellow"
+                    android:textColor="@color/white"
                     android:textSize="34sp" />
 
-        </com.google.android.material.card.MaterialCardView>
-    </GridLayout>
+            </androidx.cardview.widget.CardView>
+        </GridLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="bottom"
-        android:layout_weight="2"
-        android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/btn_no"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="No"
-            android:alpha="0.7"
-            android:textColor="@color/blue_500"
-            android:background="@color/black"
-            android:textSize="32sp"
-            android:padding="18dp"
-            android:layout_marginRight="5dp" />
 
-        <Button
-            android:id="@+id/btn_yes"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:alpha="0.7"
-            android:text="Yes"
-            android:textSize="32sp"
-            android:padding="18dp"
-            android:textColor="@color/blue_500"
-            android:background="@color/black"/>
     </LinearLayout>
 
-</LinearLayout>
+    <com.airbnb.lottie.LottieAnimationView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/correct_answer_anim"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:lottie_autoPlay="false"
+        app:lottie_rawRes="@raw/correct_anim"/>
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/wrong_answer_anim"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:lottie_autoPlay="false"
+        android:visibility="gone"
+        app:lottie_rawRes="@raw/wrong_anim"/>
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/level_up_anim"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:lottie_autoPlay="false"
+        android:visibility="gone"
+        app:lottie_rawRes="@raw/level_up"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
