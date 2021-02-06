@@ -4,32 +4,20 @@ package com.example.brainquiz.activities;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.core.content.ContextCompat;
 
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
 import android.animation.LayoutTransition;
-import android.animation.ObjectAnimator;
 import android.annotation.SuppressLint;
-import android.app.Dialog;
-import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
-import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
 import android.view.Gravity;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
 
-import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
@@ -79,11 +67,13 @@ public class VisualMemoryActivity extends AppCompatActivity implements View.OnCl
 
         switch (level) {
             case 1:
-                mainLayout.setBackground(ContextCompat.getDrawable(VisualMemoryActivity.this, R.drawable.back));
+                mainLayout.setBackgroundResource(R.drawable.back);
                 break;
             case 2:
-            case 6:
                 mainLayout.setBackgroundResource(R.drawable.back2);
+                break;
+            case 6:
+                mainLayout.setBackgroundResource(R.drawable.back6);
                 break;
             case 3:
                 mainLayout.setBackgroundResource(R.drawable.back3);
@@ -99,7 +89,7 @@ public class VisualMemoryActivity extends AppCompatActivity implements View.OnCl
                 mainLayout.setBackgroundResource(R.drawable.back7);
                 break;
             case 8:
-                mainLayout.setBackgroundResource(R.drawable.back8);
+                mainLayout.setBackgroundResource(R.drawable.back6);
                 break;
             case 10:
                 mainLayout.setBackgroundResource(R.drawable.back10);
@@ -183,15 +173,15 @@ public class VisualMemoryActivity extends AppCompatActivity implements View.OnCl
         int width = LinearLayout.LayoutParams.WRAP_CONTENT;
         int height = LinearLayout.LayoutParams.WRAP_CONTENT;
         PopupWindow popupWindow = new PopupWindow(popupView, width, height, true);
-        Animation show = AnimationUtils.loadAnimation(VisualMemoryActivity.this, R.anim.popup_anim_show);
-        popupView.setAnimation(show);
+//        Animation show = AnimationUtils.loadAnimation(VisualMemoryActivity.this, R.anim.popup_anim_show);
+//        popupView.setAnimation(show);
+        popupWindow.setAnimationStyle(R.style.popup_window_open);
         //prevents error
         findViewById(R.id.main_layout).post(new Runnable() {
             public void run() {
                 popupWindow.showAtLocation(findViewById(R.id.main_layout), Gravity.TOP, 0, 600);
             }
         });
-        popupWindow.setTouchable(false);
         popupWindow.update();
         new Handler().postDelayed(new Runnable() {
             @Override
@@ -199,6 +189,15 @@ public class VisualMemoryActivity extends AppCompatActivity implements View.OnCl
                 popupWindow.dismiss();
             }
         }, 5000);
+
+        // dismiss the popup window when touched
+        popupView.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                popupWindow.dismiss();
+                return true;
+            }
+        });
 
         popupWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
             @Override
