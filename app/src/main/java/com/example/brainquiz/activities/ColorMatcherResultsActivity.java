@@ -13,7 +13,7 @@ import com.google.android.material.card.MaterialCardView;
 
 public class ColorMatcherResultsActivity extends AppCompatActivity {
 
-    TextView tvLongestRun, tvScore;
+    TextView tvLongestRun, tvScore, tvCorrect;
     MaterialCardView cvLongestRun, cvReactionTime, cvScore;
 
     @Override
@@ -38,12 +38,15 @@ public class ColorMatcherResultsActivity extends AppCompatActivity {
 
         tvLongestRun = findViewById(R.id.tv_longest_run);
         tvScore = findViewById(R.id.tv_color_match_score);
+        tvCorrect = findViewById(R.id.tv_correct_ans);
 
         int longestRun = getIntent().getIntExtra(Constants.LONGEST_RUN_KEY, 0);
         String score = getIntent().getStringExtra(Constants.SCORE_KEY);
+        int correct = getIntent().getIntExtra(Constants.CORRECT_KEY, 0);
 
         tvLongestRun.setText(String.valueOf(longestRun));
         tvScore.setText(score);
+        tvCorrect.setText(String.valueOf(correct));
 
     }
 }

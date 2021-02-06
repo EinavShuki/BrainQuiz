@@ -50,7 +50,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:fontFamily="@font/varela_round_regular"
-                    android:text="Longest run"
+                    android:text="Longest Run"
                     android:textColor="@color/hard_grey"
                     android:textSize="18sp" />
 
@@ -95,24 +95,24 @@
                     android:layout_height="70dp"
                     android:layout_gravity="center"
                     android:padding="10dp"
-                    android:src="@drawable/flash" />
+                    android:src="@drawable/correct_icon" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="Reaction Time"
+                    android:text="Correct Answers"
                     android:fontFamily="@font/varela_round_regular"
                     android:textColor="@color/hard_grey"
                     android:textSize="18sp" />
 
                 <TextView
-                    android:id="@+id/tv_reaction"
+                    android:id="@+id/tv_correct_ans"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/varela_round_regular"
                     android:gravity="center"
-                    android:text="5.43s"
+                    android:text="43"
                     android:textStyle="bold"
                     android:layout_marginTop="5dp"
                     android:textColor="@color/hard_grey"

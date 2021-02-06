@@ -46,7 +46,7 @@ public class ColorMatcherActivity extends AppCompatActivity implements View.OnCl
     String answer;
     ColorPair colorPair = colorPairs.get(random_num);
     ProgressBar barTimer;
-    int life = 3, longestRun = 0, run = 0;
+    int life = 3, longestRun = 0, run = 0, scoreLevel = 1, correct = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -147,13 +147,16 @@ public class ColorMatcherActivity extends AppCompatActivity implements View.OnCl
         progressAnimator = ObjectAnimator.ofInt(barTimer, "progress", 100, 0);
 
         int score = Integer.parseInt(tvScore.getText().toString());
-        if(score < 6){
+        if(score <= 4){
             progressAnimator.setDuration(Constants.EASY_DURATION);
-        } else if(score > 5 && score < 15){
+        } else if(score >= 5 && score <= 24){
+            scoreLevel = 2;
             progressAnimator.setDuration(Constants.INTERMEDIATE_DURATION);
-        } else if(score > 14 && score < 20){
+        } else if(score >= 25 && score <= 59){
+            scoreLevel = 5;
             progressAnimator.setDuration(Constants.MEDIUM_DURATION);
-        } else if (score <= 50){
+        } else if (score >= 60){
+            scoreLevel = 10;
             progressAnimator.setDuration(Constants.HIGH_DURATION);
         }
 
@@ -170,8 +173,9 @@ public class ColorMatcherActivity extends AppCompatActivity implements View.OnCl
     }
 
     private void playCorrect() {
+        correct++;
         int score = Integer.parseInt(tvScore.getText().toString());
-        if(score == 5 || score == 15){
+        if(score == 5 || score == 24 || score == 60){
             playLevelUp();
             addScore();
             return;
@@ -204,11 +208,6 @@ public class ColorMatcherActivity extends AppCompatActivity implements View.OnCl
         });
 
         addScore();
-
-        if(Integer.parseInt(tvScore.getText().toString()) == 50){
-            Toast.makeText(this, "You've won the game!", Toast.LENGTH_LONG).show();
-        }
-
         showCards();
     }
 
@@ -260,7 +259,7 @@ public class ColorMatcherActivity extends AppCompatActivity implements View.OnCl
         }
         Animation tvAnimation = AnimationUtils.loadAnimation(getApplicationContext(),
                 R.anim.fade_in);
-        tvScore.setText(String.valueOf(Integer.parseInt(tvScore.getText().toString())+1));
+        tvScore.setText(String.valueOf(Integer.parseInt(tvScore.getText().toString())+ scoreLevel));
         tvScore.startAnimation(tvAnimation);
     }
 
@@ -288,6 +287,7 @@ public class ColorMatcherActivity extends AppCompatActivity implements View.OnCl
                 Intent intent = new Intent(ColorMatcherActivity.this, ColorMatcherResultsActivity.class);
                 intent.putExtra(Constants.LONGEST_RUN_KEY, longestRun);
                 intent.putExtra(Constants.SCORE_KEY, tvScore.getText().toString());
+                intent.putExtra(Constants.CORRECT_KEY, correct);
                 startActivity(intent);
             }
 
