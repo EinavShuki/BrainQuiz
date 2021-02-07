@@ -31,6 +31,7 @@ import com.google.android.material.card.MaterialCardView;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.logging.Level;
 
 public class
 MathRiddlesActivity extends AppCompatActivity implements View.OnClickListener {
@@ -55,6 +56,7 @@ MathRiddlesActivity extends AppCompatActivity implements View.OnClickListener {
     TextView riddle;
     TextView Count;
     TextView Timer;
+    TextView Level;
     MaterialCardView cvRiddleCard;
     LottieAnimationView correctAnimView;
     LottieAnimationView wrongAnimView;
@@ -145,6 +147,7 @@ MathRiddlesActivity extends AppCompatActivity implements View.OnClickListener {
         Enter = findViewById(R.id.enter);
         tvAnswer = findViewById(R.id.answer);
         Timer = findViewById(R.id.timer);
+        Level = findViewById(R.id.level);
         cvRiddleCard = findViewById(R.id.card_riddle);
         correctAnimView = findViewById(R.id.correct_anim);
         wrongAnimView = findViewById(R.id.wrong_anim);
@@ -244,18 +247,21 @@ MathRiddlesActivity extends AppCompatActivity implements View.OnClickListener {
     private void showRiddle(){
 
         if( time>40 && Integer.parseInt(Count.getText().toString())<5){
+            Level.setText("1/3");
             random_num = new Random().nextInt(levelStart.size());
             exercise[0] = levelStart.get(random_num).first;
             exercise[1] = levelStart.get(random_num).second;
             levelStart.remove(random_num);
         }
         else if((time<=40 && time>20 || (Integer.parseInt(Count.getText().toString())>=5)) && Integer.parseInt(Count.getText().toString())<10) {
+            Level.setText("2/3");
             random_num = new Random().nextInt(levelMiddle.size());
             exercise[0] = levelMiddle.get(random_num).first;
             exercise[1] = levelMiddle.get(random_num).second;
             levelMiddle.remove(random_num);
         }
         else{
+            Level.setText("3/3");
             random_num = new Random().nextInt(levelHigh.size());
             exercise[0] = levelHigh.get(random_num).first;
             exercise[1] = levelHigh.get(random_num).second;

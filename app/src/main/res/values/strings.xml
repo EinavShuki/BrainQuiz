@@ -20,7 +20,7 @@
     <string name="save">Save</string>
     <string name="cancel">Cancel</string>
     <string name="ok">Ok</string>
-    <string name="time">time:</string>
+    <string name="time">Time</string>
     <string name="strikes">Number of srikes:</string>
     <string name="Record">Record</string>
     <string name="continue_visual_memory">Counitue</string>
@@ -33,7 +33,7 @@
     <string name="answer">Answer</string>
     <string name="your_score">Your Score</string>
     <string name="enter_btn">Enter</string>
-    <string name="score">Score:</string>
+    <string name="score">Score</string>
     <string name="new_game">New game</string>
     <string name="explanation">Remember the positions of the digits on screen and press on them in order</string>
     <string name="quit_game">Quit Game</string>
