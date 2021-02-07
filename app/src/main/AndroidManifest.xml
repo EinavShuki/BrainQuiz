@@ -5,13 +5,14 @@
 
     <dist:module dist:instant="true" />
     <application
+        android:fontFamily="@font/varela_round_regular"
         android:allowBackup="true"
         android:icon="@drawable/brain_ic"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BrainQuiz">
-        <activity android:name=".activities.ColorMatcherResultsActivity"></activity>
+        <activity android:name=".activities.ColorMatcherResultsActivity"/>
         <activity android:name=".activities.ColorMatcherActivity" />
         <activity android:name=".activities.MathRiddlesResultsActivity" />
         <activity android:name=".activities.CountDownActivity" />
