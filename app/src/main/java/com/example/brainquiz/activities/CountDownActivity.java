@@ -9,6 +9,7 @@ import android.os.Handler;
 import com.example.brainquiz.R;
 
 public class CountDownActivity extends AppCompatActivity {
+    Handler handler =new Handler();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,11 +19,13 @@ public class CountDownActivity extends AppCompatActivity {
 
         /* New Handler to start the Menu-Activity
          * and close this Splash-Screen after some seconds.*/
-        new Handler().postDelayed(() -> {
+        handler.postDelayed(() -> {
             /* Create an Intent that will start the Menu-Activity. */
-            Intent mainIntent = new Intent(CountDownActivity.this, MathRiddlesActivity.class);
+            Intent mainIntent = new Intent(CountDownActivity.this, ColorMatcherActivity.class);
             startActivity(mainIntent);
             finish();
         }, 3000);
     }
+
+
 }
