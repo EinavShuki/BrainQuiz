@@ -6,7 +6,9 @@ import android.content.Intent;
 import android.graphics.Typeface;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.example.brainquiz.R;
@@ -19,6 +21,9 @@ public class MainActivity extends AppCompatActivity {
     MaterialCardView visualMemoryCard;
     MaterialCardView mathRiddle;
     MaterialCardView colorMatcherCard;
+    ImageButton volume;
+    boolean vol=true ;
+    MediaPlayer backvol;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +37,22 @@ public class MainActivity extends AppCompatActivity {
 
         initUi();
         setListeners();
+        backvol.setVolume(0.05f, 0.05f);
+        backvol.start();
     }
+
+
+//    @Override
+//    protected void onResume() {
+//        super.onResume();
+//        if (vol) {
+//            backvol.setVolume(0.05f, 0.05f);
+//        } else {
+//            backvol.setVolume(0, 0);
+//        }
+//        backvol.start();
+//
+//    }
 
     private void initUi() {
         btnLeaderboards = findViewById(R.id.btn_leaderboards);
@@ -40,30 +60,75 @@ public class MainActivity extends AppCompatActivity {
         visualMemoryCard = findViewById(R.id.visual_memory_card);
         mathRiddle = findViewById(R.id.math_riddle);
         colorMatcherCard = findViewById(R.id.color_matcher_card);
+        volume = findViewById(R.id.volume_btn);
+        backvol = MediaPlayer.create(MainActivity.this, R.raw.background_visual_memory);
     }
 
 
     private void setListeners() {
-        btnLeaderboards.setOnClickListener(view ->
-                startActivity(new Intent(MainActivity.this, LeaderboardActivity.class)));
+        btnLeaderboards.setOnClickListener(view -> {
+            backvol.stop();
+            startActivity(new Intent(MainActivity.this, LeaderboardActivity.class));
+        });
 
-        numMemory.setOnClickListener(v ->
-                startActivity(new Intent(MainActivity.this, LastStateNumMemoryActivity.class)));
+        numMemory.setOnClickListener(v -> {
+            backvol.stop();
+            startActivity(new Intent(MainActivity.this, LastStateNumMemoryActivity.class));
+        });
 
         visualMemoryCard.setOnClickListener(v -> {
+            backvol.pause();
             Intent intent = new Intent(MainActivity.this, VisualMemoryActivity.class);
-            intent.putExtra("level", 1);
-            intent.putExtra("strike", 1);
             startActivity(intent);
         });
-        mathRiddle.setOnClickListener(v ->
-                startActivity(new Intent(MainActivity.this, MathRiddlesActivity.class))
-        );
+        mathRiddle.setOnClickListener(v -> {
+            backvol.stop();
+            startActivity(new Intent(MainActivity.this, MathRiddlesActivity.class));
+        });
 
         colorMatcherCard.setOnClickListener(v -> {
+            backvol.stop();
             startActivity(new Intent(MainActivity.this, ColorMatcherActivity.class));
+        });
+
+        volume.setOnClickListener(v -> {
+            if (vol) {
+                volume.setImageResource(R.drawable.volume_off);
+                backvol.setVolume(0.05f, 0.05f);
+            } else {
+                volume.setImageResource(R.drawable.volume_up);
+                backvol.setVolume(0, 0);
+            }
+            vol = !vol;
+            backvol.start();
         });
 
     }
 
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.i("vol",vol+" ");
+        if (vol) {
+            volume.setImageResource(R.drawable.volume_off);
+            backvol.setVolume(0.05f, 0.05f);
+        } else {
+            volume.setImageResource(R.drawable.volume_up);
+            backvol.setVolume(0, 0);
+        }
+        backvol.start();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        backvol.stop();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        backvol.pause();
+    }
 }
