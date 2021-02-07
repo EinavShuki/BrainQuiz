@@ -42,7 +42,7 @@
     <string name="stay">stay</string>
     <string name="got_it">Got it!</string>
     <string name="go">Go</string>
-    <string name="color_matcher" translatable="false">Color Matcher</string>
+    <string name="color_matcher">Color Match</string>
     <string name="remember_num">Remember the number on the screen in a limited time</string>
     <string name="strikes_left">Number of attempts left:</string>
 </resources>

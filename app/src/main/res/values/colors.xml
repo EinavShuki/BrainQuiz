@@ -23,7 +23,7 @@
 w    <color name="ch">@color/cardview_shadow_start_color</color>
 
 
-    <color name="white_lite">#E1CFCF</color>
+    <color name="white_lite">#90CAF9</color>
 
 
     <color name="colorGradientStart">#D9FF43</color>
