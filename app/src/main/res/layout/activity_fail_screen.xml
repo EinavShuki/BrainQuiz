@@ -66,6 +66,7 @@
         />
 
     <TextView
+        android:visibility="gone"
         android:fontFamily="@font/varela_round_regular"
         android:textColor="@color/white"
         android:gravity="center"
