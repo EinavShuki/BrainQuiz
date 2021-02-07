@@ -2,7 +2,7 @@
 <animation-list xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item android:duration="5000"
-        android:drawable="@drawable/gradient_start_math_riddles"/>
+        android:drawable="@drawable/gradient_save_score"/>
 
     <item android:duration="5000"
         android:drawable="@drawable/gradient_center_math_riddles"/>

@@ -27,7 +27,7 @@
     <string name="exists">username already exsists!</string>
     <string name="well_done">Well Done!! You finshed all levels</string>
     <string name="home">Home</string>
-    <string name="username">User Name</string>
+    <string name="username">Enter name</string>
     <string name="leaderboards">Leaderboards</string>
     <string name="right_ans">The right answer was:</string>
     <string name="answer">Answer</string>
