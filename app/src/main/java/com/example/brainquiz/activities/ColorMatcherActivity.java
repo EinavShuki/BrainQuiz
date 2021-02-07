@@ -1,5 +1,6 @@
 package com.example.brainquiz.activities;
 
+import androidx.activity.OnBackPressedDispatcherOwner;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
@@ -94,7 +95,9 @@ public class ColorMatcherActivity extends AppCompatActivity implements View.OnCl
     @Override
     public void onBackPressed() {
         progressAnimator.removeAllListeners();
-        super.onBackPressed();
+        finish();
+        Intent intent=new Intent(this,MainActivity.class);
+        startActivity(intent);
     }
 
     @Override
@@ -360,4 +363,6 @@ public class ColorMatcherActivity extends AppCompatActivity implements View.OnCl
             }
         }
     }
+
+
 }

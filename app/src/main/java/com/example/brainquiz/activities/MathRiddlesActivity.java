@@ -284,44 +284,11 @@ MathRiddlesActivity extends AppCompatActivity implements View.OnClickListener {
     public void onBackPressed() {
         if(countDownTimer  != null) {
             countDownTimer.cancel();
+            Intent mainIntent = new Intent(this, MainActivity.class);
+            startActivity(mainIntent);
+            finish();
+
         }
-        final Dialog dialog = new Dialog(this);
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialog.setCancelable(false);
-        dialog.setContentView(R.layout.exit_fragment);
-        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        FrameLayout mDialogNo = dialog.findViewById(R.id.game);
-        mDialogNo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-                startTimer();
-            }
-        });
-
-        FrameLayout mDialogExit = dialog.findViewById(R.id.exit);
-        mDialogExit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.cancel();
-                MathRiddlesActivity.super.onBackPressed();
-                finish();
-            }
-        });
-
-        dialog.show();
-//        ViewDialogActivity alert = new ViewDialogActivity();
-//        alert.showDialog(this);
-
-
-
-//        ExitFragment exitFragment = new ExitFragment();
-//        exitFragment.show(getSupportFragmentManager(),"bialog");
-//        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-//        builder.setTitle(R.string.confirm_exit);
-//        builder.setIcon(R.drawable.question);
-//        builder.setMessage(R.string.you_sure);
-//        builder.setPositiveButton(R.string.yes_get_out, (dialog, which) -> MathRiddlesActivity.super.onBackPressed()).setNegativeButton(R.string.stay,null).show(); }
     }
     @Override
     public void onClick(View v) {

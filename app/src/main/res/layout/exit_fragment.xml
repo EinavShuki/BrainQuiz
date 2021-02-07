@@ -19,8 +19,8 @@
         >
 
         <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="250dp"
+            android:layout_width="300dp"
+            android:layout_height="200dp"
             android:layout_gravity="center"
             android:layout_marginStart="30dp"
             android:layout_marginEnd="30dp"
@@ -36,7 +36,7 @@
                 android:gravity="center"
                 android:text="@string/quit_game"
                 android:textColor="@android:color/black"
-                android:textSize="20dp"
+                android:textSize="30dp"
                 android:textStyle="bold" />
 
             <TextView
@@ -48,7 +48,7 @@
                 android:gravity="center"
                 android:text="@string/you_sure"
                 android:textColor="@color/hard_grey"
-                android:textSize="14dp"
+                android:textSize="18dp"
                 android:textStyle="bold" />
 
         </androidx.cardview.widget.CardView>
@@ -60,7 +60,7 @@
         android:layout_gravity="center"
         android:id="@+id/exit"
         android:layout_marginRight="45dp"
-        android:layout_marginTop="125dp"
+        android:layout_marginTop="100dp"
 
         >
 
@@ -83,12 +83,12 @@
         android:layout_gravity="center"
         android:id="@+id/game"
         android:layout_marginLeft="50dp"
-        android:layout_marginTop="125dp">
+        android:layout_marginTop="100dp">
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
 
-            android:layout_width="60dp"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_gravity="center"
             android:src="@drawable/games"
             app:backgroundTint="@color/green" />

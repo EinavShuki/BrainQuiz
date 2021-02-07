@@ -36,7 +36,7 @@
     <string name="score">Score:</string>
     <string name="new_game">New game</string>
     <string name="explanation">Remember the positions of the digits on screen and press on them in order</string>
-    <string name="quit_game">Quit Game?</string>
+    <string name="quit_game">Quit Game</string>
     <string name="you_sure">Are you sure, you want to exit?</string>
     <string name="yes_get_out">yes, get out</string>
     <string name="stay">stay</string>
