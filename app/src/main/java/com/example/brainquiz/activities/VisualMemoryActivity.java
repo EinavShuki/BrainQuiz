@@ -4,9 +4,11 @@ package com.example.brainquiz.activities;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.ActivityCompat;
 
 import android.animation.LayoutTransition;
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
 import android.media.MediaPlayer;
@@ -36,15 +38,14 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Random;
 
-public class VisualMemoryActivity extends AppCompatActivity implements View.OnClickListener {
+public class VisualMemoryActivity extends AppCompatActivity {
     Map<Integer, ArrayList<Integer>> caughtPos = new HashMap<>();
     int strike, numOfBtns, level;
     LinearLayout mainLayout;
     ImageView imageView;
     MediaPlayer countSound, popSound;
-    ImageButton zero, one, two, three, four, five, six, seven, eight, nine, volume;
+    ImageButton zero, one, two, three, four, five, six, seven, eight, nine;
     ArrayList<ImageButton> num_arr = new ArrayList<>();
-    boolean vol = true;
     AlertDialog.Builder builder;
     Button go;
 
@@ -53,10 +54,9 @@ public class VisualMemoryActivity extends AppCompatActivity implements View.OnCl
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_visual_memory);
 
+//        backvol.stop();
         init();
 
-        go.setOnClickListener(this);
-        volume.setOnClickListener(this);
 
         LayoutTransition layoutTransition = new LayoutTransition();
         layoutTransition.enableTransitionType(LayoutTransition.CHANGING);
@@ -95,6 +95,11 @@ public class VisualMemoryActivity extends AppCompatActivity implements View.OnCl
                 mainLayout.setBackgroundResource(R.drawable.back10);
                 break;
         }
+        go.setOnClickListener(v -> {
+            go.setVisibility(View.GONE);
+            Levels(level);
+        });
+
         Toolbar toolbar = findViewById(R.id.level_toolbar);
         toolbar.setTitle(toolbar.getTitle() + " " + level);
         if (level == 1)
@@ -104,27 +109,10 @@ public class VisualMemoryActivity extends AppCompatActivity implements View.OnCl
     }
 
 
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.volume_btn:
-                if (vol)
-                    volume.setImageResource(R.drawable.volume_off);
-                else
-                    volume.setImageResource(R.drawable.volume_up);
-                vol = !vol;
-                break;
-            case R.id.go:
-                go.setVisibility(View.GONE);
-                Levels(level);
-        }
-    }
-
     @SuppressLint("ResourceType")
     private void init() {
         mainLayout = findViewById(R.id.main_layout);
         imageView = findViewById(R.id.animation_img_view);
-        volume = findViewById(R.id.volume_btn);
         go = findViewById(R.id.go);
 
         zero = findViewById(R.id.zero_card);
@@ -213,10 +201,11 @@ public class VisualMemoryActivity extends AppCompatActivity implements View.OnCl
     private void counting(ArrayList<ImageButton> allBtn) {
         for (ImageButton b : allBtn) {
             b.setClickable(false);
+            //COUNTING VOLUME
             countSound = MediaPlayer.create(VisualMemoryActivity.this, R.raw.countdown);
-            if (vol)
-                countSound.setVolume(0.01f, 0.01f);
-            else
+//            if (vol)
+//                countSound.setVolume(0.01f, 0.01f);
+//            else
                 countSound.setVolume(0, 0);
             countSound.start();
             Animation count = AnimationUtils.loadAnimation(VisualMemoryActivity.this, R.anim.counting);
@@ -291,9 +280,9 @@ public class VisualMemoryActivity extends AppCompatActivity implements View.OnCl
 
                 //pop sound with pushing on a button
                 popSound = MediaPlayer.create(VisualMemoryActivity.this, R.raw.pop);
-                if (vol)
-                    popSound.setVolume(0.3f, 0.3f);
-                else
+//                if (vol)
+//                    popSound.setVolume(0.3f, 0.3f);
+//                else
                     popSound.setVolume(0, 0);
                 popSound.start();
 
@@ -341,7 +330,8 @@ public class VisualMemoryActivity extends AppCompatActivity implements View.OnCl
         counting(allBtn);
     }
 
-//    private void Levels(int level) {
+
+    //    private void Levels(int level) {
 //        ArrayList<Button> allBtn = new ArrayList<>();
 //        if (level == 1)
 //            numOfBtns = 5;
