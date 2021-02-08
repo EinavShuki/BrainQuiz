@@ -106,6 +106,7 @@ public class ColorMatcherActivity extends AppCompatActivity implements View.OnCl
         super.onPause();
     }
 
+
     private void showCards() {
         // Get color pair to show
         if(colorPairs.size() == 0){

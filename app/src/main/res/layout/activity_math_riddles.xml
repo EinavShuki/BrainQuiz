@@ -202,18 +202,18 @@
                 android:layout_margin="3dp"
                 android:layoutDirection="ltr"
                 android:layout_weight="1">
+
                 <TextView
                     android:id="@+id/answer"
-                    android:layout_width="0dp"
+                    android:layout_width="114dp"
                     android:layout_height="match_parent"
                     android:layout_weight="2"
-                    android:hint="@string/answer"
-                    android:gravity="center"
                     android:fontFamily="@font/varela_round_regular"
-                    android:textColorHint ="@color/blue"
+                    android:gravity="center"
+                    android:hint="@string/answer"
                     android:textColor="@color/blue"
-                    android:textSize="22sp"
-                    />
+                    android:textColorHint="@color/blue"
+                    android:textSize="22sp" />
 
                 <TextView
                     android:id="@+id/tv_x"
@@ -227,19 +227,6 @@
                     android:textSize="22sp" />
             </LinearLayout>
 
-
-
-            <Button
-                android:id="@+id/enter"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="3dp"
-                android:layout_weight="1"
-                android:text="@string/enter_btn"
-                android:textColor="@color/blue"
-                android:fontFamily="@font/varela_round_regular"
-                android:textSize="22sp"
-                android:background="@drawable/keyboard_button" />
 
         </LinearLayout>
 

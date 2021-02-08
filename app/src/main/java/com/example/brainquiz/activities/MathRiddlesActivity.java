@@ -145,7 +145,7 @@ MathRiddlesActivity extends AppCompatActivity implements View.OnClickListener {
         tvDelete = findViewById(R.id.tv_x);
         riddle = findViewById(R.id.calculate);
         Count = findViewById(R.id.count);
-        Enter = findViewById(R.id.enter);
+
         tvAnswer = findViewById(R.id.answer);
         Timer = findViewById(R.id.timer);
         Level = findViewById(R.id.level);
@@ -166,23 +166,26 @@ MathRiddlesActivity extends AppCompatActivity implements View.OnClickListener {
         btnNine.setOnClickListener(this);
         btnZero.setOnClickListener(this);
         tvDelete.setOnClickListener(this);
-        Enter.setOnClickListener(v -> {
-            if(!tvAnswer.getText().toString().equals("")){
-                if(tvAnswer.getText().toString().equals(exercise[1])){
-                    // Calculate reaction time
-                    timeWhenUserReacted = Float.parseFloat(Timer.getText().toString().substring(3));
-                    float reactionTime = timeWhenQuestionShowed - timeWhenUserReacted;
-                    totalReactionTime += reactionTime;
-                    playSuccess();
-                    tvAnswer.setText("");
-                    Count.setText( String.valueOf(Integer.parseInt(Count.getText().toString())+1));
-                } else {
-                    playFailure();
-                }
-                showRiddle();
-                tvAnswer.setText("");
-            }
-        });
+
+    }
+    private  void CheckStep(){
+        if(tvAnswer.getText().toString().equals(exercise[1])){
+            // Calculate reaction time
+            timeWhenUserReacted = Float.parseFloat(Timer.getText().toString().substring(3));
+            float reactionTime = timeWhenQuestionShowed - timeWhenUserReacted;
+            totalReactionTime += reactionTime;
+            playSuccess();
+            tvAnswer.setText("");
+            Count.setText( String.valueOf(Integer.parseInt(Count.getText().toString())+1));
+            showRiddle();
+            tvAnswer.setText("");
+        }
+        else if(tvAnswer.getText().toString().length()>=exercise[1].length()) {
+            playFailure();
+            showRiddle();
+            tvAnswer.setText("");
+        }
+
     }
 
     private void playSuccess(){
@@ -312,33 +315,43 @@ MathRiddlesActivity extends AppCompatActivity implements View.OnClickListener {
         switch (v.getId()) {
             case R.id.btn_1:
                 appendNumber("1");
+                CheckStep();
                 break;
             case R.id.btn_2:
                 appendNumber("2");
+                CheckStep();
                 break;
             case R.id.btn_3:
                 appendNumber("3");
+                CheckStep();
                 break;
             case R.id.btn_4:
                 appendNumber("4");
+                CheckStep();
                 break;
             case R.id.btn_5:
                 appendNumber("5");
+                CheckStep();
                 break;
             case R.id.btn_6:
                 appendNumber("6");
+                CheckStep();
                 break;
             case R.id.btn_7:
                 appendNumber("7");
+                CheckStep();
                 break;
             case R.id.btn_8:
                 appendNumber("8");
+                CheckStep();
                 break;
             case R.id.btn_9:
                 appendNumber("9");
+                CheckStep();
                 break;
             case R.id.btn_0:
                 appendNumber("0");
+                CheckStep();
                 break;
             case R.id.tv_x:
                 tvAnswer.setText("");
