@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
 
         Log.i("vol", vol + "onCreate");
 
-        volume.setImageResource(R.drawable.volume_off);
+        volume.setImageResource(R.drawable.volume_up);
         backvol.setVolume(0.05f, 0.05f);
         backvol.setLooping(true);
         backvol.start();
@@ -96,10 +96,10 @@ public class MainActivity extends AppCompatActivity {
 
         volume.setOnClickListener(v -> {
             if (!vol) {
-                volume.setImageResource(R.drawable.volume_off);
+                volume.setImageResource(R.drawable.volume_up);
                 backvol.setVolume(0.05f, 0.05f);
             } else {
-                volume.setImageResource(R.drawable.volume_up);
+                volume.setImageResource(R.drawable.volume_off);
                 backvol.setVolume(0, 0);
             }
             vol = !vol;
@@ -156,10 +156,10 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
         Log.i("vol", vol + " onResume");
         if (vol) {
-            volume.setImageResource(R.drawable.volume_off);
+            volume.setImageResource(R.drawable.volume_up);
             backvol.setVolume(0.05f, 0.05f);
         } else {
-            volume.setImageResource(R.drawable.volume_up);
+            volume.setImageResource(R.drawable.volume_off);
             backvol.setVolume(0, 0);
         }
         backvol.setLooping(true);
