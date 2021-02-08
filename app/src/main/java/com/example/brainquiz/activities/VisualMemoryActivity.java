@@ -48,8 +48,8 @@ public class VisualMemoryActivity extends AppCompatActivity {
     ArrayList<ImageButton> num_arr = new ArrayList<>();
     Button go;
     boolean vol;
-    MediaPlayer backvol;
     SharedPreferences volSp;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,14 +65,14 @@ public class VisualMemoryActivity extends AppCompatActivity {
         mainLayout.setLayoutTransition(layoutTransition);
 
         Log.i("vol", vol + " is visual");
-        if (vol) {
-            volume.setImageResource(R.drawable.volume_off);
-            backvol.setVolume(0.05f, 0.05f);
-        } else {
-            volume.setImageResource(R.drawable.volume_up);
-            backvol.setVolume(0, 0);
-        }
-        backvol.start();
+//        if (vol) {
+//            volume.setImageResource(R.drawable.volume_off);
+//            backvol.setVolume(0.05f, 0.05f);
+//        } else {
+//            volume.setImageResource(R.drawable.volume_up);
+//            backvol.setVolume(0, 0);
+//        }
+//        backvol.start();
 
         level = getIntent().getIntExtra("level", 1);//from itself or failScreen or Intermediate
         strike = getIntent().getIntExtra("strike", 1);//first from itself,latter from Intermediate or failScreen
@@ -81,10 +81,17 @@ public class VisualMemoryActivity extends AppCompatActivity {
 
         Toolbar toolbar = findViewById(R.id.level_toolbar);
         toolbar.setTitle(toolbar.getTitle() + " " + level);
-        if (level == 1&&strike==1)
+        if (level == 1 && strike == 1)
             explain();
-        else if(strike==1)
+        else if (strike == 1) {
+            MediaPlayer mp = MediaPlayer.create(getBaseContext(), R.raw.correct_choice);
+            if (vol)
+                mp.setVolume(0.3f, 0.3f);
+            else
+                mp.setVolume(0, 0);
+            mp.start();
             go.setVisibility(View.VISIBLE);
+        }
         else
             Levels(level);
 
@@ -143,7 +150,6 @@ public class VisualMemoryActivity extends AppCompatActivity {
         num_arr.add(nine);
 
         volume = findViewById(R.id.volume_btn);
-        backvol = MediaPlayer.create(VisualMemoryActivity.this, R.raw.visual_memory);
         volSp = getSharedPreferences("vol", MODE_PRIVATE);
         vol = volSp.getBoolean("vol", true);
 
@@ -239,14 +245,14 @@ public class VisualMemoryActivity extends AppCompatActivity {
         volume.setOnClickListener(v -> {
             if (!vol) {
                 volume.setImageResource(R.drawable.volume_off);
-                backvol.setVolume(0.05f, 0.05f);
+//                backvol.setVolume(0.05f, 0.05f);
             } else {
                 volume.setImageResource(R.drawable.volume_up);
-                backvol.setVolume(0, 0);
+//                backvol.setVolume(0, 0);
             }
             vol = !vol;
-            backvol.start();
-            Log.i("vol", vol + " onClick visual");
+//            backvol.start();
+//            Log.i("vol", vol + " onClick visual");
         });
 
         go.setOnClickListener(v -> {
@@ -409,13 +415,13 @@ public class VisualMemoryActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        backvol.stop();
+//        backvol.stop();
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        backvol.pause();
+//        backvol.pause();
 
         Log.i("vol", vol + " onPause visual");
         SharedPreferences.Editor editor = volSp.edit();

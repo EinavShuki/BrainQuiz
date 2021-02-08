@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
         mathRiddle = findViewById(R.id.math_riddle);
         colorMatcherCard = findViewById(R.id.color_matcher_card);
         volume = findViewById(R.id.volume_btn);
-        backvol = MediaPlayer.create(MainActivity.this, R.raw.background_main);
+        backvol = MediaPlayer.create(MainActivity.this, R.raw.music);
         volSp = getSharedPreferences("vol", MODE_PRIVATE);
         vol = volSp.getBoolean("vol", true);
     }
@@ -62,27 +62,27 @@ public class MainActivity extends AppCompatActivity {
 
     private void setListeners() {
         btnLeaderboards.setOnClickListener(view -> {
-            backvol.pause();
+
             startActivity(new Intent(MainActivity.this, LeaderboardActivity.class));
         });
 
         numMemory.setOnClickListener(v -> {
-            backvol.pause();
+
             startActivity(new Intent(MainActivity.this, LastStateNumMemoryActivity.class));
         });
 
         visualMemoryCard.setOnClickListener(v -> {
-            backvol.pause();
+//            backvol.pause();
             Intent intent = new Intent(MainActivity.this, VisualMemoryActivity.class);
             startActivity(intent);
         });
         mathRiddle.setOnClickListener(v -> {
-            backvol.pause();
+//            backvol.pause();
             startActivity(new Intent(MainActivity.this, MathRiddlesActivity.class));
         });
 
         colorMatcherCard.setOnClickListener(v -> {
-            backvol.stop();
+
             startActivity(new Intent(MainActivity.this, ColorMatcherActivity.class));
         });
 
@@ -163,16 +163,16 @@ public class MainActivity extends AppCompatActivity {
         backvol.stop();
     }
 
-    @Override
-    protected void onPause() {
-        super.onPause();
-        backvol.pause();
-
-        Log.i("vol", vol + " onPause main");
-        SharedPreferences.Editor editor = volSp.edit();
-        editor.putBoolean("vol", vol);
-        editor.apply();
-    }
+//    @Override
+//    protected void onPause() {
+//        super.onPause();
+//        backvol.pause();
+//
+//        Log.i("vol", vol + " onPause main");
+//        SharedPreferences.Editor editor = volSp.edit();
+//        editor.putBoolean("vol", vol);
+//        editor.apply();
+//    }
 
 }
 
