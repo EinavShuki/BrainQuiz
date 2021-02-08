@@ -6,7 +6,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import android.app.Dialog;
 import android.content.Intent;
-import android.graphics.Typeface;
+import android.content.SharedPreferences;
 import android.graphics.drawable.ColorDrawable;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -37,23 +37,22 @@ public class MainActivity extends AppCompatActivity {
     MaterialCardView mathRiddle;
     MaterialCardView colorMatcherCard;
     ImageButton volume;
-    boolean vol=true ;
+    boolean vol;
     MediaPlayer backvol;
+    SharedPreferences volSp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-//        MediaPlayer backMusic = MediaPlayer.create(MainActivity.this, R.raw.background_visual_memory);
-//        backMusic.setVolume(0.1f, 0.1f);
-//        backMusic.setLooping(true);
-//        backMusic.start();
-
         initUi();
         setListeners();
+
+        volume.setImageResource(R.drawable.volume_off);
         backvol.setVolume(0.05f, 0.05f);
         backvol.start();
+
     }
 
 
@@ -65,6 +64,8 @@ public class MainActivity extends AppCompatActivity {
         colorMatcherCard = findViewById(R.id.color_matcher_card);
         volume = findViewById(R.id.volume_btn);
         backvol = MediaPlayer.create(MainActivity.this, R.raw.background_visual_memory);
+        volSp = getSharedPreferences("vol", MODE_PRIVATE);
+        vol = volSp.getBoolean("vol", true);
     }
 
 
@@ -73,10 +74,12 @@ public class MainActivity extends AppCompatActivity {
             backvol.stop();
 //            startActivity(new Intent(MainActivity.this, LeaderboardActivity.class));
             showLeaderboardsDialog();
+            backvol.pause();
+            startActivity(new Intent(MainActivity.this, LeaderboardActivity.class));
         });
 
         numMemory.setOnClickListener(v -> {
-            backvol.stop();
+            backvol.pause();
             startActivity(new Intent(MainActivity.this, LastStateNumMemoryActivity.class));
         });
 
@@ -86,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         });
         mathRiddle.setOnClickListener(v -> {
-            backvol.stop();
+            backvol.pause();
             startActivity(new Intent(MainActivity.this, MathRiddlesActivity.class));
         });
 
@@ -108,6 +111,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
+
     @Override
     public void onBackPressed() {
         final Dialog dialog = new Dialog(this);
@@ -140,7 +144,6 @@ public class MainActivity extends AppCompatActivity {
 //        alert.showDialog(this);
 
 
-
 //        ExitFragment exitFragment = new ExitFragment();
 //        exitFragment.show(getSupportFragmentManager(),"bialog");
 //        AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -154,15 +157,22 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        Log.i("vol",vol+" ");
+        Log.i("vol", vol + " ");
         if (vol) {
             volume.setImageResource(R.drawable.volume_up);
             backvol.setVolume(0.05f, 0.05f);
+            backvol.start();
+//            volume.setImageResource(R.drawable.volume_off);
+//            backvol.setVolume(0.05f, 0.05f);
         } else {
             volume.setImageResource(R.drawable.volume_off);
             backvol.setVolume(0, 0);
         }
         backvol.start();
+            backvol.start();
+//            volume.setImageResource(R.drawable.volume_up);
+//            backvol.setVolume(0, 0);
+        }
     }
 
     private void showLeaderboardsDialog(){
@@ -221,5 +231,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onPause() {
         super.onPause();
         backvol.pause();
+
+        SharedPreferences.Editor editor = volSp.edit();
+        editor.putBoolean("vol", vol);
+        editor.apply();
     }
 }
+

@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.media.MediaPlayer;
+import android.net.wifi.hotspot2.pps.HomeSp;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.util.Pair;
@@ -296,6 +297,16 @@ MathRiddlesActivity extends AppCompatActivity implements View.OnClickListener {
 
         }
     }
+
+    @Override
+    protected void onPause() {
+        if(countDownTimer  != null) {
+            countDownTimer.cancel();}
+        finish();
+        super.onPause();
+    }
+
+
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
