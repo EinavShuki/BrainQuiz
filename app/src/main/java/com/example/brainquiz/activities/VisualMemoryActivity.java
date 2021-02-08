@@ -56,15 +56,12 @@ public class VisualMemoryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_visual_memory);
 
-
         init();
         setListeners();
 
         LayoutTransition layoutTransition = new LayoutTransition();
         layoutTransition.enableTransitionType(LayoutTransition.CHANGING);
         mainLayout.setLayoutTransition(layoutTransition);
-
-        Log.i("vol", vol + " is visual");
 
         level = getIntent().getIntExtra("level", 1);//from itself or failScreen or Intermediate
         strike = getIntent().getIntExtra("strike", 1);//first from itself,latter from Intermediate or failScreen
@@ -77,10 +74,6 @@ public class VisualMemoryActivity extends AppCompatActivity {
             explain();
         else if (strike == 1) {
             MediaPlayer mp = MediaPlayer.create(getBaseContext(), R.raw.correct_choice);
-            if (vol)
-                mp.setVolume(0.3f, 0.3f);
-            else
-                mp.setVolume(0, 0);
             mp.start();
             go.setVisibility(View.VISIBLE);
         }
@@ -323,10 +316,6 @@ public class VisualMemoryActivity extends AppCompatActivity {
 
                 //pop sound with pushing on a button
                 popSound = MediaPlayer.create(VisualMemoryActivity.this, R.raw.pop);
-                if (vol)
-                    popSound.setVolume(0.3f, 0.3f);
-                else
-                    popSound.setVolume(0, 0);
                 popSound.start();
 
                 //disappearing animation
@@ -378,10 +367,6 @@ public class VisualMemoryActivity extends AppCompatActivity {
 
     private void worngNum(ArrayList<ImageButton> allBtn) {
         MediaPlayer mp = MediaPlayer.create(getBaseContext(), R.raw.wrong);
-        if (vol)
-            mp.setVolume(0.3f, 0.3f);
-        else
-            mp.setVolume(0, 0);
         mp.start();
 
         Intent intent=new Intent(VisualMemoryActivity.this,VisualMemoryActivity.class);
@@ -389,7 +374,6 @@ public class VisualMemoryActivity extends AppCompatActivity {
         intent.putExtra("level",level);
         startActivity(intent);
     }
-
 
     @Override
     protected void onDestroy() {

@@ -77,7 +77,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
         numMemory.setOnClickListener(v -> {
-
             startActivity(new Intent(MainActivity.this, LastStateNumMemoryActivity.class));
         });
 
@@ -92,7 +91,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
         colorMatcherCard.setOnClickListener(v -> {
-
             startActivity(new Intent(MainActivity.this, ColorMatcherActivity.class));
         });
 
@@ -177,7 +175,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        backvol.pause();
 
         SharedPreferences.Editor editor = volSp.edit();
         editor.putBoolean("vol", vol);
