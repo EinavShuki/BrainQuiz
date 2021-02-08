@@ -248,18 +248,23 @@ public class ColorMatcherActivity extends AppCompatActivity implements View.OnCl
             }
         });
         if (life == 3){
+            life--;
+            run = 0;
             ivLifeThree.setVisibility(View.GONE);
+            progressAnimator.pause();
             showCards();
         } else if(life == 2){
+            life--;
+            run = 0;
             ivLifeTwo.setVisibility(View.GONE);
+            progressAnimator.pause();
             showCards();
         } else if(life == 1) {
             ivLifeOne.setVisibility(View.GONE);
             gameOver();
             return;
         }
-        life--;
-        run = 0;
+
     }
 
     private void addScore(){
