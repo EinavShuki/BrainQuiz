@@ -8,7 +8,6 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,7 +16,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.brainquiz.R;
-import com.example.brainquiz.activities.LeaderboardActivity;
 import com.example.brainquiz.utils.Constants;
 import com.example.brainquiz.utils.FirebaseManager;
 import com.google.firebase.database.DataSnapshot;
@@ -129,6 +127,6 @@ public class SaveScoreDialog extends AppCompatDialogFragment {
     }
 
     private void navigateToScoresScreen(){
-        context.startActivity(new Intent(context,LeaderboardActivity.class));
+//        context.startActivity(new Intent(context,LeaderboardActivity.class));
     }
 }

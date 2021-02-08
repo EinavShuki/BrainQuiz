@@ -72,10 +72,8 @@ public class MainActivity extends AppCompatActivity {
     private void setListeners() {
         btnLeaderboards.setOnClickListener(view -> {
             backvol.stop();
-//            startActivity(new Intent(MainActivity.this, LeaderboardActivity.class));
             showLeaderboardsDialog();
             backvol.pause();
-            startActivity(new Intent(MainActivity.this, LeaderboardActivity.class));
         });
 
         numMemory.setOnClickListener(v -> {
@@ -173,7 +171,6 @@ public class MainActivity extends AppCompatActivity {
 //            volume.setImageResource(R.drawable.volume_up);
 //            backvol.setVolume(0, 0);
         }
-    }
 
     private void showLeaderboardsDialog(){
         Dialog dialog = new Dialog(this);

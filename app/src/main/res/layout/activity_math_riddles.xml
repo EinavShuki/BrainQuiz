@@ -8,52 +8,6 @@
     android:id="@+id/math_root_layout"
     android:background="@drawable/orange_background_vector">
 
-<!--    <LinearLayout-->
-<!--        android:id="@+id/stripes"-->
-<!--        android:layout_width="1000dp"-->
-<!--        android:layout_height="1000dp"-->
-<!--        android:orientation="vertical"-->
-<!--        app:layout_constraintTop_toTopOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        android:rotation="-45">-->
-<!--        <View-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="0dp"-->
-<!--            android:layout_weight="1"-->
-<!--            android:background="@drawable/stripe_gradient"/>-->
-<!--        <View-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="0dp"-->
-<!--            android:layout_weight="1"-->
-<!--            android:background="@drawable/stripe_gradient"/>-->
-<!--        <View-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="0dp"-->
-<!--            android:layout_weight="1"-->
-<!--            android:background="@drawable/stripe_gradient"/>-->
-<!--        <View-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="0dp"-->
-<!--            android:layout_weight="1"-->
-<!--            android:background="@drawable/stripe_gradient"/>-->
-<!--        <View-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="0dp"-->
-<!--            android:layout_weight="1"-->
-<!--            android:background="@drawable/stripe_gradient"/>-->
-<!--        <View-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="0dp"-->
-<!--            android:layout_weight="1"-->
-<!--            android:background="@drawable/stripe_gradient"/>-->
-<!--        <View-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="0dp"-->
-<!--            android:layout_weight="1"-->
-<!--            android:background="@drawable/stripe_gradient"/>-->
-<!--    </LinearLayout>-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="120dp"
@@ -171,6 +125,13 @@
         app:lottie_autoPlay="false"
         app:lottie_rawRes="@raw/wrong_anim"/>
 
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/correct_anim"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:lottie_autoPlay="false"
+        app:lottie_rawRes="@raw/correct_anim" />
+
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/card_riddle"
         android:layout_width="250dp"
@@ -202,12 +163,7 @@
             android:layoutDirection="ltr"
 />
 
-        <com.airbnb.lottie.LottieAnimationView
-            android:id="@+id/correct_anim"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:lottie_autoPlay="false"
-            app:lottie_rawRes="@raw/correct_anim" />
+
 
         <FrameLayout
             android:id="@+id/exit"
