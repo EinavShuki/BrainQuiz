@@ -132,7 +132,7 @@
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/score_colors_card"
             android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
             android:layout_margin="15dp"
@@ -145,7 +145,7 @@
             app:cardPreventCornerOverlap="false">
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="vertical">
                 <TextView
                     android:layout_width="wrap_content"
@@ -154,8 +154,7 @@
                     android:textStyle="bold"
                     android:layout_gravity="center"
                     android:fontFamily="@font/varela_round_regular"
-
-                    android:text="Your Score"
+                    android:text="@string/your_score"
                     android:textColor="@color/hard_grey"
                     android:textSize="21sp" />
                 <TextView
@@ -173,7 +172,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="30dp"
                     android:orientation="horizontal"
                     android:gravity="center">
 
@@ -181,15 +180,12 @@
                         android:id="@+id/save_math_score_btn"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="@color/blue_500"
+                        android:background="@drawable/custom_button"
                         android:layout_gravity="center"
-                        android:paddingStart="20dp"
-                        android:paddingTop="15dp"
+                        android:padding="10dp"
+                        android:layout_margin="5dp"
                         android:fontFamily="@font/varela_round_regular"
-                        android:paddingEnd="20dp"
-                        android:paddingBottom="15dp"
                         android:text="@string/save_record"
-                        android:textAllCaps="false"
                         android:textColor="@color/white"
                         android:textSize="21sp" />
 
@@ -198,16 +194,13 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
+                        android:layout_margin="5dp"
                         android:layout_marginStart="20dp"
-                        android:paddingStart="20dp"
-                        android:paddingTop="15dp"
-                        android:paddingEnd="20dp"
+                        android:padding="10dp"
                         android:fontFamily="@font/varela_round_regular"
-                        android:paddingBottom="15dp"
                         android:text="@string/try_again"
-                        android:textAllCaps="false"
                         android:textColor="@color/white"
-                        android:background="@color/blue_500"
+                        android:background="@drawable/custom_button"
                         android:textSize="21sp" />
                 </LinearLayout>
 

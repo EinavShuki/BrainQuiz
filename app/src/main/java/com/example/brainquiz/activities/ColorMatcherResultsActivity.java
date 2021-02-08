@@ -2,6 +2,7 @@ package com.example.brainquiz.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -48,5 +49,12 @@ public class ColorMatcherResultsActivity extends AppCompatActivity {
         tvScore.setText(score);
         tvCorrect.setText(String.valueOf(correct));
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent=new Intent(this,MainActivity.class);
+        startActivity(intent);
+        finish();
     }
 }

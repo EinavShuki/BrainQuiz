@@ -8,7 +8,6 @@
     <string name="continue_btn">Continue from the last point</string>
     <string name="visual_memory">Visual Memory</string>
     <string name="number_memory">Number Memory</string>
-    <string name="sequence">Sequence Memory</string>
     <string name="try_again">Try again</string>
     <string name="save_record">Save score</string>
     <string name="number">number displayed was:</string>
@@ -27,7 +26,7 @@
     <string name="exists">username already exsists!</string>
     <string name="well_done">Well Done!! You finshed all levels</string>
     <string name="home">Home</string>
-    <string name="username">User Name</string>
+    <string name="username">Enter name</string>
     <string name="leaderboards">Leaderboards</string>
     <string name="right_ans">The right answer was:</string>
     <string name="answer">Answer</string>
@@ -42,7 +41,7 @@
     <string name="stay">stay</string>
     <string name="got_it">Got it!</string>
     <string name="go">Go</string>
-    <string name="color_matcher" translatable="false">Color Matcher</string>
+    <string name="color_match">Color Match</string>
     <string name="remember_num">Remember the number on the screen in a limited time</string>
     <string name="strikes_left">Number of attempts left:</string>
 </resources>

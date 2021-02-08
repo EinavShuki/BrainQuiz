@@ -94,17 +94,30 @@ public class ColorMatcherActivity extends AppCompatActivity implements View.OnCl
 
     @Override
     public void onBackPressed() {
-        progressAnimator.removeAllListeners();
-        finish();
+        if (progressAnimator != null){
+            progressAnimator.removeAllListeners();
+        }
         Intent intent=new Intent(this,MainActivity.class);
         startActivity(intent);
+        finish();
     }
 
     @Override
     protected void onPause() {
-        progressAnimator.pause();
+        if (progressAnimator != null){
+            progressAnimator.pause();
+        }
         super.onPause();
     }
+
+    @Override
+    protected void onDestroy() {
+        if (progressAnimator != null){
+            progressAnimator.removeAllListeners();
+        }
+        super.onDestroy();
+    }
+
 
     private void showCards() {
         // Get color pair to show
@@ -241,18 +254,23 @@ public class ColorMatcherActivity extends AppCompatActivity implements View.OnCl
             }
         });
         if (life == 3){
+            life--;
+            run = 0;
             ivLifeThree.setVisibility(View.GONE);
+            progressAnimator.pause();
             showCards();
         } else if(life == 2){
+            life--;
+            run = 0;
             ivLifeTwo.setVisibility(View.GONE);
+            progressAnimator.pause();
             showCards();
         } else if(life == 1) {
             ivLifeOne.setVisibility(View.GONE);
             gameOver();
             return;
         }
-        life--;
-        run = 0;
+
     }
 
     private void addScore(){

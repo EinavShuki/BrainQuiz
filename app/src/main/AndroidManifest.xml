@@ -35,9 +35,6 @@
             android:name=".activities.LastStateRiddlesActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".activities.LeaderboardActivity"
-            android:screenOrientation="portrait" />
-        <activity
             android:name=".activities.LastStateNumMemoryActivity"
             android:screenOrientation="portrait" />
         <activity

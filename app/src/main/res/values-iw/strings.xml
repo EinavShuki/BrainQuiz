@@ -9,7 +9,6 @@
     <string name="continue_btn">המשיכו מהנקודה האחרונה</string>
     <string name="visual_memory">זיכרון ויזואלי</string>
     <string name="number_memory">זכירת מספרים</string>
-    <string name="sequence">זכירת רצף</string>
     <string name="try_again">נסו שוב</string>
     <string name="save_record">שמור תוצאה</string>
     <string name="number">המספר שהופיע היה:</string>
@@ -27,7 +26,7 @@
     <string name="exists">שם משתמש בשימוש!</string>
     <string name="well_done">כל הכבוד!!סיימתם את כל השלבים</string>
     <string name="home">מסך הבית</string>
-    <string name="username">שם משתמש</string>
+    <string name="username">הכנס שם</string>
     <string name="leaderboards">טבלאות שיאים</string>
     <string name="your_score">התוצאה שלך:</string>
     <string name="time">זמן</string>
@@ -45,4 +44,5 @@
     <string name="go">התחל</string>
     <string name="remember_num">זכרו את המספר שמופיע על המסך בזמן קצוב</string>
     <string name="strikes_left">מספר הנסיונות שנותרו:</string>
+    <string name="color_match" translatable="false">התאמת צבעים</string>
 </resources>

@@ -1,26 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/full_screen_gradient"
     android:padding="18dp"
+    android:background="@color/white"
+    android:orientation="vertical"
     tools:context=".activities.MainActivity">
 
-    <ProgressBar
-        android:id="@+id/progress_bar_seq_mem"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:indeterminateTint="@color/white" />
-
     <TableLayout
-        android:id="@+id/sequence_score_table"
+        android:id="@+id/table"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <!-- Table Heading -->
-
+        android:layout_height="wrap_content"
+        android:isScrollContainer="true">
         <TableRow android:background="@color/orange_200">
 
             <TextView
@@ -45,8 +38,7 @@
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
-            <TextView
-                android:layout_width="0dp"
+            <TextView android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="4"
                 android:gravity="center_horizontal"
@@ -58,10 +50,25 @@
 
 
         </TableRow>
-
-        <!-- Table Data -->
-
-
     </TableLayout>
 
-</RelativeLayout>
+    <ScrollView
+        android:id="@+id/activity_scrollView1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:scrollbarStyle="outsideInset"
+        android:scrollbars="vertical">
+        <TableLayout
+            android:id="@+id/score_table"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:isScrollContainer="true">
+
+            <!-- Table Heading -->
+
+            <!-- Table Data -->
+
+        </TableLayout>
+    </ScrollView>
+</LinearLayout>

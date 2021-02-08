@@ -41,7 +41,7 @@ public class VisualMemoryActivity extends AppCompatActivity {
     Map<Integer, ArrayList<Integer>> caughtPos = new HashMap<>();
     int strike, numOfBtns, level;
     LinearLayout mainLayout;
-    ImageView imageView, volume, ivLifeOne, ivLifeTwo, ivLifeThree;
+    ImageView imageView, ivLifeOne, ivLifeTwo, ivLifeThree;
     ;
     MediaPlayer countSound, popSound;
     ImageButton zero, one, two, three, four, five, six, seven, eight, nine;
@@ -65,14 +65,6 @@ public class VisualMemoryActivity extends AppCompatActivity {
         mainLayout.setLayoutTransition(layoutTransition);
 
         Log.i("vol", vol + " is visual");
-//        if (vol) {
-//            volume.setImageResource(R.drawable.volume_off);
-//            backvol.setVolume(0.05f, 0.05f);
-//        } else {
-//            volume.setImageResource(R.drawable.volume_up);
-//            backvol.setVolume(0, 0);
-//        }
-//        backvol.start();
 
         level = getIntent().getIntExtra("level", 1);//from itself or failScreen or Intermediate
         strike = getIntent().getIntExtra("strike", 1);//first from itself,latter from Intermediate or failScreen
@@ -149,7 +141,6 @@ public class VisualMemoryActivity extends AppCompatActivity {
         num_arr.add(eight);
         num_arr.add(nine);
 
-        volume = findViewById(R.id.volume_btn);
         volSp = getSharedPreferences("vol", MODE_PRIVATE);
         vol = volSp.getBoolean("vol", true);
 
@@ -242,18 +233,6 @@ public class VisualMemoryActivity extends AppCompatActivity {
     }
 
     private void setListeners() {
-        volume.setOnClickListener(v -> {
-            if (!vol) {
-                volume.setImageResource(R.drawable.volume_off);
-//                backvol.setVolume(0.05f, 0.05f);
-            } else {
-                volume.setImageResource(R.drawable.volume_up);
-//                backvol.setVolume(0, 0);
-            }
-            vol = !vol;
-//            backvol.start();
-//            Log.i("vol", vol + " onClick visual");
-        });
 
         go.setOnClickListener(v -> {
             go.setVisibility(View.GONE);
