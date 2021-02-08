@@ -16,6 +16,7 @@ import com.example.brainquiz.utils.FirebaseManager;
 import java.util.List;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
@@ -62,10 +63,17 @@ public class ScoresPagerAdapter extends androidx.viewpager.widget.PagerAdapter {
             }
         });
 
+
         view.setTag(position);
         container.addView(view);
 
         return view;
+    }
+
+    @Nullable
+    @Override
+    public CharSequence getPageTitle(int position) {
+        return pagerList.get(position).getTitle();
     }
 
     @Override

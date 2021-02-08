@@ -31,7 +31,7 @@
             android:id="@+id/btn_leaderboards"
             android:text="@string/leaderboards"
             android:textStyle="bold"
-            android:drawableLeft="@drawable/trophy"
+            android:drawableLeft="@drawable/trophy_small"
             android:fontFamily="@font/varela_round_regular"
             android:drawablePadding="4dp"
             android:textSize="16sp"
@@ -134,7 +134,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="18dp"
                         android:gravity="center"
-                        android:text="@string/color_matcher"
+                        android:text="@string/color_match"
                         android:textColor="#6f6f6f"
                         android:fontFamily="@font/varela_round_regular"
                         android:textSize="18sp" />

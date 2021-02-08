@@ -11,11 +11,13 @@ import android.graphics.drawable.ColorDrawable;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.brainquiz.R;
@@ -167,18 +169,45 @@ public class MainActivity extends AppCompatActivity {
         Dialog dialog = new Dialog(this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.dialog);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+        Window window = dialog.getWindow();
+        window.setGravity(Gravity.CENTER);
+        dialog.setCancelable(true);
 
         List<PagerModel> pagerList = new ArrayList<>();
-        pagerList.add(new PagerModel("1", "Math Scores", Constants.MATH_TABLE));
-        pagerList.add(new PagerModel("2", "Color Match Scores", Constants.COLOR_MATCH_TABLE));
-        pagerList.add(new PagerModel("3", "Visual Memory", Constants.VISUAL_MEMORY_TABLE));
-        pagerList.add(new PagerModel("4", "Numbers Memory", Constants.NUMBERS_MEMORY_TABLE));
+        pagerList.add(new PagerModel("1", getString(R.string.math_riddles), Constants.MATH_TABLE));
+        pagerList.add(new PagerModel("2", getString(R.string.color_match), Constants.COLOR_MATCH_TABLE));
+        pagerList.add(new PagerModel("3", getString(R.string.visual_memory), Constants.VISUAL_MEMORY_TABLE));
+        pagerList.add(new PagerModel("4", getString(R.string.number_memory), Constants.NUMBERS_MEMORY_TABLE));
 
         ScoresPagerAdapter pagerAdapter = new ScoresPagerAdapter(this, pagerList);
 
         ViewPager pager = dialog.findViewById(R.id.pager);
         pager.setAdapter(pagerAdapter);
 
+        TextView tvTable = dialog.findViewById(R.id.tv_table);
+
+        tvTable.setText(pagerAdapter.getPageTitle(pager.getCurrentItem()));
+
+        ImageButton left = dialog.findViewById(R.id.ic_left_arrow);
+        ImageButton right = dialog.findViewById(R.id.ic_right_arrow);
+
+
+        left.setOnClickListener(view -> {
+            pager.setCurrentItem(pager.getCurrentItem() - 1);
+            tvTable.setText(pagerAdapter.getPageTitle(pager.getCurrentItem()));
+        });
+
+        right.setOnClickListener(view -> {
+            pager.setCurrentItem(pager.getCurrentItem() + 1);
+            tvTable.setText(pagerAdapter.getPageTitle(pager.getCurrentItem()));
+        });
+
+        pager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            public void onPageScrollStateChanged(int state) {}
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {}
+            public void onPageSelected(int position) { tvTable.setText(pagerAdapter.getPageTitle(position)); }
+        });
         dialog.show();
     }
 

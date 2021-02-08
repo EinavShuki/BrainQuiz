@@ -1,13 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="350dp"
-    android:background="#80000000">
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_centerInParent="true">
 
-    <androidx.viewpager.widget.ViewPager
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/pager"/>
+    <RelativeLayout
+        android:layout_width="350dp"
+        android:layout_height="500dp"
+        android:layout_centerInParent="true"
+        >
+
+        <RelativeLayout
+            android:layout_width="350dp"
+            android:layout_height="460dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/background_dialog">
+
+            <LinearLayout
+                android:layoutDirection="ltr"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:padding="18dp"
+                android:layout_centerInParent="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="70dp">
+
+                <ImageButton
+                    android:layout_width="0dp"
+                    android:layout_height="30dp"
+                    android:layout_weight="1"
+                    android:id="@+id/ic_left_arrow"
+                    android:background="@drawable/left_arrow"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tv_table"
+                    android:textSize="21sp"
+                    android:layout_weight="8"
+                    android:gravity="center"
+                    android:fontFamily="@font/varela_round_regular"
+                    android:textStyle="bold"
+                    android:textColor="@color/hard_grey"
+                    android:text="Table Name"/>
+
+                <ImageButton
+                    android:layout_width="0dp"
+                    android:layout_height="30dp"
+                    android:layout_weight="1"
+                    android:id="@+id/ic_right_arrow"
+                    android:background="@drawable/right_arrow"/>
+
+            </LinearLayout>
+
+
+            <androidx.viewpager.widget.ViewPager
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginTop="120dp"
+                android:orientation="vertical"
+                android:layout_marginBottom="45dp"
+                android:isScrollContainer="true"
+                android:id="@+id/pager"/>
+
+        </RelativeLayout>
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_centerHorizontal="true"
+            android:scaleType="centerCrop"
+            android:src="@drawable/trophy_big"/>
+            
+    </RelativeLayout>
 
 </RelativeLayout>

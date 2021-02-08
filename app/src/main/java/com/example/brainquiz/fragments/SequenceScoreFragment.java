@@ -16,7 +16,7 @@ public class SequenceScoreFragment  extends BaseScoreFragment {
 
     @Override
     protected String getTableName() {
-        return Constants.SEQUENCE_TABLE;
+        return Constants.COLOR_MATCH_TABLE;
     }
 
     @Override

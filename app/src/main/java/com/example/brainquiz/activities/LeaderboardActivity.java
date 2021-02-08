@@ -32,7 +32,7 @@ public class LeaderboardActivity extends AppCompatActivity {
         adapter.addFragment(new MathScoresFragment(), Constants.MATH_TITLE);
         adapter.addFragment(new NumbersMemoryScoresFragment(), Constants.NUMBERS_MEMORY_TITLE);
         adapter.addFragment(new VisualMemoryScoreFragment(), Constants.VISUAL_MEMORY_TITLE);
-        adapter.addFragment(new SequenceScoreFragment(), Constants.SEQUENCE_TITLE);
+        adapter.addFragment(new SequenceScoreFragment(), Constants.COLOR_MATCH_TITLE);
 
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
