@@ -6,9 +6,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.brainquiz.R;
+import com.example.brainquiz.fragments.SaveScoreDialog;
 import com.example.brainquiz.utils.Constants;
 import com.google.android.material.card.MaterialCardView;
 
@@ -16,6 +18,7 @@ public class ColorMatcherResultsActivity extends AppCompatActivity {
 
     TextView tvLongestRun, tvScore, tvCorrect;
     MaterialCardView cvLongestRun, cvReactionTime, cvScore;
+    Button btnSaveScore, btnTryAgain;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +38,7 @@ public class ColorMatcherResultsActivity extends AppCompatActivity {
 
         cvLongestRun.startAnimation(rightAnimation);
         cvReactionTime.startAnimation(leftAnimation);
-        cvScore.startAnimation(centerAnimation);
+//        cvScore.startAnimation(centerAnimation);
 
         tvLongestRun = findViewById(R.id.tv_longest_run);
         tvScore = findViewById(R.id.tv_color_match_score);
@@ -49,12 +52,28 @@ public class ColorMatcherResultsActivity extends AppCompatActivity {
         tvScore.setText(score);
         tvCorrect.setText(String.valueOf(correct));
 
+        btnSaveScore = findViewById(R.id.save_score_colors_btn);
+        btnTryAgain = findViewById(R.id.try_again_colors_btn);
+
+        btnSaveScore.setOnClickListener(v -> {
+            SaveScoreDialog saveScoreDialog = new SaveScoreDialog();
+            Bundle args = new Bundle();
+            args.putInt(Constants.SCORE_KEY, Integer.parseInt(score));
+            args.putString(Constants.SCREEN_KEY, Constants.COLOR_MATCH_TABLE);
+            saveScoreDialog.setArguments(args);
+            saveScoreDialog.show(getSupportFragmentManager(), Constants.DIALOG_SAVE_SCORE);
+        });
+
+        btnTryAgain.setOnClickListener(v -> {
+            startActivity(new Intent(this, ColorMatcherActivity.class));
+            finish();
+        });
+
     }
 
     @Override
     public void onBackPressed() {
-        Intent intent=new Intent(this,MainActivity.class);
-        startActivity(intent);
+        startActivity(new Intent(this, MainActivity.class));
         finish();
     }
 }

@@ -24,7 +24,7 @@
                 android:padding="10sp"
                 android:text="#"
                 android:textColor="@android:color/white"
-                android:textSize="16sp"
+                android:textSize="14sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -35,7 +35,7 @@
                 android:padding="10sp"
                 android:text="@string/name_col"
                 android:textColor="@android:color/white"
-                android:textSize="16sp"
+                android:textSize="14sp"
                 android:textStyle="bold" />
 
             <TextView android:layout_width="0dp"
@@ -45,7 +45,7 @@
                 android:padding="10sp"
                 android:text="@string/Record"
                 android:textColor="@android:color/white"
-                android:textSize="16sp"
+                android:textSize="14sp"
                 android:textStyle="bold" />
 
 

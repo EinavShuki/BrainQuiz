@@ -310,6 +310,7 @@ public class ColorMatcherActivity extends AppCompatActivity implements View.OnCl
                 intent.putExtra(Constants.SCORE_KEY, tvScore.getText().toString());
                 intent.putExtra(Constants.CORRECT_KEY, correct);
                 startActivity(intent);
+                finish();
             }
 
             @Override

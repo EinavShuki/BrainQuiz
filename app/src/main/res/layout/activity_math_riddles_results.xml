@@ -50,7 +50,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/varela_round_regular"
                     android:gravity="center"
-                    android:text="Accuracy"
+                    android:text="@string/accuracy"
                     android:textColor="@color/hard_grey"
                     android:textSize="18sp" />
 
@@ -101,7 +101,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="Reaction Time"
+                    android:text="@string/reaction_time"
                     android:fontFamily="@font/varela_round_regular"
                     android:textColor="@color/hard_grey"
                     android:textSize="18sp" />
@@ -154,7 +154,7 @@
                     android:fontFamily="@font/varela_round_regular"
                     android:textStyle="bold"
                     android:layout_gravity="center"
-                    android:text="Your Score"
+                    android:text="@string/your_score"
                     android:textColor="@color/hard_grey"
                     android:textSize="21sp" />
                 <TextView
@@ -239,7 +239,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
                     android:layout_gravity="center"
-                    android:text="Your Progress"
+                    android:text="@string/your_progress"
                     android:fontFamily="@font/varela_round_regular"
 
                     android:textColor="@color/hard_grey"

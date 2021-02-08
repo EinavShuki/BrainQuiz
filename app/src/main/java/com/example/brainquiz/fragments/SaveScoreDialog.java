@@ -1,5 +1,6 @@
 package com.example.brainquiz.fragments;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
@@ -16,6 +17,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.brainquiz.R;
+import com.example.brainquiz.activities.MainActivity;
 import com.example.brainquiz.utils.Constants;
 import com.example.brainquiz.utils.FirebaseManager;
 import com.google.firebase.database.DataSnapshot;
@@ -37,12 +39,12 @@ public class SaveScoreDialog extends AppCompatDialogFragment {
     private Button btnSave;
     private SharedPreferences preferences;
     private String table;
-    private Context context;
+    private Activity context;
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        context = getContext();
+        context = getActivity();
     }
 
     @Override
@@ -127,6 +129,7 @@ public class SaveScoreDialog extends AppCompatDialogFragment {
     }
 
     private void navigateToScoresScreen(){
-//        context.startActivity(new Intent(context,LeaderboardActivity.class));
+        context.startActivity(new Intent(context, MainActivity.class));
+        context.finish();
     }
 }

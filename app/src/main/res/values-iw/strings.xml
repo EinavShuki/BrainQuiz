@@ -44,5 +44,10 @@
     <string name="go">התחל</string>
     <string name="remember_num">זכרו את המספר שמופיע על המסך בזמן קצוב</string>
     <string name="strikes_left">מספר הנסיונות שנותרו:</string>
-    <string name="color_match" translatable="false">התאמת צבעים</string>
+    <string name="accuracy">דיוק</string>
+    <string name="reaction_time">זמן תגובה</string>
+    <string name="your_progress">ההתקדמות שלך</string>
+    <string name="color_match">התאמת צבעים</string>
+    <string name="correct_answers">תשובות נכונות</string>
+    <string name="longest_run">רצף ארוך ביותר</string>
 </resources>
