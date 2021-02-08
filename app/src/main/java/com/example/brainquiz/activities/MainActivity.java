@@ -38,10 +38,12 @@ public class MainActivity extends AppCompatActivity {
         initUi();
         setListeners();
 
+        Log.i("vol", vol + "onCreate");
+
+
         volume.setImageResource(R.drawable.volume_off);
         backvol.setVolume(0.05f, 0.05f);
         backvol.start();
-
     }
 
 
@@ -52,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
         mathRiddle = findViewById(R.id.math_riddle);
         colorMatcherCard = findViewById(R.id.color_matcher_card);
         volume = findViewById(R.id.volume_btn);
-        backvol = MediaPlayer.create(MainActivity.this, R.raw.background_visual_memory);
+        backvol = MediaPlayer.create(MainActivity.this, R.raw.background_main);
         volSp = getSharedPreferences("vol", MODE_PRIVATE);
         vol = volSp.getBoolean("vol", true);
     }
@@ -85,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         volume.setOnClickListener(v -> {
-            if (vol) {
+            if (!vol) {
                 volume.setImageResource(R.drawable.volume_off);
                 backvol.setVolume(0.05f, 0.05f);
             } else {
@@ -94,6 +96,7 @@ public class MainActivity extends AppCompatActivity {
             }
             vol = !vol;
             backvol.start();
+            Log.i("vol", vol + " onClick");
         });
 
     }
@@ -143,16 +146,15 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        Log.i("vol", vol + " ");
+        Log.i("vol", vol + " onResume");
         if (vol) {
-            backvol.start();
-//            volume.setImageResource(R.drawable.volume_off);
-//            backvol.setVolume(0.05f, 0.05f);
+            volume.setImageResource(R.drawable.volume_off);
+            backvol.setVolume(0.05f, 0.05f);
         } else {
-            backvol.start();
-//            volume.setImageResource(R.drawable.volume_up);
-//            backvol.setVolume(0, 0);
+            volume.setImageResource(R.drawable.volume_up);
+            backvol.setVolume(0, 0);
         }
+        backvol.start();
     }
 
     @Override
@@ -166,9 +168,11 @@ public class MainActivity extends AppCompatActivity {
         super.onPause();
         backvol.pause();
 
+        Log.i("vol", vol + " onPause main");
         SharedPreferences.Editor editor = volSp.edit();
         editor.putBoolean("vol", vol);
         editor.apply();
     }
+
 }
 

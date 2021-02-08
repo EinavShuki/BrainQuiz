@@ -25,9 +25,52 @@
             app:layout_scrollFlags="scroll|enterAlways"
             app:theme="@style/ThemeOverlay.MaterialComponents.Toolbar.Primary"
             app:title="@string/level"
-            app:titleTextColor="@color/white"/>
+            app:titleTextColor="@color/white" />
+
+        <ImageButton
+            android:id="@+id/volume_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="300dp"
+            android:layout_marginTop="13dp"
+            android:background="@null"
+            android:src="@drawable/volume_off" />
 
     </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/game_life"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="3dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:visibility="invisible"
+            android:id="@+id/life_one"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/heart" />
+
+        <ImageView
+            android:visibility="invisible"
+            android:id="@+id/life_two"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="5dp"
+            android:src="@drawable/heart" />
+
+        <ImageView
+            android:visibility="invisible"
+            android:id="@+id/life_three"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="5dp"
+            android:src="@drawable/heart" />
+
+    </LinearLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -60,17 +103,22 @@
             android:visibility="gone" />
 
         <GridLayout
+            android:paddingStart="60dp"
+            android:paddingEnd="60dp"
+            android:paddingTop="80dp"
+            android:paddingBottom="150dp"
             android:id="@+id/grid_lo"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_centerInParent="true"
             android:columnCount="4"
+            android:rowCount="5"
             android:orientation="horizontal">
 
             <ImageButton
                 android:id="@+id/zero_card"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_margin="8dp"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
                 android:background="@null"
                 android:scaleType="fitXY"
                 android:src="@drawable/zero"
@@ -78,9 +126,8 @@
 
             <ImageButton
                 android:id="@+id/one_card"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_margin="8dp"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
                 android:background="@null"
                 android:scaleType="fitXY"
                 android:src="@drawable/one_min"
@@ -88,9 +135,8 @@
 
             <ImageButton
                 android:id="@+id/two_card"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_margin="8dp"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
                 android:background="@null"
                 android:scaleType="fitXY"
                 android:src="@drawable/ttwo"
