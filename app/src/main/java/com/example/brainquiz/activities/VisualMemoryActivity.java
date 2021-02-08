@@ -228,6 +228,8 @@ public class VisualMemoryActivity extends AppCompatActivity {
     private void setListeners() {
 
         go.setOnClickListener(v -> {
+            MediaPlayer mp=MediaPlayer.create(VisualMemoryActivity.this,R.raw.btn_click);
+            mp.start();
             go.setVisibility(View.GONE);
             Levels(level);
         });
