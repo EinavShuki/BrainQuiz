@@ -48,6 +48,8 @@ public class VisualMemoryActivity extends AppCompatActivity {
     ArrayList<ImageButton> num_arr = new ArrayList<>();
     AlertDialog.Builder builder;
     Button go;
+    boolean vol=true ;
+    MediaPlayer backvol;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +58,6 @@ public class VisualMemoryActivity extends AppCompatActivity {
 
 //        backvol.stop();
         init();
-
 
         LayoutTransition layoutTransition = new LayoutTransition();
         layoutTransition.enableTransitionType(LayoutTransition.CHANGING);
@@ -203,9 +204,9 @@ public class VisualMemoryActivity extends AppCompatActivity {
             b.setClickable(false);
             //COUNTING VOLUME
             countSound = MediaPlayer.create(VisualMemoryActivity.this, R.raw.countdown);
-//            if (vol)
-//                countSound.setVolume(0.01f, 0.01f);
-//            else
+            if (vol)
+                countSound.setVolume(0.01f, 0.01f);
+            else
                 countSound.setVolume(0, 0);
             countSound.start();
             Animation count = AnimationUtils.loadAnimation(VisualMemoryActivity.this, R.anim.counting);
@@ -280,9 +281,9 @@ public class VisualMemoryActivity extends AppCompatActivity {
 
                 //pop sound with pushing on a button
                 popSound = MediaPlayer.create(VisualMemoryActivity.this, R.raw.pop);
-//                if (vol)
-//                    popSound.setVolume(0.3f, 0.3f);
-//                else
+                if (vol)
+                    popSound.setVolume(0.3f, 0.3f);
+                else
                     popSound.setVolume(0, 0);
                 popSound.start();
 

@@ -30,30 +30,35 @@ public class NumberMemoryActivity extends AppCompatActivity {
     Intent intent;
     int numberToShow, lev;
     SharedPreferences sp;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_number_memory);
 
-        mainLayout=findViewById(R.id.main_layout);
+        mainLayout = findViewById(R.id.main_layout);
         //loading dynamic background
-        AnimationDrawable animationDrawable = (AnimationDrawable) mainLayout.getBackground();
-        animationDrawable.setEnterFadeDuration(10);
-        animationDrawable.setExitFadeDuration(5000);
-        animationDrawable.start();
+//        AnimationDrawable animationDrawable = (AnimationDrawable) mainLayout.getBackground();
+//        animationDrawable.setEnterFadeDuration(10);
+//        animationDrawable.setExitFadeDuration(5000);
+//        animationDrawable.start();
 
         lev = getIntent().getIntExtra("level", 1);//from itself  or LastState
         numberToShow = getIntent().getIntExtra("number", 5);//from NumberMemorySecActivity or LastState
 
-        Toolbar toolbar=findViewById(R.id.level_toolbar);
-        toolbar.setTitle(toolbar.getTitle()+" "+lev);
+        Toolbar toolbar = findViewById(R.id.level_toolbar);
+        toolbar.setTitle(toolbar.getTitle() + " " + lev);
 
         TextView numTv = findViewById(R.id.numtv);
         numTv.setText(numberToShow + "");
+        if (numTv.length() > 8)
+            numTv.setTextSize(40);
 
         progressBar = findViewById(R.id.progress_bar);
         ObjectAnimator progressAnimator = ObjectAnimator.ofInt(progressBar, "progress", 100, 0);
-        if (numTv.length() > 6)
+        if (numTv.length() > 7)
+            progressAnimator.setDuration(3000);
+        else if (numTv.length() > 6)
             progressAnimator.setDuration(2000);
         else
             progressAnimator.setDuration(1000);
@@ -74,18 +79,21 @@ public class NumberMemoryActivity extends AppCompatActivity {
 
     }
 
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == NUMBER_REQUEST) {
+        if (lev == 26) {
+            intent = new Intent(NumberMemoryActivity.this, WinScreenVisualMemoryActivity.class);
+            startActivity(intent);
+        } else if (requestCode == NUMBER_REQUEST) {
             if (resultCode == RESULT_OK) {
-                Intent intent = new Intent(NumberMemoryActivity.this, NumberMemoryActivity.class);
+                intent = new Intent(NumberMemoryActivity.this, NumberMemoryActivity.class);
                 intent.putExtra("number", numberToShow * 2 + 1);
                 intent.putExtra("level", lev + 1);
                 startActivity(intent);
             }
-
-            finish();
         }
+        finish();
     }
 }

@@ -47,18 +47,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-//    @Override
-//    protected void onResume() {
-//        super.onResume();
-//        if (vol) {
-//            backvol.setVolume(0.05f, 0.05f);
-//        } else {
-//            backvol.setVolume(0, 0);
-//        }
-//        backvol.start();
-//
-//    }
-
     private void initUi() {
         btnLeaderboards = findViewById(R.id.btn_leaderboards);
         numMemory = findViewById(R.id.num_memory);
