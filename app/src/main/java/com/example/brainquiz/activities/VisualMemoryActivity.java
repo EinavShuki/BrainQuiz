@@ -1,19 +1,18 @@
 package com.example.brainquiz.activities;
 
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.core.app.ActivityCompat;
 
 import android.animation.LayoutTransition;
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.drawable.AnimationDrawable;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 
@@ -42,71 +41,66 @@ public class VisualMemoryActivity extends AppCompatActivity {
     Map<Integer, ArrayList<Integer>> caughtPos = new HashMap<>();
     int strike, numOfBtns, level;
     LinearLayout mainLayout;
-    ImageView imageView;
+    ImageView imageView, ivLifeOne, ivLifeTwo, ivLifeThree;
+    ;
     MediaPlayer countSound, popSound;
     ImageButton zero, one, two, three, four, five, six, seven, eight, nine;
     ArrayList<ImageButton> num_arr = new ArrayList<>();
-    AlertDialog.Builder builder;
     Button go;
-    boolean vol=true ;
-    MediaPlayer backvol;
+    boolean vol;
+    SharedPreferences volSp;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_visual_memory);
 
-//        backvol.stop();
+
         init();
+        setListeners();
 
         LayoutTransition layoutTransition = new LayoutTransition();
         layoutTransition.enableTransitionType(LayoutTransition.CHANGING);
         mainLayout.setLayoutTransition(layoutTransition);
 
+        Log.i("vol", vol + " is visual");
+
         level = getIntent().getIntExtra("level", 1);//from itself or failScreen or Intermediate
         strike = getIntent().getIntExtra("strike", 1);//first from itself,latter from Intermediate or failScreen
 
-        switch (level) {
-            case 1:
-                mainLayout.setBackgroundResource(R.drawable.back);
-                break;
-            case 2:
-                mainLayout.setBackgroundResource(R.drawable.back2);
-                break;
-            case 6:
-                mainLayout.setBackgroundResource(R.drawable.back6);
-                break;
-            case 3:
-                mainLayout.setBackgroundResource(R.drawable.back3);
-                break;
-            case 4:
-            case 9:
-                mainLayout.setBackgroundResource(R.drawable.back4);
-                break;
-            case 5:
-                mainLayout.setBackgroundResource(R.drawable.back5);
-                break;
-            case 7:
-                mainLayout.setBackgroundResource(R.drawable.back7);
-                break;
-            case 8:
-                mainLayout.setBackgroundResource(R.drawable.back6);
-                break;
-            case 10:
-                mainLayout.setBackgroundResource(R.drawable.back10);
-                break;
-        }
-        go.setOnClickListener(v -> {
-            go.setVisibility(View.GONE);
-            Levels(level);
-        });
+        setBack();
 
         Toolbar toolbar = findViewById(R.id.level_toolbar);
         toolbar.setTitle(toolbar.getTitle() + " " + level);
-        if (level == 1)
+        if (level == 1 && strike == 1)
             explain();
-        else
+        else if (strike == 1) {
+            MediaPlayer mp = MediaPlayer.create(getBaseContext(), R.raw.correct_choice);
+            if (vol)
+                mp.setVolume(0.3f, 0.3f);
+            else
+                mp.setVolume(0, 0);
+            mp.start();
             go.setVisibility(View.VISIBLE);
+        }
+        else
+            Levels(level);
+
+
+        if (strike==1) {
+            ivLifeThree.setVisibility(View.VISIBLE);
+            ivLifeTwo.setVisibility(View.VISIBLE);
+            ivLifeOne.setVisibility(View.VISIBLE);
+        }
+        if (strike==2) {
+            ivLifeTwo.setVisibility(View.VISIBLE);
+            ivLifeOne.setVisibility(View.VISIBLE);
+        }
+        if (strike==3)
+        {
+            ivLifeOne.setVisibility(View.VISIBLE);
+        }
     }
 
 
@@ -147,8 +141,47 @@ public class VisualMemoryActivity extends AppCompatActivity {
         num_arr.add(eight);
         num_arr.add(nine);
 
-        builder = new AlertDialog.Builder(VisualMemoryActivity.this);
+        volSp = getSharedPreferences("vol", MODE_PRIVATE);
+        vol = volSp.getBoolean("vol", true);
 
+        ivLifeOne = findViewById(R.id.life_one);
+        ivLifeTwo = findViewById(R.id.life_two);
+        ivLifeThree = findViewById(R.id.life_three);
+
+
+    }
+
+    private void setBack() {
+        switch (level) {
+            case 1:
+                mainLayout.setBackgroundResource(R.drawable.back);
+                break;
+            case 2:
+                mainLayout.setBackgroundResource(R.drawable.back2);
+                break;
+            case 6:
+                mainLayout.setBackgroundResource(R.drawable.back6);
+                break;
+            case 3:
+                mainLayout.setBackgroundResource(R.drawable.back3);
+                break;
+            case 4:
+            case 9:
+                mainLayout.setBackgroundResource(R.drawable.back4);
+                break;
+            case 5:
+                mainLayout.setBackgroundResource(R.drawable.back5);
+                break;
+            case 7:
+                mainLayout.setBackgroundResource(R.drawable.back7);
+                break;
+            case 8:
+                mainLayout.setBackgroundResource(R.drawable.back6);
+                break;
+            case 10:
+                mainLayout.setBackgroundResource(R.drawable.back10);
+                break;
+        }
     }
 
     private void explain() {
@@ -197,6 +230,15 @@ public class VisualMemoryActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    private void setListeners() {
+
+        go.setOnClickListener(v -> {
+            go.setVisibility(View.GONE);
+            Levels(level);
+        });
+
     }
 
     private void counting(ArrayList<ImageButton> allBtn) {
@@ -263,8 +305,8 @@ public class VisualMemoryActivity extends AppCompatActivity {
 
             ImageButton btn = num_arr.get(i);
             GridLayout.LayoutParams layoutParams = new GridLayout.LayoutParams();
-            layoutParams.height = 150;
-            layoutParams.width = 150;
+            layoutParams.height = 160;
+            layoutParams.width = 160;
             layoutParams.bottomMargin = 3;
             layoutParams.topMargin = 3;
             layoutParams.setGravity(Gravity.CENTER);
@@ -311,11 +353,10 @@ public class VisualMemoryActivity extends AppCompatActivity {
                     }
                     //currentBtnNum != lastPressedBtnNum + 1
                 } else {
-                    if (strike < 3) {
-                        Intent intent = new Intent(VisualMemoryActivity.this, IntermediateVisualMemoryActivity.class);
-                        intent.putExtra("strike", strike);
-                        intent.putExtra("level", level);
-                        startActivity(intent);
+                    if (strike == 1) {
+                        worngNum(allBtn);
+                    } else if (strike == 2) {
+                        worngNum(allBtn);
                     } else {
                         Intent intent = new Intent(VisualMemoryActivity.this, FailScreenActivity.class);
                         intent.putExtra("level", level);
@@ -323,14 +364,49 @@ public class VisualMemoryActivity extends AppCompatActivity {
                         startActivity(intent);
                     }
                     finish();
+
                 }
             });
         }
         caughtPos.clear();
+
         //counting back before disappearing
         counting(allBtn);
+
     }
 
+
+    private void worngNum(ArrayList<ImageButton> allBtn) {
+        MediaPlayer mp = MediaPlayer.create(getBaseContext(), R.raw.wrong);
+        if (vol)
+            mp.setVolume(0.3f, 0.3f);
+        else
+            mp.setVolume(0, 0);
+        mp.start();
+
+        Intent intent=new Intent(VisualMemoryActivity.this,VisualMemoryActivity.class);
+        intent.putExtra("strike",strike+1);
+        intent.putExtra("level",level);
+        startActivity(intent);
+    }
+
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+//        backvol.stop();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+//        backvol.pause();
+
+        Log.i("vol", vol + " onPause visual");
+        SharedPreferences.Editor editor = volSp.edit();
+        editor.putBoolean("vol", vol);
+        editor.apply();
+    }
 
     //    private void Levels(int level) {
 //        ArrayList<Button> allBtn = new ArrayList<>();

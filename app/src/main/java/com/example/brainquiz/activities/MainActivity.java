@@ -49,10 +49,12 @@ public class MainActivity extends AppCompatActivity {
         initUi();
         setListeners();
 
+        Log.i("vol", vol + "onCreate");
+
         volume.setImageResource(R.drawable.volume_off);
         backvol.setVolume(0.05f, 0.05f);
+        backvol.setLooping(true);
         backvol.start();
-
     }
 
 
@@ -63,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
         mathRiddle = findViewById(R.id.math_riddle);
         colorMatcherCard = findViewById(R.id.color_matcher_card);
         volume = findViewById(R.id.volume_btn);
-        backvol = MediaPlayer.create(MainActivity.this, R.raw.background_visual_memory);
+        backvol = MediaPlayer.create(MainActivity.this, R.raw.music);
         volSp = getSharedPreferences("vol", MODE_PRIVATE);
         vol = volSp.getBoolean("vol", true);
     }
@@ -71,33 +73,31 @@ public class MainActivity extends AppCompatActivity {
 
     private void setListeners() {
         btnLeaderboards.setOnClickListener(view -> {
-            backvol.stop();
             showLeaderboardsDialog();
-            backvol.pause();
         });
 
         numMemory.setOnClickListener(v -> {
-            backvol.pause();
+
             startActivity(new Intent(MainActivity.this, LastStateNumMemoryActivity.class));
         });
 
         visualMemoryCard.setOnClickListener(v -> {
-            backvol.pause();
+//            backvol.pause();
             Intent intent = new Intent(MainActivity.this, VisualMemoryActivity.class);
             startActivity(intent);
         });
         mathRiddle.setOnClickListener(v -> {
-            backvol.pause();
+//            backvol.pause();
             startActivity(new Intent(MainActivity.this, MathRiddlesActivity.class));
         });
 
         colorMatcherCard.setOnClickListener(v -> {
-            backvol.stop();
+
             startActivity(new Intent(MainActivity.this, ColorMatcherActivity.class));
         });
 
         volume.setOnClickListener(v -> {
-            if (vol) {
+            if (!vol) {
                 volume.setImageResource(R.drawable.volume_off);
                 backvol.setVolume(0.05f, 0.05f);
             } else {
@@ -106,6 +106,7 @@ public class MainActivity extends AppCompatActivity {
             }
             vol = !vol;
             backvol.start();
+            Log.i("vol", vol + " onClick");
         });
 
     }
@@ -155,24 +156,35 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        Log.i("vol", vol + " ");
+        Log.i("vol", vol + " onResume");
         if (vol) {
-            volume.setImageResource(R.drawable.volume_up);
-            backvol.setVolume(0.05f, 0.05f);
-            backvol.start();
-//            volume.setImageResource(R.drawable.volume_off);
-//            backvol.setVolume(0.05f, 0.05f);
-        } else {
             volume.setImageResource(R.drawable.volume_off);
+            backvol.setVolume(0.05f, 0.05f);
+        } else {
+            volume.setImageResource(R.drawable.volume_up);
             backvol.setVolume(0, 0);
         }
+        backvol.setLooping(true);
         backvol.start();
-            backvol.start();
-//            volume.setImageResource(R.drawable.volume_up);
-//            backvol.setVolume(0, 0);
-        }
+    }
 
-    private void showLeaderboardsDialog(){
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        backvol.stop();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        backvol.pause();
+
+        SharedPreferences.Editor editor = volSp.edit();
+        editor.putBoolean("vol", vol);
+        editor.apply();
+    }
+
+    private void showLeaderboardsDialog() {
         Dialog dialog = new Dialog(this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.dialog);
@@ -211,27 +223,17 @@ public class MainActivity extends AppCompatActivity {
         });
 
         pager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            public void onPageScrollStateChanged(int state) {}
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {}
-            public void onPageSelected(int position) { tvTable.setText(pagerAdapter.getPageTitle(position)); }
+            public void onPageScrollStateChanged(int state) {
+            }
+
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+            }
+
+            public void onPageSelected(int position) {
+                tvTable.setText(pagerAdapter.getPageTitle(position));
+            }
         });
         dialog.show();
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        backvol.stop();
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        backvol.pause();
-
-        SharedPreferences.Editor editor = volSp.edit();
-        editor.putBoolean("vol", vol);
-        editor.apply();
     }
 }
 
