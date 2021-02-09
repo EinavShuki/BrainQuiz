@@ -94,7 +94,8 @@ public class ColorMatcherActivity extends AppCompatActivity implements View.OnCl
 
     @Override
     public void onBackPressed() {
-        if (progressAnimator != null){
+        if (progressAnimator.isStarted()){
+            progressAnimator.pause();
             progressAnimator.removeAllListeners();
         }
         Intent intent=new Intent(this,MainActivity.class);
@@ -104,7 +105,7 @@ public class ColorMatcherActivity extends AppCompatActivity implements View.OnCl
 
     @Override
     protected void onPause() {
-        if (progressAnimator != null){
+        if (progressAnimator.isStarted()){
             progressAnimator.pause();
         }
         super.onPause();
@@ -112,7 +113,7 @@ public class ColorMatcherActivity extends AppCompatActivity implements View.OnCl
 
     @Override
     protected void onDestroy() {
-        if (progressAnimator != null){
+        if (progressAnimator.isStarted()){
             progressAnimator.removeAllListeners();
         }
         super.onDestroy();

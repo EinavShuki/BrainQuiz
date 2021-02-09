@@ -46,7 +46,7 @@
                 android:fontFamily="@font/varela_round_regular"
                 android:text="1/3"
                 android:textColor="@color/hard_grey"
-                android:textSize="25sp"
+                android:textSize="21sp"
                 android:textStyle="bold" />
 
 
@@ -120,7 +120,7 @@
                 android:gravity="end"
                 android:text="1:00"
                 android:textColor="@color/hard_grey"
-                android:textSize="25sp"
+                android:textSize="21sp"
                 android:textStyle="bold" />
 
         </LinearLayout>
@@ -137,6 +137,13 @@
         android:visibility="gone"
         app:lottie_autoPlay="false"
         app:lottie_rawRes="@raw/wrong_anim"/>
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/correct_anim"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:lottie_autoPlay="false"
+        app:lottie_rawRes="@raw/correct_anim" />
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/card_riddle"
@@ -177,12 +184,6 @@
             android:layout_height="match_parent"
             android:layout_gravity="center">
 
-            <com.airbnb.lottie.LottieAnimationView
-                android:id="@+id/correct_anim"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:lottie_autoPlay="false"
-                app:lottie_rawRes="@raw/correct_anim" />
         </FrameLayout>
     </com.google.android.material.card.MaterialCardView>
 
@@ -222,8 +223,8 @@
                     android:fontFamily="@font/varela_round_regular"
                     android:gravity="center"
                     android:hint="@string/answer"
-                    android:textColor="@color/blue"
-                    android:textColorHint="@color/blue"
+                    android:textColor="@color/orange"
+                    android:textColorHint="@color/orange"
                     android:textSize="22sp" />
 
                 <TextView
@@ -234,7 +235,7 @@
                     android:gravity="center"
                     android:fontFamily="@font/varela_round_regular"
                     android:text="X"
-                    android:textColor="@color/blue"
+                    android:textColor="@color/orange"
                     android:textSize="22sp" />
             </LinearLayout>
 
@@ -258,7 +259,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/keyboard_button"
                 android:text="1"
-                android:textColor="@color/blue"
+                android:textColor="@color/orange"
                 android:fontFamily="@font/varela_round_regular"
                 android:textSize="21sp">
 
@@ -273,7 +274,7 @@
                 android:background="@drawable/keyboard_button"
                 android:fontFamily="@font/varela_round_regular"
                 android:text="2"
-                android:textColor="@color/blue"
+                android:textColor="@color/orange"
                 android:textSize="21sp">
 
             </Button>
@@ -287,7 +288,7 @@
                 android:background="@drawable/keyboard_button"
                 android:fontFamily="@font/varela_round_regular"
                 android:text="3"
-                android:textColor="@color/blue"
+                android:textColor="@color/orange"
                 android:textSize="21sp">
 
             </Button>
@@ -301,7 +302,7 @@
                 android:background="@drawable/keyboard_button"
                 android:fontFamily="@font/varela_round_regular"
                 android:text="4"
-                android:textColor="@color/blue"
+                android:textColor="@color/orange"
                 android:textSize="21sp">
 
             </Button>
@@ -315,7 +316,7 @@
                 android:background="@drawable/keyboard_button"
                 android:fontFamily="@font/varela_round_regular"
                 android:text="5"
-                android:textColor="@color/blue"
+                android:textColor="@color/orange"
                 android:textSize="21sp">
 
             </Button>
@@ -340,7 +341,7 @@
                 android:background="@drawable/keyboard_button"
                 android:fontFamily="@font/varela_round_regular"
                 android:text="6"
-                android:textColor="@color/blue"
+                android:textColor="@color/orange"
                 android:textSize="21sp">
 
             </Button>
@@ -354,7 +355,7 @@
                 android:background="@drawable/keyboard_button"
                 android:fontFamily="@font/varela_round_regular"
                 android:text="7"
-                android:textColor="@color/blue"
+                android:textColor="@color/orange"
                 android:textSize="21sp">
 
             </Button>
@@ -368,7 +369,7 @@
                 android:background="@drawable/keyboard_button"
                 android:fontFamily="@font/varela_round_regular"
                 android:text="8"
-                android:textColor="@color/blue"
+                android:textColor="@color/orange"
                 android:textSize="21sp">
 
             </Button>
@@ -382,7 +383,7 @@
                 android:background="@drawable/keyboard_button"
                 android:fontFamily="@font/varela_round_regular"
                 android:text="9"
-                android:textColor="@color/blue"
+                android:textColor="@color/orange"
                 android:textSize="21sp">
 
             </Button>
@@ -396,7 +397,7 @@
                 android:background="@drawable/keyboard_button"
                 android:fontFamily="@font/varela_round_regular"
                 android:text="0"
-                android:textColor="@color/blue"
+                android:textColor="@color/orange"
                 android:textSize="21sp">
 
             </Button>

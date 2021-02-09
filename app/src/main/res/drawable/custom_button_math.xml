@@ -4,7 +4,7 @@
         <shape>
             <gradient
                 android:startColor="#FF9800"
-                android:endColor="#FF9800"
+                android:endColor="#FF5722"
                 android:type="linear"/>
             <corners android:radius="10dp"/>
 
@@ -14,7 +14,7 @@
         <shape>
             <gradient
                 android:startColor="#FF9800"
-                android:endColor="#FF9800"
+                android:endColor="#FF5722"
                 android:type="linear"/>
             <corners android:radius="10dp"/>
         </shape>

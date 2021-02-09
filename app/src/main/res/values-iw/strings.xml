@@ -11,7 +11,7 @@
     <string name="number_memory">זכירת מספרים</string>
     <string name="try_again">נסו שוב</string>
     <string name="save_record">שמור תוצאה</string>
-    <string name="number">המספר שהופיע היה:</string>
+    <string name="number">המספר שהופיע</string>
     <string name="your_ans">התשובה שלכם הייתה:</string>
     <string name="advice_to_save">שמרו את השיא כדי להשוות</string>
     <string name="level">שלב</string>
@@ -50,4 +50,6 @@
     <string name="color_match">התאמת צבעים</string>
     <string name="correct_answers">תשובות נכונות</string>
     <string name="longest_run">רצף ארוך ביותר</string>
+    <string name="next">הבא</string>
+    <string name="longest_number">המספר הארוך ביותר</string>
 </resources>

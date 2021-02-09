@@ -1,21 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.brainquiz"
-    xmlns:dist="http://schemas.android.com/apk/distribution">
+    xmlns:dist="http://schemas.android.com/apk/distribution"
+    package="com.example.brainquiz">
 
-    <dist:module dist:instant="true" />
     <application
-        android:fontFamily="@font/varela_round_regular"
         android:allowBackup="true"
+        android:fontFamily="@font/varela_round_regular"
         android:icon="@drawable/brain_ic"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BrainQuiz">
-        <activity android:name=".activities.ColorMatcherResultsActivity"/>
-        <activity android:name=".activities.ColorMatcherActivity" />
-        <activity android:name=".activities.MathRiddlesResultsActivity" />
-        <activity android:name=".activities.CountDownActivity" />
+        <activity
+            android:name=".activities.DigitsResultsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.DigitsMiddleActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.ColorMatcherResultsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.ColorMatcherActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.MathRiddlesResultsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.CountDownActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activities.WinScreenVisualMemoryActivity"
             android:screenOrientation="portrait" />
@@ -55,5 +68,7 @@
             </intent-filter>
         </activity>
     </application>
+
+    <dist:module dist:instant="true" />
 
 </manifest>

@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradient_animation_math_riddles"
+    android:background="@drawable/color_match_result_back"
     android:orientation="vertical"
     android:weightSum="12"
     tools:context=".activities.MathRiddlesResultsActivity">
@@ -173,20 +173,22 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="30dp"
-                    android:orientation="horizontal"
-                    android:gravity="center">
+                    android:padding="8dp"
+                    android:orientation="horizontal">
 
                     <Button
                         android:id="@+id/save_score_colors_btn"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/custom_button"
+                        android:background="@drawable/custom_button_color_match"
                         android:layout_gravity="center"
+                        android:layout_weight="1"
                         android:padding="10dp"
                         android:layout_margin="5dp"
                         android:fontFamily="@font/varela_round_regular"
                         android:text="@string/save_record"
                         android:textColor="@color/white"
+                        android:textAllCaps="false"
                         android:textSize="21sp" />
 
                     <Button
@@ -196,11 +198,13 @@
                         android:layout_gravity="center"
                         android:layout_margin="5dp"
                         android:layout_marginStart="20dp"
+                        android:layout_weight="1"
                         android:padding="10dp"
                         android:fontFamily="@font/varela_round_regular"
                         android:text="@string/try_again"
                         android:textColor="@color/white"
-                        android:background="@drawable/custom_button"
+                        android:textAllCaps="false"
+                        android:background="@drawable/custom_button_color_match"
                         android:textSize="21sp" />
                 </LinearLayout>
 
