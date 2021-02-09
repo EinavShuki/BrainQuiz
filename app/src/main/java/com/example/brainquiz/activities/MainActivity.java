@@ -77,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         numMemory.setOnClickListener(v -> {
-            startActivity(new Intent(MainActivity.this, LastStateNumMemoryActivity.class));
+            startActivity(new Intent(MainActivity.this, DigitsMemoryActivity.class));
         });
 
         visualMemoryCard.setOnClickListener(v -> {

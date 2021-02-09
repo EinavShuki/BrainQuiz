@@ -113,7 +113,7 @@ public class ColorMatcherActivity extends AppCompatActivity implements View.OnCl
 
     @Override
     protected void onDestroy() {
-        if (progressAnimator != null){
+        if (progressAnimator.isStarted()){
             progressAnimator.removeAllListeners();
         }
         super.onDestroy();

@@ -49,4 +49,6 @@
     <string name="color_match">Color Match</string>
     <string name="correct_answers">Correct Answers</string>
     <string name="longest_run">Longest Run</string>
+    <string name="next">Next</string>
+    <string name="longest_number">Longest Number</string>
 </resources>
