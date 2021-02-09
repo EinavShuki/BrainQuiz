@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradient_center_math_riddles"
+    android:background="@drawable/math_result_back"
     android:orientation="vertical"
     android:weightSum="12"
     tools:context=".activities.MathRiddlesResultsActivity">
@@ -172,33 +172,37 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:orientation="horizontal"
-                    android:gravity="center">
+                    android:layout_marginTop="30dp"
+                    android:padding="8dp"
+                    android:orientation="horizontal">
 
                     <Button
                         android:id="@+id/save_math_score_btn"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/custom_button"
+                        android:background="@drawable/custom_button_math"
                         android:layout_gravity="center"
                         android:padding="10dp"
+                        android:layout_weight="1"
                         android:layout_margin="5dp"
                         android:fontFamily="@font/varela_round_regular"
                         android:text="@string/save_record"
                         android:textColor="@color/white"
+                        android:textAllCaps="false"
                         android:textSize="21sp" />
 
                     <Button
                         android:id="@+id/try_again_math_btn"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/custom_button"
+                        android:background="@drawable/custom_button_math"
                         android:layout_gravity="center"
                         android:padding="10dp"
                         android:layout_margin="5dp"
+                        android:layout_weight="1"
                         android:fontFamily="@font/varela_round_regular"
                         android:text="@string/try_again"
+                        android:textAllCaps="false"
                         android:textColor="@color/white"
                         android:textSize="21sp"  />
                 </LinearLayout>

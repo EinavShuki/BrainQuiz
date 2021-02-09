@@ -8,8 +8,8 @@
     <string name="continue_btn">Continue from the last point</string>
     <string name="visual_memory">Visual Memory</string>
     <string name="number_memory">Number Memory</string>
-    <string name="try_again">Try again</string>
-    <string name="save_record">Save score</string>
+    <string name="try_again">Try Again</string>
+    <string name="save_record">Save Score</string>
     <string name="number">number displayed was:</string>
     <string name="your_ans">Your answer was:</string>
     <string name="advice_to_save">Save your record to see how you compare</string>
