@@ -38,10 +38,10 @@
             android:name=".activities.LastStateNumMemoryActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".activities.NumberMemoryActivity"
+            android:name=".activities.DigitsMemoryActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".activities.NumberMemorySecActivity"
+            android:name=".activities.DigitsMemoryAnswerActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />
         <activity

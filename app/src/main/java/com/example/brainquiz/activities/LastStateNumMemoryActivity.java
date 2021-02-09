@@ -28,7 +28,7 @@ public class LastStateNumMemoryActivity extends AppCompatActivity {
         explain();
         sp=getSharedPreferences("RememberDetails",MODE_PRIVATE);//got it from NumberMemorySec
 
-        intent=new Intent(LastStateNumMemoryActivity.this,NumberMemoryActivity.class);
+        intent=new Intent(LastStateNumMemoryActivity.this, DigitsMemoryActivity.class);
 
         if(sp.contains("num"))//got it from NumberMemorySecActivity
             lastPointBtn.setEnabled(true);

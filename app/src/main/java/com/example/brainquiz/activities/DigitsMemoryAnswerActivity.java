@@ -5,20 +5,17 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.drawable.AnimationDrawable;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.brainquiz.R;
 import com.example.brainquiz.utils.Constants;
 
-public class NumberMemorySecActivity extends AppCompatActivity implements View.OnClickListener {
+public class DigitsMemoryAnswerActivity extends AppCompatActivity implements View.OnClickListener {
     SharedPreferences sp;
     int number, lev;
     Button submitBtn, btnOne, btnTwo, btnThree, btnFour, btnFive, btnSix, btnSeven, btnEight, btnNine, btnZero, delete;
@@ -27,7 +24,7 @@ public class NumberMemorySecActivity extends AppCompatActivity implements View.O
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_number_memory_sec);
+        setContentView(R.layout.activity_digits_memory_answer);
 
 //       LinearLayout mainLayout = findViewById(R.id.main_layout);
         //loading dynamic background
@@ -65,7 +62,7 @@ public class NumberMemorySecActivity extends AppCompatActivity implements View.O
     }
 
     private void playTap() {
-        MediaPlayer mp = MediaPlayer.create(NumberMemorySecActivity.this, R.raw.tap);
+        MediaPlayer mp = MediaPlayer.create(DigitsMemoryAnswerActivity.this, R.raw.tap);
         mp.start();
     }
 
@@ -102,7 +99,7 @@ public class NumberMemorySecActivity extends AppCompatActivity implements View.O
                         setResult(RESULT_OK);
                         finish();
                     } else {
-                        Intent intent = new Intent(NumberMemorySecActivity.this, FailScreenActivity.class);
+                        Intent intent = new Intent(DigitsMemoryAnswerActivity.this, FailScreenActivity.class);
                         intent.putExtra("wrong number", num);
                         intent.putExtra("right number", number);
                         intent.putExtra("level", lev);
