@@ -98,7 +98,7 @@
             android:paddingStart="60dp"
             android:paddingEnd="60dp"
             android:paddingTop="80dp"
-            android:paddingBottom="150dp"
+            android:paddingBottom="140dp"
             android:id="@+id/grid_lo"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

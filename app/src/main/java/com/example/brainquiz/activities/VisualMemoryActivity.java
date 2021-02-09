@@ -285,12 +285,12 @@ public class VisualMemoryActivity extends AppCompatActivity {
         lastPressed.setText(0 + "");
         Random random = new Random();
 
-        int x = random.nextInt(4);
+        int x = random.nextInt(3);
         int y = random.nextInt(5);
         for (int i = 0; i < numOfBtns; i++) {
             //we don't want duplicates
             while ((caughtPos.containsKey(x) && Objects.requireNonNull(caughtPos.get(x)).contains(y))) {
-                x = random.nextInt(4);
+                x = random.nextInt(3);
                 y = random.nextInt(5);
             }
             //insert to the map to avoid duplicates
@@ -300,8 +300,8 @@ public class VisualMemoryActivity extends AppCompatActivity {
 
             ImageButton btn = num_arr.get(i);
             GridLayout.LayoutParams layoutParams = new GridLayout.LayoutParams();
-            layoutParams.height = 160;
-            layoutParams.width = 160;
+            layoutParams.height = 200;
+            layoutParams.width = 200;
             layoutParams.bottomMargin = 3;
             layoutParams.topMargin = 3;
             layoutParams.setGravity(Gravity.CENTER);
@@ -377,22 +377,6 @@ public class VisualMemoryActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-//        backvol.stop();
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-//        backvol.pause();
-
-        Log.i("vol", vol + " onPause visual");
-        SharedPreferences.Editor editor = volSp.edit();
-        editor.putBoolean("vol", vol);
-        editor.apply();
-    }
 
     //    private void Levels(int level) {
 //        ArrayList<Button> allBtn = new ArrayList<>();
