@@ -30,13 +30,6 @@ public class DigitsMemoryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_digits_memory);
 
-        mainLayout = findViewById(R.id.main_layout);
-        //loading dynamic background
-//        AnimationDrawable animationDrawable = (AnimationDrawable) mainLayout.getBackground();
-//        animationDrawable.setEnterFadeDuration(10);
-//        animationDrawable.setExitFadeDuration(5000);
-//        animationDrawable.start();
-
         lev = getIntent().getIntExtra("level", 1);//from itself  or LastState
         numberToShow = getIntent().getIntExtra("number", 5);//from NumberMemorySecActivity or LastState
 
@@ -45,14 +38,17 @@ public class DigitsMemoryActivity extends AppCompatActivity {
 
         TextView numTv = findViewById(R.id.tv_number);
         numTv.setText(numberToShow + "");
-        if (numTv.length() > 8)
-            numTv.setTextSize(40);
+        if (numTv.length() == 7)
+            numTv.setTextSize(30);
+        if (numTv.length() > 7)
+            numTv.setTextSize(25);
 
         progressBar = findViewById(R.id.progress_timer);
         ObjectAnimator progressAnimator = ObjectAnimator.ofInt(progressBar, "progress", 100, 0);
+
         if (numTv.length() > 7)
-            progressAnimator.setDuration(3000);
-        else if (numTv.length() > 6)
+            progressAnimator.setDuration(2500);
+        else if (numTv.length() > 5)
             progressAnimator.setDuration(2000);
         else
             progressAnimator.setDuration(1000);

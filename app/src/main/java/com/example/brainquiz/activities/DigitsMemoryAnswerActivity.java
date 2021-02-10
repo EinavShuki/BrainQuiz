@@ -26,13 +26,6 @@ public class DigitsMemoryAnswerActivity extends AppCompatActivity implements Vie
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_digits_memory_answer);
 
-//       LinearLayout mainLayout = findViewById(R.id.main_layout);
-        //loading dynamic background
-//        AnimationDrawable animationDrawable = (AnimationDrawable) mainLayout.getBackground();
-//        animationDrawable.setEnterFadeDuration(10);
-//        animationDrawable.setExitFadeDuration(5000);
-//        animationDrawable.start();
-
         init();
         lev = getIntent().getIntExtra("level", 1);
         number = getIntent().getIntExtra("number", 5);
