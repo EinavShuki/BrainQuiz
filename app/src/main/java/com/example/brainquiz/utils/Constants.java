@@ -20,6 +20,8 @@ public class Constants {
     public static final String SCREEN_KEY = "screenKey";
     public static final String MATH_SCORES_KEY = "mathScoresKey";
     public static final String MATH_SCORES_PREFS = "mathScoresPrefs";
+    public static final String VISUAL_SCORES_KEY = "mathScoresKey";
+    public static final String VISUAL_SCORES_PREFS = "mathScoresPrefs";
     public static final String LEVEL_KEY = "levelKey";
     public static final String NUMBER_KEY = "numberKey";
     public static final String ANSWER_RESULT = "resultKey";

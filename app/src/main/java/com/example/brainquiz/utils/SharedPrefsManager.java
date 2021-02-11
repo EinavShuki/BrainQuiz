@@ -10,10 +10,10 @@ import java.util.Set;
 import java.util.StringTokenizer;
 
 public class SharedPrefsManager {
-    public static void saveInLastScores(String score, Context context) {
-        String lastScores = context.getSharedPreferences(Constants.MATH_SCORES_PREFS, Context.MODE_PRIVATE)
-                .getString(Constants.MATH_SCORES_KEY, "");
-        SharedPreferences.Editor editor = context.getSharedPreferences(Constants.MATH_SCORES_PREFS, Context.MODE_PRIVATE).edit();
+    public static void saveInLastScores(String score, Context context,String gameKey,String prefsName) {
+        String lastScores = context.getSharedPreferences(prefsName, Context.MODE_PRIVATE)
+                .getString(gameKey, "");
+        SharedPreferences.Editor editor = context.getSharedPreferences(prefsName, Context.MODE_PRIVATE).edit();
         StringBuilder newScores = new StringBuilder();
 
         // There is a saved scores
@@ -39,22 +39,22 @@ public class SharedPrefsManager {
                         }
                     }
                     newScores.append(score).append(",");
-                    editor.putString(Constants.MATH_SCORES_KEY, newScores.toString());
+                    editor.putString(gameKey, newScores.toString());
                     editor.apply();
                 }
             }
 
             if (st.countTokens() < 3) {
                 lastScores += score + ",";
-                editor.putString(Constants.MATH_SCORES_KEY, lastScores);
+                editor.putString(gameKey, lastScores);
                 editor.apply();
             }
         }
     }
 
-    public static ArrayList<Integer> readLastScores(Context context) {
-        String lastScores = context.getSharedPreferences(Constants.MATH_SCORES_PREFS, Context.MODE_PRIVATE)
-                .getString(Constants.MATH_SCORES_KEY, "");
+    public static ArrayList<Integer> readLastScores(Context context,String gameKey,String prefsName) {
+        String lastScores = context.getSharedPreferences(prefsName, Context.MODE_PRIVATE)
+                .getString(gameKey, "");
         StringTokenizer st = new StringTokenizer(lastScores, ",");
 
         ArrayList<Integer> scores = new ArrayList<>();

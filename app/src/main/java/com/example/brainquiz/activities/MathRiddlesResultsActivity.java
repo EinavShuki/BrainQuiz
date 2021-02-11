@@ -93,7 +93,7 @@ public class MathRiddlesResultsActivity extends AppCompatActivity {
         lineChart.getXAxis().setDrawLimitLinesBehindData(false);
         lineChart.getLegend().setEnabled(false);
 
-        ArrayList<Integer> lastScores = SharedPrefsManager.readLastScores(MathRiddlesResultsActivity.this);
+        ArrayList<Integer> lastScores = SharedPrefsManager.readLastScores(MathRiddlesResultsActivity.this,Constants.MATH_SCORES_KEY,Constants.MATH_SCORES_PREFS);
         Collections.sort(lastScores);
 
         ArrayList<Entry> yValues = new ArrayList<>();

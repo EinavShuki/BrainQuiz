@@ -89,7 +89,7 @@ MathRiddlesActivity extends AppCompatActivity implements View.OnClickListener {
                 intent.putExtra(Constants.REACTION_TIME_KEY, String.format("%.2f", (totalReactionTime / asked)));
                 intent.putExtra(Constants.MATH_SCORE_KEY, Count.getText().toString());
 
-                SharedPrefsManager.saveInLastScores(Count.getText().toString(), MathRiddlesActivity.this);
+                SharedPrefsManager.saveInLastScores(Count.getText().toString(), MathRiddlesActivity.this,Constants.MATH_SCORES_KEY,Constants.MATH_SCORES_PREFS);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
 

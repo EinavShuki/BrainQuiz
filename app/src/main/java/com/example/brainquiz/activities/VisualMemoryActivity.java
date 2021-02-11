@@ -30,6 +30,7 @@ import android.widget.PopupWindow;
 
 import com.example.brainquiz.R;
 import com.example.brainquiz.utils.Constants;
+import com.example.brainquiz.utils.SharedPrefsManager;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -349,6 +350,7 @@ public class VisualMemoryActivity extends AppCompatActivity {
                     } else if (strike == 2) {
                         worngNum(allBtn);
                     } else {
+                        SharedPrefsManager.saveInLastScores(String.valueOf(level), VisualMemoryActivity.this,Constants.VISUAL_SCORES_KEY,Constants.VISUAL_SCORES_PREFS);
                         Intent intent = new Intent(VisualMemoryActivity.this, FailScreenActivity.class);
                         intent.putExtra("level", level);
                         intent.putExtra(Constants.ACTIVITY_NAME_KEY, Constants.VISUAL_MEMORY_TITLE);

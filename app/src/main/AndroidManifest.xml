@@ -12,12 +12,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BrainQuiz">
         <activity
-            android:name=".activities.DigitsResultsActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".activities.DigitsMiddleActivity"
-            android:screenOrientation="portrait" />
-        <activity
             android:name=".activities.ColorMatcherResultsActivity"
             android:screenOrientation="portrait" />
         <activity
@@ -33,9 +27,6 @@
             android:name=".activities.WinScreenVisualMemoryActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".activities.IntermediateVisualMemoryActivity"
-            android:screenOrientation="portrait" />
-        <activity
             android:name=".activities.VisualMemoryActivity"
             android:screenOrientation="portrait" />
         <activity
@@ -43,9 +34,6 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".activities.FailScreenActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".activities.LastStateRiddlesActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".activities.LastStateNumMemoryActivity"
