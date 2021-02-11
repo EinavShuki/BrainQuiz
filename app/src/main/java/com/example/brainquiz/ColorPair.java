@@ -1,11 +1,13 @@
 package com.example.brainquiz;
 
 public class ColorPair {
-    String first, second, third, fourth, query, answer;
-    int firstColor, secondColor, thirdColor, fourthColor;
+    String query, answer;
+    int firstColor, secondColor, thirdColor, fourthColor, queryText, queryColor, first, second, third, fourth;
 
-    public ColorPair(String query, String answer, String first, int firstColor, String second, int secondColor, String third, int thirdColor, String fourth, int fourthColor) {
+    public ColorPair(int queryText, int queryColor, String answer, int first, int firstColor, int second, int secondColor, int third, int thirdColor, int fourth, int fourthColor) {
         this.first = first;
+        this.queryText = queryText;
+        this.queryColor = queryColor;
         this.second = second;
         this.third = third;
         this.fourth = fourth;
@@ -17,37 +19,41 @@ public class ColorPair {
         this.fourthColor = fourthColor;
     }
 
-    public String getFirst() {
+    public int getQueryText() {
+        return queryText;
+    }
+
+    public void setQueryText(int queryText) {
+        this.queryText = queryText;
+    }
+
+    public int getQueryColor() {
+        return queryColor;
+    }
+
+    public void setQueryColor(int queryColor) {
+        this.queryColor = queryColor;
+    }
+
+    public int getFirst() {
         return first;
     }
 
-    public void setFirst(String first) {
-        this.first = first;
-    }
 
-    public String getSecond() {
+    public int getSecond() {
         return second;
     }
 
-    public void setSecond(String second) {
-        this.second = second;
-    }
 
-    public String getThird() {
+    public int getThird() {
         return third;
     }
 
-    public void setThird(String third) {
-        this.third = third;
-    }
 
-    public String getFourth() {
+    public int getFourth() {
         return fourth;
     }
 
-    public void setFourth(String fourth) {
-        this.fourth = fourth;
-    }
 
     public String getQuery() {
         return query;

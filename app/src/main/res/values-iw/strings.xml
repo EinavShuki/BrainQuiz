@@ -53,4 +53,13 @@
     <string name="next">הבא</string>
     <string name="longest_number">המספר הארוך ביותר</string>
     <string name="longest_seq">רצף ארוך ביותר</string>
+    <string name="green">ירוק</string>
+    <string name="red">אדום</string>
+    <string name="blue">כחול</string>
+    <string name="orange">כתום</string>
+    <string name="yellow">צהוב</string>
+    <string name="purple">סגול</string>
+    <string name="text">טקסט</string>
+    <string name="color">צבע</string>
+    <string name="black">שחור</string>
 </resources>

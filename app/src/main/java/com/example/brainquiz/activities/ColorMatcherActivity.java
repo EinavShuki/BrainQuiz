@@ -139,27 +139,26 @@ public class ColorMatcherActivity extends AppCompatActivity implements View.OnCl
 
         // Show first
         cvFirstCard.setCardBackgroundColor(getColor(colorPair.getFirstColor()));
-
         cvFirstCard.startAnimation(secondAnimation);
-        tvFirst.setText(colorPair.getFirst());
+        tvFirst.setText(getString(colorPair.getFirst()));
 
         // Show second
         cvSecondCard.setCardBackgroundColor(getColor(colorPair.getSecondColor()));
         cvSecondCard.startAnimation(secondAnimation);
-        tvSecond.setText(colorPair.getSecond());
+        tvSecond.setText(getString(colorPair.getSecond()));
 
 
         // Show third
         cvThirdCard.setCardBackgroundColor(getColor(colorPair.getThirdColor()));
         cvThirdCard.startAnimation(firstAnimation);
-        tvThird.setText(colorPair.getThird());
+        tvThird.setText(getString(colorPair.getThird()));
 
         // Show first
         cvFourthCard.setCardBackgroundColor(getColor(colorPair.getFourthColor()));
         cvFourthCard.startAnimation(firstAnimation);
-        tvFourth.setText(colorPair.getFourth());
+        tvFourth.setText(getString(colorPair.getFourth()));
 
-        textTimer.setText(colorPair.getQuery());
+        textTimer.setText(getString(colorPair.getQueryText()) + " " + getString(colorPair.getQueryColor()));
 
         progressAnimator = ObjectAnimator.ofInt(barTimer, "progress", 100, 0);
 
