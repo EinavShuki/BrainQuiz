@@ -9,7 +9,7 @@
     <string name="continue_btn">המשיכו מהנקודה האחרונה</string>
     <string name="visual_memory">זיכרון ויזואלי</string>
     <string name="number_memory">זכירת מספרים</string>
-    <string name="try_again">נסו שוב</string>
+    <string name="try_again">נסה שוב</string>
     <string name="save_record">שמור תוצאה</string>
     <string name="number">המספר שהופיע</string>
     <string name="your_ans">התשובה שלכם הייתה:</string>
@@ -49,7 +49,8 @@
     <string name="your_progress">ההתקדמות שלך</string>
     <string name="color_match">התאמת צבעים</string>
     <string name="correct_answers">תשובות נכונות</string>
-    <string name="longest_run">רצף ארוך ביותר</string>
+    <string name="longest_run">הריצה הארוכה ביותר</string>
     <string name="next">הבא</string>
     <string name="longest_number">המספר הארוך ביותר</string>
+    <string name="longest_seq">רצף ארוך ביותר</string>
 </resources>

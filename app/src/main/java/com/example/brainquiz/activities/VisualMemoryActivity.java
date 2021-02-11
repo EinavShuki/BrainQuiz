@@ -351,8 +351,8 @@ public class VisualMemoryActivity extends AppCompatActivity {
                         worngNum(allBtn);
                     } else {
                         SharedPrefsManager.saveInLastScores(String.valueOf(level), VisualMemoryActivity.this,Constants.VISUAL_SCORES_KEY,Constants.VISUAL_SCORES_PREFS);
-                        Intent intent = new Intent(VisualMemoryActivity.this, FailScreenActivity.class);
-                        intent.putExtra("level", level);
+                        Intent intent = new Intent(VisualMemoryActivity.this, VisualMemoryResultsActivity.class);
+                        intent.putExtra(Constants.VISUAL_SCORE_KEY, level);
                         intent.putExtra(Constants.ACTIVITY_NAME_KEY, Constants.VISUAL_MEMORY_TITLE);
                         startActivity(intent);
                     }

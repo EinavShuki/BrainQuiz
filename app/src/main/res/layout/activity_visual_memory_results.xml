@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/visual_result_back"
+    android:orientation="vertical"
+    android:weightSum="12"
+    tools:context=".activities.MathRiddlesResultsActivity">
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="4"
+        android:columnCount="1"
+        android:rowCount="1">
+
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/score_card"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:layout_margin="15dp"
+            android:backgroundTint="@color/white"
+            android:clickable="true"
+            android:elevation="8dp"
+            android:focusable="true"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="6dp"
+            app:cardPreventCornerOverlap="false">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:fontFamily="@font/varela_round_regular"
+                    android:layout_gravity="center"
+                    android:text="@string/your_score"
+                    android:textColor="@color/hard_grey"
+                    android:textSize="21sp" />
+                <TextView
+                    android:id="@+id/tv_visual_score"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/varela_round_regular"
+                    android:layout_marginTop="12dp"
+                    android:textStyle="bold"
+                    android:layout_gravity="center"
+                    android:text="0"
+                    android:textColor="@color/hard_grey"
+                    android:textSize="32sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:padding="8dp"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/save_visual_score_btn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/custom_button_visual"
+                        android:layout_gravity="center"
+                        android:padding="10dp"
+                        android:layout_weight="1"
+                        android:layout_margin="5dp"
+                        android:fontFamily="@font/varela_round_regular"
+                        android:text="@string/save_record"
+                        android:textColor="@color/white"
+                        android:textAllCaps="false"
+                        android:textSize="21sp" />
+
+                    <Button
+                        android:id="@+id/try_again_visual_btn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/custom_button_visual"
+                        android:layout_gravity="center"
+                        android:padding="10dp"
+                        android:layout_margin="5dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/varela_round_regular"
+                        android:text="@string/try_again"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white"
+                        android:textSize="21sp"  />
+                </LinearLayout>
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+    </GridLayout>
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="5"
+        android:columnCount="1"
+
+        android:rowCount="1">
+
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/graph_card"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:layout_margin="15dp"
+            android:backgroundTint="@color/white"
+            android:clickable="true"
+            android:elevation="8dp"
+            android:focusable="true"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="6dp"
+            app:cardPreventCornerOverlap="false">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:layout_gravity="center"
+                    android:text="@string/your_progress"
+                    android:fontFamily="@font/varela_round_regular"
+
+                    android:textColor="@color/hard_grey"
+                    android:textSize="18sp" />
+
+                <com.github.mikephil.charting.charts.LineChart
+                    android:id="@+id/line_chart_visual"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="16dp"
+                    />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+    </GridLayout>
+
+</LinearLayout>

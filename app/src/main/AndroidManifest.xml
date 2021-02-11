@@ -11,6 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BrainQuiz">
+        <activity android:name=".activities.VisualMemoryResultsActivity"></activity>
         <activity
             android:name=".activities.ColorMatcherResultsActivity"
             android:screenOrientation="portrait" />
