@@ -50,6 +50,7 @@
         android:textColor="@color/white"
         android:text="@string/start_new"
         android:textSize="23sp"
+        android:textStyle="bold"
         android:padding="15dp"
         />
     <Button
