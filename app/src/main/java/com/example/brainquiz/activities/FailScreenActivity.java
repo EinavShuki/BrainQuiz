@@ -14,7 +14,7 @@ import com.example.brainquiz.R;
 import com.example.brainquiz.fragments.SaveScoreDialog;
 import com.example.brainquiz.utils.Constants;
 
-public class FailScreenActivity extends AppCompatActivity implements View.OnClickListener {
+public class FailScreenActivity extends AppCompatActivity  {
     TextView subTilte, title, levelTv, titleShow, subTileShow;
     Button tryAgain, btnSaveScore;
     String name_activity, lev, table;
@@ -25,28 +25,21 @@ public class FailScreenActivity extends AppCompatActivity implements View.OnClic
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fail_screen);
 
-        MediaPlayer sound=MediaPlayer.create(this,R.raw.dramatic);
+        MediaPlayer sound = MediaPlayer.create(this, R.raw.dramatic);
         sound.start();
 
         init();
         name_activity = getIntent().getStringExtra(Constants.ACTIVITY_NAME_KEY);
-        switch (name_activity) {
-            case Constants.MATH_TITLE:
-                table = Constants.MATH_TABLE;
-                renderMathRiddle();
-                break;
-            case Constants.NUMBERS_MEMORY_TITLE:
-                table = Constants.NUMBERS_MEMORY_TABLE;
-                renderNumMemory();
-                break;
-            case Constants.VISUAL_MEMORY_TITLE:
-                table = Constants.VISUAL_MEMORY_TABLE;
-                renderVisualMemory();
-                break;
-        }
+
+        table = Constants.NUMBERS_MEMORY_TABLE;
+        renderNumMemory();
 
 
-        tryAgain.setOnClickListener(this);
+        tryAgain.setOnClickListener(v->{
+            Intent intent = new Intent(FailScreenActivity.this, LastStateNumMemoryActivity.class);
+            startActivity(intent);
+            finish();
+        });
 
         btnSaveScore.setOnClickListener(v -> {
             SaveScoreDialog saveScoreDialog = new SaveScoreDialog();
@@ -67,9 +60,8 @@ public class FailScreenActivity extends AppCompatActivity implements View.OnClic
         btnSaveScore = findViewById(R.id.save_score_btn);
         titleShow = findViewById(R.id.title_to_show);
         subTileShow = findViewById(R.id.sub_title_to_show);
-        spc=findViewById(R.id.spc);
+        spc = findViewById(R.id.spc);
     }
-
 
 
     private void renderNumMemory() {
@@ -89,40 +81,4 @@ public class FailScreenActivity extends AppCompatActivity implements View.OnClic
 
     }
 
-
-    private void renderMathRiddle() {
-        int level = getIntent().getIntExtra("level", 1);
-        title.setText(level + "");
-        titleShow.setText(R.string.score);
-    }
-
-    private void renderVisualMemory() {
-        int level = getIntent().getIntExtra("level", 1);
-        titleShow.setText(R.string.score);
-        title.setText(level + "");
-
-    }
-
-    @Override
-    public void onClick(View v) {
-        switch (name_activity) {
-            case Constants.NUMBERS_MEMORY_TITLE:
-                Intent intent = new Intent(FailScreenActivity.this, LastStateNumMemoryActivity.class);
-                startActivity(intent);
-                finish();
-                break;
-            case  Constants.MATH_TITLE :
-                Intent intent2 = new Intent(FailScreenActivity.this, MathRiddlesActivity.class);
-                startActivity(intent2);
-                finish();
-                break;
-            case Constants.VISUAL_MEMORY_TITLE:
-                Intent intent3 = new Intent(FailScreenActivity.this, VisualMemoryActivity.class);
-                intent3.putExtra("level", 1);
-                intent3.putExtra("strike", 1);
-                startActivity(intent3);
-                finish();
-                break;
-        }
-    }
 }

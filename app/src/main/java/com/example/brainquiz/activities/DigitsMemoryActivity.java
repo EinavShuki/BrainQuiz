@@ -16,6 +16,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.example.brainquiz.R;
+import com.example.brainquiz.utils.Constants;
 
 public class DigitsMemoryActivity extends AppCompatActivity {
     final int NUMBER_REQUEST = 1;
@@ -75,6 +76,7 @@ public class DigitsMemoryActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (lev == 26) {
             intent = new Intent(DigitsMemoryActivity.this, WinScreenVisualMemoryActivity.class);
+            intent.putExtra(Constants.ACTIVITY_NAME_KEY, Constants.NUMBERS_MEMORY_TITLE);
             startActivity(intent);
         } else if (requestCode == NUMBER_REQUEST) {
             if (resultCode == RESULT_OK) {

@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 import com.example.brainquiz.R;
+import com.example.brainquiz.utils.Constants;
 
 public class WinScreenVisualMemoryActivity extends AppCompatActivity {
 
@@ -20,7 +21,7 @@ public class WinScreenVisualMemoryActivity extends AppCompatActivity {
     ImageView f1,f2,f3,f4,f5;
     ObjectAnimator animator5A, animator5B, animator1A, animator1B, animator2A, animator2B, animator3A, animator3B, animator4A, animator4B;
     AnimatorSet set1,set2,set3,set4,set5;
-
+    String name_activity,table;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +29,8 @@ public class WinScreenVisualMemoryActivity extends AppCompatActivity {
 
         MediaPlayer applause = MediaPlayer.create(this, R.raw.applause);
         applause.start();
+        //HERE YOU GET THE ACTIVITY YOU WIN FROM
+        name_activity = getIntent().getStringExtra(Constants.ACTIVITY_NAME_KEY);
 
         init();
 
@@ -36,6 +39,9 @@ public class WinScreenVisualMemoryActivity extends AppCompatActivity {
             applause.stop();
             startActivity(intent);
             finish();
+        });
+        saveBtn.setOnClickListener(v->{
+                //STAV
         });
 
   animations();

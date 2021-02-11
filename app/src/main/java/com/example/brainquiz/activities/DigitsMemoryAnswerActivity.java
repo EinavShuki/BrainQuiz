@@ -96,7 +96,6 @@ public class DigitsMemoryAnswerActivity extends AppCompatActivity implements Vie
                         intent.putExtra("wrong number", num);
                         intent.putExtra("right number", number);
                         intent.putExtra("level", lev);
-                        intent.putExtra(Constants.ACTIVITY_NAME_KEY, Constants.NUMBERS_MEMORY_TITLE);
                         startActivity(intent);
                         finish();
                     }

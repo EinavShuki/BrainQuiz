@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
@@ -32,6 +33,9 @@ public class VisualMemoryResultsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_visual_memory_results);
+
+        MediaPlayer sound=MediaPlayer.create(this,R.raw.dramatic);
+        sound.start();
 
 //        tvAccuracy = findViewById(R.id.tv_longest_seq);
         tvScore = findViewById(R.id.tv_visual_score);

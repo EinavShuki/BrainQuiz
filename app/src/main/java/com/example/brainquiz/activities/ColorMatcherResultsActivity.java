@@ -3,6 +3,7 @@ package com.example.brainquiz.activities;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -24,6 +25,9 @@ public class ColorMatcherResultsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_color_matcher_results);
+
+        MediaPlayer sound=MediaPlayer.create(this,R.raw.dramatic);
+        sound.start();
 
         Animation leftAnimation = AnimationUtils.loadAnimation(getApplicationContext(),
                 R.anim.left_to_right);

@@ -336,6 +336,7 @@ public class VisualMemoryActivity extends AppCompatActivity {
                         Intent intent;
                         if (level == 10) {
                             intent = new Intent(VisualMemoryActivity.this, WinScreenVisualMemoryActivity.class);
+                            intent.putExtra(Constants.ACTIVITY_NAME_KEY, Constants.VISUAL_MEMORY_TITLE);
                         } else {
                             intent = new Intent(VisualMemoryActivity.this, VisualMemoryActivity.class);
                             intent.putExtra("level", level + 1);
@@ -353,7 +354,6 @@ public class VisualMemoryActivity extends AppCompatActivity {
                         SharedPrefsManager.saveInLastScores(String.valueOf(level), VisualMemoryActivity.this,Constants.VISUAL_SCORES_KEY,Constants.VISUAL_SCORES_PREFS);
                         Intent intent = new Intent(VisualMemoryActivity.this, VisualMemoryResultsActivity.class);
                         intent.putExtra(Constants.VISUAL_SCORE_KEY, level);
-                        intent.putExtra(Constants.ACTIVITY_NAME_KEY, Constants.VISUAL_MEMORY_TITLE);
                         startActivity(intent);
                     }
                     finish();
