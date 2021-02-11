@@ -47,6 +47,8 @@ public class ColorMatcherActivity extends AppCompatActivity implements View.OnCl
     String answer;
     ColorPair colorPair = colorPairs.get(random_num);
     ProgressBar barTimer;
+    Handler handler;
+    Runnable runnable;
     int life = 3, longestRun = 0, run = 0, scoreLevel = 1, correct = 0;
 
     @Override
@@ -56,10 +58,12 @@ public class ColorMatcherActivity extends AppCompatActivity implements View.OnCl
         initUi();
         setListeners();
         countdownAnimView = findViewById(R.id.countdown_anim);
-        new Handler().postDelayed(() -> {
+        handler = new Handler();
+        runnable = () -> {
             rootLayout.setVisibility(View.VISIBLE);
             showCards();
-        }, 3000);
+        };
+        handler.postDelayed(runnable, 3000);
     }
 
     private void initUi() {
@@ -83,6 +87,7 @@ public class ColorMatcherActivity extends AppCompatActivity implements View.OnCl
         ivLifeThree = findViewById(R.id.life_three);
         tvScore = findViewById(R.id.tv_colors_score);
         tvGameOver = findViewById(R.id.tv_game_over);
+        progressAnimator = ObjectAnimator.ofInt(barTimer, "progress", 100, 0);
     }
 
     private void setListeners() {
@@ -98,6 +103,7 @@ public class ColorMatcherActivity extends AppCompatActivity implements View.OnCl
             progressAnimator.pause();
             progressAnimator.removeAllListeners();
         }
+        handler.removeCallbacks(runnable);
         Intent intent=new Intent(this,MainActivity.class);
         startActivity(intent);
         finish();
@@ -108,6 +114,7 @@ public class ColorMatcherActivity extends AppCompatActivity implements View.OnCl
         if (progressAnimator.isStarted()){
             progressAnimator.pause();
         }
+        handler.removeCallbacks(runnable);
         super.onPause();
     }
 
@@ -160,7 +167,6 @@ public class ColorMatcherActivity extends AppCompatActivity implements View.OnCl
 
         textTimer.setText(getString(colorPair.getQueryText()) + " " + getString(colorPair.getQueryColor()));
 
-        progressAnimator = ObjectAnimator.ofInt(barTimer, "progress", 100, 0);
 
         int score = Integer.parseInt(tvScore.getText().toString());
         if(score <= 4){
