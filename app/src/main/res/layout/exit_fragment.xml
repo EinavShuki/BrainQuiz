@@ -12,18 +12,17 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_gravity="center_vertical"
-        android:gravity="center_vertical"
-        android:orientation="vertical"
+        android:layout_gravity="center"
         android:background="@android:color/transparent"
-        >
+        android:gravity="center"
+        android:orientation="vertical">
 
         <androidx.cardview.widget.CardView
             android:layout_width="300dp"
             android:layout_height="200dp"
             android:layout_gravity="center"
-            android:layout_marginStart="30dp"
-            android:layout_marginEnd="30dp"
+            android:layout_marginStart="35dp"
+            android:layout_marginEnd="35dp"
             app:cardBackgroundColor="@color/white"
             app:cardCornerRadius="20dp"
             app:cardElevation="15dp">
@@ -36,7 +35,7 @@
                 android:gravity="center"
                 android:text="@string/quit_game"
                 android:textColor="@android:color/black"
-                android:textSize="30dp"
+                android:textSize="30sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -66,11 +65,12 @@
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
 
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:src="@drawable/close"
             app:backgroundTint="@color/red"
-            android:layout_gravity="center"
+            app:maxImageSize="25dp"
 
             />
 
@@ -87,11 +87,14 @@
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
 
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:foregroundGravity="center"
             android:src="@drawable/games"
-            app:backgroundTint="@color/green" />
+            app:backgroundTint="@color/green"
+            app:maxImageSize="35dp" />
+
 
 
 

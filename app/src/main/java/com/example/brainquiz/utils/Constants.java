@@ -89,6 +89,7 @@ public class Constants {
             new Pair<>("36 + 28 = ", "64"),
             new Pair<>("17 + 26 = ", "43"),
             new Pair<>("63 / 9 = ", "7"),
+            new Pair<>("99 / 3 = ", "33"),
             new Pair<>("37 + 38 = ", "75")
 
 
@@ -125,6 +126,7 @@ public class Constants {
             new Pair<>("10 + 5 / 3 X 6 =", "30"),
             new Pair<>("7*3-6*2", "9"),
             new Pair<>("(54+36)/3-10 =", "20"),
+            new Pair<>("8*4-5*3", "17"),
             new Pair<>("10 - 84 / 12 =", "3")
 
     );
@@ -136,6 +138,7 @@ public class Constants {
             new Pair<>("50,44,38,32", "26"),
             new Pair<>("33,40,47,54", "61"),
             new Pair<>("3,6,12,24", "48"),
+            new Pair<>("5,15,45", "135"),
             new Pair<>("2,3,5,8,13,?", "21"),
             new Pair<>("1" + pow_5 + " + " + "5" + pow_2 + " / "+"25" + pow_0 + " - "+"5" + pow_1, "21"),
             new Pair<>("10 - √(9) X 2 = ", "4"),
