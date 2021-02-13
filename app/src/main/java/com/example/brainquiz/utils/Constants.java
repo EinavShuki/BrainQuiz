@@ -52,11 +52,12 @@ public class Constants {
     public static final int MEDIUM_DURATION = 8000;
     public static final int HIGH_DURATION = 6000;
 
-    public static List<Pair<String, String>> riddlesLevelStart = Arrays.asList(
+    public static List<Pair<String, String>> riddlesLevel1 = Arrays.asList(
             new Pair<>("13 - 6 = ", "7"),
             new Pair<>("48 - 9 =", "39"),
             new Pair<>("10 + 5 =" ,"15"),
             new Pair<>("9 / 3 =", "3"),
+            new Pair<>("14 / 2 =", "7"),
             new Pair<>("8 X 7 =", "56"),
             new Pair<>("12 X 10 =", "120"),
             new Pair<>("5 X 5 - 5 =", "20"),
@@ -69,19 +70,60 @@ public class Constants {
             new Pair<>("69 - 4 =", "65"),
             new Pair<>("35 + 11 =", "46")
     );
-    public static List<Pair<String, String>> riddlesLevelMiddle = Arrays.asList(
-            new Pair<>("8 - 8 / 4 X 3 =", "2"),
-            new Pair<>("√(9)", "3"),
-            new Pair<>("21,18,15,?", "12"),
-            new Pair<>("√(64)", "8"),
-            new Pair<>("4, 11, 18, ?", "25")
+
+
+    public static List<Pair<String, String>> riddlesLevel2 = Arrays.asList(
+            new Pair<>("2" + pow_2 + "=", "4"),
+            new Pair<>("3" + pow_2 + "=", "9"),
+            new Pair<>("4" + pow_2 + "=", "16"),
+            new Pair<>("5" + pow_2 + "=", "25"),
+            new Pair<>("6" + pow_2 + "=", "36"),
+            new Pair<>("7" + pow_2 + "=", "49"),
+            new Pair<>("8" + pow_2 + "=", "64"),
+            new Pair<>("9" + pow_2 + "=", "81"),
+            new Pair<>("4 * 3.5 =", "14")
 
     );
-    public static List<Pair<String, String>> riddlesLevelHigh = Arrays.asList(
+
+    public static List<Pair<String, String>> riddlesLevel3 = Arrays.asList(
+            new Pair<>("2 + ? = 6" , "4"),
+            new Pair<>("6 + ? = 24" , "18"),
+            new Pair<>("9 * ? = 45" , "5"),
+            new Pair<>("6 x ? = 30" , "5"),
+            new Pair<>("7 x ? = 56" , "8"),
+            new Pair<>("9 x ? =72" , "8"),
+            new Pair<>("8 x ? = 48" , "6"),
+            new Pair<>("4 x ? = 12" , "3"),
+            new Pair<>("3 x ? = 21" , "21"),
+            new Pair<>("4 x ? = 12" , "3")
+    );
+
+
+    public static List<Pair<String, String>> riddlesLevel4 = Arrays.asList(
+            new Pair<>("√(10+6) =", "4"),
+            new Pair<>("√(81) =", "9"),
+            new Pair<>("√(25) =", "5"),
+            new Pair<>("√(36) =", "6"),
+            new Pair<>("√(49) =", "7"),
+            new Pair<>("√(4+5) =", "3"),
+            new Pair<>("√(64) =", "8"),
+            new Pair<>("84 / 12 =", "7")
+
+    );
+
+    public static List<Pair<String, String>> riddlesLevel5 = Arrays.asList(
+            new Pair<>("8 - 8 / 4 X 3 =", "2"),
+            new Pair<>("84 / 12 =", "7"),
+            new Pair<>("60 / 4 =", "15"),
+            new Pair<>("2,3,5,8,13,?", "21")
+    );
+
+    public static List<Pair<String, String>> riddlesLevel6 = Arrays.asList(
             new Pair<>("1" + pow_5 + " + " + "5" + pow_2 + " / "+"25" + pow_0 + " - "+"5" + pow_1, "21"),
             new Pair<>("10 - √(9) X 2 = ", "4"),
-            new Pair<>("(3" + pow_2 + " - " + "2" + pow_3 +  ")" + pow_9 + " =", "1"),
-            new Pair<>("2,3,5,8,13,?", "21")
+            new Pair<>("8 - 8 / 4 X 3 =", "2"),
+            new Pair<>("(3" + pow_2 + " - " + "2" + pow_3 +  ")" + pow_9 + " =", "1")
+
 
     );
 
