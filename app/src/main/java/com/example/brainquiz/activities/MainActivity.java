@@ -164,6 +164,10 @@ public class MainActivity extends AppCompatActivity {
         }
         backvol.setLooping(true);
         backvol.start();
+        boolean showLeaderboards = getIntent().getBooleanExtra(Constants.SHOW_LEADERBOARDS_KEY, false);
+        if (showLeaderboards){
+            showLeaderboardsDialog();
+        }
     }
 
     @Override
@@ -179,6 +183,13 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences.Editor editor = volSp.edit();
         editor.putBoolean("vol", vol);
         editor.apply();
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        if (intent != null)
+            setIntent(intent);
+        super.onNewIntent(intent);
     }
 
     private void showLeaderboardsDialog() {
