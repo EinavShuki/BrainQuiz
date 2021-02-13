@@ -164,8 +164,10 @@ public class MainActivity extends AppCompatActivity {
         }
         backvol.setLooping(true);
         backvol.start();
+
         boolean showLeaderboards = getIntent().getBooleanExtra(Constants.SHOW_LEADERBOARDS_KEY, false);
         if (showLeaderboards){
+            getIntent().removeExtra(Constants.SHOW_LEADERBOARDS_KEY);
             showLeaderboardsDialog();
         }
     }

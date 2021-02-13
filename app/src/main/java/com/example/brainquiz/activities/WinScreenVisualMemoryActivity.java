@@ -22,7 +22,7 @@ public class WinScreenVisualMemoryActivity extends AppCompatActivity {
     ImageView f1,f2,f3,f4,f5;
     ObjectAnimator animator5A, animator5B, animator1A, animator1B, animator2A, animator2B, animator3A, animator3B, animator4A, animator4B;
     AnimatorSet set1,set2,set3,set4,set5;
-    String name_activity;
+    String name_activity, table;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,7 +33,11 @@ public class WinScreenVisualMemoryActivity extends AppCompatActivity {
         //HERE YOU GET THE ACTIVITY YOU WIN FROM
         name_activity = getIntent().getStringExtra(Constants.ACTIVITY_NAME_KEY);
         int score = getIntent().getIntExtra(Constants.VISUAL_SCORE_KEY, 0);
-
+        if (name_activity.equals(Constants.VISUAL_MEMORY_TITLE)){
+            table = Constants.VISUAL_MEMORY_TABLE;
+        } else {
+            table = Constants.NUMBERS_MEMORY_TABLE;
+        }
         init();
 
         homeBtn.setOnClickListener(v -> {
@@ -46,7 +50,7 @@ public class WinScreenVisualMemoryActivity extends AppCompatActivity {
             SaveScoreDialog saveScoreDialog = new SaveScoreDialog();
             Bundle args = new Bundle();
             args.putInt(Constants.SCORE_KEY, score);
-            args.putString(Constants.SCREEN_KEY, Constants.VISUAL_MEMORY_TABLE);
+            args.putString(Constants.SCREEN_KEY, table);
             saveScoreDialog.setArguments(args);
             saveScoreDialog.show(getSupportFragmentManager(), Constants.DIALOG_SAVE_SCORE);
         });
