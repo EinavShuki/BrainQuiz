@@ -68,6 +68,7 @@ public class Constants {
             new Pair<>("56 - 6 =", "50"),
             new Pair<>("7 - 3 = ", "4"),
             new Pair<>("69 - 4 =", "65"),
+            new Pair<>("60 / 4 =", "15"),
             new Pair<>("35 + 11 =", "46")
     );
 
@@ -81,7 +82,16 @@ public class Constants {
             new Pair<>("7" + pow_2 + "=", "49"),
             new Pair<>("8" + pow_2 + "=", "64"),
             new Pair<>("9" + pow_2 + "=", "81"),
-            new Pair<>("4 * 3.5 =", "14")
+            new Pair<>("4 * 3.5 =", "14"),
+            new Pair<>("4.5 * 8 =", "36"),
+            new Pair<>("17 + 26 = ", "43"),
+            new Pair<>("35 + 57 = ", "92"),
+            new Pair<>("36 + 28 = ", "64"),
+            new Pair<>("17 + 26 = ", "43"),
+            new Pair<>("63 / 9 = ", "7"),
+            new Pair<>("37 + 38 = ", "75")
+
+
 
     );
 
@@ -94,6 +104,10 @@ public class Constants {
             new Pair<>("9 x ? =72" , "8"),
             new Pair<>("8 x ? = 48" , "6"),
             new Pair<>("4 x ? = 12" , "3"),
+            new Pair<>("3 x ? = 21" , "7"),
+            new Pair<>("54 + ? = 131" , "77"),
+            new Pair<>("33 - ? = 16" , "17"),
+            new Pair<>("88 - ? = 39" , "49"),
             new Pair<>("3 x ? = 21" , "21"),
             new Pair<>("4 x ? = 12" , "3")
     );
@@ -102,25 +116,27 @@ public class Constants {
     public static List<Pair<String, String>> riddlesLevel4 = Arrays.asList(
             new Pair<>("√(10+6) =", "4"),
             new Pair<>("√(81) =", "9"),
-            new Pair<>("√(25) =", "5"),
+            new Pair<>("√(15+10) =", "5"),
             new Pair<>("√(36) =", "6"),
-            new Pair<>("√(49) =", "7"),
+            new Pair<>("√(40+9) =", "7"),
             new Pair<>("√(4+5) =", "3"),
             new Pair<>("√(64) =", "8"),
-            new Pair<>("84 / 12 =", "7")
+            new Pair<>("8 - 8 / 4 X 3 =", "2"),
+            new Pair<>("10 + 5 / 3 X 6 =", "30"),
+            new Pair<>("7*3-6*2", "9"),
+            new Pair<>("(54+36)/3-10 =", "20"),
+            new Pair<>("10 - 84 / 12 =", "3")
 
     );
+
 
     public static List<Pair<String, String>> riddlesLevel5 = Arrays.asList(
-            new Pair<>("8 - 8 / 4 X 3 =", "2"),
-            new Pair<>("84 / 12 =", "7"),
-            new Pair<>("60 / 4 =", "15"),
             new Pair<>("2,4,6,8", "10"),
             new Pair<>("30,27,24,21", "18"),
-            new Pair<>("2,3,5,8,13,?", "21")
-    );
-
-    public static List<Pair<String, String>> riddlesLevel6 = Arrays.asList(
+            new Pair<>("50,44,38,32", "26"),
+            new Pair<>("33,40,47,54", "61"),
+            new Pair<>("3,6,12,24", "48"),
+            new Pair<>("2,3,5,8,13,?", "21"),
             new Pair<>("1" + pow_5 + " + " + "5" + pow_2 + " / "+"25" + pow_0 + " - "+"5" + pow_1, "21"),
             new Pair<>("10 - √(9) X 2 = ", "4"),
             new Pair<>("8 - 8 / 4 X 3 =", "2"),

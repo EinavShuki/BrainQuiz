@@ -42,7 +42,6 @@ MathRiddlesActivity extends AppCompatActivity implements View.OnClickListener {
     List<Pair<String, String>> level3 = new ArrayList<>(Constants.riddlesLevel3);
     List<Pair<String, String>> level4 = new ArrayList<>(Constants.riddlesLevel4);
     List<Pair<String, String>> level5 = new ArrayList<>(Constants.riddlesLevel5);
-    List<Pair<String, String>> level6 = new ArrayList<>(Constants.riddlesLevel6);
     String[] exercise = {"", ""};
     Button btnOne;
     Button btnTwo;
@@ -253,47 +252,40 @@ MathRiddlesActivity extends AppCompatActivity implements View.OnClickListener {
     }
     private void showRiddle(){
 
-        if( mTimeleft/1000>75 ){
-            Level.setText("1/6");
+        if( mTimeleft/1000>72 ){
+            Level.setText("1/5");
             random_num = new Random().nextInt(level1.size());
             exercise[0] = level1.get(random_num).first;
             exercise[1] = level1.get(random_num).second;
             level1.remove(random_num);
         }
-        else if((mTimeleft/1000<=75 && mTimeleft/1000>60)) {
-            Level.setText("2/6");
+        else if((mTimeleft/1000<=72 && mTimeleft/1000>54)) {
+            Level.setText("2/5");
             random_num = new Random().nextInt(level2.size());
             exercise[0] = level2.get(random_num).first;
             exercise[1] = level2.get(random_num).second;
             level2.remove(random_num);
         }
-        else if((mTimeleft/1000<=60 && mTimeleft/1000>45)) {
-            Level.setText("3/6");
+        else if((mTimeleft/1000<=54 && mTimeleft/1000>36)) {
+            Level.setText("3/5");
             random_num = new Random().nextInt(level3.size());
             exercise[0] = level3.get(random_num).first;
             exercise[1] = level3.get(random_num).second;
             level3.remove(random_num);
         }
-        else if((mTimeleft/1000<=45 && mTimeleft/1000>30 )) {
-            Level.setText("4/6");
+        else if((mTimeleft/1000<=36 && mTimeleft/1000>18 )) {
+            Level.setText("4/5");
             random_num = new Random().nextInt(level4.size());
             exercise[0] = level4.get(random_num).first;
             exercise[1] = level4.get(random_num).second;
             level4.remove(random_num);
         }
-        else if((mTimeleft/1000<=30 && mTimeleft/1000>15)) {
-            Level.setText("5/6");
+        else{
+            Level.setText("5/5");
             random_num = new Random().nextInt(level5.size());
             exercise[0] = level5.get(random_num).first;
             exercise[1] = level5.get(random_num).second;
             level5.remove(random_num);
-        }
-        else{
-            Level.setText("6/6");
-            random_num = new Random().nextInt(level6.size());
-            exercise[0] = level6.get(random_num).first;
-            exercise[1] = level6.get(random_num).second;
-            level6.remove(random_num);
         }
 
         ++asked;
