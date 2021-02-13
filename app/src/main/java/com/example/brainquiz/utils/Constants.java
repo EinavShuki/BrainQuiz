@@ -115,6 +115,8 @@ public class Constants {
             new Pair<>("8 - 8 / 4 X 3 =", "2"),
             new Pair<>("84 / 12 =", "7"),
             new Pair<>("60 / 4 =", "15"),
+            new Pair<>("2,4,6,8", "10"),
+            new Pair<>("30,27,24,21", "18"),
             new Pair<>("2,3,5,8,13,?", "21")
     );
 

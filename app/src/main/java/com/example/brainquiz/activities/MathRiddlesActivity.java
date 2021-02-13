@@ -77,7 +77,7 @@ MathRiddlesActivity extends AppCompatActivity implements View.OnClickListener {
             public void onTick(long millisUntilFinished) {
                 mTimeleft = millisUntilFinished;
                 Timer.setText(String.format("%02d:%02d", millisUntilFinished / 1000 / 60, millisUntilFinished / 1000 % 60));
-                if (millisUntilFinished / 1000 % 60 == 10 && millisUntilFinished / 1000 / 60 ==0) {
+                if (mTimeleft/1000==10) {
                     Timer.setTextColor(getColor(R.color.red));
                 }
                 time = millisUntilFinished / 1000 % 60;
