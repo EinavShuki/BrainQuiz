@@ -17,6 +17,7 @@ public class Constants {
     public static final String NUMBERS_MEMORY_TABLE = "numberMemoryScore";
     public static final String VISUAL_MEMORY_TABLE = "visualMemoryScore";
     public static final String COLOR_MATCH_TABLE = "colorMatchScore";
+    public static final String SHOW_LEADERBOARDS_KEY = "showLeaderboardsKey";
     public static final String SCREEN_KEY = "screenKey";
     public static final String MATH_SCORES_KEY = "mathScoresKey";
     public static final String MATH_SCORES_PREFS = "mathScoresPrefs";

@@ -36,8 +36,8 @@
     <string name="score">תוצאה</string>
     <string name="new_game">משחק חדש</string>
     <string name="explanation">זכרו את המיקומים של הספרות על המסך לפני שתעלמנה ולחצו עליהן לפי הסדר</string>
-    <string name="quit_game">להפסיק לשחק</string>
-    <string name="you_sure">"אתה בטוח רוצה לצאת? "</string>
+    <string name="quit_game">יציאה מהמשחק</string>
+    <string name="you_sure">אתה בטוח רוצה לצאת?</string>
     <string name="yes_get_out">"כן תצא "</string>
     <string name="stay">תישאר</string>
     <string name="got_it">הבנתי</string>
@@ -62,4 +62,5 @@
     <string name="text">טקסט</string>
     <string name="color">צבע</string>
     <string name="black">שחור</string>
+    <string name="score_saved">התוצאה נשמרה</string>
 </resources>

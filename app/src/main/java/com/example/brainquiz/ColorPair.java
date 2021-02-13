@@ -23,17 +23,13 @@ public class ColorPair {
         return queryText;
     }
 
-    public void setQueryText(int queryText) {
-        this.queryText = queryText;
-    }
+
 
     public int getQueryColor() {
         return queryColor;
     }
 
-    public void setQueryColor(int queryColor) {
-        this.queryColor = queryColor;
-    }
+
 
     public int getFirst() {
         return first;
@@ -55,51 +51,36 @@ public class ColorPair {
     }
 
 
-    public String getQuery() {
-        return query;
-    }
 
-    public void setQuery(String query) {
-        this.query = query;
-    }
+
+
 
     public String getAnswer() {
         return answer;
     }
 
-    public void setAnswer(String answer) {
-        this.answer = answer;
-    }
 
     public int getFirstColor() {
         return firstColor;
     }
 
-    public void setFirstColor(int firstColor) {
-        this.firstColor = firstColor;
-    }
+
 
     public int getSecondColor() {
         return secondColor;
     }
 
-    public void setSecondColor(int secondColor) {
-        this.secondColor = secondColor;
-    }
+
 
     public int getThirdColor() {
         return thirdColor;
     }
 
-    public void setThirdColor(int thirdColor) {
-        this.thirdColor = thirdColor;
-    }
+
 
     public int getFourthColor() {
         return fourthColor;
     }
 
-    public void setFourthColor(int fourthColor) {
-        this.fourthColor = fourthColor;
-    }
+
 }

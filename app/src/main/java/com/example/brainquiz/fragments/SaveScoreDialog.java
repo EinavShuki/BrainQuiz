@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.brainquiz.R;
 import com.example.brainquiz.activities.MainActivity;
@@ -24,6 +25,8 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import java.time.Duration;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -129,7 +132,9 @@ public class SaveScoreDialog extends AppCompatDialogFragment {
     }
 
     private void navigateToScoresScreen(){
-        context.startActivity(new Intent(context, MainActivity.class));
+        Intent intent = new Intent(context, MainActivity.class);
+        intent.putExtra(Constants.SHOW_LEADERBOARDS_KEY, true);
+        context.startActivity(intent);
         context.finish();
     }
 }

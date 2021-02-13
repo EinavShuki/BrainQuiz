@@ -17,7 +17,7 @@ import com.example.brainquiz.utils.Constants;
 public class FailScreenActivity extends AppCompatActivity  {
     TextView subTilte, title, levelTv, titleShow, subTileShow;
     Button tryAgain, btnSaveScore;
-    String name_activity, lev, table;
+    String name_activity, lev;
     Space spc;
 
     @Override
@@ -31,7 +31,6 @@ public class FailScreenActivity extends AppCompatActivity  {
         init();
         name_activity = getIntent().getStringExtra(Constants.ACTIVITY_NAME_KEY);
 
-        table = Constants.NUMBERS_MEMORY_TABLE;
         renderNumMemory();
 
 
@@ -46,7 +45,7 @@ public class FailScreenActivity extends AppCompatActivity  {
             Bundle args = new Bundle();
             int level = getIntent().getIntExtra("level", 1);
             args.putInt(Constants.SCORE_KEY, level);
-            args.putString(Constants.SCREEN_KEY, table);
+            args.putString(Constants.SCREEN_KEY, Constants.NUMBERS_MEMORY_TABLE);
             saveScoreDialog.setArguments(args);
             saveScoreDialog.show(getSupportFragmentManager(), Constants.DIALOG_SAVE_SCORE);
         });
@@ -57,7 +56,7 @@ public class FailScreenActivity extends AppCompatActivity  {
         title = findViewById(R.id.right_num);
         levelTv = findViewById(R.id.level_tv);
         tryAgain = findViewById(R.id.try_again_btn);
-        btnSaveScore = findViewById(R.id.save_score_btn);
+        btnSaveScore = findViewById(R.id.save_score_digits_btn);
         titleShow = findViewById(R.id.title_to_show);
         subTileShow = findViewById(R.id.sub_title_to_show);
         spc = findViewById(R.id.spc);
