@@ -121,6 +121,7 @@ MathRiddlesActivity extends AppCompatActivity implements View.OnClickListener {
         setListeners();
         exercise[0] =level1.get(random_num).first;
         exercise[1] =level1.get(random_num).second;
+        level1.remove(random_num);
 
         ++asked;
         Animation tvAnimation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.slide_top_to_bottom);
