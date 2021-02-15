@@ -204,7 +204,7 @@ public class VisualMemoryActivity extends AppCompatActivity {
             public void run() {
                 popupWindow.dismiss();
             }
-        }, 4000);
+        }, 5000);
 
         // dismiss the popup window when touched
         popupView.setOnTouchListener(new View.OnTouchListener() {
